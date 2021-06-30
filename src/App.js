@@ -11,8 +11,15 @@ import ContactUs from './pages/ContactUs';
 import Impressum from './pages/Impressum';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFoundPage from './pages/NotFoundPage';
+import Cookies from './components/Cookies.jsx';
 
 function App() {
+
+  /*  for show Component Coockies  (component) */
+  const [isAccepted, setAccepted] = useState(false);
+
+  
+
   return (
     <div>
       <NavBar/>
@@ -42,6 +49,8 @@ function App() {
           <NotFoundPage />
         </Route>
     </Switch>
+
+      {isAccepted? <Cookies/>: null }
       <Footer/>
     </div>
   );
