@@ -1,4 +1,4 @@
-import './Impressum.css';
+import './css/Impressum.css';
 
 export default function Impressum() {
     return (

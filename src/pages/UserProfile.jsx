@@ -1,8 +1,10 @@
-import './Auth.css';
+import './css/UserProfile.css';
+import { useState } from 'react';
+import ContactList from './dashboard/ContactList';
 
 
-export default function Auth() {
-    const [state, setstate] = useState(menu)
+export default function UserProfile() {
+    const [state, setState] = useState(menu)
 
     function menu() {
         return (

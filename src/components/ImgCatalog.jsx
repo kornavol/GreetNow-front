@@ -7,7 +7,7 @@ DB-collection: pictures
 const ImgCatalog = () => {
     return (
         <div>
-            
+            <h4>This is the catalog for card background images</h4>
         </div>
     );
 }

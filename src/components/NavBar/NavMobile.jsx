@@ -1,4 +1,4 @@
-import './NavMobile.css';
+import './css/NavMobile.css';
 
 export default function NavMobile() {
     return (

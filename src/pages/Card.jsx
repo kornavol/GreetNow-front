@@ -1,5 +1,5 @@
-import './Card.css';
-import Catalog from '../components/Catalog';
+import './css/Card.css';
+import Catalog from './Catalog';
 
 export default function Card() {
     return (

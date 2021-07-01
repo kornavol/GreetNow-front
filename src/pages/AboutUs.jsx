@@ -1,4 +1,4 @@
-import './AboutUs.css';
+import './css/AboutUs.css';
 
 export default function AboutUs() {
     return (

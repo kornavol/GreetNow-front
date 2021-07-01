@@ -1,4 +1,4 @@
-import './Catalog.css';
+import './css/Catalog.css';
 
 export default function Catalog() {
     return (

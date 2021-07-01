@@ -1,4 +1,4 @@
-import './ContactList.css';
+import './css/ContactList.css';
 
 export default function ContactList() {
     return (

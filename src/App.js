@@ -1,8 +1,8 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom'
+import { useState } from 'react';
 
 import NavBar from './components/NavBar/NavBar.jsx';
-import Footer from './components/Footer';
 import Home from './pages/Home';
 import UserProfile from './pages/UserProfile';
 import Card from './pages/Card';
@@ -14,8 +14,10 @@ import NotFoundPage from './pages/NotFoundPage';
 import Cookies from './components/Cookies.jsx';
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
-import Event from './pages/dashboard/Event';
+import Catalog from './pages/Catalog';
 import Settings from './pages/dashboard/Settings';
+import CardRoulette from './pages/CardRoulette';
+import CardEditor from './pages/CardEditor';
 
 function App() {
 
@@ -36,6 +38,12 @@ function App() {
         </Route>
         <Route path="/card">
           <Card />
+        </Route>
+        <Route path="/roulette">
+          <CardRoulette />
+        </Route>
+        <Route path="/editor">
+          <CardEditor />
         </Route>
         <Route path="/about-us">
           <AboutUs />

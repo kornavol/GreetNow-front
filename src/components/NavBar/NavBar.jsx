@@ -1,6 +1,6 @@
-import './NavBar.css';
+import './css/NavBar.css';
 
-import { NavLink, Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import NavDesktop from './NavDesktop.jsx';
 import NavMobile from './NavMobile.jsx';
