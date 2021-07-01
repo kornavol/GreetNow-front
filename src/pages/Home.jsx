@@ -3,7 +3,9 @@ import './Home.css';
 import Presentation from '../components/Presentation.jsx';
 import ImgCatalog from '../components/ImgCatalog.jsx';
 import Benefits from '../components/Benefits.jsx';
-import UsersReviews from '../components/UsersReviews.jsx'
+import UsersReviews from '../components/UsersReviews.jsx';
+import Footer from '../components/Footer';
+
 
 
 export default function Home() {
@@ -18,6 +20,7 @@ export default function Home() {
             <ImgCatalog />
             <Benefits />
             <UsersReviews />
+            <Footer />
         </div>
     )
 }

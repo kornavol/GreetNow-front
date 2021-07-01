@@ -4,7 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar.jsx';
 import Footer from './components/Footer';
 import Home from './pages/Home';
-import Auth from './pages/Auth';
+import UserProfile from './pages/UserProfile';
 import Card from './pages/Card';
 import AboutUs from './pages/AboutUs';
 import ContactUs from './pages/ContactUs';
@@ -12,23 +12,27 @@ import Impressum from './pages/Impressum';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFoundPage from './pages/NotFoundPage';
 import Cookies from './components/Cookies.jsx';
+import Calendar from './pages/dashboard/Calendar';
+import ContactList from './pages/dashboard/ContactList';
+import Event from './pages/dashboard/Event';
+import Settings from './pages/dashboard/Settings';
 
 function App() {
 
   /*  for show Component Coockies  (component) */
   const [isAccepted, setAccepted] = useState(false);
 
-  
+  const [isAuth, setIsAuth] = useState(false)
 
   return (
     <div>
-      <NavBar/>
+      <NavBar />
       <Switch>
         <Route exact path="/">
           <Home />
         </Route>
-        <Route path="/auth">
-          <Auth />
+        <Route path="/dashboard">
+          <UserProfile />
         </Route>
         <Route path="/card">
           <Card />
@@ -48,10 +52,26 @@ function App() {
         <Route path="/404">
           <NotFoundPage />
         </Route>
-    </Switch>
+        {isAuth ?
+          (<>
+            <Route path="catalog">
+              <Catalog />
+            </Route>
+            <Route path="/calendar">
+              <Calendar />
+            </Route>
+            <Route path="/contacts">
+              <ContactList />
+            </Route>
+            <Route path="/settings">
+              <Settings />
+            </Route>
+          </>) : null
 
-      {isAccepted? <Cookies/>: null }
-      <Footer/>
+        }
+      </Switch>
+
+      {isAccepted ? <Cookies /> : null}
     </div>
   );
 }

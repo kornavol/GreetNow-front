@@ -4,6 +4,8 @@ import { NavLink, Link } from 'react-router-dom';
 
 import NavDesktop from './NavDesktop.jsx';
 import NavMobile from './NavMobile.jsx';
+import Login from '../Auth/Login';
+import Register from '../Auth/Register';
 
 
 
@@ -26,51 +28,23 @@ const NavBar = () => {
 
         return width < breakpoint? <NavMobile /> : <NavDesktop />
     }
+
+    function login(){
+        return <Login/>
+    }
+
+    function register(){
+        return <Register/>
+    }
     return (
         /* For different view of nav., neest transport a <NavLink> into proper Nav (desktop or mobile  ) */
         <nav>
-            <NavLink
-                exact
-                className="nav-item"
-                activeClassName="active"
-                to="/"
-            >Home</NavLink>
-
-            <NavLink
-                exact
-                className="nav-item"
-                activeClassName="active"
-                to="/card"
-            >Card</NavLink>
-
-            <NavLink
-                exact
-                className="nav-item"
-                activeClassName="active"
-                to="/about-us"
-            >About Us</NavLink>
-
-            <NavLink
-                exact
-                className="nav-item"
-                activeClassName="active"
-                to="/contact-us"
-            >Contact Us</NavLink>
-
-            <NavLink
-                exact
-                className="nav-item"
-                activeClassName="active"
-                to="/impressum"
-            >Impressum</NavLink>
-
-            <button>
-                <Link
-                    exact
-                    className="nav-item"
-                    activeClassName="active"
-                    to="/auth"
-                >Login</Link>
+            <Nav/>
+            <button onClick={login}>
+                Login
+            </button>
+            <button onClick={register}>
+                Register
             </button>
         </nav>
     );
