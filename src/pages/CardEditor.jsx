@@ -2,7 +2,7 @@ import React from 'react';
 
 const CardEditor = () => {
     return (
-        <div>
+        <div className="page">
             Card Editor
         </div>
     );

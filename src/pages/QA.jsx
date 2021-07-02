@@ -1,7 +1,7 @@
 
 export default function QA() {
     return (
-        <div>
+        <div className="page">
             <h3>Q&A</h3>            
         </div>
     );
