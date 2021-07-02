@@ -6,8 +6,8 @@ DB-collection: pictures
 
 const ImgCatalog = () => {
     return (
-        <div>
-            <h4>This is the catalog for card background images</h4>
+        <div className="component" style={{backgroundColor:'green'}}>
+            <h4>Img Catalog Component</h4>
         </div>
     );
 }
