@@ -4,9 +4,10 @@ import { Form, Container, Col, Row } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 
-import Pagination from '../Paginations';
-
 import { picturesDB } from "../../testDB";
+import Pagination from '../Paginations';
+import Filter from "./EvFilter";
+
 
 
 /* ! Form.Select for some reason not working */
@@ -26,18 +27,30 @@ const ImgCatalog = () => {
     //     )
     // }
 
-    const events = ["Birthday", "Wedding", "Christmas"];
+    /* For rendering filters */
+    
 
     const [selector, setSelector] = useState("all");
     const [pictures, setPictures] = useState([]);
 
     useEffect(() => {
-        setPictures(renderPictures);
+        setPictures(renderPictures(selector));
     }, [selector]);
 
-    function renderPictures() {
-        const newPictures = picturesDB.map((picture) => {
-            console.log(picture.pass);
+    function renderPictures(type) {
+
+        const filtredDB = picturesDB.filter(el => el.type == type)
+
+        let forMapDb = [];
+
+        if (filtredDB.length == 0 ) {
+            forMapDb = picturesDB
+        } else {
+            forMapDb = filtredDB
+        }
+
+
+        const newPictures = forMapDb.map((picture) => {
             return (
                 <img
                     key={picture.id}
@@ -49,35 +62,12 @@ const ImgCatalog = () => {
             // <div key={picture.id} className="picture1" style={{backgroundImage: `url(${background})` }} />
         });
 
-        console.log("render picture", newPictures);
-
         return newPictures;
     }
 
-    console.log(pictures);
-
-    const Filter = () => {
-        return (
-            <select
-                id="portfolio-filter"
-                className="form-control-sm"
-                value={selector}
-                onChange={(e) => {
-                    setSelector(e.target.value);
-                }}
-            >
-                <option value={"all"}>all</option>
-                <option value={"Birthday"}>Birthday</option>
-                <option value={"Wedding"}>Wedding</option>
-                <option value={"Christmas"}>Christmas</option>
-            </select>
-        );
-    };
-
-    console.log("Filter rerendered");
     return (
         <div className="component">
-            <Filter />
+            <Filter setSelector={setSelector} selector={selector} />
             <Container>
                 <Row>
                     <Col className="d-block m-auto">{pictures}</Col>

@@ -37,7 +37,7 @@ function App() {
   const [isAuth, setIsAuth] = useState(false)
 
   return (
-    <div class = "App">
+    <div className = "App">
       <NavBar />
        <Switch>
          {/* Nav */}
