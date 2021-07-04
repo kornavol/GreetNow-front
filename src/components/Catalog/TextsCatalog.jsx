@@ -2,35 +2,42 @@ import { Form, Container, Col, Row } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 
-import Pagination from '../Paginations';
+import Texts from "./Texts";
 import Filter from "./EvFilter";
+import Pagination from '../Paginations';
 
 const TextsCatalog = () => {
 
-    async function  getTexts() {
-        const url = 'https://jsonplaceholder.typicode.com/posts'
-        const response = await fetch(url);
-        const texts = await response.json();
+    const [texts, setTexts] = useState([]);
+    const [activePage, setActivePage] = useState(1);
     
-        console.log(texts);
 
-        
-    }
+    const PostPerPage = 10;
+    const IndexOfLastPost = activePage * PostPerPage;
+    const IndexOfFirstPost = IndexOfLastPost - PostPerPage;
+    const textPage = texts.slice(IndexOfFirstPost, IndexOfLastPost)
 
-    getTexts()
+    useEffect(() => {
+        async function getTexts() {
+            const url = 'https://jsonplaceholder.typicode.com/posts'
+            const response = await fetch(url);
+            const texts = await response.json();
 
-    
+            setTexts(texts)
+        }
+        getTexts()
+    }, []);
+
     return (
         <div className="component">
-        <Filter />
-        <Container>
-            <Row>
-                Texts
-                {/* <Col className="d-block m-auto">{texts}</Col> */}
-            </Row>
-        </Container>
-        <Pagination/>
-    </div>
+            <Filter />
+            <Container>
+                <Row>
+                    <Col className="d-block m-auto"><Texts texts={textPage} /></Col>
+                </Row>
+            </Container>
+            <Pagination active={activePage} setActive={setActivePage}  />
+        </div>
     );
 }
 

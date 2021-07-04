@@ -1,8 +1,8 @@
 import { memo, useState, useRef } from "react";
 import { Pagination } from "react-bootstrap";
 
-const Paginations = () => {
-    const [active, setActive] = useState(1);
+const Paginations = ({active, setActive}) => {
+    // const [active, setActive] = useState(1);
     /* if for this aim is using useState, will be a loop */
     const isFPact = useRef(false);
     const isLPact = useRef(false);
