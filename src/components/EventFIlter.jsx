@@ -1,5 +1,7 @@
 import { Badge } from "react-bootstrap";
 
+/* This filter is using for Roulette component */
+
 const EventFIlter = () => {
     return (
         <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>

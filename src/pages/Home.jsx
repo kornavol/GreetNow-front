@@ -3,7 +3,7 @@ import './css/Home.css';
 import { Link } from 'react-router-dom';
 
 import Presentation from '../components/Presentation.jsx';
-import ImgCatalog from '../components/ImgCatalog.jsx';
+import ImgCatalog from '../components/Catalog/ImgCatalog.jsx';
 import Benefits from '../components/Benefits.jsx';
 import UsersReviews from '../components/UsersReviews.jsx';
 

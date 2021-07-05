@@ -1,0 +1,11 @@
+#portfolio-filter {
+    width: 90%;
+}
+
+.picture {
+    width: 90%;
+    height: auto;
+    /* box-sizing: border-box; */
+    margin: 10px;
+    
+}
