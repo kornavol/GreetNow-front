@@ -13,8 +13,8 @@ const TextsCatalog = () => {
     
 
     const PostPerPage = 10;
-    const IndexOfLastPost = activePage * PostPerPage;
-    const IndexOfFirstPost = IndexOfLastPost - PostPerPage;
+    const IndexOfLastPost = activePage * PostPerPage; //10
+    const IndexOfFirstPost = IndexOfLastPost - PostPerPage; //0
     const textPage = texts.slice(IndexOfFirstPost, IndexOfLastPost)
 
     useEffect(() => {
