@@ -1,0 +1,27 @@
+#card-editor {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#card-front, #card-back {
+    width: 50%;
+    max-width: 400px;
+    aspect-ratio: 2/3;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+
+#card-frw-arrow, #card-back-arrow {
+    position: absolute;
+}
+
+#card-frw-arrow {
+    right: 20px;
+}
+
+#card-back-arrow {
+    left: 20px;
+}
