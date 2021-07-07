@@ -27,6 +27,8 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFoundPage from './pages/NotFoundPage';
 import Cookies from './components/Cookies.jsx';
 
+import Test from './Test.jsx';
+
 
 function App() {
 
@@ -89,6 +91,10 @@ function App() {
           </>) : null
 
         }
+        {/* for testing */}
+        <Route exact path="/test">
+          <Test />
+        </Route>
       </Switch>
       {isAccepted ? <Cookies /> : null}
       <Footer />
