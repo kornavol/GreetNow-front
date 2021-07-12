@@ -1,4 +1,48 @@
-#benefits {
-    border: 1px solid black;
-    background-color: azure;
+.benefits-container h1,
+.benefits-container p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.benefits-container>div:first-of-type>h1 {
+    margin-top: 5vmin;
+}
+
+.block-container {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.block {
+    width: 45%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.benefits-img {
+    width: 70%;
+}
+
+.benefits-img img {
+    width: 100%;
+}
+
+.block h3,
+.block p {
+    font-size: 1.7vmin;
+    text-align: left;
+}
+
+li {
+    list-style-type: none;
+}
+
+.text-container {
+    width: 90%;
 }
