@@ -3,7 +3,7 @@ import Catalog from './Catalog';
 
 export default function Card() {
     return (
-        <div>
+        <div className="page">
             <h2>Create your card</h2>
             <Catalog />
         </div>

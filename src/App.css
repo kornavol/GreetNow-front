@@ -1,1 +1,36 @@
+.App {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  font-size: calc(8px + 2vmin);
+
+  margin-bottom: 5px;
+}
+
+.page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  width: 80%;
+  min-height: 70vh;
+}
+
+.component {
+  width: 100%;
+  min-height: 100px;
+
+  text-align: center;
+
+  border: 1px solid black;
+}
+
+.border {
+  border: 2px solid black;
+}
 
