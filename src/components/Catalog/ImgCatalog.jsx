@@ -3,28 +3,60 @@ import { Container, Col, Row } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 
-import { picturesDB } from "../../testDB";
-import Pagination from '../Paginations';
+// import { picturesDB } from "../../testDB";
 import Filter from "./EvFilter";
+import Pagination from '../Paginations';
+import reactDom from "react-dom";
+
 
 
 const ImgCatalog = () => {
 
     const [category, setCategory] = useState("all");
-    const [pictures, setPictures] = useState([]);
+    const [pictures, setPictures] = useState([
+        {categories: [],
+        events: ["Birthday"],
+        name: "Bth-1.png",
+        _id: "1"}
+    ]);
 
     useEffect(() => {
-        setPictures(picturesBuilder(category));
+        const url = 'http://localhost:8080/media-catalog/getPictures';
+        const options = {
+            headers: {
+                'Content-Type': 'application/json',
+            }
+        }
+
+        fetch(url, options).then(respond => respond.json().then(result => {
+            if (result.status == 'success') {
+
+                setPictures(prev => prev = [...prev, ...result.data])
+                
+                console.log(result.data);
+
+
+            } else {
+                console.log(result.message);
+            }
+
+        }));
+
+        // setPictures(picturesBuilder(category));
     }, [category]);
+
+
+    console.log(pictures);
+
 
     function picturesBuilder(type) {
 
         let forMapDb = [];
 
         if (type === 'all' ) {
-            forMapDb = picturesDB
+            forMapDb = pictures
         } else {
-            const filtredDB = picturesDB.filter(el => el.type == type)
+            const filtredDB = pictures.filter(el => el.type == type)
             forMapDb = filtredDB
         }
         
@@ -49,7 +81,7 @@ const ImgCatalog = () => {
             <Filter setCategory={setCategory} category={category} />
             <Container>
                 <Row>
-                    <Col className="d-block m-auto">{pictures}</Col>
+                    {/* <Col className="d-block m-auto">{pictures}</Col> */}
                 </Row>
             </Container>
             <Pagination/>

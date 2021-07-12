@@ -3,7 +3,7 @@ const EvFilter = ({ selector, setSelector }) => {
 
 
     /* The values will comes though fetch */
-    const events = ['all', "birthday", "wedding", "christmas"];
+    const events = ['all', "Birthday", "Wedding", "Christmas"];
 
     const eventList = events.map(el => <option key={el} value={el}>{el}</option>)
 
