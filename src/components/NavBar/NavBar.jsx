@@ -5,9 +5,6 @@ import { useState, useEffect } from 'react';
 import NavDesktop from './NavDesktop.jsx';
 import NavMobile from './NavMobile.jsx';
 
-
-
-
 const NavBar = () => {
     const useViewport = () => {
         const [width, setWidth] = useState(window.innerWidth);
