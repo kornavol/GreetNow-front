@@ -1,0 +1,22 @@
+.card-roulette-container h1 {
+    font-family: 'Satisfy', cursive;
+    margin-top: 10vmin;
+}
+
+.roulette {
+    width: 40%;
+    overflow: hidden;
+    border: 1px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.roulette-img {
+    width: 100%;
+    height: 100%;
+}
+
+.roulette-img img {
+    width: 100%;
+}

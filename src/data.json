@@ -1,0 +1,52 @@
+{
+        "Benefits": [
+                {
+                "title": "Features & Benefits",
+                "subtitle": "Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.",
+
+                "body": [
+                                {
+                                "title": "Lorem Ipsum 1",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                },
+                                {
+                                "title": "Lorem Ipsum 2",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                },
+                                {
+                                "title": "Lorem Ipsum 3",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                },
+                                {
+                                "title": "Lorem Ipsum 4",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                }
+                        ]
+                }
+        ],
+
+        "Reviews": [
+                {
+                        "title": "Customers Review",
+                        "subtitle": "Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.", 
+                        "body": [
+                                {
+                                "title": "Lorem Ipsum 1",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                },
+                                {
+                                "title": "Lorem Ipsum 2",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                },
+                                {
+                                "title": "Lorem Ipsum 3",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                },
+                                {
+                                "title": "Lorem Ipsum 4",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                }
+                        ]
+                }
+        ]
+}
