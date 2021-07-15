@@ -9,6 +9,7 @@ import {
 import EditIcon from '@material-ui/icons/Edit'
 import EventIcon from '@material-ui/icons/Event';
 import HomeIcon from '@material-ui/icons/Home';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonIcon from '@material-ui/icons/Person';
@@ -33,8 +34,6 @@ const Appbar = (props) => {
     const theme = useTheme();
     /* Material UI Media Query */ 
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
-    /* Checks if User is authenticated */
-    const [isLoggedIn, setIsLoggedIn] = React.useState(true);
     /* Toggles between Login and Register Buttons */
     const [toggleRegister, setToggleRegister] = React.useState(true);
     /* Shows Modal */
@@ -100,6 +99,11 @@ const Appbar = (props) => {
         dashTitle: "Settings",
         pageURL: "/settings",
         icon: <SettingsIcon/>
+        },
+        {
+            dashTitle: "Logout",
+            pagerURL: "/logout",
+            icon: <ExitToAppIcon/>
         }
     ];
 
@@ -110,8 +114,8 @@ const Appbar = (props) => {
                 <Modal.Body>
                     {toggleRegister ? (
                         <Login
-                            isLoggedIn={isLoggedIn} 
-                            setIsLoggedIn={setIsLoggedIn} 
+                            isLoggedIn={props.isLoggedIn} 
+                            setIsLoggedIn={props.setIsLoggedIn} 
                             toggleRegister={toggleRegister} 
                             setToggleRegister={setToggleRegister} 
                             modalShow={modalShow} 
@@ -119,7 +123,7 @@ const Appbar = (props) => {
                         />
                     ) : (
                         <Register 
-                            isLoggedIn={isLoggedIn} 
+                            isLoggedIn={props.isLoggedIn} 
                             setToggleRegister={setToggleRegister} 
                             toggleRegister={toggleRegister} 
                             setToggleRegister={setToggleRegister} 
@@ -141,7 +145,7 @@ const Appbar = (props) => {
                 <AppbarMobile 
                     menuItems={menuItems} 
                     dashItems={dashItems} 
-                    isLoggedIn={isLoggedIn} 
+                    isLoggedIn={props.isLoggedIn} 
                     setToggleRegister={setToggleRegister} 
                     setModalShow={setModalShow} 
                     handleButtonClick={handleButtonClick}/>
@@ -149,7 +153,7 @@ const Appbar = (props) => {
             <AppbarDesktop 
                 menuItems={menuItems} 
                 dashItems={dashItems} 
-                isLoggedIn={isLoggedIn} 
+                isLoggedIn={props.isLoggedIn} 
                 setToggleRegister={setToggleRegister} 
                 setModalShow={setModalShow} 
                 handleButtonClick={handleButtonClick}/>     

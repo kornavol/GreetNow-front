@@ -41,7 +41,7 @@ function App() {
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
-  const [isAuth, setIsAuth] = useState(false)
+  const [isLoggedIn, setIsLoggedIn] = useState(true)
 
   return (
     <div className = "App">
@@ -49,7 +49,7 @@ function App() {
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar />
+              <Appbar isLoggedIn={isLoggedIn}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">
@@ -83,9 +83,9 @@ function App() {
                   <Route path="/404">
                     <NotFoundPage />
                   </Route>
-                  {isAuth ?
+                  {isLoggedIn ?
                     (<div>
-                      <Route path="catalog">
+                      <Route path="/catalog">
                         <Catalog />
                       </Route>
                       <Route path="/calendar">
