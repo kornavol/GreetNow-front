@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/Catalog.css';
 import { Tabs, Tab } from 'react-bootstrap';
 

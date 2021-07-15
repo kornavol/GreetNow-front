@@ -1,3 +1,4 @@
+import React from 'react';
 import EventFIlter from "../components/EventFIlter";
 import { Carousel, Button } from "react-bootstrap";
 

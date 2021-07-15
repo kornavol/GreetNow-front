@@ -1,3 +1,4 @@
+import React from 'react';
 import './App.css';
 
 import { Switch, Route } from 'react-router-dom'
@@ -83,7 +84,7 @@ function App() {
                     <NotFoundPage />
                   </Route>
                   {isAuth ?
-                    (<>
+                    (<div>
                       <Route path="catalog">
                         <Catalog />
                       </Route>
@@ -96,7 +97,7 @@ function App() {
                       <Route path="/settings">
                         <Settings />
                       </Route>
-                    </>) : null
+                    </div>) : null
 
                     }
                 </Switch>

@@ -1,3 +1,4 @@
+import React from 'react';
 import { memo, useState, useRef } from "react";
 import { Pagination } from "react-bootstrap";
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/NotFoundPage.css';
 
 export default function NotFoundPage() {

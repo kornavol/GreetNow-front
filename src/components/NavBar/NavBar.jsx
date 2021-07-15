@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/NavBar.css';
 
 import { useState, useEffect } from 'react';
@@ -28,9 +29,9 @@ const NavBar = () => {
 
     return (
         /* For different view of nav., neest transport a <NavLink> into proper Nav (desktop or mobile  ) */
-        <>
+        
             <Nav/>
-        </>
+        
     );
 }
 

@@ -1,3 +1,4 @@
+import React from 'react';
 const EvFilter = ({ selector, setSelector }) => {
     /* Should I receive state like props (current) or better over Redux*/
 

@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/NavMobile.css';
 
 export default function NavMobile() {
