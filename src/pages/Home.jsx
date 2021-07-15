@@ -1,3 +1,5 @@
+import React, { useRef } from 'react';
+
 import { Link } from 'react-router-dom';
 
 import Presentation from '../components/Presentation.jsx';
@@ -9,42 +11,44 @@ import UsersReviews from '../components/UsersReviews.jsx';
 
 import { makeStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
+
+/* AOS Scroll Animation */
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 /* Initializes Scroll Animation */
 AOS.init();
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     
     cardRoulette: {
-        height: '90vh',
+        height: '92vh',
     },
     cardEditor: {
-        height: '90vh',
+        height: '100vh',
     },
     benefits: {
-        height: '90vh'
+        height: '100vh'
     },
     reviews: {
-        height: '90vh'
+        height: '100vh'
     }
 }));
 
 /* Home Page */
-export default function Home() {
+const Home = () => {
     const classes = useStyles();
     const handleCardGenerator = (e) => {
         return (
             <Link to='/card' cardCase={e} />
         );
     }
-
+  
     return (
         <Grid container direction="column">
             <Grid container>
                 <Grid item xs={12} className={classes.cardRoulette}>
-                    <CardRoulette />
+                    <CardRoulette  />
                 </Grid>
             </Grid>
             <Grid container>
@@ -59,7 +63,7 @@ export default function Home() {
             </Grid>
             <Grid container>
                 <Grid item xs={12} className={classes.benefits}>
-                    <Benefits/>
+                    <Benefits />
                 </Grid>
             </Grid>
             <Grid container>
@@ -71,3 +75,5 @@ export default function Home() {
         
     )
 }
+
+export default Home;

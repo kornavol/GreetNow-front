@@ -19,6 +19,7 @@ import ContactList from './pages/dashboard/ContactList';
 import Settings from './pages/dashboard/Settings';
 
 /* Footer */
+import StickyFooter from './components/Footer/StickyFooter';
 import Footer from './components/Footer/Footer';
 import QA from './pages/QA';
 import AboutUs from './pages/AboutUs';
@@ -32,12 +33,6 @@ import Cookies from './components/Cookies.jsx';
 
 /* Material UI Grid and Components*/
 import { Grid } from '@material-ui/core';
-
-/* React-Bootstrap */
-import Modal from 'react-bootstrap/Modal';
-import ModalBody from 'react-bootstrap/ModalBody';
-
-
 
 function App() {
 
@@ -67,13 +62,6 @@ function App() {
                   </Route>
                   <Route path="/card-editor">
                     <CardEditor />
-                  </Route>
-
-                  <Route path="/login">
-                    <Login />
-                  </Route>
-                  <Route path="/register">
-                    <Register />
                   </Route>
                   {/* Footer */}
                   <Route path="/qa">

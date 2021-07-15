@@ -1,31 +1,24 @@
 import React from 'react';
 /* Material UI Components */
 import { 
-    Avatar,
     Box,
     Button,
-    Checkbox,
     Container,
     CssBaseline,
-    FormControlLabel,
     Grid,
     Link,
     TextField,
     Typography
 } from '@material-ui/core';
-/* Material UI Icon */
-import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 /* Material UI Styles */
 import { makeStyles } from '@material-ui/core/styles';
-
-import ForgotPass from '../Auth/ForgotPass';
 
 function Copyright() {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
-            Greetnow
+            GreetNow
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -33,7 +26,6 @@ function Copyright() {
     );
 }
 
-/* Material UI Styles */
 const useStyles = makeStyles((theme) => ({
     paper: {
         marginTop: theme.spacing(8),
@@ -47,53 +39,43 @@ const useStyles = makeStyles((theme) => ({
     },
     form: {
         width: '100%', // Fix IE 11 issue.
-        marginTop: theme.spacing(1),
+        marginTop: theme.spacing(3),
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
     },
 }));
 
-export default function Login(props) {
+export default function ForgotPass(props) {
     const classes = useStyles();
 
     return (
         <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-            <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-            </Avatar>
             <Typography component="h1" variant="h5">
-            Log In
+                <Box lineHeight={3}>
+            Forgot Password
+            </Box>
             </Typography>
+            
+            <Typography component="p" variant="p">
+                Lost your password? Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum ullam laborum quaerat .
+                </Typography>
             <form className={classes.form} noValidate>
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-            />
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-            />
-            <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-            />
+            <Grid container spacing={2}>
+                <Grid item xs={12}>
+                <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                />
+                </Grid>
+            </Grid>
             <Button
                 type="submit"
                 fullWidth
@@ -101,23 +83,18 @@ export default function Login(props) {
                 color="primary"
                 className={classes.submit}
             >
-                Login
+                Reset password
             </Button>
-            <Grid container>
-                <Grid item xs>
-                <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}} variant="body2">
-                    Forgot password?
-                </Link>
-                </Grid>
+            <Grid container justifyContent="flex-end">
                 <Grid item>
-                <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}}>
-                    {"Don't have an account? Sign Up"}
+                <Link href="#" variant="body2">
+                    Remember your password? Log in
                 </Link>
                 </Grid>
             </Grid>
             </form>
         </div>
-        <Box mt={8}>
+        <Box mt={5}>
             <Copyright />
         </Box>
         </Container>

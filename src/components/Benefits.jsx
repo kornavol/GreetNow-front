@@ -6,7 +6,7 @@ import './css/Benefits.css';
 
 const Benefits = () => {
     return (
-        <div className="section-container benefits-container" data-aos="fade-up" data-aos-duration="1000">
+        <div id="benefits" className="section-container benefits" data-aos="fade-up" data-aos-duration="1000">
             {data.Benefits.map((header) => (
                 <div>
                     <h1 id="benefits">{header.title}</h1>

@@ -16,7 +16,7 @@ const CardRoulette = () => {
     }
 
     return (
-        <div id="card-roulette" className="section-container">
+        <div id="card-roulette" className="page">
             
             <EventFIlter />
 
