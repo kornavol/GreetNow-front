@@ -16,10 +16,14 @@ const TextsCatalog = () => {
     const IndexOfLastPost = activePage * PostPerPage; //10
     const IndexOfFirstPost = IndexOfLastPost - PostPerPage; //0
     const textPage = texts.slice(IndexOfFirstPost, IndexOfLastPost)
-
+    
+    //page=1&limit=5&event=Birthday
     useEffect(() => {
+        const page = `page=${activePage}`
+        const limit = `limit=${PostPerPage}`
+
         async function getTexts() {
-            const url = 'https://jsonplaceholder.typicode.com/posts'
+            const url = 'http://localhost:8080/media-catalog/getPictures?'+page +limit 
             const response = await fetch(url);
             const texts = await response.json();
 

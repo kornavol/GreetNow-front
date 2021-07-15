@@ -20,7 +20,7 @@ export default function Catalog() {
 
             >
                 <Tab eventKey="pictures" title="Pictures">
-                    <Pictures />
+                    {/* <Pictures /> */}
                 </Tab>
                 <Tab eventKey="texts" title="Texts">
                     <Texts />

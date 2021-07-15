@@ -21,7 +21,10 @@ const ImgCatalog = () => {
     ]);
 
     useEffect(() => {
-        const url = 'http://localhost:8080/media-catalog/getPictures';
+        // const page = `page=${activePage}`
+        // const limit = `limit=${PostPerPage}`
+
+        const url = 'http://localhost:8080/media-catalog/getPictures'
         const options = {
             headers: {
                 'Content-Type': 'application/json',

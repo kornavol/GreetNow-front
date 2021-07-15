@@ -30,7 +30,7 @@ export default function Home() {
                         <Link to='/editor'><div>CardEditor</div></Link>
                     </div>
                 </div>
-                <ImgCatalog />
+                {/* <ImgCatalog /> */}
             </div>
             <Benefits />
             <UsersReviews />
