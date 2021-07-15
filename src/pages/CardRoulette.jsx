@@ -16,7 +16,8 @@ const CardRoulette = () => {
     }
 
     return (
-        <div id="card-roulette" className="page">
+        <div id="card-roulette" className="section-container">
+            
             <EventFIlter />
 
             <Carousel 
@@ -46,7 +47,7 @@ const CardRoulette = () => {
             </div>
 
             <Button className="m-auto" variant='danger'>Generate</Button>
-
+            
         </div>
     );
 }
