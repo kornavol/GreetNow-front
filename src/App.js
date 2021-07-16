@@ -1,7 +1,7 @@
 import './App.css';
 
 import { Switch, Route } from 'react-router-dom'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import NavBar from './components/NavBar/NavBar.jsx';
 import Appbar from './components/NavBar/Appbar';
@@ -45,7 +45,51 @@ function App() {
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
-  const [isAuth, setIsAuth] = useState(false)
+  const [isAuth, setIsAuth] = useState(false);
+  const [privateData, setPrivateData] = useState();
+
+  const fetchPrivateData = () =>{
+
+    const url = "http://localhost:8080/private";
+    
+    let options = {
+      method:'GET',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`
+      }
+    }
+    fetch(url, options)
+    .then(result=>result.json()
+    .then(output=>{
+      console.log(output);
+      if (output.success === true) {
+        setPrivateData(output.data);
+        console.log(output.data);
+        setIsAuth(true);
+      }else{
+        localStorage.removeItem('authToken');
+        alert(output)
+      }
+    }
+    ));
+  }
+
+  /* useEffect(()=>{
+
+    if(!localStorage.getItem('authToken')){
+      setIsAuth(false);
+    }else{
+      fetchPrivateData();
+    }
+  },[]);
+
+  console.log(isAuth);
+  console.log(privateData); */
+
+  const logoutHandler = () => {
+      localStorage.removeItem('authToken');
+  }
 
   return (
     <div className = "App">
@@ -53,7 +97,7 @@ function App() {
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar />
+              <Appbar user={privateData}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">
@@ -70,7 +114,7 @@ function App() {
                   </Route>
 
                   <Route path="/login">
-                    <Login />
+                    <Login isAuth={setIsAuth} />
                   </Route>
                   <Route path="/register">
                     <Register />

@@ -12,6 +12,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {useState, useEffect} from 'react';
 
 function Copyright() {
     return (
@@ -46,8 +47,64 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Login() {
+export default function Login({isAuth}) {
     const classes = useStyles();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        if(localStorage.getItem('authToken')){
+            //history.push("/");
+        }
+    }, []);
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+
+        let data = {};
+
+        data.email = email;
+        data.password = password;
+
+        let urlLogin = 'http://localhost:8080/auth/login';
+        let options = {
+            method:'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body:JSON.stringify(data)
+        }
+
+        function handleErrors(response) {
+            console.log(response);
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        }
+
+        
+        fetch(urlLogin, options)
+            .then(handleErrors)
+            .then(response=>response.json()
+            .then(output=>{
+                alert(output.message);
+                console.log(output);
+                localStorage.setItem('authToken', output.token);
+                isAuth(true);
+                //history.push('/');
+            })
+            .catch (error => {
+                setError(error.response.data.error);
+                setTimeout(()=>{
+                    setError("");
+                }, 5000);
+            })
+        );
+    }
 
     return (
         <Container component="main" maxWidth="xs">
@@ -59,7 +116,8 @@ export default function Login() {
             <Typography component="h1" variant="h5">
             Sign in
             </Typography>
-            <form className={classes.form} noValidate>
+            <form className={classes.form} noValidate onSubmit={loginHandler}>
+            {error && <span className="error-message">{error}</span>}
             <TextField
                 variant="outlined"
                 margin="normal"
@@ -70,6 +128,7 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e)=> setEmail(e.target.value)}
             />
             <TextField
                 variant="outlined"
@@ -81,6 +140,7 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=> setPassword(e.target.value)}
             />
             <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -102,7 +162,7 @@ export default function Login() {
                 </Link>
                 </Grid>
                 <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/register" variant="body2">
                     {"Don't have an account? Sign Up"}
                 </Link>
                 </Grid>
