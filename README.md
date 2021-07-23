@@ -14,3 +14,4 @@
 - ImgCatalog. How better fetch a pictures
 - Code review (remind Buelent)
 - In general. Style system (for guys)
+- EvFilter. Why I can't change in current obj (prev) a value and return it

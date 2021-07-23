@@ -10,12 +10,13 @@ const TextsCatalog = () => {
 
     const [texts, setTexts] = useState([]);
     const [activePage, setActivePage] = useState(1);
-    
+    const [category, setCategory] = useState({events:"all", category:"all"});
+    const [totalPages, setTotalPages] = useState(3);
 
-    const PostPerPage = 10;
-    const IndexOfLastPost = activePage * PostPerPage; //10
-    const IndexOfFirstPost = IndexOfLastPost - PostPerPage; //0
-    const textPage = texts.slice(IndexOfFirstPost, IndexOfLastPost)
+    const PostPerPage = 1;
+    // const IndexOfLastPost = activePage * PostPerPage; //10
+    // const IndexOfFirstPost = IndexOfLastPost - PostPerPage; //0
+    // const textPage = texts.slice(IndexOfFirstPost, IndexOfLastPost)
     
     //page=1&limit=5&event=Birthday
     useEffect(() => {
@@ -23,24 +24,36 @@ const TextsCatalog = () => {
         const limit = `limit=${PostPerPage}`
 
         async function getTexts() {
-            const url = 'http://localhost:8080/media-catalog/getPictures?'+page +limit 
+            const url = 'http://localhost:8080/media-catalog/getTexts?'+page +"&" + limit 
             const response = await fetch(url);
-            const texts = await response.json();
+            const result = await response.json();
+
+            const texts = result.data.texts
+            const tPages = result.data.pages.totalPages
+
+            console.log(tPages);
 
             setTexts(texts)
+            setTotalPages(tPages)
         }
         getTexts()
-    }, []);
+        
+    }, [activePage]);
+
+    // console.log(texts);
 
     return (
         <div className="component">
-            <Filter />
+            <Filter setSelector={setCategory} selector={category} />
             <Container>
                 <Row>
-                    <Col className="d-block m-auto"><Texts texts={textPage} /></Col>
+                    <Col className="d-block m-auto"><Texts texts={texts} /></Col>
                 </Row>
             </Container>
-            <Pagination active={activePage} setActive={setActivePage}  />
+            <Pagination 
+            active={activePage} 
+            setActive={setActivePage}
+            totalPages={totalPages}  />
         </div>
     );
 }

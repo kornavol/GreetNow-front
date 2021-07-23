@@ -110,16 +110,6 @@ function App() {
                       </Route>
                     </>) : null
 
-<<<<<<< HEAD
-        }
-        {/* for testing */}
-        <Route exact path="/test">
-          <Test />
-        </Route>
-      </Switch>
-      {isAccepted ? <Cookies /> : null}
-      <Footer />
-=======
                     }
                 </Switch>
                 {isAccepted ? <Cookies /> : null}
@@ -128,7 +118,6 @@ function App() {
             <Grid item sm={false} md={3}/>
           </Grid>
       </Grid>
->>>>>>> f68125db512d69201ae0f4ec1ffcc9c32b4db30c
     </div>
   );
 }
