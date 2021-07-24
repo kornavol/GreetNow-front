@@ -57,7 +57,6 @@ const Paginations = ({active, setActive, totalPages}) => {
         }
 
         pagination = pagination.slice(startIndex, lastIndex)
-        console.log(startIndex, lastIndex );
     }
 
     return (
