@@ -19,8 +19,6 @@ const EvFilter = ({ selector, setSelector }) => {
     //     getTexts()
     // }, []);
 
-    console.log(selector.events);
-
     return (
         <div>
             <select
