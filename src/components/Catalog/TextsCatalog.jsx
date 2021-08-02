@@ -14,8 +14,8 @@ const TextsCatalog = () => {
     const [totalPages, setTotalPages] = useState(3);
 
     const PostPerPage = 3;
-    let currEvent = "&";
-    let currCateg = "&";
+    let currEvent = "";
+    let currCateg = "";
 
     if (category.events !== "all") {
         currEvent = `&event=${category.events}`;
@@ -36,8 +36,7 @@ const TextsCatalog = () => {
                 "&" +
                 limit +
                 currEvent +
-                currCateg +
-                "&";
+                currCateg;
             const response = await fetch(url);
             const result = await response.json();
 
