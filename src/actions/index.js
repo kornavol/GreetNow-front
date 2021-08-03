@@ -4,3 +4,10 @@ export const sendText = (text) => {
         text: text
     };
 };
+
+export const sendPict = (picture) => {
+    return {
+        type: "SEND_PICT",
+        picture: picture
+    };
+};

@@ -1,27 +1,19 @@
 import { ListGroup } from "react-bootstrap";
 
 import { useDispatch } from "react-redux";
-import { sendText } from '../../actions';
+import { sendText } from "../../actions";
 
 const Texts = ({ texts }) => {
-    
     const dispatch = useDispatch();
-    
-    function dispatchToRedux(text) {
-        console.log('dispatch-text', text);
-        dispatch(sendText(text))
-    }
 
-
-    console.log("textssss", texts);
     const textSet = texts.map((text) => (
         <ListGroup.Item
-            key={text.id}
-            id={text.id}
-            onClick={() => { dispatchToRedux(text) }}
-            style={{ cursor: 'pointer' }}
+            key={text._id}
+            id={text._id}
+            onClick={() => dispatch(sendText(text))}
+            style={{ cursor: "pointer" }}
         >
-            {text.title}
+            {text.text}
         </ListGroup.Item>
     ));
 
