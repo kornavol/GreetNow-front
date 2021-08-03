@@ -6,7 +6,7 @@ import './css/Benefits.css';
 
 const Benefits = () => {
     return (
-        <div className="section-container benefits-container" data-aos="fade-up" data-aos-duration="1000">
+        <div id="benefits" className="section-container benefits" data-aos="fade-up" data-aos-duration="1000">
             {data.Benefits.map((header) => (
                 <div>
                     <h1 id="benefits">{header.title}</h1>
@@ -23,10 +23,10 @@ const Benefits = () => {
                         <ul>
                             {data.Benefits.map((text, i) => (
                                 <div key={i}>
-                                    {text.body.map((textField, i) => (
+                                    {text.body.map((textField) => (
                                     <li>
-                                        <h3 key={i}>{textField.title}</h3>
-                                        <p key={i}>{textField.bodyText}</p>
+                                        <h3>{textField.title}</h3>
+                                        <p>{textField.bodyText}</p>
                                     </li>
                                 ))}
                             </div>

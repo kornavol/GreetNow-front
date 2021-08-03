@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/ContactList.css';
 
 export default function ContactList() {

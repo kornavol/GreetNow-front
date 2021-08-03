@@ -1,0 +1,288 @@
+
+
+
+
+
+
+
+
+.intro-flip-card {
+    width: 90%;
+    height: 82%;
+    bottom: 0;
+    left: 5%;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+    transition: 1s;
+    position: absolute;
+    z-index: 15;
+}
+
+.intro-flip-card:hover {
+    transform: translateX(50%);
+}
+
+.intro-flip-card .details {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #ffffff;
+}
+
+.intro-flip-card .details .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.intro-flip-card .details .content h2 {
+    text-align: center;
+    font-weight: 700;
+    line-height: 1em;
+}
+
+.intro-flip-card .details .content .social-icons {
+    position: relative;
+    display: flex;
+    margin-top: 10px;
+}
+
+.intro-card-flip .imgBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    background: #ffffff;
+    transition: 2s;
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+    
+}
+
+.intro-card-flip:hover .imgBox {
+    transform: rotateY(-180deg);
+}
+
+.intro-card-flip .imgBox img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.intro-card-flip .imgBox img:nth-child(2) {
+    transform: rotateY(180deg);
+}
+
+.open-card {
+    -webkit-animation: open-card 0.4s 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+    animation: open-card 0.4s 2s cubic-bezier(0.455, 0.030, 0.515, 0.955) both,
+        hide-envelope 2s 2s forwards;
+}
+
+.flip-open {
+    animation: flip-open 0.8s 2s forwards;
+}
+
+.MuiTabScrollButton {
+    size: large;
+}
+
+.envelope-bounce {
+    animation-name: envelope-bounce;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+.card-bounce {
+    animation: card-bounce 2s 2.2s forwards;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+.card-bounce2 {
+    animation: card-bounce2 2s 2.2s forwards;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+
+
+@keyframes visible {
+    from {
+        opacity: 0;
+        visibility: hidden;
+    }
+    to {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes open-card {
+    0% {
+        transform: rotateX(0);
+    }
+
+    100% {
+        transform: rotateX(-180deg);
+        top: -3%;
+    }
+}
+
+@keyframes hide-envelope {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    30% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+@keyframes flip-open {
+    0% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    90% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+    }
+}
+
+@keyframes envelope-bounce {
+    0% {
+        transform: scale(1, 1) translateY(0);
+    }
+
+    10% {
+        transform: scale(1.1, .9) translateY(0);
+    }
+
+    30% {
+        transform: scale(.9, 1.1) translateY(-100px);
+    }
+
+    50% {
+        transform: scale(1.05, .95) translateY(0);
+    }
+
+    57% {
+        transform: scale(1, 1) translateY(-7px);
+    }
+
+    64% {
+        transform: scale(1, 1) translateY(0);
+    }
+
+    100% {
+        transform: scale(1, 1) translateY(0);
+    }
+}
+
+@keyframes card-bounce {
+    0% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1, 1) translateY(0);
+    }
+
+    10% {
+        transform: scale(1.1, .9) translateY(0);
+    }
+
+    30% {
+        
+        transform: scale(.9, 1.1) translateY(-90%);
+    }
+
+    50% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1.05, .95) translateY(-65%);
+    }
+
+    57% {
+        transform: scale(1, 1) translateY(-70%);
+    }
+
+    64% {
+        transform: scale(1, 1) translateY(-65%);
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(1, 1) translateY(-65%);
+    }
+}
+
+@keyframes card-bounce2 {
+    0% {
+
+        transform: scale(1, 1) translateY(-100%);
+    }
+
+    10% {
+        transform: scale(1.1, .9) translateY(-100%);
+    }
+
+    17% {
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    19% {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    30% {
+        
+        transform: scale(.9, 1.1) translateY(-140%);
+    }
+
+    50% {
+        
+        transform: scale(1.05, .95) translateY(-130%);
+    }
+
+    57% {
+        
+        transform: scale(1, 1) translateY(-135%);
+    }
+
+    64% {
+        
+        transform: scale(1, 1) translateY(-125%);
+    }
+
+    100% {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1, 1) translateY(-125%);
+    }
+}
