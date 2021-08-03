@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/ContactList.css';
 // import ContactsTable from '../../components/Contacts/ContatsTable/ContactsTable';
 

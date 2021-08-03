@@ -1,3 +1,4 @@
+import React from 'react';
 import EventFIlter from "../components/EventFIlter";
 import { Carousel, Button } from "react-bootstrap";
 
@@ -16,7 +17,7 @@ const CardRoulette = () => {
     }
 
     return (
-        <div id="card-roulette" className="section-container">
+        <div id="card-roulette" className="page">
             
             <EventFIlter />
 

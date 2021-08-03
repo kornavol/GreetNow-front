@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/Impressum.css';
 
 export default function Impressum() {

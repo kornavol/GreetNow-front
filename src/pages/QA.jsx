@@ -1,4 +1,4 @@
-
+import React from 'react';
 export default function QA() {
     return (
         <div className="page">
@@ -6,5 +6,3 @@ export default function QA() {
         </div>
     );
 }
-
-

@@ -1,3 +1,4 @@
+import React from 'react';
 import "./css/ImgCatalog.css";
 import { Container, Col, Row } from "react-bootstrap";
 

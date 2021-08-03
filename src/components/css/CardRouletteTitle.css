@@ -1,0 +1,101 @@
+.card-roulette-title {
+    width: 40%;
+}
+
+#card-roulette-svg {
+    width: 100%;
+    overflow: visible;
+    animation: fill 0.5s ease forwards 2.5s;
+}
+
+#card-roulette-svg path {
+    stroke: #000000;
+    stroke-width: 3px;
+}
+
+#card-roulette-svg path:nth-child(1) {
+    stroke-dasharray: 356.790;
+    stroke-dashoffset: 356.790;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(2) {
+    stroke-dasharray: 443.117;
+    stroke-dashoffset: 443.117;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(3) {
+    stroke-dasharray: 206.579;
+    stroke-dashoffset: 206.579;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(4) {
+    stroke-dasharray: 501.611;
+    stroke-dashoffset: 501.611;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(5) {
+    stroke-dasharray: 592.752;
+    stroke-dashoffset: 592.752;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(6) {
+    stroke-dasharray: 409.228;
+    stroke-dashoffset: 409.228;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(7) {
+    stroke-dasharray: 369.974;
+    stroke-dashoffset: 369.974;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(8) {
+    stroke-dasharray: 236.736;
+    stroke-dashoffset: 236.736;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(9) {
+    stroke-dasharray: 435.845;
+    stroke-dashoffset: 435.845;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(10) {
+    stroke-dasharray: 323.535;
+    stroke-dashoffset: 323.535;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(11) {
+    stroke-dasharray: 323.534;
+    stroke-dashoffset: 323.534;
+    animation: line-animation 2s ease forwards;
+}
+
+#card-roulette-svg path:nth-child(12) {
+    stroke-dasharray: 435.845;
+    stroke-dashoffset: 435.845;
+    animation: line-animation 2s ease forwards;
+}
+
+@keyframes line-animation {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fill {
+    from {
+        fill: transparent
+    }
+    to {
+        fill: #000000;
+    }
+}

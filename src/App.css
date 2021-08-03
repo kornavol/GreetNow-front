@@ -6,20 +6,34 @@ html {
   max-width: 100vw;
   min-height: 100vh;
   box-sizing: border-box;
-  border: 1px solid red;
 }
 
 .section-container {
   width: 100%;
   height: 100%;
+  background-color: #FFFFFF;
+}
+
+.red {
+  background-color: #fdf4ef;
+  transition: background-color 0.5s ease;
+}
+
+.blue {
+  background-color: #ffffff;
+  transition: background-color 1s ease;
+}
+
+.sub-container {
+  width: 100%;
+  height: 80%;
   display: flex;
   align-items: center;
-  justify-content: start;
+  justify-content: flex-start;
   flex-direction: column;
   text-align: center;
   box-sizing: border-box;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-  rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  border: 1px solid green;
 }
 
 .page {
@@ -30,16 +44,14 @@ html {
   justify-content: center;
   border: 1px solid green;
   width: 100%;
-  min-height: 70vh;
+  height: 80.5vh;
   
 }
 
 .component {
   width: 100%;
   min-height: 100px;
-
   text-align: center;
-
   border: 1px solid black;
 }
 

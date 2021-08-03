@@ -1,3 +1,4 @@
+import React from 'react';
 import { Badge } from "react-bootstrap";
 
 /* This filter is using for Roulette component */

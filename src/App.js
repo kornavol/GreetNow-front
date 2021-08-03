@@ -1,14 +1,14 @@
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import { Switch, Route } from 'react-router-dom'
-import { useState } from 'react';
 
 import NavBar from './components/NavBar/NavBar.jsx';
 import Appbar from './components/NavBar/Appbar';
 
 import Home from './pages/Home';
 /* for all users */
-import CardRoulette from './pages/CardRoulette';
+import Intro from './components/Intro';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
 import Login from './components/Auth/Login';
@@ -33,27 +33,40 @@ import Cookies from './components/Cookies.jsx';
 /* Material UI Grid and Components*/
 import { Grid } from '@material-ui/core';
 
-/* React-Bootstrap */
-import Modal from 'react-bootstrap/Modal';
-import ModalBody from 'react-bootstrap/ModalBody';
-
-
-
 function App() {
 
   /*  for show Component Coockies  (component) */
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
+<<<<<<< HEAD
   const [isAuth, setIsAuth] = useState(true)
+=======
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [background, setBackground] = useState(false)
+  const changeBackground = () => {
+    
+    if (window.scrollY >= window.screen.height - 450) {
+      setBackground(true)
+    } else {
+      setBackground(false)
+    }
+  }
 
-  return (
-    <div className = "App">
+  useEffect(() => {
+    changeBackground()
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground)
+  })
+>>>>>>> 20adc0512782d4ee2deae38d66b79cf81aedc560
+
+    return (
+    <div className = {`App ${background ? "red" : "blue"}`}>
       <Grid container direction="column">
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar />
+              <Appbar isLoggedIn={isLoggedIn}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">
@@ -62,18 +75,11 @@ function App() {
                   <Route exact path="/media-catalog">
                     <Catalog />
                   </Route>
-                  <Route path="/roulette">
-                    <CardRoulette />
+                  <Route path="/intro">
+                    <Intro />
                   </Route>
                   <Route path="/card-editor">
                     <CardEditor />
-                  </Route>
-
-                  <Route path="/login">
-                    <Login />
-                  </Route>
-                  <Route path="/register">
-                    <Register />
                   </Route>
                   {/* Footer */}
                   <Route path="/qa">
@@ -94,9 +100,9 @@ function App() {
                   <Route path="/404">
                     <NotFoundPage />
                   </Route>
-                  {isAuth ?
-                    (<>
-                      <Route path="catalog">
+                  {isLoggedIn ?
+                    (<div>
+                      <Route path="/catalog">
                         <Catalog />
                       </Route>
                       <Route path="/calendar">
@@ -108,7 +114,7 @@ function App() {
                       <Route path="/settings">
                         <Settings />
                       </Route>
-                    </>) : null
+                    </div>) : null
 
                     }
                 </Switch>

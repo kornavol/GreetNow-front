@@ -1,3 +1,4 @@
+import React from 'react';
 import './css/NavDesktop.css';
 import { Button } from 'react-bootstrap';
 
@@ -20,7 +21,7 @@ export default function NavDesktop() {
     }
 
     return (
-        <>
+        <div>
             <Nav variant="pills" defaultActiveKey="/home">
                 <Nav.Item>
                     <Nav.Link href="/">Home</Nav.Link>
@@ -38,6 +39,6 @@ export default function NavDesktop() {
                 <Button variant='light' onClick={register}>Register</Button>
             </Nav>
             
-        </>
+        </div>
     )
 }
