@@ -1,10 +1,10 @@
 import React from 'react';
 import './css/ContactList.css';
-// import ContactsTable from '../../components/Contacts/ContatsTable/ContactsTable';
+import ContactsTable from '../../components/Contacts/ContatsTable/ContactsTable';
 
 export default function ContactList() {
     
-    /* data set fron Back-end */
+    /* data set from Back-end */
     const entities = [
         {
             "_id": "13asdsad1",
@@ -50,7 +50,7 @@ export default function ContactList() {
             Button: Add new custommer
 
             */}
-            {/* <ContactsTable entities = {entities}/> */}
+            <ContactsTable entities = {entities}/>
             {/* Pagination */}
         </div>
     );
