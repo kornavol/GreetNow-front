@@ -7,6 +7,16 @@
 - Bootstrap
 - react-routing
 - redux
+- react-inlinesvg (working with SVG)
+
+
+## Components
+
+### Media Catalog
+
+### Contact List
+
+- Bootstrap table as Contact List (desktop version)
 
 ## Questions
 
