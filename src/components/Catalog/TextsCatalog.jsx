@@ -1,45 +1,72 @@
-import React from 'react';
-import { Form, Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 
 import Texts from "./Texts";
-import Filter from "./EvFilter";
-import Pagination from '../Paginations';
+import Events from "./EvFilter";
+import Categories from "./CategFilter";
+import Pagination from "../Paginations";
 
 const TextsCatalog = () => {
-
     const [texts, setTexts] = useState([]);
     const [activePage, setActivePage] = useState(1);
-    
+    const [category, setCategory] = useState({ events: "all", category: "all" });
+    const [totalPages, setTotalPages] = useState(3);
 
-    const PostPerPage = 10;
-    const IndexOfLastPost = activePage * PostPerPage; //10
-    const IndexOfFirstPost = IndexOfLastPost - PostPerPage; //0
-    const textPage = texts.slice(IndexOfFirstPost, IndexOfLastPost)
+    const PostPerPage = 3;
+    let currEvent = "";
+    let currCateg = "";
+
+    if (category.events !== "all") {
+        currEvent = `&event=${category.events}`;
+    }
+
+    if (category.category !== "all") {
+        currCateg = `&category=${category.category}`;
+    }
 
     useEffect(() => {
-        async function getTexts() {
-            const url = 'https://jsonplaceholder.typicode.com/posts'
-            const response = await fetch(url);
-            const texts = await response.json();
+        const page = `page=${activePage}`;
+        const limit = `limit=${PostPerPage}`;
 
-            setTexts(texts)
+        async function getTexts() {
+            const url =
+                "http://localhost:8080/media-catalog/getTexts?" +
+                page +
+                "&" +
+                limit +
+                currEvent +
+                currCateg;
+            const response = await fetch(url);
+            const result = await response.json();
+
+            const texts = result.data.texts;
+            const tPages = result.data.pages.totalPages;
+
+            setTexts(texts);
+            setTotalPages(tPages);
         }
-        getTexts()
-    }, []);
+        getTexts();
+    }, [activePage, category]);
 
     return (
         <div className="component">
-            <Filter />
+            <Events setSelector={setCategory} selector={category} />
+            <Categories setSelector={setCategory} selector={category} />
             <Container>
                 <Row>
-                    <Col className="d-block m-auto"><Texts texts={textPage} /></Col>
+                    <Col className="d-block m-auto">
+                        <Texts texts={texts} />
+                    </Col>
                 </Row>
             </Container>
-            <Pagination active={activePage} setActive={setActivePage}  />
+            <Pagination
+                active={activePage}
+                setActive={setActivePage}
+                totalPages={totalPages}
+            />
         </div>
     );
-}
+};
 
 export default TextsCatalog;
