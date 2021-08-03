@@ -1,5 +1,6 @@
 import { Container, Col, Row } from "react-bootstrap";
 
+import React from "react";
 import { useState, useEffect } from "react";
 
 import Texts from "./Texts";

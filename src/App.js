@@ -39,9 +39,9 @@ function App() {
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
-<<<<<<< HEAD
+
   const [isAuth, setIsAuth] = useState(true)
-=======
+
   const [isLoggedIn, setIsLoggedIn] = useState(true);
   const [background, setBackground] = useState(false)
   const changeBackground = () => {
@@ -58,7 +58,7 @@ function App() {
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground)
   })
->>>>>>> 20adc0512782d4ee2deae38d66b79cf81aedc560
+
 
     return (
     <div className = {`App ${background ? "red" : "blue"}`}>

@@ -1,5 +1,5 @@
 /* Should I receive state like props (current) or better over Redux*/
-
+import React from "react";
 const EvFilter = ({ selector, setSelector }) => {
 
     /* The values will comes though fetch */

@@ -1,5 +1,7 @@
+import React from "react";
 import { useDispatch } from "react-redux";
 import { sendPict } from '../../actions';
+
 
 const Pictures = ({ pictures }) => {
 
