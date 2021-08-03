@@ -1,23 +1,22 @@
 import React from 'react';
 import { Link } from 'react-scroll';
+import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import image04 from '../assets/test_pictures/flower4.jpg';
+import CardRouletteAnimation from './CardRouletteAnimation';
 import './css/CardRouletteHome.css';
 
-
-const CardRoulette = () => {
-
-    return (    
-        <section className="section-container" >
-            <div className="sub-container card-roulette">
-                <h1>Card Roulette</h1>
-                <div id="roulette-home" className="roulette">
-                    <div className="roulette-img"><img src={image04} alt="flower"/></div>
-                </div>
+const CardEditor = () => {
+    return (
+        <section id="card-roulette-home-container" data-aos="fade-up" data-aos-duration="1000">
+            <Link to="intro-container" smooth={true} duration={1000} offset={-250}><ExpandLessIcon style={{fontSize:'10vmin'}}/></Link>
+            <div className="card-roulette-sub-container">
+                
+                    <CardRouletteAnimation/>
+                
             </div>
-            <Link to="card-editor-home" smooth={true} duration={1200} offset={-95}><ExpandMoreIcon style={{fontSize:'10vmin'}}/></Link>
+            <Link to="img-catalog" smooth={true} duration={1000} offset={-95}><ExpandMoreIcon style={{fontSize:'10vmin'}}/></Link>
         </section>
-    )
+    );
 }
 
-export default CardRoulette;
+export default CardEditor;

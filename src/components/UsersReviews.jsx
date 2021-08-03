@@ -21,8 +21,8 @@ const UserReviews = () => {
                         {text.body.map((textField, i) => (
                             <Card key={i}>
                                 <img src={image01} alt="review"/>
-                                <h4 key={i}>{textField.title}</h4>
-                                <p key={i}>{textField.bodyText}</p>
+                                <h4>{textField.title}</h4>
+                                <p>{textField.bodyText}</p>
                             </Card>
                         ))}
                     </div>

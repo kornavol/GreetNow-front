@@ -122,6 +122,7 @@ const AppbarMobile = (props) => {
                 </Typography>
             </Toolbar>
             </AppBar>
+            <Toolbar></Toolbar>
             <Drawer
                 className={classes.drawer}
                 variant="persistent"

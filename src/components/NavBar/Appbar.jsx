@@ -63,42 +63,42 @@ const Appbar = (props) => {
     /* Navbar Items */
     const menuItems = [
         {
-        menuTitle: "Home",
-        pageURL: "/",
-        icon: <HomeIcon/>
+            menuTitle: "Home",
+            pageURL: "/",
+            icon: <HomeIcon/>
         },
         {
-        menuTitle: "Card Roulette",
-        pageURL: "/roulette",
-        icon: <TrackChangesIcon/>
+            menuTitle: "Card Roulette",
+            pageURL: "/roulette",
+            icon: <TrackChangesIcon/>
         },
         {
-        menuTitle: "Card Editor",
-        pageURL: "/card-editor",
-        icon: <EditIcon/>
+            menuTitle: "Card Editor",
+            pageURL: "/card-editor",
+            icon: <EditIcon/>
         },
         {
-        menuTitle: "Catalog",
-        pageURL: "/media-catalog",
-        icon: <PhotoAlbumIcon/>
+            menuTitle: "Catalog",
+            pageURL: "/media-catalog",
+            icon: <PhotoAlbumIcon/>
         }
     ];
 
     const dashItems = [
         {
-        dashTitle: "Calendar",
-        pageURL: "/calendar",
-        icon: <EventIcon/>      
+            dashTitle: "Calendar",
+            pageURL: "/calendar",
+            icon: <EventIcon/>      
         },
         {
-        dashTitle: "Contacts",
-        pageURL: "/contacts",
-        icon: <PermContactCalendarIcon/>
+            dashTitle: "Contacts",
+            pageURL: "/contacts",
+            icon: <PermContactCalendarIcon/>
         },
         {
-        dashTitle: "Settings",
-        pageURL: "/settings",
-        icon: <SettingsIcon/>
+            dashTitle: "Settings",
+            pageURL: "/settings",
+            icon: <SettingsIcon/>
         },
         {
             dashTitle: "Logout",

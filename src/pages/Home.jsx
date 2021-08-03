@@ -3,8 +3,8 @@ import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 import Presentation from '../components/Presentation.jsx';
-import CardRoulette from '../components/CardRouletteHome';
-import CardEditor from '../components/CardEditorHome';
+import Intro from '../components/Intro';
+import CardRouletteHome from '../components/CardRouletteHome';
 import ImgCatalog from '../components/ImgCatalogHome';
 import Benefits from '../components/Benefits.jsx';
 import UsersReviews from '../components/UsersReviews.jsx';
@@ -22,7 +22,7 @@ AOS.init();
 const useStyles = makeStyles(() => ({
     
     cardRoulette: {
-        height: '92vh',
+        height: '100vh',
     },
     cardEditor: {
         height: '100vh',
@@ -43,17 +43,17 @@ const Home = () => {
             <Link to='/card' cardCase={e} />
         );
     }
-  
+
     return (
         <Grid container direction="column">
             <Grid container>
                 <Grid item xs={12} className={classes.cardRoulette}>
-                    <CardRoulette  />
+                    <Intro  />
                 </Grid>
             </Grid>
             <Grid container>
                 <Grid item xs={12} className={classes.cardEditor}>
-                    <CardEditor />
+                    <CardRouletteHome />
                 </Grid>
             </Grid>
             <Grid container>

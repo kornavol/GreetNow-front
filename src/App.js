@@ -1,15 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 
 import { Switch, Route } from 'react-router-dom'
-import { useState } from 'react';
 
 import NavBar from './components/NavBar/NavBar.jsx';
 import Appbar from './components/NavBar/Appbar';
 
 import Home from './pages/Home';
 /* for all users */
-import CardRoulette from './pages/CardRoulette';
+import Intro from './components/Intro';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
 import Login from './components/Auth/Login';
@@ -20,7 +19,6 @@ import ContactList from './pages/dashboard/ContactList';
 import Settings from './pages/dashboard/Settings';
 
 /* Footer */
-import StickyFooter from './components/Footer/StickyFooter';
 import Footer from './components/Footer/Footer';
 import QA from './pages/QA';
 import AboutUs from './pages/AboutUs';
@@ -41,10 +39,25 @@ function App() {
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
-  const [isLoggedIn, setIsLoggedIn] = useState(true)
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [background, setBackground] = useState(false)
+  const changeBackground = () => {
+    
+    if (window.scrollY >= window.screen.height - 450) {
+      setBackground(true)
+    } else {
+      setBackground(false)
+    }
+  }
 
-  return (
-    <div className = "App">
+  useEffect(() => {
+    changeBackground()
+    // adding the event when scroll change background
+    window.addEventListener("scroll", changeBackground)
+  })
+
+    return (
+    <div className = {`App ${background ? "red" : "blue"}`}>
       <Grid container direction="column">
         <Grid container>
           <Grid item sm={false} md={3}/>
@@ -58,8 +71,8 @@ function App() {
                   <Route exact path="/media-catalog">
                     <Catalog />
                   </Route>
-                  <Route path="/roulette">
-                    <CardRoulette />
+                  <Route path="/intro">
+                    <Intro />
                   </Route>
                   <Route path="/card-editor">
                     <CardEditor />

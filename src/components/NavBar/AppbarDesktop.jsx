@@ -15,46 +15,56 @@ import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonIcon from '@material-ui/icons/Person';
 /* Material UI Styles */
 import { makeStyles, withStyles } from "@material-ui/core/styles";
+import './css/Appbar.css';
 
 /* Desktop Navbar Styles */
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1
     },
-    menuButton: {
+    backgroundColor: {
+        backgroundColor: "#FFFFFF"
+    },
+        menuButton: {
         marginRight: theme.spacing(2)
     },
     title: {
+        color: '#000000',
+        fontFamily: 'Norican',
+        fontSize: '1.7rem',
         [theme.breakpoints.down("xs")]: {
-        flexGrow: 1
+        flexGrow: 1,
         }
     },
     headerOptions: {
         display: "flex",
         flex: 1,
         justifyContent: "space-evenly"
+    },
+    dashboard: {
+        color: '#ff9b85'
     }
 }));
 
 /* Menu Styles */
 const StyledMenu = withStyles({
-  paper: {
-    border: '1px solid #d3d4d5',
+    paper: {
+        border: '1px solid #d3d4d5',
   },
 })((props) => (
-  <Menu
-    elevation={0}
-    getContentAnchorEl={null}
-    anchorOrigin={{
-      vertical: 'bottom',
-      horizontal: 'center',
-    }}
-    transformOrigin={{
-      vertical: 'top',
-      horizontal: 'center',
-    }}
+    <Menu
+        elevation={0}
+        getContentAnchorEl={null}
+        anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'center',
+        }}
+        transformOrigin={{
+            vertical: 'top',
+            horizontal: 'center',
+        }}
     {...props}
-  />
+    />
 ));
 /* Menu Styles */
 const StyledMenuItem = withStyles((theme) => ({
@@ -83,11 +93,11 @@ const AppbarDesktop = (props) => {
 
     return (
         <div className={classes.root}>
-            <AppBar position="static">
+            <AppBar className={classes.backgroundColor} position="static" elevation={0}>
                 <Toolbar>
                     {props.isLoggedIn ? (
                         <div>
-                            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            <Button className={classes.dashboard} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                                 Dashboard
                             </Button>
                             <StyledMenu
