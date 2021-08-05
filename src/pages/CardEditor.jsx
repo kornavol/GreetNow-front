@@ -11,10 +11,18 @@ const CardEditor = () => {
     function catalogHandler(catalog){
         setCatalog(catalog);
     }
+
+    function saveCardHandler(){
+        if(!auth){
+            alert('You need to be registered to use this function!')
+        }else{
+            //to do
+        }
+    }
     return (
         <div id="card-editor-container">
             <div id="card-preview-btn">
-                <button>Save Draft</button>
+                <button onClick={saveCardHandler}>Save Draft</button>
                 <button>Preview</button>
             </div>
             <div id="card-viewer">

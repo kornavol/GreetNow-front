@@ -4,10 +4,3 @@ export const sendText = (text) => {
         text: text
     };
 };
-
-export const sendImg = (imgUrl) => {
-    return {
-        type: "SEND_IMAGE",
-        text: imgUrl
-    };
-};

@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
 
 function Copyright() {
     return (
@@ -49,6 +50,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Register() {
     const classes = useStyles();
+    const history = useHistory();
 
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
@@ -92,25 +94,23 @@ export default function Register() {
             return setError("Passwords do not match!");
         }
 
-        try {
-            fetch(url, options).then(result=>result.json().then(output=>
-                {
-                    if (output.status === 'success') {
-                        alert('Congrats, you registered as well! Please login.')
-                    } else {
-                        alert(output.message)
-                    }
-                    console.log(output);
+        fetch(url, options)
+        .then(result=>result.json()
+        .then(output=>
+            {
+                if(output.success) {
+                    alert('Congrats, you registered as well! Please login.');
+                    history.push("/login");
+                } else {
+                    alert('This user already exists'); //check this and other kind of possible errors
+                    setError(output.error);
+                    setTimeout(()=>{
+                        setError("");
+                    }, 5000);
                 }
-            ));
-
-            //history.push("/");
-        } catch (error) {
-            setError(error.response.data.error);
-            setTimeout(()=>{
-                setError("");
-            }, 5000);
-        }
+                console.log(output);
+            }
+        ))
     }
 
     return (

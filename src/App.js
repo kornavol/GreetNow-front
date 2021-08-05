@@ -46,7 +46,7 @@ function App() {
   
   /* Checking if user is authorized*/
   const [isAuth, setIsAuth] = useState(false);
-  const [privateData, setPrivateData] = useState();
+  const [privateData, setPrivateData] = useState();//now it is just the first name
 
   const fetchPrivateData = () =>{
 
@@ -65,15 +65,16 @@ function App() {
       console.log(output);
       if (output.success === true) {
         setPrivateData(output.data);
-        console.log(output.data);
         setIsAuth(true);
       }else{
         localStorage.removeItem('authToken');
-        alert(output)
+        alert(output.error)
       }
     }
     ));
   }
+
+  fetchPrivateData();
 
   /* useEffect(()=>{
 
@@ -97,7 +98,7 @@ function App() {
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar user={privateData}/>
+              <Appbar user={privateData} isAuth={isAuth}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">
@@ -114,7 +115,7 @@ function App() {
                   </Route>
 
                   <Route path="/login">
-                    <Login isAuth={setIsAuth} />
+                    <Login setIsAuth={setIsAuth} />
                   </Route>
                   <Route path="/register">
                     <Register />
@@ -140,9 +141,9 @@ function App() {
                   </Route>
                   {isAuth ?
                     (<>
-                      <Route path="catalog">
+                      {/* <Route path="catalog">
                         <Catalog />
-                      </Route>
+                      </Route> */}
                       <Route path="/calendar">
                         <Calendar />
                       </Route>

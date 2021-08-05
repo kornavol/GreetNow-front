@@ -1,8 +1,9 @@
 import './css/FrontPage.css';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 const FrontPage = () => {
 
+    const dispatch = useDispatch();
     const selectedImage = useSelector((state) => state.imgUrl);
 
     return (

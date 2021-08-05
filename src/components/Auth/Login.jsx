@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 
 function Copyright() {
     return (
@@ -47,8 +48,9 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function Login({isAuth}) {
+export default function Login({setIsAuth}) {
     const classes = useStyles();
+    const history = useHistory();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -56,7 +58,7 @@ export default function Login({isAuth}) {
 
     useEffect(() => {
         if(localStorage.getItem('authToken')){
-            //history.push("/");
+            history.push("/");
         }
     }, []);
 
@@ -81,27 +83,27 @@ export default function Login({isAuth}) {
         function handleErrors(response) {
             console.log(response);
             if (!response.ok) {
-                throw Error(response.statusText);
+                alert(response.statusText);
             }
             return response;
         }
-
         
         fetch(urlLogin, options)
             .then(handleErrors)
             .then(response=>response.json()
             .then(output=>{
-                alert(output.message);
-                console.log(output);
-                localStorage.setItem('authToken', output.token);
-                isAuth(true);
-                //history.push('/');
-            })
-            .catch (error => {
-                setError(error.response.data.error);
-                setTimeout(()=>{
-                    setError("");
-                }, 5000);
+                //alert(output.message);
+                if(output.success){
+                    localStorage.setItem('authToken', output.token);
+                    setIsAuth(true);
+                    //redux set auth(true);
+                    history.push('/');
+                }else{
+                    setError(output.error);
+                    setTimeout(()=>{
+                        setError("");
+                    }, 5000);
+                }
             })
         );
     }

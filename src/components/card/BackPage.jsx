@@ -31,7 +31,7 @@ const BackPage = () => {
 
     function updateTextHandler(){
         dispatch(sendText({
-            "userId": 1,
+            "userId": 1,//to change
             "id": 1,
             "title": "custom text",
             "body": text
