@@ -1,7 +1,9 @@
 import React from 'react';
+/* 
 import { Card } from '@material-ui/core';
 import image01 from '../assets/test_pictures/markus-winkler--fRAIQHKcc0-unsplash.jpg';
 import data from '../data.json';
+ */
 import './css/UserReviews.css';
 
 

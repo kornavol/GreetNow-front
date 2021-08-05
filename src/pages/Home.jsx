@@ -1,8 +1,7 @@
-import React, { useRef } from 'react';
+import React from 'react';
 
 import { Link } from 'react-router-dom';
 
-import Presentation from '../components/Presentation.jsx';
 import Intro from '../components/Intro';
 import CardRouletteHome from '../components/CardRouletteHome';
 import ImgCatalog from '../components/ImgCatalogHome';
@@ -38,12 +37,13 @@ const useStyles = makeStyles(() => ({
 /* Home Page */
 const Home = () => {
     const classes = useStyles();
+    /* 
     const handleCardGenerator = (e) => {
         return (
             <Link to='/card' cardCase={e} />
         );
     }
-
+ */
     return (
         <Grid container direction="column">
             <Grid container>
