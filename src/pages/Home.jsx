@@ -21,7 +21,7 @@ AOS.init();
 
 const useStyles = makeStyles(() => ({
     
-    cardRoulette: {
+    intro: {
         height: '100vh',
     },
     cardEditor: {
@@ -47,7 +47,7 @@ const Home = () => {
     return (
         <Grid container direction="column">
             <Grid container>
-                <Grid item xs={12} className={classes.cardRoulette}>
+                <Grid item xs={12} className={classes.intro}>
                     <Intro  />
                 </Grid>
             </Grid>

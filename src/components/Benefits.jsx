@@ -6,6 +6,10 @@ import './css/Benefits.css';
 
 const Benefits = () => {
     return (
+        <div>
+            <h1>Benefits</h1>
+        </div>
+        /* 
         <div id="benefits" className="section-container benefits" data-aos="fade-up" data-aos-duration="1000">
             {data.Benefits.map((header) => (
                 <div>
@@ -35,7 +39,7 @@ const Benefits = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div> */
     );
 }
 
