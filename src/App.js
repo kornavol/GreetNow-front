@@ -9,6 +9,7 @@ import Appbar from './components/NavBar/Appbar';
 import Home from './pages/Home';
 /* for all users */
 import Intro from './components/Intro';
+import CardRoulette from './pages/CardRoulette';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
 import Login from './components/Auth/Login';
@@ -39,7 +40,7 @@ function App() {
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [background, setBackground] = useState(false);
   
   /* Change background color */
@@ -55,8 +56,8 @@ function App() {
   useEffect(() => {
     changeBackground()
     // adding the event when scroll change background
-    window.addEventListener("scroll", changeBackground)
-  })
+    window.addEventListener("scroll", changeBackground);
+    })
 
     return (
     <div className = {`App ${background ? "red" : "blue"}`}>
@@ -75,6 +76,9 @@ function App() {
                   </Route>
                   <Route path="/intro">
                     <Intro />
+                  </Route>
+                  <Route path="/roulette">
+                    <CardRoulette />
                   </Route>
                   <Route path="/card-editor">
                     <CardEditor />

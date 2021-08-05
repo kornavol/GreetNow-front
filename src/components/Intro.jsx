@@ -6,6 +6,7 @@ import envelopeLeft from '../assets/envelope-left-gold.png';
 import envelopeRight from '../assets/envelope-right-gold.png';
 import envelopeRightOpen from '../assets/envelope-right-open-gold.png';
 import Handwriting from './Handwriting';
+import StampAnimation from './StampAnimation';
 import './css/Intro.css';
 
 const Intro = () => {
@@ -52,6 +53,7 @@ const Intro = () => {
     return (
         <section id="intro-container">
             <div className="intro-title"></div>
+            <StampAnimation/>
             <div className="intro-card-container">
                 <div className="intro-envelope envelope-side-slide">
                     <div className="envelope-back">

@@ -13,6 +13,7 @@
     background-size: cover;
     border-radius: 25px;
     position: relative;
+    overflow: hidden;
 }
 
 img {

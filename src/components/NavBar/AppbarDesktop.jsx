@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 /* Material UI Components */
 import { 
     AppBar,
@@ -91,8 +91,16 @@ const AppbarDesktop = (props) => {
     setAnchorEl(null);
     };
 
+    useEffect(() => {
+        const showNavbar = setTimeout(() => {
+            document.getElementById("appbar").style.opacity = "1";
+            document.getElementById("appbar").style.visibility = "visible";
+        }, 9000);
+        return () => clearTimeout(showNavbar);
+    }, [])
+
     return (
-        <div className={classes.root}>
+        <div id="appbar" className={classes.root}>
             <AppBar className={classes.backgroundColor} position="static" elevation={0}>
                 <Toolbar>
                     {props.isLoggedIn ? (
