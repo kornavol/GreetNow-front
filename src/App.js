@@ -40,7 +40,9 @@ function App() {
   
   /* Checking if user is authorized*/
   const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [background, setBackground] = useState(false)
+  const [background, setBackground] = useState(false);
+  
+  /* Change background color */
   const changeBackground = () => {
     
     if (window.scrollY >= window.screen.height - 450) {

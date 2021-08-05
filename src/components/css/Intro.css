@@ -20,8 +20,8 @@ img {
 }
 
 .intro-card-container {
-    width: 50%;
-    height: 70%;
+    width: 355px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -120,28 +120,31 @@ img {
 
 .intro-card {
     width: 97%;
-    top: 4%;
-    left: 5px;
+    top: 1.5%;
+    left: 4px;
     transform-origin: left;
 }
 
 /* Flip Card Styles */
 
 .intro-flip-card {
-    width: 96.5%;
-    height: 92%;
-    top: 4%;
-    left: 5px;
+    width: 97%;
+    height: 97%;
+    top: 1.5%;
+    left: 4px;
     transform-style: preserve-3d;
     transform: perspective(1000px);
     box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
-    transition: 1s;
+    opacity: 0;
     position: absolute;
+    transform-origin: left;
     z-index: 15;
+    
 }
 
 .intro-flip-card:hover {
     transform: translateX(50%);
+    cursor: pointer;
 }
 
 .intro-flip-card .details {
@@ -169,7 +172,7 @@ img {
     line-height: 1em;
 }
 
-.intro-flip-card .details .content .social-icons {
+.intro-flip-card .details .content {
     position: relative;
     display: flex;
     margin-top: 10px;
@@ -187,8 +190,46 @@ img {
     box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
 }
 
+
+.intro-flip-card .imgBox div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: 2s;
+    
+}
+
+
 .intro-flip-card:hover .imgBox {
     transform: rotateY(-180deg);
+}
+
+
+.card-flips-open {
+    width: 96%;
+    height: 97%;
+    top: 1.5%;
+    left: 5.5px;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+    transition: 1s;
+    position: absolute;
+    transform-origin: left;
+    z-index: 15;
+    
+    animation: card-flips-open 2s linear forwards;
+}
+
+@keyframes card-flips-open {
+    to {
+        transform: rotateY(-180deg) translateX(50%);
+    }
 }
 
 .intro-flip-card .imgBox img {
