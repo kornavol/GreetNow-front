@@ -1,3 +1,4 @@
+import React from 'react';
 /* Should I receive state like props (current) or better over Redux*/
 
 const CategFilter = ({ selector, setSelector }) => {

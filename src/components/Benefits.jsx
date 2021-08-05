@@ -1,6 +1,8 @@
 import React from 'react';
+/* 
 import data from '../data.json';
 import image01 from '../assets/test_pictures/micheile-henderson-ntGM_0dHu2c-unsplash.jpg'
+ */
 import './css/Benefits.css';
 
 

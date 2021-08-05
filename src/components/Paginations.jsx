@@ -1,5 +1,4 @@
-
-import { memo, useRef } from "react";
+import React, { memo, useRef } from "react";
 import { Pagination } from "react-bootstrap";
 
 const Paginations = ({ active, setActive, totalPages }) => {
