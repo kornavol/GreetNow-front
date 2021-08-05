@@ -8,6 +8,10 @@ import './css/UserReviews.css';
 const UserReviews = () => {
     
     return (
+        <div>
+            <h1>Reviews</h1>
+        </div>
+/* 
         <div className="section-container reviews-container" data-aos="fade-up" data-aos-duration="1000">
             {data.Reviews.map((header) => (
                 <div>
@@ -29,6 +33,7 @@ const UserReviews = () => {
                 ))}
                 </div>
             </div>
+             */
     );
 }
 
