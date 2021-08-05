@@ -4,56 +4,62 @@ import { Container, Col, Row } from "react-bootstrap";
 
 import { useState, useEffect } from "react";
 
-import { picturesDB } from "../../testDB";
-import Pagination from '../Paginations';
 import Filter from "./EvFilter";
-
+import Pictures from "./Pictures";
+import Pagination from '../Paginations';
 
 const ImgCatalog = () => {
 
-    const [category, setCategory] = useState("all");
     const [pictures, setPictures] = useState([]);
+    const [category, setCategory] = useState({ events: "all"});
+    const [activePage, setActivePage] = useState(1);
+    const [totalPages, setTotalPages] = useState(3);
+
+    const PostPerPage = 3;
+    let currEvent = '&';
+
+    if (category.events !== 'all') {
+        currEvent = `&event=${category.events}`
+    }
 
     useEffect(() => {
-        setPictures(picturesBuilder(category));
-    }, [category]);
+        const page = `page=${activePage}`
+        const limit = `limit=${PostPerPage}`
 
-    function picturesBuilder(type) {
+        const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + currEvent + '&'
 
-        let forMapDb = [];
-
-        if (type === 'all' ) {
-            forMapDb = picturesDB
-        } else {
-            const filtredDB = picturesDB.filter(el => el.type == type)
-            forMapDb = filtredDB
-        }
-        
-        const newPictures = forMapDb.map((picture) => {
-            return (
-                <img
-                    key={picture.id}
-                    className="picture"
-                    src= {picture.pass }
-                />
+        fetch(url).then(respond => respond.json().then(result => {
+            if (result.status == 'success') {
+                const pictures = result.data.pictures
+                const tPages = result.data.pages.totalPages
                 
-            );
-            /* We could use also bachground images as output. The size (height and width) is neccessary parameter*/
-             <div key={picture.id} className="picture1" style={{backgroundImage: `url('${picture.pass}')`, height:'300px', width:'100px' }} />
-        });
+                /* Merging a result of a request to one local DB.
+                 Could be helpful for optimization */
+                // setPictures(prev => prev = [...prev, ...result.data])
+                setPictures(pictures)
+                setTotalPages(tPages)
+            } else {
+                console.log(result.message);
+            }
 
-        return newPictures;
-    }
+        }));
+    }, [activePage, category]);
 
     return (
         <div className="component">
-            <Filter setCategory={setCategory} category={category} />
+            <Filter setSelector={setCategory} selector={category} />
             <Container>
                 <Row>
-                    <Col className="d-block m-auto">{pictures}</Col>
+                    <Col className="d-block m-auto">
+                        <Pictures pictures={pictures} />
+                    </Col>
                 </Row>
             </Container>
-            <Pagination/>
+            <Pagination
+                active={activePage}
+                setActive={setActivePage}
+                totalPages={totalPages}
+            />
         </div>
     );
 };
