@@ -1,5 +1,5 @@
 #appbar {
-    opacity: 0;
-    visibility: hidden;
+    opacity: 1;
+    visibility: visible;
     transition: 2s;
 }

@@ -138,7 +138,7 @@ const AppbarMobile = (props) => {
                     </IconButton>
                 </div>
                 <Divider/>
-                    {props.isLoggedIn ? (
+                    {props.isAuth ? (
                         <List>
                             <ListItem >
                                 <ListItemIcon><PersonIcon/></ListItemIcon>
@@ -158,7 +158,7 @@ const AppbarMobile = (props) => {
                             </List>
                             )}                    
                 <Divider/>
-                {props.isLoggedIn ? (
+                {props.isAuth ? (
                 <List>
                     {props.menuItems.map((menu, i) => (
                         <ListItem button key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>

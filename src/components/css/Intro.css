@@ -124,6 +124,7 @@ img {
     top: 1.5%;
     left: 4px;
     transform-origin: left;
+    
 }
 
 /* Flip Card Styles */
@@ -140,7 +141,7 @@ img {
     position: absolute;
     transform-origin: left;
     z-index: 15;
-    
+    animation: visible 1s 6.3s forwards;
 }
 
 .intro-flip-card:hover {
@@ -248,14 +249,18 @@ img {
     transform: rotateY(180deg);
 }
 
-.visible {
+@keyframes visible {
+    to {
     opacity: 1;
-    visibility: visible;
+    
+    }
 }
 
-.invisible {
+@keyframes invisible {
+    to {
     opacity: 0;
-    visibility: hidden;
+    
+    }
 }
 
 /* Animations */
@@ -270,7 +275,9 @@ img {
 }
 
 .card-come-out {
-    animation: card-come-out 2.5s 3.1s ease-in-out forwards;
+    animation: card-come-out 2.5s 3.1s ease-in-out forwards,
+    invisible 1s 6.5s forwards;
+    
 }
 
 /* Keyframes */
@@ -313,6 +320,8 @@ img {
         transform: translateX(0) ;
     }
 }
+
+
 
 /* Media Queries */
 

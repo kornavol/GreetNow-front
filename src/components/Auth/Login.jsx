@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 /* Material UI Components */
 import { 
     Avatar,
@@ -57,6 +58,64 @@ const useStyles = makeStyles((theme) => ({
 export default function Login(props) {
     const classes = useStyles();
 
+        const history = useHistory();
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+
+    useEffect(() => {
+        if(localStorage.getItem('authToken')){
+            history.push("/");
+        }
+    }, []);
+
+    const loginHandler = (e) => {
+        e.preventDefault();
+
+        let data = {};
+
+        data.email = email;
+        data.password = password;
+
+        let urlLogin = 'http://localhost:8080/auth/login';
+        let options = {
+            method:'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body:JSON.stringify(data)
+        }
+
+        function handleErrors(response) {
+            console.log(response);
+            if (!response.ok) {
+                alert(response.statusText);
+            }
+            return response;
+        }
+        
+        fetch(urlLogin, options)
+            .then(handleErrors)
+            .then(response=>response.json()
+            .then(output=>{
+                //alert(output.message);
+                if(output.success){
+                    localStorage.setItem('authToken', output.token);
+                    props.setIsAuth(true);
+                    //redux set auth(true);
+                    history.push('/');
+                }else{
+                    setError(output.error);
+                    setTimeout(()=>{
+                        setError("");
+                    }, 5000);
+                }
+            })
+        );
+    }
+
     return (
         <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -67,7 +126,8 @@ export default function Login(props) {
             <Typography component="h1" variant="h5">
             Log In
             </Typography>
-            <form className={classes.form} noValidate>
+            <form className={classes.form} noValidate onSubmit={loginHandler}>
+                {error && <span className="error-message">{error}</span>}
             <TextField
                 variant="outlined"
                 margin="normal"
@@ -78,6 +138,7 @@ export default function Login(props) {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={(e)=> setEmail(e.target.value)}
             />
             <TextField
                 variant="outlined"
@@ -89,6 +150,7 @@ export default function Login(props) {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={(e)=> setPassword(e.target.value)}
             />
             <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -111,7 +173,7 @@ export default function Login(props) {
                 </Grid>
                 <Grid item>
                 <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}}>
-                    {"Don't have an account? Sign Up"}
+                    {"Don't have an account? Register"}
                 </Link>
                 </Grid>
             </Grid>

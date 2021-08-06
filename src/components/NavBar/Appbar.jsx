@@ -119,8 +119,8 @@ const Appbar = (props) => {
                 <Modal.Body>
                     {toggleRegister ? (
                         <Login
-                            isLoggedIn={props.isLoggedIn} 
-                            setIsLoggedIn={props.setIsLoggedIn} 
+                            isAuth={props.isAuth} 
+                            setIsAuth={props.setIsAuth} 
                             toggleRegister={toggleRegister} 
                             setToggleRegister={setToggleRegister} 
                             modalShow={modalShow} 
@@ -128,7 +128,7 @@ const Appbar = (props) => {
                         />
                     ) : (
                         <Register 
-                            isLoggedIn={props.isLoggedIn} 
+                            isAuth={props.isAuth} 
                             setToggleRegister={setToggleRegister} 
                             toggleRegister={toggleRegister} 
                             setToggleRegister={setToggleRegister} 
@@ -150,7 +150,7 @@ const Appbar = (props) => {
                 <AppbarMobile 
                     menuItems={menuItems} 
                     dashItems={dashItems} 
-                    isLoggedIn={props.isLoggedIn} 
+                    isAuth={props.isAuth} 
                     setToggleRegister={setToggleRegister} 
                     setModalShow={setModalShow} 
                     handleButtonClick={handleButtonClick}/>
@@ -158,7 +158,7 @@ const Appbar = (props) => {
             <AppbarDesktop 
                 menuItems={menuItems} 
                 dashItems={dashItems} 
-                isLoggedIn={props.isLoggedIn} 
+                isAuth={props.isAuth} 
                 setToggleRegister={setToggleRegister} 
                 setModalShow={setModalShow} 
                 handleButtonClick={handleButtonClick}/>     

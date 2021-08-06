@@ -105,7 +105,7 @@ const AppbarDesktop = (props) => {
         <div id="appbar" className={classes.root}>
             <AppBar className={classes.backgroundColor} position="static" elevation={0}>
                 <Toolbar>
-                    {props.isLoggedIn ? (
+                    {props.isAuth ? (
                         <div>
                             <Button className={classes.dashboard} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                                 Dashboard
