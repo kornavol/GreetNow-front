@@ -91,6 +91,7 @@ const AppbarDesktop = (props) => {
     setAnchorEl(null);
     };
 
+/* 
     useEffect(() => {
         const showNavbar = setTimeout(() => {
             document.getElementById("appbar").style.opacity = "1";
@@ -98,6 +99,7 @@ const AppbarDesktop = (props) => {
         }, 9000);
         return () => clearTimeout(showNavbar);
     }, [])
+ */
 
     return (
         <div id="appbar" className={classes.root}>
