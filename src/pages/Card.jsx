@@ -3,6 +3,10 @@ import './css/Card.css';
 import React, {useState, useEffect} from "react";
 import { useParams} from "react-router-dom";
 
+
+/* All unique data has to come from back.
+    All cards are public. 
+*/
 export default function Card() {
 
     /* TO-DO. We need to det access only if user is owner of this card */
@@ -20,7 +24,7 @@ export default function Card() {
             const response = await fetch(url) 
             const result = await response.json()
 
-            console.log(result);
+            // console.log(result);
             setCard({
                 picture:result.data.picture,
                 text:result.data.text
@@ -29,7 +33,6 @@ export default function Card() {
         
         getCard()
 
-  
     }, []);
 
     return (

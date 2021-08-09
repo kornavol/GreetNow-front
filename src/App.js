@@ -163,7 +163,7 @@ function App() {
                 </div>) : null
 
               }
-              {/* TO-DO: Change a logick here to with id, and in this case each user can show only own cards. But in this case in future we can't  show user another cards*/}
+              {/* To create cards base on id */}
               <Switch>
                 <Route path="/cards/:id" children={<Card />} />
               </Switch>
