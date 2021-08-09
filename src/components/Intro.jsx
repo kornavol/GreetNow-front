@@ -11,7 +11,10 @@ import { Link } from 'react-scroll';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './css/Intro.css';
 
+
+
 const Intro = () => {
+
 
     const introCardRef = useRef(0);
     const introFlipCardRef = useRef(0);
