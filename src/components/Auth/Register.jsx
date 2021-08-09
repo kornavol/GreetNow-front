@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 /* Material UI Components */
 import { 
     Avatar,
@@ -52,6 +53,69 @@ const useStyles = makeStyles((theme) => ({
 export default function Register(props) {
     const classes = useStyles();
 
+    const history = useHistory();
+
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confirmPassword, setConfirmPassword] = useState("");
+    const [error, setError] = useState("");
+
+    /* useEffect(() => {
+        if(localStorage.getItem('authToken')){
+            history.push("/");
+        }
+    }, [history]); */
+
+    const registerHandler = (e) => {
+        e.preventDefault();
+
+        let data = {};
+
+        data.firstName = firstName;
+        data.lastName = lastName;
+        data.email = email;
+        data.password = password;
+
+        let url = 'http://localhost:8080/auth/register';
+        let options = {
+            method:'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body:JSON.stringify(data)
+        }
+
+        if(password !== confirmPassword){
+            setPassword("");
+            setConfirmPassword("");
+            setTimeout(()=>{
+                setError("");
+            }, 5000);
+            return setError("Passwords do not match!");
+        }
+
+        fetch(url, options)
+        .then(result=>result.json()
+        .then(output=>
+            {
+                if(output.success) {
+                    alert('Congrats, you registered as well! Please login.');
+                    history.push("/login");
+                } else {
+                    alert('This user already exists'); //check this and other kind of possible errors
+                    setError(output.error);
+                    setTimeout(()=>{
+                        setError("");
+                    }, 5000);
+                }
+                console.log(output);
+            }
+        ))
+    }
+
     return (
         <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -60,9 +124,10 @@ export default function Register(props) {
             <LockOutlinedIcon />
             </Avatar>
             <Typography component="h1" variant="h5">
-            Sign up
+            Register
             </Typography>
-            <form className={classes.form} noValidate>
+            {error && <span className="error-message">{error}</span>}
+            <form className={classes.form} noValidate onSubmit={registerHandler}>
             <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                 <TextField
@@ -74,6 +139,7 @@ export default function Register(props) {
                     id="firstName"
                     label="First Name"
                     autoFocus
+                    onChange={(e)=> setFirstName(e.target.value)}
                 />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -85,6 +151,7 @@ export default function Register(props) {
                     label="Last Name"
                     name="lastName"
                     autoComplete="lname"
+                    onChange={(e)=> setLastName(e.target.value)}
                 />
                 </Grid>
                 <Grid item xs={12}>
@@ -96,6 +163,7 @@ export default function Register(props) {
                     label="Email Address"
                     name="email"
                     autoComplete="email"
+                    onChange={(e)=> setEmail(e.target.value)}
                 />
                 </Grid>
                 <Grid item xs={12}>
@@ -108,6 +176,20 @@ export default function Register(props) {
                     type="password"
                     id="password"
                     autoComplete="current-password"
+                    onChange={(e)=> setPassword(e.target.value)}
+                />
+                </Grid>
+                <Grid item xs={12}>
+                <TextField
+                    variant="outlined"
+                    required
+                    fullWidth
+                    name="confirmPassword"
+                    label="Confirm Password"
+                    type="password"
+                    id="confirmPassword"
+                    autoComplete="current-password"
+                    onChange={(e)=> setConfirmPassword(e.target.value)}
                 />
                 </Grid>
             </Grid>

@@ -15,11 +15,11 @@ html {
 }
 
 .red {
-  background-color: #ffd4bd;
+  background-color: #ffffff;
   transition: background-color 0.5s ease;
 }
 
-.blue {
+.white {
   background-color: #ffffff;
   transition: background-color 1s ease;
 }

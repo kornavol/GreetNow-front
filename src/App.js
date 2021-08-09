@@ -9,6 +9,7 @@ import Appbar from './components/NavBar/Appbar';
 import Home from './pages/Home';
 /* for all users */
 import Intro from './components/Intro';
+import CardRoulette from './pages/CardRoulette';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
 import Login from './components/Auth/Login';
@@ -39,13 +40,11 @@ function App() {
   const [isAccepted, setAccepted] = useState(false);
   
   /* Checking if user is authorized*/
-
-  const [isAuth, setIsAuth] = useState(true)
-
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-  const [background, setBackground] = useState(false);
-  
+  const [isAuth, setIsAuth] = useState(false);
+  const [privateData, setPrivateData] = useState();//now it is just the first name
+    
   /* Change background color */
+  const [background, setBackground] = useState(false);
   const changeBackground = () => {
     
     if (window.scrollY >= window.screen.height - 450) {
@@ -58,17 +57,59 @@ function App() {
   useEffect(() => {
     changeBackground()
     // adding the event when scroll change background
-    window.addEventListener("scroll", changeBackground)
-  })
+    window.addEventListener("scroll", changeBackground);
+    })
+
+    const fetchPrivateData = () =>{
+
+    const url = "http://localhost:8080/private";
+    
+    let options = {
+      method:'GET',
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem('authToken')}`
+      }
+    }
+    fetch(url, options)
+    .then(result=>result.json()
+    .then(output=>{
+      console.log(output);
+      if (output.success === true) {
+        setPrivateData(output.data);
+        setIsAuth(true);
+      }else{
+        localStorage.removeItem('authToken');
+        alert(output.error)
+      }
+    }
+    ));
+  }
+
+  fetchPrivateData();
+
+  /* useEffect(()=>{
+    if(!localStorage.getItem('authToken')){
+      setIsAuth(false);
+    }else{
+      fetchPrivateData();
+    }
+  },[]);
+  console.log(isAuth);
+  console.log(privateData); */
+
+  const logoutHandler = () => {
+      localStorage.removeItem('authToken');
+  }
 
 
     return (
-    <div className = {`App ${background ? "red" : "blue"}`}>
+    <div className = {`App ${background ? "red" : "white"}`}>
       <Grid container direction="column">
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar isLoggedIn={isLoggedIn}/>
+              <Appbar user={privateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">
@@ -79,6 +120,9 @@ function App() {
                   </Route>
                   <Route path="/intro">
                     <Intro />
+                  </Route>
+                  <Route path="/roulette">
+                    <CardRoulette />
                   </Route>
                   <Route path="/card-editor">
                     <CardEditor />
@@ -102,7 +146,7 @@ function App() {
                   <Route path="/404">
                     <NotFoundPage />
                   </Route>
-                  {isLoggedIn ?
+                  {isAuth ?
                     (<div>
                       <Route path="/catalog">
                         <Catalog />

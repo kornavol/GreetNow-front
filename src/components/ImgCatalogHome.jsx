@@ -11,6 +11,7 @@ const MediaCatalog = () => {
             <div className="sub-container">
                 <h1>Media Catalog</h1>
                 <p>Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.</p>
+                
             </div>
             <Link to="benefits" smooth={true} duration={1000} offset={-95}><ExpandMoreIcon style={{fontSize:'10vmin'}}/></Link>
         </section>
