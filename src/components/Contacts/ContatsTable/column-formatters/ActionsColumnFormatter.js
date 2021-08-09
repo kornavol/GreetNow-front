@@ -10,7 +10,7 @@ export function ActionsColumnFormatter(
   // { openEditCustomerDialog, openDeleteCustomerDialog }
 ) {
   return (
-    <>
+    <div>
       <button
         className="btn btn-icon btn-light btn-hover-primary btn-sm mx-3"
         onClick={() => console.log('edit')}
@@ -38,6 +38,6 @@ export function ActionsColumnFormatter(
       </a>
       <div> </div> 
       */}
-    </>
+    </div>
   );
 }
