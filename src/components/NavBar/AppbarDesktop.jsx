@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { NavLink } from "react-router-dom";
 /* Material UI Components */
 import { 
     AppBar,
@@ -23,7 +24,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1
     },
     backgroundColor: {
-        backgroundColor: "#FFFFFF"
+        backgroundColor: "transparent"
     },
         menuButton: {
         marginRight: theme.spacing(2)
@@ -36,13 +37,23 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
         }
     },
+    button: {
+        fontFamily: 'Nunito',
+        "&.active": {
+            color:'#ff0a54'
+    },
+    },
+    login: {
+        fontFamily: 'Nunito',
+        },
     headerOptions: {
         display: "flex",
         flex: 1,
         justifyContent: "space-evenly"
+        
     },
     dashboard: {
-        color: '#ff9b85'
+        color: '#ff0a54'
     }
 }));
 
@@ -50,7 +61,7 @@ const useStyles = makeStyles(theme => ({
 const StyledMenu = withStyles({
     paper: {
         border: '1px solid #d3d4d5',
-  },
+},
 })((props) => (
     <Menu
         elevation={0}
@@ -70,9 +81,10 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
     root: {
         '&:focus': {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: '#ff0a54',
         '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
             color: theme.palette.common.white,
+            fontFamily: 'Nunito'
         },
         },
     },
@@ -90,16 +102,6 @@ const AppbarDesktop = (props) => {
     const handleClose = () => {
     setAnchorEl(null);
     };
-
-/* 
-    useEffect(() => {
-        const showNavbar = setTimeout(() => {
-            document.getElementById("appbar").style.opacity = "1";
-            document.getElementById("appbar").style.visibility = "visible";
-        }, 9000);
-        return () => clearTimeout(showNavbar);
-    }, [])
- */
 
     return (
         <div id="appbar" className={classes.root}>
@@ -129,7 +131,7 @@ const AppbarDesktop = (props) => {
                         </div>
                     ) : (
                         <div>
-                            <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            <Button className={classes.login} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                                 Login
                             </Button>
                             <StyledMenu
@@ -154,9 +156,11 @@ const AppbarDesktop = (props) => {
                             </StyledMenu>
                         </div>
                     )}
+                    {/* <Button className={classes.button} key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>{menu.menuTitle}</Button> */}
                     <div className={classes.headerOptions}>
                                 {props.menuItems.map((menu, i) => (
-                                    <Button key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>{menu.menuTitle}</Button>
+                                    
+                                    <Button className={classes.button} key={i} component={NavLink} to={menu.pageURL}>{menu.menuTitle}</Button>
                                 ))}
                                 <Typography variant="h6" className={classes.title}>
                                     GreetNow

@@ -7,6 +7,8 @@ import envelopeRight from '../assets/envelope-right-gold.png';
 import envelopeRightOpen from '../assets/envelope-right-open-gold.png';
 import Handwriting from './Handwriting';
 import StampAnimation from './StampAnimation';
+import { Link } from 'react-scroll';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './css/Intro.css';
 
 const Intro = () => {
@@ -57,16 +59,19 @@ const Intro = () => {
     }, []);
 
     return (
-        <section id="intro-container">
-            <div className="intro-title"></div>
+        <section id="intro-container" data-aos="fade-up" data-aos-duration="1300">
+            <div className="intro-banner">
+                <h2>Celebrate life with the perfect card or invitation</h2>
+                <h3>― Lorem ipsum dolor sit amet consectetur.</h3>
+            </div>
             <StampAnimation/>
-            <div className="intro-card-container">
-                <div className="intro-envelope envelope-side-slide">
+            <div className="intro-card-container" data-aos="fade-up" data-aos-duration="1500">
+                <div className="intro-envelope">
                     <div className="envelope-back">
                         <img src={envelopeBack} alt="envelope"/>
                     </div>
 
-                    <div ref={introCardRef} id="intro-card" className="intro-card card-come-out">
+                    <div ref={introCardRef} id="intro-card" className="intro-card">
                         <img src={introCardCover} alt="card"/>
                         <Handwriting/>
                     </div>
@@ -75,7 +80,7 @@ const Intro = () => {
                         <img src={envelopeLeft} alt="envelope"/>
                     </div>
                     <div ref={envelopeRightRef} id="envelope-right" className="envelope-right ">
-                        <div  className="envelope-right-box envelope-flip-open">
+                        <div className="envelope-right-box">
                             <img src={envelopeRight} alt="envelope"/>
                             <img src={envelopeRightOpen} alt="envelope"/>
                         </div>
@@ -94,6 +99,10 @@ const Intro = () => {
                     </div>
                 </div>     
             </div>
+            <Link className="scroll-down" to="card-roulette-home-container" smooth={true} duration={1000} offset={-140}>
+                See More <br/>
+                <ExpandMoreIcon style={{fontSize:'4vmin'}}/>
+            </Link>
         </section>
     )
 }

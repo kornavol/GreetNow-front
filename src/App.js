@@ -103,12 +103,12 @@ function App() {
   }
 
     return (
-    <div className = {`App ${background ? "red" : "blue"}`}>
+    <div className = {`App ${background ? "red" : "white"}`}>
       <Grid container direction="column">
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar user={privateData} isAuth={isAuth}/>
+              <Appbar user={privateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">

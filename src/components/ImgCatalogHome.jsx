@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-scroll';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import StampAnimation from './StampAnimation';
 import './css/ImgCatalogHome.css';
 
 const MediaCatalog = () => {
@@ -12,7 +11,7 @@ const MediaCatalog = () => {
             <div className="sub-container">
                 <h1>Media Catalog</h1>
                 <p>Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.</p>
-                <StampAnimation/>
+                
             </div>
             <Link to="benefits" smooth={true} duration={1000} offset={-95}><ExpandMoreIcon style={{fontSize:'10vmin'}}/></Link>
         </section>

@@ -5,6 +5,9 @@ import flower3 from '../assets/test_pictures/flower3.jpg';
 import flower4 from '../assets/test_pictures/flower4.jpg';
 import flower5 from '../assets/test_pictures/flower5.jpg';
 import flower6 from '../assets/test_pictures/flower6.jpg';
+import frame1 from '../assets/frame1.png';
+import frame2 from '../assets/frame2.png';
+import frame3 from '../assets/frame3.png';
 import './css/CardRouletteAnimation.css';
 
 const CardRoulette = (props) => {
@@ -130,26 +133,23 @@ const [slideUp, setSlideUp] = useState(false)
         <section id="card-roulette-container" data-aos="fade-up" data-aos-duration="1000">
             <h1>Card Roulette</h1>
             <div className="doors">
-                <div className="door">
-                    <div className="boxes">
-                    
+                <div className="frame1">
+                    <div className="door">
+                        <div className="boxes"></div>
                     </div>
                 </div>
-
-                <div className="door">
-                    <div className="boxes">
-                    
+                <div className="frame2">
+                    <div className="door">
+                        <div className="boxes"></div>
                     </div>
                 </div>
-
-                <div className="door">
-                    <div className="boxes">
-                    
+                <div className="frame3">
+                    <div className="door">
+                        <div className="boxes"></div>
                     </div>
                 </div>
-                </div>
-
-                <div className="buttons">
+            </div>
+            <div className="buttons">
                 <button id="spinner">Spin</button>
                 <button id="reseter">Reset</button>
             </div>

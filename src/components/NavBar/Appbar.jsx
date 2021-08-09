@@ -125,7 +125,7 @@ const Appbar = (props) => {
                             setToggleRegister={setToggleRegister} 
                             modalShow={modalShow} 
                             setModalShow={setModalShow}
-                        />
+                            />
                     ) : (
                         <Register 
                             isAuth={props.isAuth} 
