@@ -102,7 +102,7 @@ export default function Login(props) {
                 //alert(output.message);
                 if(output.success){
                     localStorage.setItem('authToken', output.token);
-                    props.setIsAuth(true);
+                    props.props.setIsAuth(true);
                     //redux set auth(true);
                     history.push('/');
                 }else{

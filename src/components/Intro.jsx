@@ -55,7 +55,14 @@ const Intro = () => {
         */
 
         /*return clearTimeout prevents infinite loop of setTimeout */
-        return () => clearTimeout(zIndex1, zIndex2, zIndex3, zIndex4, zIndex5, addTransition);
+        return () => {
+            clearTimeout(zIndex1)
+            clearTimeout(zIndex2)
+            clearTimeout(zIndex3)
+            clearTimeout(zIndex4)
+            clearTimeout(zIndex5)
+            clearTimeout(addTransition)
+        }
     }, []);
 
     return (
