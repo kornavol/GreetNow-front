@@ -7,10 +7,10 @@ import '../../components/Contacts/assets/plugins/global/plugins.bundle.css'
 import '../../components/Contacts/assets/plugins/custom/prismjs/prismjs.bundle.css'
 import '../../components/Contacts/assets/css/style.bundle.css'
 /* Layout Themes(used by all pages) */
-// import '../../components/Contacts/assets/css/themes/layout/header/base/light.css'
-// import '../../components/Contacts/assets/css/themes/layout/header/menu/light.css'
-// import '../../components/Contacts/assets/css/themes/layout/brand/dark.css'
-// import '../../components/Contacts/assets/css/themes/layout/aside/dark.css'
+import '../../components/Contacts/assets/css/themes/layout/header/base/light.css'
+import '../../components/Contacts/assets/css/themes/layout/header/menu/light.css'
+import '../../components/Contacts/assets/css/themes/layout/brand/dark.css'
+import '../../components/Contacts/assets/css/themes/layout/aside/dark.css'
 
 import ContactsTable from '../../components/Contacts/ContactsTable/ContactsTable';
 
@@ -23,8 +23,8 @@ export default function ContactList() {
         lastName: "Gabotti",
         dateOfBbirth: "10/14/1950",
         gender: "Female",
-        relationship: ['family'],
-        events: ['birthday', 'Christmas']
+        relationships: ['family', 'mom'],
+        events: ['Birthday', 'Christmas']
     },
     {
         _id: "13asdsad1",
@@ -32,13 +32,13 @@ export default function ContactList() {
         lastName: "Kornblum",
         dateOfBbirth: "08/07/1986",
         gender: "Male",
-        relationship: ['family'],
-        events: ['birthday', 'Christmas']
+        relationships: ['work', 'friends'],
+        events: ['Birthday', 'Christmas']
     }]);
 
 
     return (
-        <div className="page">
+        <div id = 'contact-list'  className="page">
             {/*         Add:
             Filters
             Search
