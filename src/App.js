@@ -146,6 +146,9 @@ function App() {
               <Route path="/404">
                 <NotFoundPage />
               </Route>
+              <Route path="/contacts1">
+                <ContactList />
+              </Route>
               {isAuth ?
                 (<div>
                   <Route path="/catalog">
