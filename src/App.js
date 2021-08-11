@@ -12,6 +12,7 @@ import Intro from './components/Intro';
 import CardRoulette from './pages/CardRoulette';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
+import Card from './pages/Card';
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
@@ -37,15 +38,15 @@ function App() {
   const history = useHistory();
   /*  for show Component Coockies  (component) */
   const [isAccepted, setAccepted] = useState(false);
-  
+
   /* Checking if user is authorized*/
   const [isAuth, setIsAuth] = useState(false);
   const [privateData, setPrivateData] = useState();//now it is just the first name
-    
+
   /* Change background color */
   const [background, setBackground] = useState(false);
   const changeBackground = () => {
-    
+
     if (window.scrollY >= window.screen.height - 450) {
       setBackground(true)
     } else {
@@ -60,12 +61,12 @@ function App() {
     window.addEventListener("scroll", changeBackground);
   })
 
-    const fetchPrivateData = () =>{
+  const fetchPrivateData = () => {
 
     const url = "http://localhost:8080/private";
-    
+
     let options = {
-      method:'GET',
+      method: 'GET',
       headers: {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem('authToken')}`
@@ -86,6 +87,7 @@ function App() {
       }
     }
     ));
+
   }
 
   fetchPrivateData();
@@ -100,11 +102,12 @@ function App() {
   },[]); */
 
 
-    return (
-    <div className = {`App ${background ? "red" : "white"}`}>
+
+  return (
+    <div className={`App ${background ? "red" : "white"}`}>
       <Grid container direction="column">
         <Grid container>
-          <Grid item sm={false} md={3}/>
+        <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
               <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
                 <Switch>
@@ -113,59 +116,63 @@ function App() {
                     <Home />
                   </Route>
                   <Route exact path="/media-catalog">
+                <Catalog />
+              </Route>
+              <Route path="/intro">
+                <Intro />
+              </Route>
+              <Route path="/roulette">
+                <CardRoulette />
+              </Route>
+              <Route path="/card-editor">
+                <CardEditor />
+              </Route>
+              {/* Footer */}
+              <Route path="/qa">
+                <QA />
+              </Route>
+              <Route path="/about-us">
+                <AboutUs className="page" />
+              </Route>
+              <Route path="/contact-us">
+                <ContactUs />
+              </Route>
+              <Route path="/impressum">
+                <Impressum />
+              </Route>
+              <Route path="/privacy-policy">
+                <PrivacyPolicy />
+              </Route>
+              <Route path="/404">
+                <NotFoundPage />
+              </Route>
+              {isAuth ?
+                (<div>
+                  <Route path="/catalog">
                     <Catalog />
                   </Route>
-                  <Route path="/intro">
-                    <Intro />
+                  <Route path="/calendar">
+                    <Calendar />
                   </Route>
-                  <Route path="/roulette">
-                    <CardRoulette />
+                  <Route path="/contacts">
+                    <ContactList />
                   </Route>
-                  <Route path="/card-editor">
-                    <CardEditor />
+                  <Route path="/settings">
+                    <Settings />
                   </Route>
-                  {/* Footer */}
-                  <Route path="/qa">
-                    <QA />
-                  </Route>
-                  <Route path="/about-us">
-                    <AboutUs className ="page" />
-                  </Route>
-                  <Route path="/contact-us">
-                    <ContactUs />
-                  </Route>
-                  <Route path="/impressum">
-                    <Impressum />
-                  </Route>
-                  <Route path="/privacy-policy">
-                    <PrivacyPolicy />
-                  </Route>
-                  <Route path="/404">
-                    <NotFoundPage />
-                  </Route>
-                  {isAuth ?
-                    (<div>
-                      <Route path="/catalog">
-                        <Catalog />
-                      </Route>
-                      <Route path="/calendar">
-                        <Calendar />
-                      </Route>
-                      <Route path="/contacts">
-                        <ContactList />
-                      </Route>
-                      <Route path="/settings">
-                        <Settings />
-                      </Route>
-                    </div>) : null
+                </div>) : null
 
-                    }
-                </Switch>
-                {isAccepted ? <Cookies /> : null}
-                <Footer />
-              </Grid>
-            <Grid item sm={false} md={3}/>
+              }
+              {/* To create cards base on id */}
+              <Switch>
+                <Route path="/cards/:id" children={<Card />} />
+              </Switch>
+            </Switch>
+            {isAccepted ? <Cookies /> : null}
+            <Footer />
           </Grid>
+          <Grid item sm={false} md={3} />
+        </Grid>
       </Grid>
     </div>
   );
