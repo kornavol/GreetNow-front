@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import './css/ContactList.css';
 
 /* Global Theme Styles(used by all pages) */
@@ -12,7 +11,11 @@ import '../../components/Contacts/assets/css/themes/layout/header/menu/light.css
 import '../../components/Contacts/assets/css/themes/layout/brand/dark.css'
 import '../../components/Contacts/assets/css/themes/layout/aside/dark.css'
 
+import React, { useState } from 'react';
+
 import ContactsTable from '../../components/Contacts/ContactsTable/ContactsTable';
+// import {Wizzard as WizzComp} from '../../components/Contacts/Wizzard';
+import Wizzard from '../../components/Contacts/ContactsTable/Wizzard/Wizzard';
 
 
 export default function ContactList() {
@@ -34,16 +37,40 @@ export default function ContactList() {
         gender: "Male",
         relationships: ['work', 'friends'],
         events: ['Birthday', 'Christmas']
+    },
+    {
+        _id: "13asdsad1",
+        firstName: "Tanya",
+        lastName: "Wolosh",
+        dateOfBbirth: "08/21/1982",
+        gender: "Female",
+        relationships: ['family', 'sister'],
+        events: ['Birthday', 'Christmas']
     }]);
+
+    const [wizz, setWizz] = useState(null);
+
+    function createRecord() {
+        alert('create reciep')
+
+    }
+
+
 
 
     return (
-        <div id = 'contact-list'  className="page">
-            {/*         Add:
-            Filters
-            Search
-            Button: Add new custommer */}
-            <ContactsTable contacts = {contacts}/>
+        <div id='contact-list' className="page">
+            <button
+                className='btn btn-primary'
+                // onClick={() => setWizz(<Wizzard unmPopUp={unmPopUp} />)}
+                onClick={() => setWizz(<Wizzard unmPopUp={()=>{setWizz(null)}} />)}
+            >
+                New Record
+            </button>
+            <ContactsTable
+                contacts={contacts}
+            />
+            {wizz}
         </div>
 
 

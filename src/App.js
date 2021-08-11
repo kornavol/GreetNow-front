@@ -17,6 +17,7 @@ import Card from './pages/Card';
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
+
 import Settings from './pages/dashboard/Settings';
 
 /* Footer */
@@ -146,6 +147,7 @@ function App() {
               <Route path="/404">
                 <NotFoundPage />
               </Route>
+
               <Route path="/contacts1">
                 <ContactList />
               </Route>
