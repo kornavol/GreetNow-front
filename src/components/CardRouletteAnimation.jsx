@@ -99,39 +99,38 @@ function init(firstInit = true, groups = 1, duration = 1) {
 function shuffle([...arr]) {
     let m = arr.length;
     while (m) {
-    const i = Math.floor(Math.random() * m--);
-    [arr[m], arr[i]] = [arr[i], arr[m]];
+        const i = Math.floor(Math.random() * m--);
+        [arr[m], arr[i]] = [arr[i], arr[m]];
     }
     return arr
 }
 
+/* 
 useEffect(() => {
     init();
-
     document.querySelector("#spinner").addEventListener("click", spin);
     document.querySelector("#reseter").addEventListener("click", init);
 })
+ */
 
 
-const [slideUp, setSlideUp] = useState(false)
     const scrollUp = () => {
-        if (window.scrollY >= -100) {
-        setSlideUp(true)
+        if (window.scrollY >= -500) {
+        spin()
         } else {
-        setSlideUp(false)
+        init()
         }
     }
 
     useEffect(() => {
+        init()
         scrollUp()
-        // adding the event when scroll change background
-        window.addEventListener("scroll", scrollUp)
+        window.addEventListener("click", spin);
 
     })
 
     return (
-        <section id="card-roulette-container" data-aos="fade-up" data-aos-duration="1000">
-            <h1>Card Roulette</h1>
+        <section id="card-roulette-container">
             <div className="doors">
                 <div className="frame1">
                     <div className="door">
@@ -149,10 +148,14 @@ const [slideUp, setSlideUp] = useState(false)
                     </div>
                 </div>
             </div>
+
+        {/* 
             <div className="buttons">
                 <button id="spinner">Spin</button>
                 <button id="reseter">Reset</button>
             </div>
+       */}  
+        
         </section>
     );
 }

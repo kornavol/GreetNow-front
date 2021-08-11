@@ -6,7 +6,7 @@ import envelopeLeft from '../assets/envelope-left-gold.png';
 import envelopeRight from '../assets/envelope-right-gold.png';
 import envelopeRightOpen from '../assets/envelope-right-open-gold.png';
 import Handwriting from './Handwriting';
-import StampAnimation from './StampAnimation';
+import FlowerAnimation from './FlowerAnimation';
 import { Link } from 'react-scroll';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './css/Intro.css';
@@ -44,16 +44,6 @@ const Intro = () => {
             introFlipCardRef.current.style.transition = "1s"
         }, 6600);
 
-        /* 
-        const changeVisibility1 = setTimeout(() => {
-            document.getElementById("intro-card").style.opacity = "0";
-        }, 6500);
-
-        const changeVisibility2 = setTimeout(() => {
-            document.getElementById("intro-flip-card").style.opacity = "1";
-        }, 6300);
-        */
-
         /*return clearTimeout prevents infinite loop of setTimeout */
         return () => {
             clearTimeout(zIndex1)
@@ -71,7 +61,7 @@ const Intro = () => {
                 <h2>Celebrate life with the perfect card or invitation</h2>
                 <h3>― Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
-            <StampAnimation/>
+            <FlowerAnimation/>
             <div className="intro-card-container" data-aos="fade-up" data-aos-duration="1500">
                 <div className="intro-envelope">
                     <div className="envelope-back">
@@ -100,13 +90,20 @@ const Intro = () => {
                             <img src={introCardCover} alt="flower"/>
                             
                         </div>
-                        <div className="details">
-                            <h2>Greet friends and family and celebrate special moments</h2>
+                        <div className="intro-flip-card-text">
+                            <h2>Greetings!</h2>
+                            <h3>Greet friends and family and celebrate special moments.
+                                <br/>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing.
+                                <br/>
+                                Ipsum dolor sit amet.
+                            </h3>
+                            <h4>Greet Now</h4>
                         </div>
                     </div>
                 </div>     
             </div>
-            <Link className="scroll-down" to="card-roulette-home-container" smooth={true} duration={1000} offset={-140}>
+            <Link className="intro-scroll-down" to="card-roulette-home-container" smooth={true} duration={1000} offset={-140}>
                 See More <br/>
                 <ExpandMoreIcon style={{fontSize:'4vmin'}}/>
             </Link>

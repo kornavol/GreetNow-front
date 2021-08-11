@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 /* Material UI Components */
 import { 
     Box,
@@ -8,8 +8,8 @@ import {
 /* Material UI Icons */
 import EditIcon from '@material-ui/icons/Edit'
 import EventIcon from '@material-ui/icons/Event';
-import HomeIcon from '@material-ui/icons/Home';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import HomeIcon from '@material-ui/icons/Home';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonIcon from '@material-ui/icons/Person';
@@ -29,15 +29,15 @@ import AppbarDesktop from "./AppbarDesktop";
 import Modal from 'react-bootstrap/Modal';
 
 const Appbar = (props) => {
-
+console.log(props);
     /* Material UI Theme */
     const theme = useTheme();
     /* Material UI Media Query */ 
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     /* Toggles between Login and Register Buttons */
-    const [toggleRegister, setToggleRegister] = React.useState(true);
+    const [toggleRegister, setToggleRegister] = useState(true);
     /* Shows Modal */
-    const [modalShow, setModalShow] = React.useState(false);
+    const [modalShow, setModalShow] = useState(false);
     /* Access History */
     const { history } = props;
     /* Navigates to URL */
@@ -113,9 +113,9 @@ const Appbar = (props) => {
     ];
 
     /* Modal Body */
-    function MyVerticallyCenteredModal(props) {
+    function MyVerticallyCenteredModal(modalVertical) {
         return (
-            <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal {...modalVertical} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body>
                     {toggleRegister ? (
                         <Login
@@ -138,7 +138,7 @@ const Appbar = (props) => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button onClick={modalVertical.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );

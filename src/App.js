@@ -74,7 +74,7 @@ function App() {
     fetch(url, options)
     .then(result=>result.json()
     .then(output=>{
-      console.log(output);
+      //console.log(output);
       if (output.success === true) {
         setPrivateData(output.data);
         setIsAuth(true);
