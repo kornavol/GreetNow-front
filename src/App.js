@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { useHistory } from 'react-router-dom';
 
 import { Switch, Route } from 'react-router-dom'
 
-import NavBar from './components/NavBar/NavBar.jsx';
 import Appbar from './components/NavBar/Appbar';
 
 import Home from './pages/Home';
@@ -12,8 +12,6 @@ import Intro from './components/Intro';
 import CardRoulette from './pages/CardRoulette';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
-import Login from './components/Auth/Login';
-import Register from './components/Auth/Register';
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
@@ -36,6 +34,7 @@ import { Grid } from '@material-ui/core';
 
 function App() {
 
+  const history = useHistory();
   /*  for show Component Coockies  (component) */
   const [isAccepted, setAccepted] = useState(false);
   
@@ -55,10 +54,11 @@ function App() {
   }
 
   useEffect(() => {
+    console.log('background changer');
     changeBackground()
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground);
-    })
+  })
 
     const fetchPrivateData = () =>{
 
@@ -80,7 +80,9 @@ function App() {
         setIsAuth(true);
       }else{
         localStorage.removeItem('authToken');
-        alert(output.error)
+        setPrivateData('');
+        setIsAuth(false);
+        /* alert(output.error); */
       }
     }
     ));
@@ -89,18 +91,13 @@ function App() {
   fetchPrivateData();
 
   /* useEffect(()=>{
+    console.log('token check');
     if(!localStorage.getItem('authToken')){
       setIsAuth(false);
     }else{
       fetchPrivateData();
     }
-  },[]);
-  console.log(isAuth);
-  console.log(privateData); */
-
-  const logoutHandler = () => {
-      localStorage.removeItem('authToken');
-  }
+  },[]); */
 
 
     return (
@@ -109,7 +106,7 @@ function App() {
         <Grid container>
           <Grid item sm={false} md={3}/>
             <Grid item sm={12} md={6}>
-              <Appbar user={privateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
+              <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">

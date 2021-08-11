@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Logout from "../Auth/Logout";
 /* Material UI Components */
 import { 
     AppBar,
@@ -95,7 +96,7 @@ const AppbarDesktop = (props) => {
     /* Material UI Styles */
     const classes = useStyles();
     /* Dropdown Menu Open and Close Functions */
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     };
@@ -127,6 +128,7 @@ const AppbarDesktop = (props) => {
                                 <ListItemText primary={dash.dashTitle} />
                                 </StyledMenuItem>
                                 ))}
+                                <Logout isMobile={props.isMobile} handleClose={handleClose} setUser={props.setUser} setIsAuth={props.setIsAuth}/>
                             </StyledMenu>
                         </div>
                     ) : (

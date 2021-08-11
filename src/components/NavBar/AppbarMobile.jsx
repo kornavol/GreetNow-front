@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState} from "react";
+import Logout from "../Auth/Logout";
 /* Material UI alternative for ternary operator */
 import clsx from 'clsx';
 /*Material UI Components*/
@@ -88,7 +89,8 @@ const AppbarMobile = (props) => {
     /*Drawer Styles and Open and Close Functions*/
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
+    const username = props.user;
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -142,7 +144,7 @@ const AppbarMobile = (props) => {
                         <List>
                             <ListItem >
                                 <ListItemIcon><PersonIcon/></ListItemIcon>
-                                <ListItemText primary='User is logged in'/>
+                                <ListItemText primary= {'Hi ' + username}/>
                             </ListItem>
                                 </List>
                             ):(
@@ -172,6 +174,7 @@ const AppbarMobile = (props) => {
                             <ListItemText primary={dash.dashTitle} />
                         </ListItem>
                     ))}
+                    <Logout setUser={props.setUser} setIsAuth={props.setIsAuth} handleDrawerClose={handleDrawerClose}/>
                 </List>
                 ):(
                     <List>
