@@ -1,57 +1,78 @@
-import React from 'react';
 import './css/ContactList.css';
-// import ContactsTable from '../../components/Contacts/ContatsTable/ContactsTable';
+
+/* Global Theme Styles(used by all pages) */
+import '../../components/Contacts/assets/plugins/global/plugins.bundle.css'
+import '../../components/Contacts/assets/plugins/global/plugins.bundle.css'
+import '../../components/Contacts/assets/plugins/custom/prismjs/prismjs.bundle.css'
+import '../../components/Contacts/assets/css/style.bundle.css'
+/* Layout Themes(used by all pages) */
+import '../../components/Contacts/assets/css/themes/layout/header/base/light.css'
+import '../../components/Contacts/assets/css/themes/layout/header/menu/light.css'
+import '../../components/Contacts/assets/css/themes/layout/brand/dark.css'
+import '../../components/Contacts/assets/css/themes/layout/aside/dark.css'
+
+import React, { useState } from 'react';
+
+import ContactsTable from '../../components/Contacts/ContactsTable/ContactsTable';
+// import {Wizzard as WizzComp} from '../../components/Contacts/Wizzard';
+import Wizzard from '../../components/Contacts/ContactsTable/Wizzard/Wizzard';
+
 
 export default function ContactList() {
-    
-    /* data set fron Back-end */
-    const entities = [
-        {
-            "_id": "13asdsad1",
-            "id": 1,
-            "firstName": "Sonni",
-            "lastName": "Gabotti",
-            "email": "sgabotti0@wsj.com",
-            "userName": "sgabotti0",
-            "gender": "Female",
-            "status": 0,
-            "dateOfBbirth": "10/14/1950",
-            "ipAddress": "251.237.126.210",
-            "type": 1,
-            "_userId": 1,
-            "_createdDate": "09/07/2016",
-            "_updatedDate": "05/31/2013"
-          },
-          {
-            "_id": "13asdsad2",
-            "id": 2,
-            "firstName": "Adreas",
-            "lastName": "Kornblum",
-            "email": "sgabotti0@wsj.com",
-            "userName": "sgabotti0",
-            "gender": "Female",
-            "status": 0,
-            "dateOfBbirth": "08/07/1986",
-            "ipAddress": "251.237.126.210",
-            "type": 1,
-            "_userId": 1,
-            "_createdDate": "09/07/2016",
-            "_updatedDate": "05/31/2013"
-          },
-    ]
+
+    const [contacts, setContacts] = useState([{
+        _id: "13asdsad1",
+        firstName: "Sonni",
+        lastName: "Gabotti",
+        dateOfBbirth: "10/14/1950",
+        gender: "Female",
+        relationships: ['family', 'mom'],
+        events: ['Birthday', 'Christmas']
+    },
+    {
+        _id: "13asdsad1",
+        firstName: "Andreas",
+        lastName: "Kornblum",
+        dateOfBbirth: "08/07/1986",
+        gender: "Male",
+        relationships: ['work', 'friends'],
+        events: ['Birthday', 'Christmas']
+    },
+    {
+        _id: "13asdsad1",
+        firstName: "Tanya",
+        lastName: "Wolosh",
+        dateOfBbirth: "08/21/1982",
+        gender: "Female",
+        relationships: ['family', 'sister'],
+        events: ['Birthday', 'Christmas']
+    }]);
+
+    const [wizz, setWizz] = useState(null);
+
+    function createRecord() {
+        alert('create reciep')
+
+    }
+
 
 
 
     return (
-        <div className="page">
-            {/* Add:
-            Filters
-            Search
-            Button: Add new custommer
-
-            */}
-            {/* <ContactsTable entities = {entities}/> */}
-            {/* Pagination */}
+        <div id='contact-list' className="page">
+            <button
+                className='btn btn-primary'
+                // onClick={() => setWizz(<Wizzard unmPopUp={unmPopUp} />)}
+                onClick={() => setWizz(<Wizzard unmPopUp={()=>{setWizz(null)}} />)}
+            >
+                New Record
+            </button>
+            <ContactsTable
+                contacts={contacts}
+            />
+            {wizz}
         </div>
+
+
     );
 }
