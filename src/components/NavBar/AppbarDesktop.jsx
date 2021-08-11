@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Logout from "../Auth/Logout";
 /* Material UI Components */
 import { 
     AppBar,
@@ -127,6 +128,7 @@ const AppbarDesktop = (props) => {
                                 <ListItemText primary={dash.dashTitle} />
                                 </StyledMenuItem>
                                 ))}
+                                <Logout isMobile={props.isMobile} handleClose={handleClose} setUser={props.setUser} setIsAuth={props.setIsAuth}/>
                             </StyledMenu>
                         </div>
                     ) : (

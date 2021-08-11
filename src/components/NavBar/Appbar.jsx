@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, {useState, useEffect} from "react";
 /* Material UI Components */
 import { 
     Box,
@@ -8,11 +9,11 @@ import {
 /* Material UI Icons */
 import EditIcon from '@material-ui/icons/Edit'
 import EventIcon from '@material-ui/icons/Event';
+
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 import HomeIcon from '@material-ui/icons/Home';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
-import PersonAddIcon from '@material-ui/icons/PersonAdd';
-import PersonIcon from '@material-ui/icons/Person';
 import PhotoAlbumIcon from '@material-ui/icons/PhotoAlbum';
 import SettingsIcon from '@material-ui/icons/Settings';
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
@@ -29,7 +30,15 @@ import AppbarDesktop from "./AppbarDesktop";
 import Modal from 'react-bootstrap/Modal';
 
 const Appbar = (props) => {
+
+    
+    const setUser = props.setUser;
+    const setIsAuth = props.setIsAuth;
+    const user = props.user;
+    const isAuth = props.isAuth;
+
 console.log(props);
+
     /* Material UI Theme */
     const theme = useTheme();
     /* Material UI Media Query */ 
@@ -44,22 +53,22 @@ console.log(props);
     const handleButtonClick = pageURL => {
         history.push(pageURL);
     };
+    useEffect(() => {
+        console.log('login');
+        console.log(history);
+    })
 
-    /* Authentication Items */
-    const authItems = [
-        {
-            authTitle: "Login",
-            pageURL: "/login",
-            icon: <PersonIcon/>
-        },
-        {
-            authTitle: "Register",
-            pagerURL: "/register",
-            icon: <PersonAddIcon/>
+    useEffect(() => {
+        console.log('toggleRegister');
+    }, [toggleRegister])
 
-        }
-    ]
+    useEffect(() => {
+        console.log('modalShow');
+    }, [modalShow])
 
+    useEffect(() => {
+        console.log('mounted');
+    },[])
     /* Navbar Items */
     const menuItems = [
         {
@@ -104,11 +113,6 @@ console.log(props);
             dashTitle: "Settings",
             pageURL: "/settings",
             icon: <SettingsIcon/>
-        },
-        {
-            dashTitle: "Logout",
-            pagerURL: "/logout",
-            icon: <ExitToAppIcon/>
         }
     ];
 
@@ -119,16 +123,16 @@ console.log(props);
                 <Modal.Body>
                     {toggleRegister ? (
                         <Login
-                            isAuth={props.isAuth} 
-                            setIsAuth={props.setIsAuth} 
+                            isAuth={isAuth}
+                            setIsAuth={setIsAuth}
                             toggleRegister={toggleRegister} 
                             setToggleRegister={setToggleRegister} 
                             modalShow={modalShow} 
                             setModalShow={setModalShow}
                             />
                     ) : (
-                        <Register 
-                            isAuth={props.isAuth} 
+                        <Register
+                            isAuth={isAuth} 
                             setToggleRegister={setToggleRegister} 
                             toggleRegister={toggleRegister} 
                             setToggleRegister={setToggleRegister} 
@@ -150,15 +154,22 @@ console.log(props);
                 <AppbarMobile 
                     menuItems={menuItems} 
                     dashItems={dashItems} 
-                    isAuth={props.isAuth} 
+                    isAuth={isAuth}
+                    setIsAuth={setIsAuth}
+                    user={user}
+                    setUser={setUser}
                     setToggleRegister={setToggleRegister} 
                     setModalShow={setModalShow} 
                     handleButtonClick={handleButtonClick}/>
             ) : ( 
-            <AppbarDesktop 
+            <AppbarDesktop
+                isMobile={isMobile}
                 menuItems={menuItems} 
                 dashItems={dashItems} 
-                isAuth={props.isAuth} 
+                isAuth={isAuth}
+                setIsAuth={setIsAuth}
+                user={user}
+                setUser={setUser}
                 setToggleRegister={setToggleRegister} 
                 setModalShow={setModalShow} 
                 handleButtonClick={handleButtonClick}/>     

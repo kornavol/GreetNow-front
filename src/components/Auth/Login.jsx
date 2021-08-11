@@ -19,7 +19,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 /* Material UI Styles */
 import { makeStyles } from '@material-ui/core/styles';
 
-import ForgotPass from '../Auth/ForgotPass';
+/* import ForgotPass from '../Auth/ForgotPass'; */
 
 function Copyright() {
     return (
@@ -63,11 +63,6 @@ export default function Login(props) {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
 
-    useEffect(() => {
-        if(localStorage.getItem('authToken')){
-            history.push("/");
-        }
-    }, []);
 
     const loginHandler = (e) => {
         e.preventDefault();
@@ -99,11 +94,10 @@ export default function Login(props) {
             .then(handleErrors)
             .then(response=>response.json()
             .then(output=>{
-                //alert(output.message);
                 if(output.success){
                     localStorage.setItem('authToken', output.token);
-                    props.props.setIsAuth(true);
-                    //redux set auth(true);
+                    props.setIsAuth(true);
+                    props.setModalShow(false);
                     history.push('/');
                 }else{
                     setError(output.error);
@@ -127,55 +121,55 @@ export default function Login(props) {
             </Typography>
             <form className={classes.form} noValidate onSubmit={loginHandler}>
                 {error && <span className="error-message">{error}</span>}
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
-                autoFocus
-                onChange={(e)=> setEmail(e.target.value)}
-            />
-            <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(e)=> setPassword(e.target.value)}
-            />
-            <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
-                label="Remember me"
-            />
-            <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-                className={classes.submit}
-            >
-                Login
-            </Button>
-            <Grid container>
-                <Grid item xs>
-                <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}} variant="body2">
-                    Forgot password?
-                </Link>
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="email"
+                    label="Email Address"
+                    name="email"
+                    autoComplete="email"
+                    autoFocus
+                    onChange={(e)=> setEmail(e.target.value)}
+                />
+                <TextField
+                    variant="outlined"
+                    margin="normal"
+                    required
+                    fullWidth
+                    name="password"
+                    label="Password"
+                    type="password"
+                    id="password"
+                    autoComplete="current-password"
+                    onChange={(e)=> setPassword(e.target.value)}
+                />
+                <FormControlLabel
+                    control={<Checkbox value="remember" color="primary" />}
+                    label="Remember me"
+                />
+                <Button
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    className={classes.submit}
+                >
+                    Login
+                </Button>
+                <Grid container>
+                    <Grid item xs>
+                    <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}} variant="body2">
+                        Forgot password?
+                    </Link>
+                    </Grid>
+                    <Grid item>
+                    <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}}>
+                        {"Don't have an account? Register"}
+                    </Link>
+                    </Grid>
                 </Grid>
-                <Grid item>
-                <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}}>
-                    {"Don't have an account? Register"}
-                </Link>
-                </Grid>
-            </Grid>
             </form>
         </div>
         <Box mt={8}>
