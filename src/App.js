@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
+import { useHistory } from 'react-router-dom';
 
 import { Switch, Route } from 'react-router-dom'
 
-import NavBar from './components/NavBar/NavBar.jsx';
 import Appbar from './components/NavBar/Appbar';
 
 import Home from './pages/Home';
@@ -13,7 +13,6 @@ import CardRoulette from './pages/CardRoulette';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
 import Card from './pages/Card';
-
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
@@ -36,6 +35,7 @@ import { Grid } from '@material-ui/core';
 
 function App() {
 
+  const history = useHistory();
   /*  for show Component Coockies  (component) */
   const [isAccepted, setAccepted] = useState(false);
 
@@ -55,6 +55,7 @@ function App() {
   }
 
   useEffect(() => {
+    console.log('background changer');
     changeBackground()
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground);
@@ -72,50 +73,49 @@ function App() {
       }
     }
     fetch(url, options)
-      .then(result => result.json()
-        .then(output => {
-          console.log(output);
-          if (output.success === true) {
-            setPrivateData(output.data);
-            setIsAuth(true);
-          } else {
-            localStorage.removeItem('authToken');
-            alert(output.error)
-          }
-        }
-        ));
+    .then(result=>result.json()
+    .then(output=>{
+      //console.log(output);
+      if (output.success === true) {
+        setPrivateData(output.data);
+        setIsAuth(true);
+      }else{
+        localStorage.removeItem('authToken');
+        setPrivateData('');
+        setIsAuth(false);
+        /* alert(output.error); */
+      }
+    }
+    ));
+
   }
 
   fetchPrivateData();
 
   /* useEffect(()=>{
+    console.log('token check');
     if(!localStorage.getItem('authToken')){
       setIsAuth(false);
     }else{
       fetchPrivateData();
     }
-  },[]);
-  console.log(isAuth);
-  console.log(privateData); */
+  },[]); */
 
-  const logoutHandler = () => {
-    localStorage.removeItem('authToken');
-  }
 
 
   return (
     <div className={`App ${background ? "red" : "white"}`}>
       <Grid container direction="column">
         <Grid container>
-          <Grid item sm={false} md={3} />
-          <Grid item sm={12} md={6}>
-            <Appbar user={privateData} isAuth={isAuth} setIsAuth={setIsAuth} />
-            <Switch>
-              {/* Nav */}
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route exact path="/media-catalog">
+        <Grid item sm={false} md={3}/>
+            <Grid item sm={12} md={6}>
+              <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
+                <Switch>
+                  {/* Nav */}
+                  <Route exact path="/">
+                    <Home />
+                  </Route>
+                  <Route exact path="/media-catalog">
                 <Catalog />
               </Route>
               <Route path="/intro">
