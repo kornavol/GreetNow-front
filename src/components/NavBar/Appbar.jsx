@@ -1,3 +1,4 @@
+
 import React, {useState, useEffect} from "react";
 /* Material UI Components */
 import { 
@@ -8,6 +9,9 @@ import {
 /* Material UI Icons */
 import EditIcon from '@material-ui/icons/Edit'
 import EventIcon from '@material-ui/icons/Event';
+
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+
 import HomeIcon from '@material-ui/icons/Home';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import PhotoAlbumIcon from '@material-ui/icons/PhotoAlbum';
@@ -26,11 +30,15 @@ import AppbarDesktop from "./AppbarDesktop";
 import Modal from 'react-bootstrap/Modal';
 
 const Appbar = (props) => {
+
     
     const setUser = props.setUser;
     const setIsAuth = props.setIsAuth;
     const user = props.user;
     const isAuth = props.isAuth;
+
+console.log(props);
+
     /* Material UI Theme */
     const theme = useTheme();
     /* Material UI Media Query */ 
@@ -109,9 +117,9 @@ const Appbar = (props) => {
     ];
 
     /* Modal Body */
-    function MyVerticallyCenteredModal(props) {
+    function MyVerticallyCenteredModal(modalVertical) {
         return (
-            <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal {...modalVertical} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body>
                     {toggleRegister ? (
                         <Login
@@ -134,7 +142,7 @@ const Appbar = (props) => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={props.onHide}>Close</Button>
+                    <Button onClick={modalVertical.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );

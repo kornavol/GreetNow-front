@@ -1,10 +1,30 @@
+#benefits {
+    width: 100%;
+    height: 85%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    box-sizing: border-box;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 25px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
 .benefits-container h1,
+.benefits-container h3,
 .benefits-container p {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-family: 'IM Fell English', cursive;
 }
 
 .benefits-container>div:first-of-type>h1 {
-    margin-top: 5vmin;
+    margin-top: 15%;
 }
 
 .block-container {
@@ -20,7 +40,7 @@
     width: 45%;
     height: 90%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     box-sizing: border-box;
 }
@@ -45,4 +65,42 @@ li {
 
 .text-container {
     width: 90%;
+}
+
+/* Scroll Icon */
+
+.benefits-scroll-up {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 6;
+    top: 0;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #000000;
+    font-family: 'Nunito', sans-serif;
+}
+
+.benefits-scroll-up:hover,
+.benefits-scroll-down:hover {
+    text-decoration: none;
+    color: #dc004e;
+}
+
+.benefits-scroll-down {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 1;
+    top: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #000000;
+    font-family: 'Nunito', sans-serif;
 }
