@@ -14,6 +14,8 @@
     border-radius: 25px;
     position: relative;
     overflow: hidden;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 /* Header Banner */
@@ -64,12 +66,7 @@
     transition: 1s;
     z-index: 3;
 }
-/* 
- position: absolute;
- top: 23%;
- left: 55%;
- transform: translateX(-50%);
- */
+
 .intro-card-container img {
     width: 100%;
 }
@@ -246,15 +243,16 @@
     cursor: pointer;
 }
 
-.intro-flip-card .details {
+.intro-flip-card .intro-flip-card-text {
     position: absolute;
     top: 0;
     width: 100%;
     height: 100%;
     padding: 20px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
+    flex-direction: column;
     background: #ffffff;
 }
 
@@ -265,10 +263,26 @@
     flex-direction: column;
 }
 
-.intro-flip-card .details .content h2 {
-    text-align: center;
-    font-weight: 700;
+.intro-flip-card .intro-flip-card-text h2 {
+    font-family: 'Norican', cursive;
+    font-size: 1.6rem;
+    color: #dc004e;
     line-height: 1em;
+    margin: 10% 0;
+}
+
+.intro-flip-card .intro-flip-card-text h3 {
+    font-family: 'IM Fell English', cursive;
+    font-size: 1.2rem;
+    line-height: 1.3em;
+    margin-top: 12%;
+}
+
+.intro-flip-card .intro-flip-card-text h4 {
+    font-family: 'Norican', cursive;
+    font-size: 1.5rem;
+    line-height: 1em;
+    margin-top: 20%;
 }
 
 .intro-flip-card .details .content {
@@ -322,35 +336,13 @@
 
 /* Scroll Icon */
 
-.scroll-up {
+.intro-scroll-down {
     margin: 0;
     padding: 0;
     position: absolute;
-    z-index: 1;
-    top: 3%;
-    left: 42.5%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Nunito', sans-serif;
-    opacity: 0;
-    animation: show-up 1s 9s forwards;
-}
-
-.scroll-up:hover {
-    text-decoration: none;
-    color: #F50049;
-}
-
-.scroll-down {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: 1;
+    z-index: 10;
     top: 93%;
-    left: 45%;
+    margin: auto;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -361,9 +353,9 @@
     animation: show-up 1s 9s forwards;
 }
 
-.scroll-down:hover {
+.intro-scroll-down:hover {
     text-decoration: none;
-    color: #F50049;
+    color: #dc004e;
 }
 
 /* Visibility Controls */

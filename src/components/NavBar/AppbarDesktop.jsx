@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 /* Material UI Components */
 import { 
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     button: {
         fontFamily: 'Nunito',
         "&.active": {
-            color:'#ff0a54'
+            color:'#dc004e'
     },
     },
     login: {
@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
         
     },
     dashboard: {
-        color: '#ff0a54'
+        color: '#dc004e'
     }
 }));
 
@@ -81,7 +81,7 @@ const StyledMenu = withStyles({
 const StyledMenuItem = withStyles((theme) => ({
     root: {
         '&:focus': {
-        backgroundColor: '#ff0a54',
+        backgroundColor: '#dc004e',
         '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
             color: theme.palette.common.white,
             fontFamily: 'Nunito'
@@ -95,7 +95,7 @@ const AppbarDesktop = (props) => {
     /* Material UI Styles */
     const classes = useStyles();
     /* Dropdown Menu Open and Close Functions */
-    const [anchorEl, setAnchorEl] = React.useState(null);
+    const [anchorEl, setAnchorEl] = useState(null);
     const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
     };
@@ -159,7 +159,6 @@ const AppbarDesktop = (props) => {
                     {/* <Button className={classes.button} key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>{menu.menuTitle}</Button> */}
                     <div className={classes.headerOptions}>
                                 {props.menuItems.map((menu, i) => (
-                                    
                                     <Button className={classes.button} key={i} component={NavLink} to={menu.pageURL}>{menu.menuTitle}</Button>
                                 ))}
                                 <Typography variant="h6" className={classes.title}>
