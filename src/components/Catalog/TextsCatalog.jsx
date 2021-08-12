@@ -7,7 +7,7 @@ import Events from "./EvFilter";
 import Categories from "./CategFilter";
 import Pagination from "../Paginations";
 
-const TextsCatalog = () => {
+const TextsCatalog = (props) => {
     const [texts, setTexts] = useState([]);
     const [activePage, setActivePage] = useState(1);
     const [category, setCategory] = useState({ events: "all", category: "all" });
@@ -54,7 +54,7 @@ const TextsCatalog = () => {
             <Events setSelector={setCategory} selector={category} />
             <Categories setSelector={setCategory} selector={category} />
             <Container>
-                <Row>
+                <Row onClick={props.onClick}>
                     <Col className="d-block m-auto">
                         <Texts texts={texts} />
                     </Col>
