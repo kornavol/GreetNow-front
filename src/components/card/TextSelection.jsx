@@ -6,8 +6,8 @@ const TextSelection = () => {
     const [catalog, setCatalog] = useState(null);
 
     const txtCatalog = (
-        <div className='cat-popup-win' onClick={()=>setCatalog(null)}>
-            <TextsCatalog/>
+        <div className='cat-popup-win'>
+            <TextsCatalog onClick={()=>setCatalog(null)}/>
         </div>
     );
 

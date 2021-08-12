@@ -1,4 +1,4 @@
-const currText = (state = 'Add your text', action) => {
+const currText = (state = 'null', action) => {
     switch (action.type) {
         case "SEND_TEXT":
             state = action.text

@@ -8,8 +8,8 @@ const ImgSelection = () => {
 
     //to work on it
     const imgCatalog = (
-        <div className='cat-popup-win' onClick={()=>setCatalog(null)}>
-            <ImgCatalog/>
+        <div className='cat-popup-win'>
+            <ImgCatalog onClick={()=>setCatalog(null)}/>
         </div>
         );
 
