@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Accordion from 'react-bootstrap/Accordion'
+import { useSelector } from 'react-redux';
 
 export default function Events({form, setForm}) {
+
+    const [eventsList, setEventsList] = useState([]);
+    useSelector((state) => state.events.then(result => setEventsList(result)))
 
     function fillForm(e, field) {
         const newForm = { ...form }
@@ -25,7 +29,7 @@ export default function Events({form, setForm}) {
     console.log(form);
 
 
-    const eventsList = ['Birthday', 'New Year', 'Christmas']
+    // const eventsList = ['Birthday', 'New Year', 'Christmas']
     /*TO=DO: import events and categories from backend over request */
     const events = eventsList.map((event) => {
         const value = event.toLowerCase()
