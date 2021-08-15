@@ -3,14 +3,12 @@
   flex-direction: column;
   flex-wrap: wrap;
   /* align-items: center;
-          justify-content: center; */
+  justify-content: center; */
 
   width: 100%;
   min-height: 70vh;
+  
+  /* overflow-y: hidden;
+  overflow-y:scroll; */
 }
 
-#wizzard-bio {
-      overflow-y:scroll;
-      overflow:scroll 
-
-}

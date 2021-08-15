@@ -48,29 +48,37 @@ export default function ContactList() {
         events: ['Birthday', 'Christmas']
     }]);
 
-    const [wizz, setWizz] = useState(null);
+    const [switchCase, setSwitchCase] = useState('contacts')
 
     function createRecord() {
         alert('create reciep')
 
     }
 
-
-
-
     return (
+
         <div id='contact-list' className="page">
-            <button
-                className='btn btn-primary'
-                // onClick={() => setWizz(<Wizzard unmPopUp={unmPopUp} />)}
-                onClick={() => setWizz(<Wizzard unmPopUp={()=>{setWizz(null)}} />)}
-            >
-                New Record
-            </button>
-            <ContactsTable
-                contacts={contacts}
-            />
-            {wizz}
+            {(()=>{
+                switch (switchCase) {
+                    case 'contacts':
+                        return (
+                            <div>
+                                <button
+                                    className='btn btn-primary'
+                                    onClick={() => setSwitchCase('new_record')}
+                                >
+                                    New Record
+                                </button>
+                                <ContactsTable
+                                    contacts={contacts}
+                                />
+                            </div>)
+                    case 'new_record':
+                        return <Wizzard unmPopUp={() => { setSwitchCase('contacts') }} />
+                    default:
+                        return <h1>No project match</h1>;
+                }
+            })()}
         </div>
 
 

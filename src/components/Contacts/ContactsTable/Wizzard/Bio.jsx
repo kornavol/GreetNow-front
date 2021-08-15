@@ -1,14 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-export default function Bio() {
+export default function Bio({form, setForm}) {
+
+    
+
+    function fillForm(e, field) {
+        const newForm = { ...form }
+        newForm[field] = e.target.value
+        setForm(newForm)
+    }
+
+    console.log(form);
+
+
+
+
     return (
         <div id="wizzard-bio" className='card=body p-0'>
             <div className="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">
                 <div className='col-xl-12 col-xxl-10'>
                     {/* Wizzard form */}
                     <form className="form fv-plugins-bootstrap fv-plugins-framework">
-                        <div class="row justify-content-center">
-                            <div class="col-xl-9">
+                        <div className="row justify-content-center">
+                            <div className="col-xl-9">
                                 {/* Wizzard. Step -1 */}
                                 <div
                                     className="my-5 step"
@@ -54,9 +68,10 @@ export default function Bio() {
                                                 className="form-control form-control-solid form-control-lg is-invalid"
                                                 name="firstname"
                                                 type="text"
-                                                defaultValue
+                                                value={form.firstName}
+                                                onChange={(e) => fillForm(e, 'firstName')}
                                             />
-                                            <div className="fv-plugins-message-container">
+                                            {/*   <div className="fv-plugins-message-container">
                                                 <div
                                                     data-field="firstname"
                                                     data-validator="notEmpty"
@@ -64,7 +79,7 @@ export default function Bio() {
                                                 >
                                                     First Name is required
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                     {/*end::Group*/}
@@ -74,11 +89,12 @@ export default function Bio() {
                                         <div className="col-lg-9 col-xl-9">
                                             <input
                                                 className="form-control form-control-solid form-control-lg is-invalid"
-                                                name="lastname"
+                                                name="lastName"
                                                 type="text"
-                                                defaultValue
+                                                value={form.lastName}
+                                                onChange={(e) => fillForm(e, 'lastName')}
                                             />
-                                            <div className="fv-plugins-message-container">
+                                            {/*     <div className="fv-plugins-message-container">
                                                 <div
                                                     data-field="lastname"
                                                     data-validator="notEmpty"
@@ -86,99 +102,47 @@ export default function Bio() {
                                                 >
                                                     Last Name is required
                                                 </div>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                     {/*end::Group*/}
                                     {/*begin::Group*/}
                                     <div className="form-group row fv-plugins-icon-container has-success">
-                                        <label className="col-xl-3 col-lg-3 col-form-label">Company Name</label>
+                                        <label className="col-xl-3 col-lg-3 col-form-label">Birthday</label>
                                         <div className="col-lg-9 col-xl-9">
                                             <input
                                                 className="form-control form-control-solid form-control-lg"
-                                                name="companyname"
-                                                type="text"
-                                                defaultValue="Loop Inc."
+                                                name="dateOfBbirth"
+                                                type="date"
+                                                onChange={(e) => fillForm(e, 'dateOfBbirth')}
                                             />
-                                            <span className="form-text text-muted">
+                                            {/* <span className="form-text text-muted">
                                                 If you want your invoices addressed to a company. Leave blank to use
                                                 your full name.
-                                            </span>
+                                            </span> */}
                                             <div className="fv-plugins-message-container" />
                                         </div>
                                     </div>
                                     {/*end::Group*/}
                                     {/*begin::Group*/}
                                     <div className="form-group row fv-plugins-icon-container has-success">
-                                        <label className="col-xl-3 col-lg-3 col-form-label">Contact Phone</label>
+                                        <label className="col-xl-3 col-lg-3 col-form-label">Gender</label>
                                         <div className="col-lg-9 col-xl-9">
-                                            <div className="input-group input-group-solid input-group-lg">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text">
-                                                        <i className="la la-phone" />
-                                                    </span>
-                                                </div>
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-solid form-control-lg"
-                                                    name="phone"
-                                                    defaultValue={5678967456}
-                                                    placeholder="Phone"
-                                                />
-                                            </div>
-                                            <span className="form-text text-muted">
+                                            <select
+                                                className="form-control form-control-lg form-control-solid"
+                                                name="language"
+                                                onChange={(e) => fillForm(e, 'gender')}
+                                            >
+                                                <option value="">Select Language...</option>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                             
+                                            </select>
+
+                                            {/*                                             <span className="form-text text-muted">
                                                 Enter valid US phone number(e.g: 5678967456).
                                             </span>
-                                            <div className="fv-plugins-message-container" />
-                                        </div>
-                                    </div>
-                                    {/*end::Group*/}
-                                    {/*begin::Group*/}
-                                    <div className="form-group row fv-plugins-icon-container has-danger">
-                                        <label className="col-xl-3 col-lg-3 col-form-label">Email Address</label>
-                                        <div className="col-lg-9 col-xl-9">
-                                            <div className="input-group input-group-solid input-group-lg">
-                                                <div className="input-group-prepend">
-                                                    <span className="input-group-text">
-                                                        <i className="la la-at" />
-                                                    </span>
-                                                </div>
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-solid form-control-lg is-invalid"
-                                                    name="email"
-                                                    defaultValue
-                                                />
-                                            </div>
-                                            <div className="fv-plugins-message-container">
-                                                <div
-                                                    data-field="email"
-                                                    data-validator="notEmpty"
-                                                    className="fv-help-block"
-                                                >
-                                                    Email is required
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    {/*end::Group*/}
-                                    {/*begin::Group*/}
-                                    <div className="form-group row fv-plugins-icon-container has-success">
-                                        <label className="col-xl-3 col-lg-3 col-form-label">Company Site</label>
-                                        <div className="col-lg-9 col-xl-9">
-                                            <div className="input-group input-group-solid input-group-lg">
-                                                <input
-                                                    type="text"
-                                                    className="form-control form-control-solid form-control-lg"
-                                                    name="companywebsite"
-                                                    placeholder="Username"
-                                                    defaultValue="loop"
-                                                />
-                                                <div className="input-group-append">
-                                                    <span className="input-group-text">.com</span>
-                                                </div>
-                                            </div>
-                                            <div className="fv-plugins-message-container" />
+                                            <div className="fv-plugins-message-container" /> */}
                                         </div>
                                     </div>
                                     {/*end::Group*/}

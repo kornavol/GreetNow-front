@@ -37,8 +37,6 @@ const Appbar = (props) => {
     const user = props.user;
     const isAuth = props.isAuth;
 
-console.log(props);
-
     /* Material UI Theme */
     const theme = useTheme();
     /* Material UI Media Query */ 
@@ -53,7 +51,8 @@ console.log(props);
     const handleButtonClick = pageURL => {
         history.push(pageURL);
     };
-    useEffect(() => {
+
+ /*    useEffect(() => {
         console.log('login');
         console.log(history);
     })
@@ -68,7 +67,7 @@ console.log(props);
 
     useEffect(() => {
         console.log('mounted');
-    },[])
+    },[]) */
     /* Navbar Items */
     const menuItems = [
         {

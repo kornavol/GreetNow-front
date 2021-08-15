@@ -56,7 +56,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('background changer');
     changeBackground()
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground);
@@ -159,9 +158,9 @@ function App() {
                   <Route path="/calendar">
                     <Calendar />
                   </Route>
-                  <Route path="/contacts">
+                  {/* <Route path="/contacts">
                     <ContactList />
-                  </Route>
+                  </Route> */}
                   <Route path="/settings">
                     <Settings />
                   </Route>
