@@ -8,7 +8,8 @@
 - react-routing
 - redux
 - react-inlinesvg (working with SVG)
-
+- react-bootstrap-table (table for Contacts)
+- underscore (separately dependency for bootstraptable)
 
 ## Components
 

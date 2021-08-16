@@ -97,7 +97,7 @@ const Appbar = (props) => {
 
     useEffect(() => {
         console.log('mounted');
-    },[])
+    },[]) 
     /* Navbar Items */
     const menuItems = [
         {
