@@ -20,6 +20,17 @@ export default function Wizzard({ unmPopUp }) {
     });
 
     // console.log(recipient);
+    
+    const headers = {
+        'Content-Type': 'application/json',
+        'x-auth-token': localStorage.getItem('authToken')
+      }
+
+    function sendRecip() {
+        const url = 'http://localhost:8080/recipient/new_record'
+
+
+    } 
 
     return (
 
@@ -40,7 +51,7 @@ export default function Wizzard({ unmPopUp }) {
                 >
                     Close
                 </button>
-                <button type="button" className="btn btn-primary m-3" >Save changes</button>
+                <button type="button" className="btn btn-primary m-3" onClick={sendRecip} >Save changes</button>
             </div>
         </div>
 
