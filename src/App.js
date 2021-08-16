@@ -43,24 +43,6 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [privateData, setPrivateData] = useState();//now it is just the first name
 
-  /* Change background color */
-  const [background, setBackground] = useState(false);
-  const changeBackground = () => {
-
-    if (window.scrollY >= window.screen.height - 450) {
-      setBackground(true)
-    } else {
-      setBackground(false)
-    }
-  }
-
-  useEffect(() => {
-    console.log('background changer');
-    changeBackground()
-    // adding the event when scroll change background
-    window.addEventListener("scroll", changeBackground);
-  })
-
   const fetchPrivateData = () => {
 
     const url = "http://localhost:8080/private";
@@ -101,14 +83,12 @@ function App() {
     }
   },[]); */
 
-
-
   return (
-    <div className={`App ${background ? "red" : "white"}`}>
+    <div className="App">
       <Grid container direction="column">
         <Grid container>
         <Grid item sm={false} md={3}/>
-            <Grid item sm={12} md={6}>
+            <Grid className="bg" item sm={12} md={6}>
               <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
                 <Switch>
                   {/* Nav */}
@@ -169,8 +149,8 @@ function App() {
               </Switch>
             </Switch>
             {isAccepted ? <Cookies /> : null}
-            <Footer />
-          </Grid>
+              <Footer />
+            </Grid>
           <Grid item sm={false} md={3} />
         </Grid>
       </Grid>

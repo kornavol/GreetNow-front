@@ -1,27 +1,49 @@
-#card-editor {
+#card-body-container {
     width: 100%;
-    height: 50%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    overflow: hidden;
 }
 
-#card-front, #card-back {
-    width: 50%;
+#card-body {
+    width: 45%;
     max-width: 400px;
-    aspect-ratio: 2/3;
-    border: 1px solid black;
+    height: 95%;
+    /* aspect-ratio: 2/3; */
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+#card-body-container h4 {
+    text-align: center;
     box-sizing: border-box;
 }
 
-#card-frw-arrow, #card-back-arrow {
-    position: absolute;
-}
-
-#card-frw-arrow {
-    right: 20px;
-}
-
+#card-frw-arrow,
 #card-back-arrow {
-    left: 20px;
+    width: 27.5%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    transition: 1s;
+}
+
+#card-frw-arrow h4,
+#card-back-arrow h4 {
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    color: grey;
+    margin-bottom: 10%;
+}
+
+#card-frw-arrow h4:hover,
+#card-back-arrow h4:hover {
+    color: #dc004e;
 }

@@ -585,16 +585,14 @@
     z-index: 1;
     top: 47%;
     left: 75%;
-    transform: rotate(15deg);
+    transform: rotate(10deg);
     opacity: 0;
     transition: 3s;
     animation: show-up 2s 9s forwards; 
-    ;
 }
 
 .pen img {
     width: 100%;
-    
 }
 
 /* Ribbon */

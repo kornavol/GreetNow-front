@@ -2,13 +2,17 @@ import './css/FrontPage.css';
 import React from 'react';
 import  { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import cardCoverPic from '../../assets/cover-card-editor.png';
+import cardBackPic from '../../assets/cover-back-card-editor.png';
 
-const FrontPage = () => {
 
-    const firstView = <h4>Select a background from the Image Catalog</h4>;
+const FrontPage = (props) => {
+
+    const firstView = <div className="cover-text-editor"><h4>Select a Cover Picture from the <br/> Image Catalog</h4></div>;
 
     const [text, setText] = useState()
     const selectedImage = useSelector((state) => state.currPict);
+    const isClicked = props.isClicked;
     console.log(selectedImage);
 
     useEffect(() => {
@@ -22,10 +26,12 @@ const FrontPage = () => {
     }, [selectedImage]);
 
     return (
-        <div id="card-front" style={{backgroundImage: `url('http://localhost:8080/greeting-pictures/${selectedImage.name}')`}}>
+        <div className={`editor-imgBox ${isClicked ? "rotate" : "rotate-close" }`}>
             {text}
+            <img src={cardBackPic} alt="card"/>
+            <img src={cardCoverPic} alt="card"/>
         </div>
     );
 }
-
+//<div id="card-front" style={{backgroundImage: `url('http://localhost:8080/greeting-pictures/${selectedImage.name}')`}}></div>
 export default FrontPage;

@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1
     },
     backgroundColor: {
-        backgroundColor: "transparent"
+        backgroundColor: "#ffffff"
     },
         menuButton: {
         marginRight: theme.spacing(2)
@@ -47,6 +47,8 @@ const useStyles = makeStyles(theme => ({
     },
     login: {
         fontFamily: 'Nunito',
+        fontWeight: 600,
+        color: '#000'
     },
     headerOptions: {
         display: "flex",
@@ -54,7 +56,9 @@ const useStyles = makeStyles(theme => ({
         justifyContent: "space-evenly"
     },
     dashboard: {
-        color: '#dc004e'
+        fontFamily: 'Nunito',
+        fontWeight: 600,
+        color: '#000'
     }
 }));
 

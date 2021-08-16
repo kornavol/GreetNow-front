@@ -1,19 +1,13 @@
 import React from 'react';
-import { Link } from 'react-scroll';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import CardRouletteAnimation from './CardRouletteAnimation';
 import balloonGold from '../assets/balloon-gold.png';
 import balloonPink from '../assets/balloon-pink.png';
 import './css/CardRouletteHome.css';
 
-const CardEditor = () => {
+const CardRoulette = (props) => {
 
     return (
-        <section id="card-roulette-home-container" data-aos="fade-up" data-aos-duration="1000">
-            <Link className="roulette-scroll-up" to="intro-container" smooth={true} duration={1000} offset={-50}>
-                <ExpandLessIcon style={{fontSize:'5vmin'}}/>
-            </Link>
+        <section id="card-roulette-home-container">
             <div className="frame-big"></div>
             <div className="star-container">
                 <h1>Card Roulette</h1>
@@ -27,7 +21,7 @@ const CardEditor = () => {
                 <div className="star star8"></div>
             </div>
             
-            <CardRouletteAnimation/>
+            <CardRouletteAnimation rightArrowHome={props.rightArrowHome} leftArrowHome={props.leftArrowHome}/>
             
             <div className="card-roulette-banner">
                 <div className="card-roulette-text">
@@ -48,14 +42,11 @@ const CardEditor = () => {
             <div className="balloon2">
                 <img src={balloonPink} alt="balloon"/>
             </div>
-            <div className="card-roulette-home-button glow-on-hover">
-                <a className="roulette-btn" href="/roulette">GO TO CARD ROULETTE</a>
+            <div id="card-roulette-btn" className="card-roulette-home-button glow-on-hover">
+                <a className="roulette-btn" href="#">GO TO CARD ROULETTE</a>
             </div>
-            <Link className="roulette-scroll-down" to="img-catalog" smooth={true} duration={1000} offset={-150}>
-                <ExpandMoreIcon style={{fontSize:'5vmin'}}/>
-            </Link>
         </section>
     );
 }
 
-export default CardEditor;
+export default CardRoulette;
