@@ -21,7 +21,7 @@ const CardRoulette = (props) => {
 ];
 
 const doors = document.querySelectorAll(".door");
-
+const rightArrowHome = props.rightArrowHome;
 
 async function spin() {
     init(false, 1, 2);
@@ -105,17 +105,23 @@ function shuffle([...arr]) {
     return arr
 }
 
-/* 
+const animate = () => {
+    spin();
+}
+
 useEffect(() => {
-    init();
-    document.querySelector("#spinner").addEventListener("click", spin);
-    document.querySelector("#reseter").addEventListener("click", init);
+    init()
+    //window.addEventListener("onload", spin);
+    //props.rightArrowHome.addEventListener("click", animate);
+    window.onload =  spin();
+    //document.querySelector("#leftArrowHome").addEventListener("click", spin);
+    //document.querySelector("#reseter").addEventListener("click", init);
 })
- */
 
 
+/* 
     const scrollUp = () => {
-        if (window.scrollY >= -500) {
+        if (window.scrollY >= window.screen.height - 450) {
         spin()
         } else {
         init()
@@ -128,6 +134,25 @@ useEffect(() => {
         window.addEventListener("click", spin);
 
     })
+ */
+      /* Change background color */
+ /*      
+  const [isScrollDown, setIsScrollDown] = useState(false);
+  const checkScrollDown = () => {
+
+    if (window.scrollY >= window.screen.height - 450) {
+      setIsScrollDown(true)
+    } else {
+      setIsScrollDown(false)
+    }
+  }
+
+  useEffect(() => {
+    checkScrollDown()
+    // adding the event when scroll change background
+    window.addEventListener("scroll", checkScrollDown);
+  })
+ */
 
     return (
         <section id="card-roulette-container">

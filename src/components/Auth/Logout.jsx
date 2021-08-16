@@ -1,10 +1,15 @@
 import React from "react";
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-import { ListItem, ListItemText } from '@material-ui/core';
+import { 
+    Box, 
+    ListItem, 
+    ListItemIcon, 
+    ListItemText, 
+} from '@material-ui/core';
 import { useHistory } from "react-router-dom";
 
 function Logout(props) {
-
+    const StyledMenuItem = props.StyledMenuItem;
     const history = useHistory();
 
     function handleLogout(){
@@ -12,13 +17,28 @@ function Logout(props) {
         props.setIsAuth(false);
         props.setUser('');
         history.push('/');
+        props.handleDrawerClose();
+        props.handleClose();
     }
 
     return (
-        <ListItem button onClick={() => {handleLogout(); props.isMobile? props.handleDrawerClose() : props.handleClose()}}>
-            <ExitToAppIcon/>
-            <ListItemText primary='Logout' />
-        </ListItem>
+        <Box>
+            {props.isMobile ? (
+                <ListItem button onClick={() => handleLogout()}>
+                    <ListItemIcon>
+                        <ExitToAppIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary='Logout' />
+                </ListItem>
+            ):(
+                <StyledMenuItem onClick={() => handleLogout()}>
+                    <ListItemIcon>
+                        <ExitToAppIcon/>
+                    </ListItemIcon>
+                    <ListItemText primary='Logout' />
+                </StyledMenuItem>
+            )}
+        </Box>
     )
 }
 

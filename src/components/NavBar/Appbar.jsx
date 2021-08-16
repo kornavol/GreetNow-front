@@ -1,24 +1,21 @@
-
 import React, {useState, useEffect} from "react";
 /* Material UI Components */
 import { 
     Box,
     Button,
-    useMediaQuery
+    MenuItem,
+    useMediaQuery,
+    useTheme,
+    withStyles
 } from '@material-ui/core';
 /* Material UI Icons */
 import EditIcon from '@material-ui/icons/Edit'
 import EventIcon from '@material-ui/icons/Event';
-
-import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-
 import HomeIcon from '@material-ui/icons/Home';
 import PermContactCalendarIcon from '@material-ui/icons/PermContactCalendar';
 import PhotoAlbumIcon from '@material-ui/icons/PhotoAlbum';
 import SettingsIcon from '@material-ui/icons/Settings';
 import TrackChangesIcon from '@material-ui/icons/TrackChanges';
-/* Material UI Styles */
-import { useTheme } from "@material-ui/core/styles";
 /* Router */
 import { withRouter } from "react-router-dom";
 /* React Components */
@@ -28,6 +25,19 @@ import AppbarMobile from './AppbarMobile';
 import AppbarDesktop from "./AppbarDesktop";
 /* React-Bootstrap Modal */
 import Modal from 'react-bootstrap/Modal';
+
+/* Menu Item Styles */
+const StyledMenuItem = withStyles((theme) => ({
+    root: {
+        '&:focus': {
+        backgroundColor: '#dc004e',
+        '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
+            color: theme.palette.common.white,
+            fontFamily: 'Nunito'
+        },
+        },
+    },
+}))(MenuItem);
 
 const Appbar = (props) => {
 
@@ -52,7 +62,27 @@ const Appbar = (props) => {
         history.push(pageURL);
     };
 
- /*    useEffect(() => {
+    /* Desktop Dropdown Menu Open and Close Functions */
+    const [anchorEl, setAnchorEl] = useState(null);
+    const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+    };
+    const handleClose = () => {
+    setAnchorEl(null);
+    };
+
+    /* Mobile Drawer Open and Close Functions */
+    const [open, setOpen] = useState(false);
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+
+    useEffect(() => {
         console.log('login');
         console.log(history);
     })
@@ -95,7 +125,7 @@ const Appbar = (props) => {
     const dashItems = [
         {
             dashTitle: "Catalog",
-            pageURL: "/media-catalog",
+            pageURL: "/catalog",
             icon: <PhotoAlbumIcon/>
         },
         {
@@ -159,7 +189,17 @@ const Appbar = (props) => {
                     setUser={setUser}
                     setToggleRegister={setToggleRegister} 
                     setModalShow={setModalShow} 
-                    handleButtonClick={handleButtonClick}/>
+                    handleButtonClick={handleButtonClick}
+                    open={open}
+                    setOpen={setOpen}
+                    handleDrawerOpen={handleDrawerOpen}
+                    handleDrawerClose={handleDrawerClose}
+                    anchorEl={anchorEl}
+                    setAnchorEl={setAnchorEl}
+                    handleClick={handleClick}
+                    handleClose={handleClose}
+                    StyledMenuItem={StyledMenuItem}
+                    />
             ) : ( 
             <AppbarDesktop
                 isMobile={isMobile}
@@ -171,7 +211,17 @@ const Appbar = (props) => {
                 setUser={setUser}
                 setToggleRegister={setToggleRegister} 
                 setModalShow={setModalShow} 
-                handleButtonClick={handleButtonClick}/>     
+                handleButtonClick={handleButtonClick}
+                open={open}
+                setOpen={setOpen}
+                handleDrawerOpen={handleDrawerOpen}
+                handleDrawerClose={handleDrawerClose}
+                anchorEl={anchorEl}
+                setAnchorEl={setAnchorEl}
+                handleClick={handleClick}
+                handleClose={handleClose}
+                StyledMenuItem={StyledMenuItem}
+                />     
             )}
             <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
         </Box>

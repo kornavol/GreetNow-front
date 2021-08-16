@@ -11,7 +11,7 @@ const Texts = ({ texts }) => {
         <ListGroup.Item
             key={text._id}
             id={text._id}
-            onClick={() => dispatch(sendText(text))}
+            onClick={() => dispatch(sendText(text.text))}
             style={{ cursor: "pointer" }}
         >
             {text.text}

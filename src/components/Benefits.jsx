@@ -1,8 +1,5 @@
 import React from 'react';
 import data from '../data.json';
-import { Link } from 'react-scroll';
-import ExpandLessIcon from '@material-ui/icons/ExpandLess';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import image01 from '../assets/test_pictures/micheile-henderson-ntGM_0dHu2c-unsplash.jpg';
 import './css/Benefits.css';
 
@@ -10,10 +7,7 @@ import './css/Benefits.css';
 const Benefits = () => {
     return (
         
-        <div id="benefits" className="benefits-container" data-aos="fade-up" data-aos-duration="1000">
-            <Link className="benefits-scroll-up" to="img-catalog" smooth={true} duration={1000} offset={-50}>
-                <ExpandLessIcon style={{fontSize:'5vmin'}}/>
-            </Link>
+        <div id="benefits" className="benefits-container">
             {data.Benefits.map((header, i) => (
                 <div key={i}>
                     <h1>{header.title}</h1>
@@ -42,9 +36,6 @@ const Benefits = () => {
                     </div>
                 </div>
             </div>
-            <Link className="benefits-scroll-down" to="reviews" smooth={true} duration={1000} offset={-150}>
-                <ExpandMoreIcon style={{fontSize:'5vmin'}}/>
-            </Link>
         </div> 
     );
 }

@@ -15,6 +15,7 @@ import './css/Intro.css';
 
 const Intro = () => {
 
+    const [isClicked, setIsClicked] = useState (false);
 
     const introCardRef = useRef(0);
     const introFlipCardRef = useRef(0);
@@ -58,14 +59,18 @@ const Intro = () => {
         }
     }, []);
 
+    function clickHandler(click){
+        setIsClicked(click);
+    }
+
     return (
-        <section id="intro-container" data-aos="fade-up" data-aos-duration="1300">
+        <section id="intro-container">
             <div className="intro-banner">
                 <h2>Celebrate life with the perfect card or invitation</h2>
                 <h3>― Lorem ipsum dolor sit amet consectetur.</h3>
             </div>
             <FlowerAnimation/>
-            <div className="intro-card-container" data-aos="fade-up" data-aos-duration="1500">
+            <div className="intro-card-container" data-aos="fade-up" data-aos-duration="1700">
                 <div className="intro-envelope">
                     <div className="envelope-back">
                         <img src={envelopeBack} alt="envelope"/>
@@ -86,14 +91,14 @@ const Intro = () => {
                         </div>
                     </div>
 
-                    <div ref={introFlipCardRef} id="intro-flip-card" className="intro-flip-card">
-                        <div className="imgBox">
+                    <div ref={introFlipCardRef} id="intro-flip-card" className={`intro-flip-card ${isClicked ? "translate" : "reverse-translate"}`}>
+                        <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> clickHandler(true)}>
                             <Handwriting/>
-                            <img src={image1} alt="birthday"/>
+                            <img src={image1} alt="birthday" onClick={()=> clickHandler(false)}/>
                             <img src={introCardCover} alt="flower"/>
-                            
+                            <div className="fold"></div>
                         </div>
-                        <div className="intro-flip-card-text">
+                        <div className="intro-flip-card-text" onClick={()=> clickHandler(false)}>
                             <h2>Greetings!</h2>
                             <h3>Greet friends and family and celebrate special moments.
                                 <br/>
@@ -106,10 +111,7 @@ const Intro = () => {
                     </div>
                 </div>     
             </div>
-            <Link className="intro-scroll-down" to="card-roulette-home-container" smooth={true} duration={1000} offset={-140}>
-                See More <br/>
-                <ExpandMoreIcon style={{fontSize:'4vmin'}}/>
-            </Link>
+            
         </section>
     )
 }

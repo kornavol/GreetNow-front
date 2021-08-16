@@ -5,18 +5,19 @@ import Logout from "../Auth/Logout";
 import { 
     AppBar,
     Button,
+    Divider,
     ListItemIcon,
     ListItemText,
+    makeStyles,
     Menu,
     MenuItem,
     Toolbar, 
-    Typography,   
+    Typography,
+    withStyles  
 } from '@material-ui/core';
 /* Material UI Icons */
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonIcon from '@material-ui/icons/Person';
-/* Material UI Styles */
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import './css/Appbar.css';
 
 /* Desktop Navbar Styles */
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1
     },
     backgroundColor: {
-        backgroundColor: "transparent"
+        backgroundColor: "#ffffff"
     },
         menuButton: {
         marginRight: theme.spacing(2)
@@ -40,21 +41,24 @@ const useStyles = makeStyles(theme => ({
     },
     button: {
         fontFamily: 'Nunito',
-        "&.active": {
+        "&.active, &:hover": {
             color:'#dc004e'
-    },
+        }
     },
     login: {
         fontFamily: 'Nunito',
-        },
+        fontWeight: 600,
+        color: '#000'
+    },
     headerOptions: {
         display: "flex",
         flex: 1,
         justifyContent: "space-evenly"
-        
     },
     dashboard: {
-        color: '#dc004e'
+        fontFamily: 'Nunito',
+        fontWeight: 600,
+        color: '#000'
     }
 }));
 
@@ -78,31 +82,13 @@ const StyledMenu = withStyles({
     {...props}
     />
 ));
-/* Menu Styles */
-const StyledMenuItem = withStyles((theme) => ({
-    root: {
-        '&:focus': {
-        backgroundColor: '#dc004e',
-        '& .MuiListItemIcon-root, & .MuiListItemText-primary': {
-            color: theme.palette.common.white,
-            fontFamily: 'Nunito'
-        },
-        },
-    },
-}))(MenuItem);
 
 
 const AppbarDesktop = (props) => {
     /* Material UI Styles */
     const classes = useStyles();
-    /* Dropdown Menu Open and Close Functions */
-    const [anchorEl, setAnchorEl] = useState(null);
-    const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-    };
-    const handleClose = () => {
-    setAnchorEl(null);
-    };
+    const username = props.user;
+    const StyledMenuItem = props.StyledMenuItem;
 
     return (
         <div id="appbar" className={classes.root}>
@@ -110,46 +96,67 @@ const AppbarDesktop = (props) => {
                 <Toolbar>
                     {props.isAuth ? (
                         <div>
-                            <Button className={classes.dashboard} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            <Button className={classes.dashboard} aria-controls="simple-menu" aria-haspopup="true" onClick={props.handleClick}>
                                 Dashboard
                             </Button>
                             <StyledMenu
                                 id="customized-menu"
-                                anchorEl={anchorEl}
+                                anchorEl={props.anchorEl}
                                 keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
-                            >
+                                open={Boolean(props.anchorEl)}
+                                onClose={props.handleClose}
+                            >   
+                                <StyledMenuItem>
+                                    <ListItemIcon>
+                                        <PersonIcon/>
+                                    </ListItemIcon>
+                                    <ListItemText primary={ 'Hi ' + username}/>
+                                </StyledMenuItem>
+                                <Divider/>
                                 {props.dashItems.map((dash, i) => (
-                                <StyledMenuItem key={i} onClick={()=>{props.handleButtonClick(dash.pageURL); handleClose()}}>
-                                <ListItemIcon>
-                                    {dash.icon}
-                                </ListItemIcon>
-                                <ListItemText primary={dash.dashTitle} />
+                                <StyledMenuItem key={i} onClick={()=>{props.handleButtonClick(dash.pageURL); props.handleClose()}}>
+                                    <ListItemIcon>
+                                        {dash.icon}
+                                    </ListItemIcon>
+                                    <ListItemText primary={dash.dashTitle} />
                                 </StyledMenuItem>
                                 ))}
-                                <Logout isMobile={props.isMobile} handleClose={handleClose} setUser={props.setUser} setIsAuth={props.setIsAuth}/>
+                                <Logout
+                                    isMobile={props.isMobile}
+                                    setUser={props.setUser}
+                                    setIsAuth={props.setIsAuth}
+                                    handleButtonClick={props.handleButtonClick}
+                                    open={props.open}
+                                    setOpen={props.setOpen}
+                                    handleDrawerOpen={props.handleDrawerOpen}
+                                    handleDrawerClose={props.handleDrawerClose}
+                                    anchorEl={props.anchorEl}
+                                    setAnchorEl={props.setAnchorEl}
+                                    handleClick={props.handleClick}
+                                    handleClose={props.handleClose}
+                                    StyledMenuItem={props.StyledMenuItem}
+                                    />
                             </StyledMenu>
                         </div>
                     ) : (
                         <div>
-                            <Button className={classes.login} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
+                            <Button className={classes.login} aria-controls="simple-menu" aria-haspopup="true" onClick={props.handleClick}>
                                 Login
                             </Button>
                             <StyledMenu
                                 id="customized-menu"
-                                anchorEl={anchorEl}
+                                anchorEl={props.anchorEl}
                                 keepMounted
-                                open={Boolean(anchorEl)}
-                                onClose={handleClose}
+                                open={Boolean(props.anchorEl)}
+                                onClose={props.handleClose}
                             >
-                                <StyledMenuItem onClick={() => {props.setModalShow(true); props.setToggleRegister(true); handleClose()}}>
+                                <StyledMenuItem onClick={() => {props.setModalShow(true); props.setToggleRegister(true); props.handleClose()}}>
                                     <ListItemIcon>
                                         <PersonIcon fontSize="small"/>
                                     </ListItemIcon>
                                     <ListItemText primary="Login" />
                                 </StyledMenuItem>
-                                <StyledMenuItem onClick={() => {props.setModalShow(true); props.setToggleRegister(false); handleClose()}}>
+                                <StyledMenuItem onClick={() => {props.setModalShow(true); props.setToggleRegister(false); props.handleClose()}}>
                                     <ListItemIcon>
                                         <PersonAddIcon fontSize="small"/>
                                     </ListItemIcon>
@@ -161,7 +168,7 @@ const AppbarDesktop = (props) => {
                     {/* <Button className={classes.button} key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>{menu.menuTitle}</Button> */}
                     <div className={classes.headerOptions}>
                                 {props.menuItems.map((menu, i) => (
-                                    <Button className={classes.button} key={i} component={NavLink} to={menu.pageURL}>{menu.menuTitle}</Button>
+                                    <Button className={classes.button} key={i} component={NavLink} exact={true} to={menu.pageURL}>{menu.menuTitle}</Button>
                                 ))}
                                 <Typography variant="h6" className={classes.title}>
                                     GreetNow

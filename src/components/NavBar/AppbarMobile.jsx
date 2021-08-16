@@ -12,9 +12,11 @@ import {
     List, 
     ListItem,
     ListItemIcon, 
-    ListItemText, 
+    ListItemText,
+    makeStyles,
     Toolbar, 
     Typography,
+    useTheme
 } from '@material-ui/core';
 /* Material UI Icons */
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -22,14 +24,12 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MenuIcon from "@material-ui/icons/Menu";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import PersonIcon from '@material-ui/icons/Person';
-/*Material UI Styles*/
-import { makeStyles, useTheme } from "@material-ui/core/styles";
-
 /*Drawer Styles*/
 const drawerWidth = 300;
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
+        
     },
     appBar: {
         transition: theme.transitions.create(['margin', 'width'], {
@@ -86,36 +86,27 @@ const useStyles = makeStyles((theme) => ({
 
 const AppbarMobile = (props) => {
 
-    /*Drawer Styles and Open and Close Functions*/
     const classes = useStyles();
     const theme = useTheme();
-    const [open, setOpen] = useState(false);
     const username = props.user;
-
-    const handleDrawerOpen = () => {
-        setOpen(true);
-    };
-
-    const handleDrawerClose = () => {
-        setOpen(false);
-    };
 
     return (
         <div className={classes.root}>
             <CssBaseline/>
             <AppBar
                 position="fixed"
+                style={{backgroundColor:theme.palette.secondary.dark}}
                 className={clsx(classes.appBar, {
-                [classes.appBarShift]: open,
+                [classes.appBarShift]: props.open,
                 })}
             >
             <Toolbar>
                 <IconButton
                     color="inherit"
                     aria-label="open drawer"
-                    onClick={handleDrawerOpen}
+                    onClick={props.handleDrawerOpen}
                     edge="start"
-                    className={clsx(classes.menuButton, open && classes.hide)}
+                    className={clsx(classes.menuButton, props.open && classes.hide)}
                 >
                     <MenuIcon/>
                 </IconButton>
@@ -129,13 +120,13 @@ const AppbarMobile = (props) => {
                 className={classes.drawer}
                 variant="persistent"
                 anchor="left"
-                open={open}
+                open={props.open}
                 classes={{
                     paper: classes.drawerPaper,
                 }}
             >
                 <div className={classes.drawerHeader}>
-                    <IconButton onClick={handleDrawerClose}>
+                    <IconButton onClick={props.handleDrawerClose}>
                         {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
                     </IconButton>
                 </div>
@@ -149,11 +140,11 @@ const AppbarMobile = (props) => {
                                 </List>
                             ):(
                                 <List>
-                            <ListItem button onClick={() => {props.setModalShow(true); props.setToggleRegister(true); setOpen(false)}}>
+                            <ListItem button onClick={() => {props.setModalShow(true); props.setToggleRegister(true); props.setOpen(false)}}>
                                 <ListItemIcon><PersonIcon/></ListItemIcon>
                                 <ListItemText primary='Login'/>
                             </ListItem>
-                            <ListItem button onClick={() => {props.setModalShow(true); props.setToggleRegister(false); setOpen(false)}}>
+                            <ListItem button onClick={() => {props.setModalShow(true); props.setToggleRegister(false); props.setOpen(false)}}>
                                 <ListItemIcon><PersonAddIcon/></ListItemIcon>
                                 <ListItemText primary='Register'/>
                             </ListItem>
@@ -163,23 +154,37 @@ const AppbarMobile = (props) => {
                 {props.isAuth ? (
                 <List>
                     {props.menuItems.map((menu, i) => (
-                        <ListItem button key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>
+                        <ListItem button key={i} onClick={() => {props.handleButtonClick(menu.pageURL); props.handleDrawerClose()}}>
                             <ListItemIcon>{menu.icon}</ListItemIcon>
                             <ListItemText primary={menu.menuTitle} />
                         </ListItem>
                     ))}
-                    {props.dashItems.map((dash, i) => (
-                        <ListItem button key={i} onClick={() => props.handleButtonClick(dash.pageURL)}>
+                    {props.dashItems.splice(-1).map((dash, i) => (
+                        <ListItem button key={i} onClick={() => {props.handleButtonClick(dash.pageURL); props.handleDrawerClose()}}>
                             <ListItemIcon>{dash.icon}</ListItemIcon>
                             <ListItemText primary={dash.dashTitle} />
                         </ListItem>
                     ))}
-                    <Logout setUser={props.setUser} setIsAuth={props.setIsAuth} handleDrawerClose={handleDrawerClose}/>
+                    <Logout
+                        isMobile={props.isMobile}
+                        setUser={props.setUser}
+                        setIsAuth={props.setIsAuth}
+                        handleButtonClick={props.handleButtonClick}
+                        open={props.open}
+                        setOpen={props.setOpen}
+                        handleDrawerOpen={props.handleDrawerOpen}
+                        handleDrawerClose={props.handleDrawerClose}
+                        anchorEl={props.anchorEl}
+                        setAnchorEl={props.setAnchorEl}
+                        handleClick={props.handleClick}
+                        handleClose={props.handleClose}
+                        StyledMenuItem={props.StyledMenuItem}
+                        />
                 </List>
                 ):(
                     <List>
                     {props.menuItems.map((menu, i) => (
-                        <ListItem button key={i} onClick={() => props.handleButtonClick(menu.pageURL)}>
+                        <ListItem button key={i} onClick={() => {props.handleButtonClick(menu.pageURL); props.handleDrawerClose()}}>
                             <ListItemIcon>{menu.icon}</ListItemIcon>
                             <ListItemText primary={menu.menuTitle} />
                         </ListItem>

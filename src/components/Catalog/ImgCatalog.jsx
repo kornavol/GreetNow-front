@@ -8,7 +8,7 @@ import Filter from "./EvFilter";
 import Pictures from "./Pictures";
 import Pagination from '../Paginations';
 
-const ImgCatalog = () => {
+const ImgCatalog = (props) => {
 
     const [pictures, setPictures] = useState([]);
     const [category, setCategory] = useState({ events: "all"});
@@ -49,7 +49,7 @@ const ImgCatalog = () => {
         <div className="component">
             <Filter setSelector={setCategory} selector={category} />
             <Container>
-                <Row>
+                <Row onClick={props.onClick}>
                     <Col className="d-block m-auto">
                         <Pictures pictures={pictures} />
                     </Col>

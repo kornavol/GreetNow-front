@@ -1,6 +1,6 @@
 #intro-container {
     width: 100%;
-    height: 85%;
+    height: 100%;
     display: flex;
     align-content: center;
     justify-content: center;
@@ -11,11 +11,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    border-radius: 25px;
     position: relative;
     overflow: hidden;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 /* Header Banner */
@@ -32,8 +29,7 @@
     background-position: left;
     background-repeat: no-repeat;
     background-size: cover;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
+
     box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     opacity: 0;
     animation: show-up 2s 9s forwards;
@@ -60,11 +56,12 @@
 /* Card and Envelope Container */
 
 .intro-card-container {
-    width: 355px;
-    height: 400px;
+    width: 400px;
+    height: 460px;
     margin-top: 5vmin;
     transition: 1s;
     z-index: 3;
+
 }
 
 .intro-card-container img {
@@ -83,7 +80,7 @@
 
 .envelope-back {
     width: 100%;
-    height: 100%;
+    height: 99.9%;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
     rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
     rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
@@ -200,7 +197,7 @@
 
 .intro-card {
     width: 97%;
-    top: 1.5%;
+    top: 2.5%;
     left: 5px;
     transform-origin: left;
     animation: card-comes-out 2.5s 3.1s ease-in-out forwards,
@@ -225,8 +222,8 @@
 
 .intro-flip-card {
     width: 97%;
-    height: 97%;
-    top: 1.5%;
+    height: 95%;
+    top: 2.5%;
     left: 5px;
     transform-style: preserve-3d;
     transform: perspective(1000px);
@@ -236,11 +233,6 @@
     transform-origin: left;
     z-index: 15;
     animation: visible 1s 6.3s forwards;
-}
-
-.intro-flip-card:hover {
-    transform: translateX(50%);
-    cursor: pointer;
 }
 
 .intro-flip-card .intro-flip-card-text {
@@ -315,10 +307,6 @@
     transition: 2s;
 }
 
-.intro-flip-card:hover .imgBox {
-    transform: rotateY(-180deg);
-}
-
 .intro-flip-card .imgBox img {
     width: 100%;
     height: 100%;
@@ -332,6 +320,51 @@
 
 .intro-flip-card .imgBox img:nth-child(2) {
     transform: rotateY(180deg);
+}
+
+.translate {
+    transform: translateX(50%);
+}
+
+.reverse-translate {
+    transform: translateX(0%);
+}
+
+.open-card {
+    transform: rotateY(-180deg);
+}
+
+.close-card {
+    transform: rotateY(-0deg);
+}
+
+/*Corner Fold Effect */
+
+.fold {
+    height: 400px;
+    padding: 25px 25px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: transparent;
+    transition: all ease 0.5s;
+}
+
+.fold:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    border-style: solid;
+    border-width: 0 50px 50px 0;
+    border-color: transparent;
+    transition: all ease 0.5s;
+    transform: rotate(90deg);
+}
+
+.fold:hover:before {
+    border-width: 0 50px 50px 0;
+    border-color: #eee #ffffff;
 }
 
 /* Scroll Icon */
