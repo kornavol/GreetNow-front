@@ -1,11 +1,12 @@
 import {combineReducers} from 'redux';
 import currText from './currText';
 import currPict from './currPict';
-import {eventsTable} from './initialData';
+import {eventsList, categoriesList} from './initialData';
 
 const allReducers = combineReducers({
     currText: currText,
     currPict: currPict,
-    events:eventsTable
+    events:eventsList,
+    categories:categoriesList
 })
 export default allReducers;

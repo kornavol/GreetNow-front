@@ -12,6 +12,7 @@ const Pictures = ({ pictures }) => {
 
         return (
             <img
+                alt='front page img'
                 key={picture._id}
                 id={picture._id}
                 className="picture"

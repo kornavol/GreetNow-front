@@ -5,7 +5,11 @@ import { useSelector } from 'react-redux';
 export default function Events({form, setForm}) {
 
     const [eventsList, setEventsList] = useState([]);
+    const [categoriesList, setCategoriesList] = useState([]);
+    
     useSelector((state) => state.events.then(result => setEventsList(result)))
+    useSelector((state) => state.categories.then(result => setCategoriesList(result)))
+
 
     function fillForm(e, field) {
         const newForm = { ...form }
@@ -26,15 +30,10 @@ export default function Events({form, setForm}) {
         setForm(newForm)
     }
 
-    console.log(form);
-
-
-    // const eventsList = ['Birthday', 'New Year', 'Christmas']
-    /*TO=DO: import events and categories from backend over request */
     const events = eventsList.map((event) => {
         const value = event.toLowerCase()
         return (
-            <label className="checkbox">
+            <label key={event} className="checkbox">
                 <input
                     name={event}
                     value={value}
@@ -44,9 +43,26 @@ export default function Events({form, setForm}) {
                 />
                 <span />
                 {event}
-                </label>
+            </label>
         )
-    })
+    });
+
+    const relationships = categoriesList.map((category) => {
+        const value = category.toLowerCase()
+        return (
+            <label key={category} className="checkbox">
+                <input
+                    name={category}
+                    value={value}
+                    type="checkbox"
+                    // onChange={(e)=>console.log(e.target.checked)} 
+                    onChange={(e) => fillForm(e,'relationships')}
+                />
+                <span />
+                {category}
+            </label>
+        )
+    });
 
 
     return (
@@ -64,7 +80,7 @@ export default function Events({form, setForm}) {
                                     <h5 className="text-dark font-weight-bold mb-10">Recipient's Events & Relationships</h5>
                                     {/*begin::Group*/}
                                     <div className="form-group row fv-plugins-icon-container has-success">
-                                        <label className="col-form-label col-xl-3 col-lg-3">Events</label>
+                                        <label className="col-form-label col-xl-3 col-lg-3">Events:</label>
                                         <div className="col-xl-9 col-lg-9 col-form-label">
                                             <div className="checkbox-inline">
                                                 {events}
@@ -72,6 +88,18 @@ export default function Events({form, setForm}) {
                                             <div className="fv-plugins-message-container" />
                                         </div>
                                     </div>
+
+                                    {/*begin::Group*/}
+                                    <div className="form-group row fv-plugins-icon-container has-success">
+                                        <label className="col-form-label col-xl-3 col-lg-3">Relationships:</label>
+                                        <div className="col-xl-9 col-lg-9 col-form-label">
+                                            <div className="checkbox-inline">
+                                                {relationships}
+                                            </div>
+                                            <div className="fv-plugins-message-container" />
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
                         </div>

@@ -19,6 +19,8 @@ export default function Wizzard({ unmPopUp }) {
         events:[]
     });
 
+    // console.log(recipient);
+
     return (
 
         <div id="contacts-wizzard">

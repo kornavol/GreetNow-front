@@ -4,8 +4,8 @@ export default function CTRow({contacts, number}) {
     const {firstName, lastName, dateOfBbirth, gender, relationships, events  } = contacts
     const fullName = lastName + ' ' + firstName
     const initials = firstName.substr(0, 1).toUpperCase() + lastName.substr(0, 1).toUpperCase()
-    const relatList = relationships.map((category) => <div className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>)
-    const eventsList = events.map((event) => <div className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>)
+    const relatList = relationships.map((category) => <div key = {category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>)
+    const eventsList = events.map((event) => <div key = {event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>)
 
     return (
         <tr key = {number} data-row={number} className="datatable-row" style={{ left: 0 }}>

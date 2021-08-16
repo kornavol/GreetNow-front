@@ -56,7 +56,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }
 
-body {
+/* body {
   margin: 0;
   font-family: Poppins, Helvetica, "sans-serif";
   font-size: 1rem;
@@ -65,7 +65,7 @@ body {
   color: #3F4254;
   text-align: left;
   background-color: #ffffff;
-}
+} */
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;

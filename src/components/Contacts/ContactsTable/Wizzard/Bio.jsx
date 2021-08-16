@@ -1,19 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function Bio({form, setForm}) {
-
-    
 
     function fillForm(e, field) {
         const newForm = { ...form }
         newForm[field] = e.target.value
         setForm(newForm)
     }
-
-    console.log(form);
-
-
-
 
     return (
         <div id="wizzard-bio" className='card=body p-0'>
@@ -51,7 +44,6 @@ export default function Bio({form, setForm}) {
                                                     className="btn btn-xs btn-icon btn-circle btn-white btn-hover-text-primary btn-shadow"
                                                     data-action="cancel"
                                                     data-toggle="tooltip"
-                                                    title
                                                     data-original-title="Cancel avatar"
                                                 >
                                                     <i className="ki ki-bold-close icon-xs text-muted" />
