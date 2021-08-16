@@ -17,13 +17,13 @@ const CardEditor = () => {
                 <h3>Create a Greeting Card with the Card Editor</h3>
             </div>
                 
-                <CardBody catalog={catalogHandler}/>
-                <div id="card-img-cat-btn">
-                    {catalog}
-                    <div className="preview-button">
-                        <a className="preview-btn" href="/card">Preview</a>
-                    </div>
+            <CardBody catalog={catalogHandler}/>
+            <div id="card-img-cat-btn">
+                {catalog}
+                <div className="preview-button">
+                    <a className="preview-btn" href="/card">Preview</a>
                 </div>
+            </div>
         </div>
     );
 }

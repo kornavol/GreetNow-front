@@ -57,6 +57,7 @@
     transform: translateX(-50%);
     display: flex;
     opacity: 0;
+    z-index: 10;
     animation: show-up 1s 9s forwards;
 }
 
