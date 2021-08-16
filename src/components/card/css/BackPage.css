@@ -1,5 +1,21 @@
 #card-back {
+    width: 80%;
+    height: 50%;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
+    position: relative;
+}
+
+#card-back h3 {
+    font-family: 'IM Fell English', cursive;
+    font-size: 1.2rem;
+    line-height: 1.3em;
+    text-align: center;
+}
+
+#card-back button {
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }

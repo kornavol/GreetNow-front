@@ -6,7 +6,7 @@ import { sendText } from '../../actions';
 const BackPage = () => {
 
     const [isEditable, setIsEditable] = useState(false);
-    const [text, setText] = useState('click here to change this text or select one from the Text Catalog');
+    const [text, setText] = useState('Click here to compose a message or select a template from the Text Catalog');
 
     const dispatch = useDispatch();
     const selectedText = useSelector((state) => state.currText);
@@ -14,7 +14,7 @@ const BackPage = () => {
 
     const editToggle = () => {
         setIsEditable(true);
-        setText('Dear');
+        setText('Please write a message');
     }
 
     const editTextHandler = (e) => {
@@ -31,7 +31,7 @@ const BackPage = () => {
 
     return (
         <div id="card-back" >
-            <p onBlur = {editTextHandler} onClick={editToggle} contentEditable = {isEditable}>{selectedText!=='null'? selectedText : text}</p>
+            <h3 onBlur = {editTextHandler} onClick={editToggle} contentEditable = {isEditable}>{selectedText!=='null'? selectedText : text}</h3>
             {isEditable? updateText : null}
         </div>
     );
