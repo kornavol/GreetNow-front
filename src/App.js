@@ -16,6 +16,7 @@ import Card from './pages/Card';
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
+
 import Settings from './pages/dashboard/Settings';
 
 /* Footer */
@@ -55,7 +56,6 @@ function App() {
   }
 
   useEffect(() => {
-    console.log('background changer');
     changeBackground()
     // adding the event when scroll change background
     window.addEventListener("scroll", changeBackground);
@@ -146,6 +146,10 @@ function App() {
               <Route path="/404">
                 <NotFoundPage />
               </Route>
+
+              <Route path="/contacts1">
+                <ContactList />
+              </Route>
               {isAuth ?
                 (<div>
                   <Route path="/catalog">
@@ -154,9 +158,9 @@ function App() {
                   <Route path="/calendar">
                     <Calendar />
                   </Route>
-                  <Route path="/contacts">
+                  {/* <Route path="/contacts">
                     <ContactList />
-                  </Route>
+                  </Route> */}
                   <Route path="/settings">
                     <Settings />
                   </Route>
