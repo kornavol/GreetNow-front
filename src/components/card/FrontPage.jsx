@@ -27,9 +27,10 @@ const FrontPage = (props) => {
 
     return (
         <div className={`editor-imgBox ${isClicked ? "rotate" : "rotate-close" }`}>
-            {text}
+            {/* {text} */}
+            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card"/>
             <img src={cardBackPic} alt="card"/>
-            <img src={cardCoverPic} alt="card"/>
+            
         </div>
     );
 }

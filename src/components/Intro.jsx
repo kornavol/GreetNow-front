@@ -7,8 +7,6 @@ import envelopeRight from '../assets/envelope-right-gold.png';
 import envelopeRightOpen from '../assets/envelope-right-open-gold.png';
 import Handwriting from './Handwriting';
 import FlowerAnimation from './FlowerAnimation';
-import { Link } from 'react-scroll';
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import './css/Intro.css';
 
 
@@ -59,10 +57,6 @@ const Intro = () => {
         }
     }, []);
 
-    function clickHandler(click){
-        setIsClicked(click);
-    }
-
     return (
         <section id="intro-container">
             <div className="intro-banner">
@@ -92,13 +86,13 @@ const Intro = () => {
                     </div>
 
                     <div ref={introFlipCardRef} id="intro-flip-card" className={`intro-flip-card ${isClicked ? "translate" : "reverse-translate"}`}>
-                        <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> clickHandler(true)}>
+                        <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> setIsClicked(state =>!state)}>
                             <Handwriting/>
-                            <img src={image1} alt="birthday" onClick={()=> clickHandler(false)}/>
+                            <img src={image1} alt="birthday"/>
                             <img src={introCardCover} alt="flower"/>
                             <div className="fold"></div>
                         </div>
-                        <div className="intro-flip-card-text" onClick={()=> clickHandler(false)}>
+                        <div className="intro-flip-card-text" onClick={()=> setIsClicked(state =>!state)}>
                             <h2>Greetings!</h2>
                             <h3>Greet friends and family and celebrate special moments.
                                 <br/>

@@ -37,12 +37,30 @@ export default function Card() {
 
     return (
         <div className="page">
+            {/* <div ref={introFlipCardRef} id="intro-flip-card" className={`intro-flip-card ${isClicked ? "translate" : "reverse-translate"}`}>
+                        <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> setIsClicked(state =>!state)}>
+                            <Handwriting/>
+                            <img src={image1} alt="birthday"/>
+                            <img src={introCardCover} alt="flower"/>
+                            <div className="fold"></div>
+                        </div>
+                        <div className="intro-flip-card-text" onClick={()=> setIsClicked(state =>!state)}>
+                            <h2>Greetings!</h2>
+                            <h3>Greet friends and family and celebrate special moments.
+                                <br/>
+                                Lorem, ipsum dolor sit amet consectetur adipisicing.
+                                <br/>
+                                Ipsum dolor sit amet.
+                            </h3>
+                            <h4>Greet Now</h4>
+                        </div>
+                    </div>
             <h2>Card information:</h2>
             <h4>ID: {id}</h4>
             <h4>text:{card.text}</h4>
             <img
                 src={imgPass}
-            />
+            /> */}
         </div>
     )
 }

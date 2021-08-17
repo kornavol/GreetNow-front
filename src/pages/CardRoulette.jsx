@@ -1,8 +1,8 @@
 import React from 'react';
 import EventFIlter from "../components/EventFIlter";
 import { Carousel, Button } from "react-bootstrap";
-
 import { useHistory } from "react-router-dom";
+import cardRoulette from './css/CardRoulette.css';
 
 
 
@@ -17,7 +17,7 @@ const CardRoulette = () => {
     }
 
     return (
-        <div id="card-roulette" className="page">
+        <div id="card-roulette">
             
             <EventFIlter />
 

@@ -1,8 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 
 import Intro from '../components/Intro';
 import CardRouletteHome from '../components/CardRouletteHome';
-import ImgCatalog from '../components/ImgCatalogHome';
+import CatalogHome from '../components/CatalogHome';
 import Benefits from '../components/Benefits.jsx';
 import UsersReviews from '../components/UsersReviews.jsx';
 
@@ -19,13 +19,11 @@ AOS.init();
 
 /* Home Page */
 const Home = () => {
-    const rightArrowHome = useRef(0);
-    const leftArrowHome = useRef(0);
 
     const SliderData = [
     <Intro/>,
-    <CardRouletteHome rightArrowHome={rightArrowHome}/>,
-    <ImgCatalog/>,
+    <CardRouletteHome/>,
+    <CatalogHome/>,
     <Benefits/>,
     <UsersReviews/>
     ]
@@ -50,12 +48,12 @@ const Home = () => {
         <Grid container direction="column">
             <Grid container>
                 <Grid item xs={12} className="home-slider">
-                    <NavigateBeforeOutlinedIcon id="leftArrowHome" className="left-arrow" onClick={prevSlide} style={{fontSize:'5vmin'}}/>
-                    <NavigateNextOutlinedIcon id="rightArrowHome" className="right-arrow" onClick={nextSlide} style={{fontSize:'5vmin'}}/>
+                    <NavigateBeforeOutlinedIcon className="left-arrow" onClick={prevSlide} style={{fontSize:'5vmin'}}/>
+                    <NavigateNextOutlinedIcon className="right-arrow" onClick={nextSlide} style={{fontSize:'5vmin'}}/>
                     <Grid container>
                     {SliderData.map((slide, index) => {
                         return (
-                            <Grid item xs={12} className={index === current ? 'slide active' : 'slide'} key={index}>
+                            <Grid key={index} item xs={12} className={index === current ? 'slide active' : 'slide'} key={index}>
                                 {index === current && (
                                     slide
                                 )}
@@ -66,7 +64,7 @@ const Home = () => {
                     </Grid>
                     <div className="container-dots">
                         {Array.from({length: 5}).map((item, index) => (
-                            <div onClick={() => moveDot(index)} className={current === index ? "dot active" : "dot" }></div>
+                            <div key={index} onClick={() => moveDot(index)} className={current === index ? "dot active" : "dot" }></div>
                         )) }
                     </div>
                 </Grid>

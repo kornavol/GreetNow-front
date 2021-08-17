@@ -1,0 +1,127 @@
+/* Flip Card */
+
+.preview-flip-card {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform-style: preserve-3d;
+    transform: perspective(1000px);
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+    position: absolute;
+    transform-origin: left;
+    transition: 1s;
+    z-index: 5;
+}
+
+/* Flip Card - Front */
+
+.preview-flip-card .preview-imgBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    background: #ffffff;
+    transition: 2s;
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+}
+
+.rotate {
+    transform: rotateY(-130deg);
+}
+
+.rotate-close {
+    transform: rotateY(0);
+}
+
+.preview-flip-card .preview-imgBox img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+}
+
+.preview-flip-card .preview-imgBox img:nth-child(2) {
+    transform: rotateY(180deg);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+        rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.cover-text-preview {
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    top: 80%;
+    left: 0;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: 2s;
+    background-color: #ffffff;
+
+}
+
+.cover-text-preview h4 {
+    font-family: 'Nunito';
+    font-size: 1.1rem;
+    margin-top: 1%;
+
+}
+
+/* Flip Card - Text */
+
+.preview-flip-card .preview-flip-card-text {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    background: #ffffff;
+}
+
+.preview-flip-card .details .content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.preview-flip-card .preview-flip-card-text h2 {
+    font-family: 'Norican', cursive;
+    font-size: 1.6rem;
+    color: #dc004e;
+    line-height: 1em;
+    margin: 10% 0;
+}
+
+.preview-flip-card .preview-flip-card-text h3 {
+    font-family: 'IM Fell English', cursive;
+    font-size: 1.2rem;
+    line-height: 1.3em;
+    margin-top: 12%;
+}
+
+.preview-flip-card .preview-flip-card-text h4 {
+    font-family: 'Norican', cursive;
+    font-size: 1.5rem;
+    line-height: 1em;
+    margin-top: 20%;
+}
+
+.preview-flip-card .details .content {
+    position: relative;
+    display: flex;
+    margin-top: 10px;
+}

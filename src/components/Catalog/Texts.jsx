@@ -4,14 +4,14 @@ import { ListGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { sendText } from "../../actions";
 
-const Texts = ({ texts }) => {
+const Texts = (props) => {
     const dispatch = useDispatch();
 
-    const textSet = texts.map((text) => (
+    const textSet = props.texts.map((text) => (
         <ListGroup.Item
             key={text._id}
             id={text._id}
-            onClick={() => dispatch(sendText(text.text))}
+            onClick={() => {dispatch(sendText(text.text)); props.setModalShow(false)}}
             style={{ cursor: "pointer" }}
         >
             {text.text}
