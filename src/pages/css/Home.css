@@ -29,10 +29,27 @@
 .left-arrow {
     position: absolute;
     top: 50%;
-    color: #E1C16E;
     z-index: 10;
     cursor: pointer;
     user-select: none;
+    background: -webkit-gradient(linear, left top, left bottom, from(#a95), to(#fea));
+    background-size: 200% auto;
+    color: #ffffff;
+    padding: 20px 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-family: 'Nunito',
+    sans-serif;
+    font-size: .8rem;
+    font-weight: 400;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    display: inline-block;
+    box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 1),
+    0px 1px 3px rgba(0, 0, 0, 0.3);
+    outline: none;
+    border: 1px solid #ba6;
     opacity: 0;
     animation: show-up 1s 9s forwards;
 }

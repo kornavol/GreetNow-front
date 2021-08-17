@@ -51,7 +51,7 @@ const ImgCatalog = (props) => {
             <Container>
                 <Row onClick={props.onClick}>
                     <Col className="d-block m-auto">
-                        <Pictures pictures={pictures} />
+                        <Pictures ImgParent={props.ImgParent} pictures={pictures} setModalShow={props.setModalShow} />
                     </Col>
                 </Row>
             </Container>

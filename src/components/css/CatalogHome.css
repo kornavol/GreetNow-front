@@ -1,4 +1,4 @@
-#img-catalog {
+#catalog-home {
     width: 100%;
     height: 100%;
     display: flex;
@@ -7,21 +7,23 @@
     flex-wrap: wrap;
     text-align: center;
     box-sizing: border-box;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
     border-radius: 25px;
     position: relative;
     overflow: hidden;
-    background-color: #ffffff;}
-
-.catalog-sub-container h1,
-.catalog-sub-container p {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #ffffff;
 }
 
-.catalog-sub-container > h1 {
+.catalog-home-subcontainer {
+    width: 90%;
+}
+
+.catalog-home-subcontainer h1 {
+    font-family: 'Norican', cursive;
     margin-top: 5vmin;
+}
+
+.catalog-home-subcontainer p {
+    font-family: 'Nunito', sans-serif;
 }
 
 /* Scroll Icon */

@@ -4,13 +4,15 @@ import CardBody from '../components/card/CardBody';
 import ImgSelection from '../components/card/ImgSelection';
 
 const CardEditor = () => {
-    const [auth, setAuth] = useState(false);
+    
 
+    const [auth, setAuth] = useState(false);
     const [catalog, setCatalog] = useState(<ImgSelection/>);
 
-    function catalogHandler(catalog){
-        setCatalog(catalog);
+    function catalogHandler(catalog) {
+    setCatalog(catalog);
     }
+
     return (
         <div id="card-editor-container">
             <div className="card-editor-title">

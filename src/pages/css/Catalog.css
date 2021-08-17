@@ -1,10 +1,25 @@
 #media-catalog {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  /* align-items: center;
-        justify-content: center; */
-
   width: 100%;
-  min-height: 70vh;
+  height: 90vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  border-radius: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.media-catalog-subcontainer {
+  width: 90%;
+  margin: auto;
+}
+
+.media-catalog-subcontainer h1 {
+  font-family: 'Norican', cursive;
+}
+
+.media-catalog-subcontainer p {
+  font-family: 'Nunito';
 }
