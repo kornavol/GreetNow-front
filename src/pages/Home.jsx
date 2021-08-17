@@ -53,7 +53,7 @@ const Home = () => {
                     <Grid container>
                     {SliderData.map((slide, index) => {
                         return (
-                            <Grid item xs={12} className={index === current ? 'slide active' : 'slide'} key={index}>
+                            <Grid key={index} item xs={12} className={index === current ? 'slide active' : 'slide'} key={index}>
                                 {index === current && (
                                     slide
                                 )}
@@ -64,7 +64,7 @@ const Home = () => {
                     </Grid>
                     <div className="container-dots">
                         {Array.from({length: 5}).map((item, index) => (
-                            <div onClick={() => moveDot(index)} className={current === index ? "dot active" : "dot" }></div>
+                            <div key={index} onClick={() => moveDot(index)} className={current === index ? "dot active" : "dot" }></div>
                         )) }
                     </div>
                 </Grid>

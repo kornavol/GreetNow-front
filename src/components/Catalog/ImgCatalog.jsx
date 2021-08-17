@@ -1,8 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import "./css/ImgCatalog.css";
 import { Container, Col, Row } from "react-bootstrap";
-
-import { useState, useEffect } from "react";
 
 import Filter from "./EvFilter";
 import Pictures from "./Pictures";
@@ -14,17 +12,18 @@ const ImgCatalog = (props) => {
     const [category, setCategory] = useState({ events: "all"});
     const [activePage, setActivePage] = useState(1);
     const [totalPages, setTotalPages] = useState(3);
-
+    
     const PostPerPage = 3;
     let currEvent = '&';
 
     if (category.events !== 'all') {
         currEvent = `&event=${category.events}`
     }
-
+    
     useEffect(() => {
         const page = `page=${activePage}`
         const limit = `limit=${PostPerPage}`
+        
 
         const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + currEvent + '&'
 
@@ -51,7 +50,7 @@ const ImgCatalog = (props) => {
             <Container>
                 <Row onClick={props.onClick}>
                     <Col className="d-block m-auto">
-                        <Pictures ImgParent={props.ImgParent} pictures={pictures} setModalShow={props.setModalShow} />
+                        <Pictures pictures={pictures} setModalShow={props.setModalShow}/>
                     </Col>
                 </Row>
             </Container>

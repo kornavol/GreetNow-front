@@ -8,9 +8,7 @@ import{ Button} from '@material-ui/core';
 
 
 const ImgSelection = (props) => {
-    const ImgParent = useRef(0);
-
-        /* Shows Modal */
+    /* Shows Modal */
     const [modalShow, setModalShow] = useState(false);
 
     function MyVerticallyCenteredModal(modalVertical) {
@@ -18,7 +16,7 @@ const ImgSelection = (props) => {
         return (
             <Modal {...modalVertical} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body>
-                    <ImgCatalog ref={ImgParent} setModalShow={setModalShow}/>
+                    <ImgCatalog setModalShow={setModalShow}/>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={modalVertical.onHide}>Close</Button>
