@@ -227,12 +227,54 @@
     left: 5px;
     transform-style: preserve-3d;
     transform: perspective(1000px);
-    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
     opacity: 0;
     position: absolute;
     transform-origin: left;
     z-index: 15;
     animation: visible 1s 6.3s forwards;
+    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+}
+
+.intro-flip-card .imgBox {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    background: #ffffff;
+    transition: 2s;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
+
+.intro-flip-card .imgBox div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transition: 2s;
+}
+
+.intro-flip-card .imgBox img {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+}
+
+.intro-flip-card .imgBox img:nth-child(2) {
+    right: 1px;
+    height: 100.1%;
+    transform: rotateY(180deg);
 }
 
 .intro-flip-card .intro-flip-card-text {
@@ -246,6 +288,8 @@
     align-items: center;
     flex-direction: column;
     background: #ffffff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 .intro-flip-card .details .content {
@@ -281,45 +325,6 @@
     position: relative;
     display: flex;
     margin-top: 10px;
-}
-
-.intro-flip-card .imgBox {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    transform-origin: left;
-    transform-style: preserve-3d;
-    background: #ffffff;
-    transition: 2s;
-    box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
-}
-
-.intro-flip-card .imgBox div {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transform-origin: left;
-    transform-style: preserve-3d;
-    transition: 2s;
-}
-
-.intro-flip-card .imgBox img {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    object-fit: cover;
-    transform-style: preserve-3d;
-    backface-visibility: hidden;
-}
-
-.intro-flip-card .imgBox img:nth-child(2) {
-    transform: rotateY(180deg);
 }
 
 .translate {

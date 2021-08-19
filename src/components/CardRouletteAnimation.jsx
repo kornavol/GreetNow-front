@@ -10,7 +10,8 @@ import frame2 from '../assets/frame2.png';
 import frame3 from '../assets/frame3.png';
 import './css/CardRouletteAnimation.css';
 
-const CardRoulette = (props) => {
+const CardRoulette = () => {
+
     const items = [
     flower1,
     flower2,
@@ -21,7 +22,8 @@ const CardRoulette = (props) => {
 ];
 
 const doors = document.querySelectorAll(".door");
-const rightArrowHome = props.rightArrowHome;
+
+
 
 async function spin() {
     init(false, 1, 2);
@@ -105,18 +107,15 @@ function shuffle([...arr]) {
     return arr
 }
 
-const animate = () => {
-    spin();
-}
 
 useEffect(() => {
-    init()
-    //window.addEventListener("onload", spin);
-    //props.rightArrowHome.addEventListener("click", animate);
-    window.onload =  spin();
-    //document.querySelector("#leftArrowHome").addEventListener("click", spin);
-    //document.querySelector("#reseter").addEventListener("click", init);
+        
+
+
 })
+
+
+
 
 
 /* 
@@ -174,12 +173,12 @@ useEffect(() => {
                 </div>
             </div>
 
-        {/* 
-            <div className="buttons">
+        
+            {/* <div className="buttons">
                 <button id="spinner">Spin</button>
                 <button id="reseter">Reset</button>
-            </div>
-       */}  
+            </div> */}
+        
         
         </section>
     );

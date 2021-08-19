@@ -108,6 +108,9 @@ function App() {
               <Route path="/card-editor">
                 <CardEditor />
               </Route>
+              <Route path="/card">
+                <Card />
+              </Route>
               {/* Footer */}
               <Route path="/qa">
                 <QA />
