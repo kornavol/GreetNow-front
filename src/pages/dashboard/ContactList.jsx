@@ -6,7 +6,7 @@ import './css/ContactList.css';
 // import '../../components/Contacts/assets/plugins/custom/prismjs/prismjs.bundle.css'
 
 /* main css for table. Needs to be changed */
-// import '../../components/Contacts/assets/css/style.bundle.css'
+import '../../components/Contacts/assets/css/style.bundle.css'
 
 /* Layout Themes(used by all pages) */
 // import '../../components/Contacts/assets/css/themes/layout/header/base/light.css'
@@ -23,49 +23,7 @@ import Wizzard from '../../components/Contacts/ContactsTable/Wizzard/Wizzard';
 
 export default function ContactList() {
 
-    const [contacts, setContacts] = useState([]);
-
-    /* CRUD and get data */
-
-
-
-
-    // function getAllContacts() {
-    //     const url = 'http://localhost:8080/recipients/getAll'
-    //     const options = {
-    //         method: 'GET',
-    //         headers
-    //     }
-
-    //     fetch(url, options)
-    //         .then(result => result.json()
-    //             .then(output => {
-    //                 if (output.status === 'success') {
-    //                     setContacts(output.data);
-    //                 } else {
-    //                     alert(output.error.message);
-    //                 }
-    //             }
-    //             ));
-
-    // }
-
-
-
-
-
-    useEffect(() => {
-        // getAllContacts()
-
-    }, []);
-
     const [switchCase, setSwitchCase] = useState('contacts')
-
-    function createRecord() {
-        alert('create reciep')
-
-    }
-
 
     return (
 
@@ -87,9 +45,7 @@ export default function ContactList() {
                                 >
                                     New Record
                                 </button>
-                                <ContactsTable
-                                    contacts={contacts}
-                                />
+                                <ContactsTable />
                             </div>)
                     case 'new_record':
                         return <Wizzard unmPopUp={() => { setSwitchCase('contacts') }} />

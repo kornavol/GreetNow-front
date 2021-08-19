@@ -1,62 +1,37 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import TRow from "./CTRow";
-import THead from './CTHead';
+import THead from "./CTHead";
 
 import { getAllContacts } from "../../../actions/contactsCRUD";
 
 export default function ContactsTable() {
+    const dispatch = useDispatch();
 
-    const [contacts, setContacts] = useState([]);
-
-    const dispatch = useDispatch()
-
-
-    // let contacts = [];
-    let Rows = [];
-
-
-    
-    // useEffect(() => {
-    //     dispatch(getAllContacts());
-        
-
-    // }, [dispatch]);
-    
-    /* for commit */
-
-    const  contacts1 = useSelector((state) => state.contacts);
-
-
-    useEffect(() => {
-        setContacts(contacts1)
-        console.log(3,contacts1);
-
-
-
-        console.log(2, Rows);
-
-    }, [contacts1]);
-
-    Rows = contacts.map((row) => {
-        number++;
-        console.log(9, row)      
-        return  <TRow key={number} number={number} contact={row} />
-        
-
-    }) 
-
-    console.log('rows', Rows)
-
-
-    console.log('contacts from Table', contacts);
+    const contacts = useSelector((state) => state.contacts);
 
     let number = 0;
 
-    
+    const Rows = contacts.map((row) => {
+        if (contacts === []) {
+            console.log(1, row);
+            return <h3>You don't have any contacts</h3>;
+            
+        } else {
+            number++;
+            console.log(2, row);
+            return <TRow key={number} number={number} contact={row} />;
+        }
+    });
 
- 
+    useEffect(() => {
+        dispatch(getAllContacts());
+    }, [dispatch]);
+
+
+    console.log("contacts from Table", contacts);
+
     return (
         <div className="card-body">
             <div
@@ -64,17 +39,16 @@ export default function ContactsTable() {
                 // className='table'
                 id="kt_datatable"
             >
-                <table className="datatable-table" 
+                <table
+                    className="datatable-table"
                 /* style = {{overflowX: 'scroll'}} */
                 >
                     <THead />
                     <tbody style={{}} className="datatable-body">
-                    {Rows.length > 0 ? Rows: null}
-                    {/* {Rows} */}
+                        {Rows}
                     </tbody>
                 </table>
-
             </div>
-        </div >
+        </div>
     );
 }

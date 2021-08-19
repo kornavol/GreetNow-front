@@ -1,16 +1,20 @@
 /* CRUD for Contacnt */
 
-const headers = {
-    "Content-Type": "application/json",
-    Authorization: `Bearer ${localStorage.getItem('authToken')}`
-}
+// const headers = {
+//     "Content-Type": "application/json",
+//     Authorization: `Bearer ${localStorage.getItem('authToken')}`
+// }
 
 export const getAllContacts = () => {
     const url = 'http://localhost:8080/recipients/getAll'
     const options = {
         method: 'GET',
-        headers
+        headers : {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
     }
+    
     /* dispatch comes from middleware */
     return async dispatch => {
         const response = await fetch(url, options);
@@ -25,7 +29,10 @@ export const updateContact = (contact) => {
     const url = 'http://localhost:8080/recipients/update_record'
     const options = {
         method: 'POST',
-        headers,
+        headers : {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem('authToken')}`
+        }
         // body: 
     }
     /* dispatch comes from middleware */
