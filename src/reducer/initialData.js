@@ -4,8 +4,7 @@ export async function eventsList (state)  {
     const response = await fetch(url)
     const result = await response.json()
     state = result.data
-    // console.log('events-state',state);
-
+    
     return state
 }
 

@@ -4,14 +4,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension'
+import thunkMiddleware from 'redux-thunk';
 import { BrowserRouter } from 'react-router-dom';
+
 import reportWebVitals from './reportWebVitals';
 
 import App from './App';
 import allReducers from './reducer';
 
-const store = createStore(allReducers);
+const composedEnhancer = composeWithDevTools(applyMiddleware(thunkMiddleware))
+
+const store = createStore(allReducers, composedEnhancer);
 
 
 ReactDOM.render(

@@ -14,7 +14,7 @@ import './css/ContactList.css';
 // import '../../components/Contacts/assets/css/themes/layout/brand/dark.css'
 // import '../../components/Contacts/assets/css/themes/layout/aside/dark.css'
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import ContactsTable from '../../components/Contacts/ContactsTable/ContactsTable';
 // import {Wizzard as WizzComp} from '../../components/Contacts/Wizzard';
@@ -23,33 +23,41 @@ import Wizzard from '../../components/Contacts/ContactsTable/Wizzard/Wizzard';
 
 export default function ContactList() {
 
-    const [contacts, setContacts] = useState([{
-        _id: "13asdsad1",
-        firstName: "Sonni",
-        lastName: "Gabotti",
-        dateOfBbirth: "10/14/1950",
-        gender: "Female",
-        relationships: ['family', 'mom'],
-        events: ['Birthday', 'Christmas']
-    },
-    {
-        _id: "13asdsad1",
-        firstName: "Andreas",
-        lastName: "Kornblum",
-        dateOfBbirth: "08/07/1986",
-        gender: "Male",
-        relationships: ['work', 'friends'],
-        events: ['Birthday', 'Christmas']
-    },
-    {
-        _id: "13asdsad1",
-        firstName: "Tanya",
-        lastName: "Wolosh",
-        dateOfBbirth: "08/21/1982",
-        gender: "Female",
-        relationships: ['family', 'sister'],
-        events: ['Birthday', 'Christmas']
-    }]);
+    const [contacts, setContacts] = useState([]);
+
+    /* CRUD and get data */
+
+
+
+
+    // function getAllContacts() {
+    //     const url = 'http://localhost:8080/recipients/getAll'
+    //     const options = {
+    //         method: 'GET',
+    //         headers
+    //     }
+
+    //     fetch(url, options)
+    //         .then(result => result.json()
+    //             .then(output => {
+    //                 if (output.status === 'success') {
+    //                     setContacts(output.data);
+    //                 } else {
+    //                     alert(output.error.message);
+    //                 }
+    //             }
+    //             ));
+
+    // }
+
+
+
+
+
+    useEffect(() => {
+        // getAllContacts()
+
+    }, []);
 
     const [switchCase, setSwitchCase] = useState('contacts')
 
@@ -57,6 +65,7 @@ export default function ContactList() {
         alert('create reciep')
 
     }
+
 
     return (
 

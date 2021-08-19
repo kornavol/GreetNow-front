@@ -34,7 +34,23 @@ import Cookies from './components/Cookies.jsx';
 /* Material UI Grid and Components*/
 import { Grid } from '@material-ui/core';
 
+import { useDispatch } from "react-redux";
+import { getAllContacts } from "./actions/contactsCRUD";
+
 function App() {
+
+
+
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+      if (isAuth) {
+        dispatch(getAllContacts())    
+      }
+  }, [dispatch]);
+
+  
+    
 
   const history = useHistory();
   /*  for show Component Coockies  (component) */
@@ -142,9 +158,9 @@ function App() {
                   <Route path="/calendar">
                     <Calendar />
                   </Route>
-                  {/* <Route path="/contacts">
+                  <Route path="/contacts">
                     <ContactList />
-                  </Route> */}
+                  </Route>
                   <Route path="/settings">
                     <Settings />
                   </Route>
