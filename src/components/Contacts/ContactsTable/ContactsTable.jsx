@@ -24,6 +24,7 @@ export default function ContactsTable() {
 
     // }, [dispatch]);
     
+    /* for commit */
 
     const  contacts1 = useSelector((state) => state.contacts);
 
