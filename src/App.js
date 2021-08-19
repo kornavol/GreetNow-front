@@ -103,7 +103,7 @@ function App() {
                 <Intro />
               </Route>
               <Route path="/roulette">
-                <CardRoulette />
+                <CardRoulette isAuth={isAuth}/>
               </Route>
               <Route path="/card-editor">
                 <CardEditor />
