@@ -1,12 +1,22 @@
 import React from 'react';
 
-export default function Bio({form, setForm}) {
+export default function Bio({ form, setForm }) {
 
     function fillForm(e, field) {
         const newForm = { ...form }
         newForm[field] = e.target.value
         setForm(newForm)
     }
+
+
+    /* COnditional rendering when for editing contact */
+    const genderList = ['male', 'female']
+    const genders = genderList.map(gender => {
+        if (gender === form.gender) {
+            return <option value={gender} selected>{gender}</option>
+        }
+        return <option value={gender}>{gender}</option>
+    })
 
     return (
         <div id="wizzard-bio" className='card=body p-0'>
@@ -106,6 +116,7 @@ export default function Bio({form, setForm}) {
                                                 className="form-control form-control-solid form-control-lg"
                                                 name="dateOfBbirth"
                                                 type="date"
+                                                value={form.dateOfBirth}
                                                 onChange={(e) => fillForm(e, 'dateOfBbirth')}
                                             />
                                             {/* <span className="form-text text-muted">
@@ -125,10 +136,9 @@ export default function Bio({form, setForm}) {
                                                 name="language"
                                                 onChange={(e) => fillForm(e, 'gender')}
                                             >
-                                                <option value="">Select Language...</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                             
+                                                <option value="">Select Gender...</option>
+                                                {genders}
+
                                             </select>
 
                                             {/*                                             <span className="form-text text-muted">

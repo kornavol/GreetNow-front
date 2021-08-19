@@ -14,7 +14,7 @@ export const getAllContacts = () => {
             Authorization: `Bearer ${localStorage.getItem('authToken')}`
         }
     }
-    
+
     /* dispatch comes from middleware */
     return async dispatch => {
         const response = await fetch(url, options);
@@ -32,8 +32,8 @@ export const updateContact = (contact) => {
         headers : {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem('authToken')}`
-        }
-        // body: 
+        },
+        body: contact
     }
     /* dispatch comes from middleware */
     return async dispatch => {

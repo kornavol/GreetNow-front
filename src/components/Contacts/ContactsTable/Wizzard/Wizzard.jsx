@@ -2,25 +2,45 @@ import '../../assets/css/wizzard.css'
 import { Tabs, Tab } from "react-bootstrap";
 import Accordion from 'react-bootstrap/Accordion'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from 'react-redux';
 
 import Bio from './Bio';
 import Events from './Events';
+import { editResipient } from '../../../../actions/contatcInf'
 
 
 export default function Wizzard({ unmPopUp }) {
+
+    const dispatch = useDispatch();
+
 
     const [key, setKey] = useState("bio");
     const [recipient, setRecipient] = useState({
         firstName: '',
         lastName: '',
-        dateOfBbirth: '',
+        dateOfBirth: '',
         gender: '',
         relationships: [],
         events: []
     });
 
-    // console.log(recipient);
+    const recipForEdit = useSelector(state => state.contact)
+
+    useEffect(() => {
+        if (recipForEdit) {
+            setRecipient(recipForEdit)
+        }
+    }, []);
+
+    useEffect(() => {
+        dispatch(editResipient({}))
+    }, [recipient]);
+
+    
+    
+    console.log('recipient', recipForEdit);
+
 
     const headers = {
         'Content-Type': 'application/json',

@@ -49,11 +49,11 @@ function App() {
   const [isAuth, setIsAuth] = useState(false);
   const [privateData, setPrivateData] = useState();//now it is just the first name
 
-/*   useEffect(() => {
+  useEffect(() => {
       if (isAuth) {
         dispatch(getAllContacts())    
       }
-  }, [isAuth]); */
+  }, [isAuth]);
 
   const fetchPrivateData = () => {
 

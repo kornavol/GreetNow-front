@@ -1,4 +1,4 @@
-import './css/ContactList.css';
+// import './css/ContactList.css';
 
 /* Global Theme Styles(used by all pages) */
 // import '../../components/Contacts/assets/plugins/global/plugins.bundle.css'
@@ -45,10 +45,12 @@ export default function ContactList() {
                                 >
                                     New Record
                                 </button>
-                                <ContactsTable />
+                                <ContactsTable setSwitchCase = {setSwitchCase}/>
                             </div>)
                     case 'new_record':
-                        return <Wizzard unmPopUp={() => { setSwitchCase('contacts') }} />
+                        return <Wizzard unmPopUp={() => setSwitchCase('contacts') } />
+                    case 'edit_contact':
+                        return <Wizzard unmPopUp={() => setSwitchCase('contacts') } />
                     default:
                         return <h1>No project match</h1>;
                 }

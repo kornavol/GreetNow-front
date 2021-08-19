@@ -1,13 +1,13 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 
-import { updateContact } from "../../../actions/contactsCRUD";
+import { editResipient } from '../../../actions/contatcInf';
 
-export default function CTRow({ contact, number }) {
+export default function CTRow({ contact, number, setSwitchCase }) {
+    
     const dispatch = useDispatch()
 
-
-    const { firstName, lastName, dateOfBbirth, gender, relationships, events } = contact
+    const { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
     const fullName = lastName + ' ' + firstName
 
     console.log('from ROW:',firstName,  lastName);
@@ -75,9 +75,9 @@ export default function CTRow({ contact, number }) {
                 </span>
             </td>
 
-            <td data-field="Birthday" aria-label={dateOfBbirth} className="datatable-cell">
+            <td data-field="Birthday" aria-label={dateOfBirth} className="datatable-cell">
                 <span style={{ width: 108 }}>
-                    <div className="font-weight-bolder text-primary mb-0">{dateOfBbirth}</div>
+                    <div className="font-weight-bolder text-primary mb-0">{dateOfBirth}</div>
                     {/* <div className="text-muted">Rejected</div> */}
                 </span>
             </td>
@@ -113,7 +113,11 @@ export default function CTRow({ contact, number }) {
                     <button
                         className="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2"
                         title="Edit details"
-                    // onClick={dispatch(updateContact(contact))}
+                        // onClick={dispatch(updateContact(contact))}
+                        onClick={() => {
+                            setSwitchCase('edit_contact');
+                            dispatch(editResipient(contact))
+                    }}        
                     >
 
                         <span className="svg-icon svg-icon-md">

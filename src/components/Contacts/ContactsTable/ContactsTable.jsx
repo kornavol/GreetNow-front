@@ -6,10 +6,10 @@ import THead from "./CTHead";
 
 import { getAllContacts } from "../../../actions/contactsCRUD";
 
-export default function ContactsTable() {
-    const dispatch = useDispatch();
+export default function ContactsTable(props) {
+    // const dispatch = useDispatch();
 
-    const contacts = useSelector((state) => state.contacts);
+    const contacts = useSelector(state => state.contacts);
 
     let number = 0;
 
@@ -21,13 +21,13 @@ export default function ContactsTable() {
         } else {
             number++;
             console.log(2, row);
-            return <TRow key={number} number={number} contact={row} />;
+            return <TRow key={number} number={number} contact={row} setSwitchCase = {props.setSwitchCase} />;
         }
     });
 
-    useEffect(() => {
-        dispatch(getAllContacts());
-    }, [dispatch]);
+    // useEffect(() => {
+    //     dispatch(getAllContacts());
+    // }, [dispatch]);
 
 
     console.log("contacts from Table", contacts);
