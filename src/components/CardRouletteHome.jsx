@@ -1,10 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import {Link} from 'react-router-dom';
 import CardRouletteAnimation from './CardRouletteAnimation';
 import balloonGold from '../assets/balloon-gold.png';
 import balloonPink from '../assets/balloon-pink.png';
 import './css/CardRouletteHome.css';
 
 const CardRoulette = (props) => {
+
+    const [state, setState] = useState(0);
+    const spinBtn = false;
+
+    useEffect(() => {
+        if(state === 0){
+            setState(1)
+        }
+        if(state === 1){
+            setState(0)
+        }
+        
+    }, []);
 
     return (
         <section id="card-roulette-home-container">
@@ -21,7 +35,7 @@ const CardRoulette = (props) => {
                 <div className="star star8"></div>
             </div>
             
-            <CardRouletteAnimation rightArrowHome={props.rightArrowHome} leftArrowHome={props.leftArrowHome}/>
+            <CardRouletteAnimation spinBtn={spinBtn}/>
             
             <div className="card-roulette-banner">
                 <div className="card-roulette-text">
@@ -43,7 +57,7 @@ const CardRoulette = (props) => {
                 <img src={balloonPink} alt="balloon"/>
             </div>
             <div id="card-roulette-btn" className="card-roulette-home-button glow-on-hover">
-                <a className="roulette-btn" href="#">GO TO CARD ROULETTE</a>
+                <Link className="roulette-btn" to="/roulette">GO TO CARD ROULETTE</Link>
             </div>
         </section>
     );

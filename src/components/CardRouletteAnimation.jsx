@@ -9,8 +9,13 @@ import frame1 from '../assets/frame1.png';
 import frame2 from '../assets/frame2.png';
 import frame3 from '../assets/frame3.png';
 import './css/CardRouletteAnimation.css';
+import { useDispatch } from "react-redux";
+import { sendPict } from '../actions';
 
 const CardRoulette = (props) => {
+
+    const dispatch = useDispatch();
+
     const items = [
     flower1,
     flower2,
@@ -79,12 +84,18 @@ function init(firstInit = true, groups = 1, duration = 1) {
     }
     // console.log(pool);
 
+    function selectImg(img){
+        console.log('picture: '+img);
+        dispatch(sendPict(img))
+    }
+
     for (let i = pool.length - 1; i >= 0; i--) {
         const box = document.createElement("img");
         box.classList.add("box");
         box.style.width = door.clientWidth + "px";
         box.style.height = door.clientHeight + "px";
         box.src = pool[i];
+        box.onclick=()=>selectImg(box.src);
         boxesClone.appendChild(box);
     }
     boxesClone.style.transitionDuration = `${duration > 0 ? duration : 1}s`;
@@ -106,53 +117,15 @@ function shuffle([...arr]) {
 }
 
 const animate = () => {
+    init();
     spin();
 }
 
-useEffect(() => {
-    init()
-    //window.addEventListener("onload", spin);
-    //props.rightArrowHome.addEventListener("click", animate);
-    window.onload =  spin();
-    //document.querySelector("#leftArrowHome").addEventListener("click", spin);
-    //document.querySelector("#reseter").addEventListener("click", init);
+useEffect(()=>{
+    spin();
 })
 
-
-/* 
-    const scrollUp = () => {
-        if (window.scrollY >= window.screen.height - 450) {
-        spin()
-        } else {
-        init()
-        }
-    }
-
-    useEffect(() => {
-        init()
-        scrollUp()
-        window.addEventListener("click", spin);
-
-    })
- */
-      /* Change background color */
- /*      
-  const [isScrollDown, setIsScrollDown] = useState(false);
-  const checkScrollDown = () => {
-
-    if (window.scrollY >= window.screen.height - 450) {
-      setIsScrollDown(true)
-    } else {
-      setIsScrollDown(false)
-    }
-  }
-
-  useEffect(() => {
-    checkScrollDown()
-    // adding the event when scroll change background
-    window.addEventListener("scroll", checkScrollDown);
-  })
- */
+init();
 
     return (
         <section id="card-roulette-container">
@@ -174,12 +147,14 @@ useEffect(() => {
                 </div>
             </div>
 
-        {/* 
+            <h3>Select an image or spin it again!</h3>
+            
+            {props.spinBtn?
             <div className="buttons">
-                <button id="spinner">Spin</button>
-                <button id="reseter">Reset</button>
+                <button id="spinner" onClick={animate}>Spin</button>
             </div>
-       */}  
+            : null}
+        
         
         </section>
     );
