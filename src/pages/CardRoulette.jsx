@@ -1,13 +1,28 @@
-import React from 'react';
-import EventFIlter from "../components/EventFIlter";
+import React, { useState, useEffect } from 'react';
+import EventFilter from "../components/EventFilter";
 import { Carousel, Button } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
+import RouletteAnimation from "../components/CardRouletteAnimation";
 import cardRoulette from './css/CardRoulette.css';
 
 
 
 
-const CardRoulette = () => {
+const CardRoulette = (props) => {
+
+    //changing the state to rerender the page
+    //because the RouletteAnimation is working just the first time - find another way?
+    const [state, setState] = useState(0)
+
+    useEffect(() => {
+        if(state === 0){
+            setState(1)
+        }
+        if(state === 1){
+            setState(0)
+        }
+        
+    }, []);
 
     const history = useHistory();
 
@@ -16,12 +31,16 @@ const CardRoulette = () => {
         history.push("/" + pass);
     }
 
+    const spinBtn = true;
+
     return (
         <div id="card-roulette">
             
-            <EventFIlter />
+            <EventFilter isAuth={props.isAuth}/>
 
-            <Carousel 
+            <RouletteAnimation spinBtn={spinBtn}/>
+
+            {/* <Carousel 
             className="m-auto border" style={{width:'200px', height:'300px'}}
             interval={null}
             >
@@ -41,13 +60,13 @@ const CardRoulette = () => {
                         alt="Second slide"
                     />
                 </Carousel.Item>
-            </Carousel>
-            <div className="flex flex-row justify-content-around">
+            </Carousel> */}
+            {/* <div className="flex flex-row justify-content-around">
                 <Button variant='warning' onClick={() => redirect('card-editor')}>Edit</Button>
                 <Button variant='warning'onClick={ () => redirect('pass')}>Send</Button>
-            </div>
+            </div> */}
 
-            <Button className="m-auto" variant='danger'>Generate</Button>
+            {/* <Button className="m-auto" variant='danger'>Generate</Button> */}
             
         </div>
     );
