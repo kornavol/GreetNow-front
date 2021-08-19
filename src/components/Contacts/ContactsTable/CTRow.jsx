@@ -1,14 +1,26 @@
 import React from 'react';
+import { useDispatch } from "react-redux";
 
-export default function CTRow({contacts, number}) {
-    const {firstName, lastName, dateOfBbirth, gender, relationships, events  } = contacts
+import { updateContact } from "../../../actions/contactsCRUD";
+
+export default function CTRow({ contact, number }) {
+    const dispatch = useDispatch()
+
+
+    const { firstName, lastName, dateOfBbirth, gender, relationships, events } = contact
     const fullName = lastName + ' ' + firstName
+
+    console.log('from ROW:',firstName,  lastName);
+
     const initials = firstName.substr(0, 1).toUpperCase() + lastName.substr(0, 1).toUpperCase()
-    const relatList = relationships.map((category) => <div key = {category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>)
-    const eventsList = events.map((event) => <div key = {event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>)
+    
+    const relatList = relationships.map((category) => <div key={category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>)
+    const eventsList = events.map((event) => <div key={event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>)
+
+    
 
     return (
-        <tr key = {number} data-row={number} className="datatable-row" style={{ left: 0 }}>
+        <tr key={number} data-row={number} className="datatable-row" style={{ left: 0 }}>
             {/* <td className="datatable-cell datatable-toggle-detail">
                 <a className="datatable-toggle-detail" href>
                     <i className="fa fa-caret-right" />
@@ -16,14 +28,14 @@ export default function CTRow({contacts, number}) {
             </td> */}
 
             <td data-field="CheckBox" className="datatable-cell">
-                    <div  className="form-check">
-                        <input
-                            className=" form-check-input"
-                            type="checkbox"
-                            defaultValue
-                            id="flexCheckDefault"
-                        />
-                    </div>
+                <div className="form-check">
+                    <input
+                        className=" form-check-input"
+                        type="checkbox"
+                        defaultValue
+                        id="flexCheckDefault"
+                    />
+                </div>
             </td>
 
             <td
@@ -96,15 +108,16 @@ export default function CTRow({contacts, number}) {
                 className="datatable-cell"
             >
                 <span style={{ overflow: "visible", position: "relative", width: 130 }}>
-                    
+
 
                     <button
                         className="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2"
                         title="Edit details"
+                    // onClick={dispatch(updateContact(contact))}
                     >
-                        
+
                         <span className="svg-icon svg-icon-md">
-                            
+
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -113,9 +126,9 @@ export default function CTRow({contacts, number}) {
                                 viewBox="0 0 24 24"
                                 version="1.1"
                             >
-                                
+
                                 <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                    
+
                                     <rect x={0} y={0} width={24} height={24} />
                                     <path
                                         d="M12.2674799,18.2323597 L12.0084872,5.45852451 C12.0004303,5.06114792 12.1504154,4.6768183 12.4255037,4.38993949 L15.0030167,1.70195304 L17.5910752,4.40093695 C17.8599071,4.6812911 18.0095067,5.05499603 18.0083938,5.44341307 L17.9718262,18.2062508 C17.9694575,19.0329966 17.2985816,19.701953 16.4718324,19.701953 L13.7671717,19.701953 C12.9505952,19.701953 12.2840328,19.0487684 12.2674799,18.2323597 Z"
@@ -136,10 +149,11 @@ export default function CTRow({contacts, number}) {
                     <button
                         className="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon"
                         title="Delete"
+                    // onClick={deleteContact}
                     >
-                        
+
                         <span className="svg-icon svg-icon-md">
-                            
+
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -148,9 +162,9 @@ export default function CTRow({contacts, number}) {
                                 viewBox="0 0 24 24"
                                 version="1.1"
                             >
-                                
+
                                 <g stroke="none" strokeWidth={1} fill="none" fillRule="evenodd">
-                                    
+
                                     <rect x={0} y={0} width={24} height={24} />
                                     <path
                                         d="M6,8 L6,20.5 C6,21.3284271 6.67157288,22 7.5,22 L16.5,22 C17.3284271,22 18,21.3284271 18,20.5 L18,8 L6,8 Z"
