@@ -1,0 +1,301 @@
+/* petal Set 1 */
+
+.petal-set1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    left: 0;
+    z-index: 2;
+}
+
+.petal-set1 img {
+    width: 100%;
+}
+
+.petal-set1 div,
+.petal-set2 div,
+.petal-set3 div {
+    width: 1.5vw;
+    position: absolute;
+    display: block;
+}
+
+.petal-set1 div:nth-child(1) {
+    left: 2%;
+    opacity: 0;
+    animation: petal-shower1 25s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(2) {
+    left: 10%;
+    opacity: 0;
+    animation: petal-shower1 20s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(3) {
+    left: 20%;
+    opacity: 0;
+    animation: petal-shower1 18s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(4) {
+    left: 30%;
+    opacity: 0;
+    animation: petal-shower1 18s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(5) {
+    left: 40%;
+    opacity: 0;
+    animation: petal-shower1 15s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(6) {
+    left: 50%;
+    opacity: 0;
+    animation: petal-shower1 18s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(7) {
+    left: 60%;
+    opacity: 0;
+    animation: petal-shower1 20s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(8) {
+    left: 80%;
+    opacity: 0;
+    animation: petal-shower1 20s 0.3s linear forwards;
+}
+
+.petal-set1 div:nth-child(9) {
+    left: 96%;
+    opacity: 0;
+    animation: petal-shower1 25s 0.3s linear forwards;
+}
+
+@keyframes petal-shower1 {
+    0% {
+        opacity: 0;
+        top: 0%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: rotate(45deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    60% {
+        transform: rotate(120deg);
+    }
+
+    80% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        top: 120%;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+}
+
+/* petal Set 2 */
+
+.petal-set2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    left: 0;
+    z-index: 2;
+    transform: rotateY(180deg);
+    filter: blur(1px);
+}
+
+.petal-set2 img {
+    width: 100%;
+}
+
+.petal-set2 div:nth-child(1) {
+    left: 40%;
+    opacity: 0;
+    animation: petal-shower2 15s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(2) {
+    left: 44%;
+    opacity: 0;
+    animation: petal-shower2 15s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(3) {
+    left: 48%;
+    opacity: 0;
+    animation: petal-shower2 20s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(4) {
+    left: 50%;
+    opacity: 0;
+    animation: petal-shower2 25s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(5) {
+    left: 52%;
+    opacity: 0;
+    animation: petal-shower2 25s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(6) {
+    left: 54%;
+    opacity: 0;
+    animation: petal-shower2 25s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(7) {
+    left: 55%;
+    opacity: 0;
+    animation: petal-shower1 20s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(8) {
+    left: 57%;
+    opacity: 0;
+    animation: petal-shower1 15s 1.5s linear forwards;
+}
+
+.petal-set2 div:nth-child(9) {
+    left: 60%;
+    opacity: 0;
+    animation: petal-shower1 15s 1.5s linear forwards;
+}
+
+@keyframes petal-shower2 {
+    0% {
+        opacity: 0;
+        top: 0%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: rotate(45deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    60% {
+        transform: rotate(120deg);
+    }
+
+    80% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        top: 125%;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+}
+
+/* petal Set 3 */
+
+.petal-set3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    left: 0;
+    z-index: 2;
+}
+
+.petal-set3 img {
+    width: 100%;
+}
+
+.petal-set3 div:nth-child(1) {
+    left: 35%;
+    opacity: 0;
+    animation: petal-shower3 15s 2s linear forwards;
+}
+
+.petal-set3 div:nth-child(2) {
+    left: 30%;
+    opacity: 0;
+    animation: petal-shower3 20s 2s linear forwards;
+}
+
+.petal-set3 div:nth-child(3) {
+    left: 42%;
+    opacity: 0;
+    animation: petal-shower3 25s 2s linear forwards;
+}
+
+.petal-set3 div:nth-child(4) {
+    left: 45%;
+    opacity: 0;
+    animation: petal-shower3 35s 2s linear forwards;
+}
+
+.petal-set3 div:nth-child(5) {
+    left: 48%;
+    opacity: 0;
+    animation: petal-shower3 30s 2s linear forwards;
+}
+
+.petal-set3 div:nth-child(6) {
+    left: 60%;
+    z-index: 5;
+    opacity: 0;
+    animation: petal-shower3 25s 2s linear forwards;
+}
+
+@keyframes petal-shower3 {
+    0% {
+        opacity: 0;
+        top: 0%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: rotate(45deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    60% {
+        transform: rotate(120deg);
+    }
+
+    80% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        top: 130%;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+}

@@ -2,6 +2,7 @@ import './css/CardEditor.css';
 import React, { useState } from 'react';
 import CardBody from '../components/card/CardBody';
 import ImgSelection from '../components/card/ImgSelection';
+import { Link } from 'react-router-dom';
 
 const CardEditor = () => {
     
@@ -23,7 +24,7 @@ const CardEditor = () => {
             <div id="card-img-cat-btn">
                 {catalog}
                 <div className="preview-button">
-                    <a className="preview-btn" href="/card">Preview</a>
+                    <Link className="preview-btn" to="/card">Preview</Link>
                 </div>
             </div>
         </div>

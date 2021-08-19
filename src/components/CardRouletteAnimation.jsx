@@ -12,6 +12,7 @@ import './css/CardRouletteAnimation.css';
 import { useDispatch } from "react-redux";
 import { sendPict } from '../actions';
 
+
 const CardRoulette = (props) => {
 
     const dispatch = useDispatch();
@@ -26,7 +27,8 @@ const CardRoulette = (props) => {
 ];
 
 const doors = document.querySelectorAll(".door");
-const rightArrowHome = props.rightArrowHome;
+
+
 
 async function spin() {
     init(false, 1, 2);
@@ -116,6 +118,7 @@ function shuffle([...arr]) {
     return arr
 }
 
+
 const animate = () => {
     init();
     spin();
@@ -126,6 +129,7 @@ useEffect(()=>{
 })
 
 init();
+
 
     return (
         <section id="card-roulette-container">
@@ -146,6 +150,7 @@ init();
                     </div>
                 </div>
             </div>
+
 
             <h3>Select an image or spin it again!</h3>
             

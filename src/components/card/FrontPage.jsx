@@ -27,12 +27,21 @@ const FrontPage = (props) => {
 
     return (
         <div className={`editor-imgBox ${isClicked ? "rotate" : "rotate-close" }`}>
-            {/* {text} */}
-            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card"/>
+            
+            {selectedImage.name != null ? (
+                <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card"/>
+            ) : (
+                <div>
+                    <img src={cardCoverPic} alt="card"/>
+                    {text}
+                </div>
+            )}
+            
             <img src={cardBackPic} alt="card"/>
             
         </div>
     );
 }
+
 //<div id="card-front" style={{backgroundImage: `url('http://localhost:8080/greeting-pictures/${selectedImage.name}')`}}></div>
 export default FrontPage;

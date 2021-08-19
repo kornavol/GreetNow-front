@@ -42,6 +42,7 @@ const Home = () => {
     const moveDot = index => {
         setCurrent(index)
     }
+    
 
     
     return (
