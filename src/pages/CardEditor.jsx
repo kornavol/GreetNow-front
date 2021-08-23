@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 const CardEditor = () => {
     
 
-    const [auth, setAuth] = useState(false);
+    // const [auth, setAuth] = useState(false);
     const [catalog, setCatalog] = useState(<ImgSelection/>);
 
     function catalogHandler(catalog) {

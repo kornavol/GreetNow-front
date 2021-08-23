@@ -30,7 +30,7 @@ const BackPage = () => {
 
     return (
         <div id="card-back" >
-            <h3 onBlur = {editTextHandler} onClick={editToggle} contentEditable = {isEditable}>{selectedText!=='null'? selectedText : text}</h3>
+            <h3 onBlur = {editTextHandler} onClick={editToggle} contentEditable = {isEditable}>{selectedText ? selectedText : text}</h3>
             {isEditable? updateText : null}
         </div>
     );
