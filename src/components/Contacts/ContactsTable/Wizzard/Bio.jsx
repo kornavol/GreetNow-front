@@ -13,9 +13,9 @@ export default function Bio({ form, setForm }) {
     const genderList = ['male', 'female']
     const genders = genderList.map(gender => {
         if (gender === form.gender) {
-            return <option value={gender} selected>{gender}</option>
+            return <option key={gender} value={gender} selected>{gender}</option>
         }
-        return <option value={gender}>{gender}</option>
+        return <option key={gender} value={gender}>{gender}</option>
     })
 
     return (
@@ -114,10 +114,10 @@ export default function Bio({ form, setForm }) {
                                         <div className="col-lg-9 col-xl-9">
                                             <input
                                                 className="form-control form-control-solid form-control-lg"
-                                                name="dateOfBbirth"
+                                                name="dateOfBirth"
                                                 type="date"
-                                                value={form.dateOfBirth}
-                                                onChange={(e) => fillForm(e, 'dateOfBbirth')}
+                                                defaultValue={form.dateOfBirth}
+                                                onChange={(e) => fillForm(e, 'dateOfBirth')}
                                             />
                                             {/* <span className="form-text text-muted">
                                                 If you want your invoices addressed to a company. Leave blank to use

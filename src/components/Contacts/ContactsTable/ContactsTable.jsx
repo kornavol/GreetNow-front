@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import TRow from "./CTRow";
@@ -8,7 +8,6 @@ import { getAllContacts } from "../../../actions/contactsCRUD";
 
 export default function ContactsTable(props) {
     // const dispatch = useDispatch();
-
     const contacts = useSelector(state => state.contacts);
 
     let number = 0;
@@ -20,8 +19,12 @@ export default function ContactsTable(props) {
             
         } else {
             number++;
-            console.log(2, row);
-            return <TRow key={number} number={number} contact={row} setSwitchCase = {props.setSwitchCase} />;
+            return <TRow 
+            key={number} 
+            number={number} 
+            contact={row} 
+            setSwitchCase = {props.setSwitchCase}
+            />;
         }
     });
 
@@ -30,7 +33,7 @@ export default function ContactsTable(props) {
     // }, [dispatch]);
 
 
-    console.log("contacts from Table", contacts);
+    // console.log("contacts from Table", contacts);
 
     return (
         <div className="card-body">

@@ -1,76 +1,116 @@
 import '../../assets/css/wizzard.css'
 import { Tabs, Tab } from "react-bootstrap";
-import Accordion from 'react-bootstrap/Accordion'
 
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 
 import Bio from './Bio';
 import Events from './Events';
-import { editResipient } from '../../../../actions/contatcInf'
+import { editContact } from '../../../../actions/contatcInf'
+import { getAllContacts } from "../../../../actions/contactsCRUD";
 
 
-export default function Wizzard({ unmPopUp }) {
+export default function Wizzard({ unmPopUp, purpose }) {
 
     const dispatch = useDispatch();
 
-
-    const [key, setKey] = useState("bio");
-    const [recipient, setRecipient] = useState({
+    const initRecip = {
         firstName: '',
         lastName: '',
         dateOfBirth: '',
         gender: '',
         relationships: [],
         events: []
-    });
+    }
+
+    const test = {
+        arr:
+            [1, 2, 3]
+    }
+
+    const name = 'arr'
+
+    console.log('arr', test[name]);
+
+    const [key, setKey] = useState("bio");
+    const [recipient, setRecipient] = useState(initRecip);
+
+    /* Confirm button logic */
+
+    let confirm = <button type="button" className="btn btn-primary m-3" onClick={() => setKey('events')} >Next</button>
+
+    if (key === 'events') {
+        confirm =
+            <button type="submit" className="btn btn-primary m-3" onClick={sendRecip} >
+                <span class="indicator-label">Save</span>
+                {/* <span class="indicator-progress">Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+            </span> */}
+            </button>;
+    }
 
     const recipForEdit = useSelector(state => state.contact)
 
     useEffect(() => {
-        if (recipForEdit) {
+        if (recipient !== initRecip) {
+            dispatch(editContact({}))
+        }
+    }, [recipient]);
+
+    useEffect(() => {
+        /* Checking if object is empty */
+        if (Object.entries(recipForEdit).length !== 0) {
             setRecipient(recipForEdit)
         }
     }, []);
 
-    useEffect(() => {
-        dispatch(editResipient({}))
-    }, [recipient]);
-
-    
-    
-    console.log('recipient', recipForEdit);
-
-
-    const headers = {
-        'Content-Type': 'application/json',
-        'x-auth-token': localStorage.getItem('authToken')
-    }
 
     function sendRecip() {
-        const url = 'http://localhost:8080/recipients/new_record';
+        let url = ''
+
+        switch (purpose) {
+            case 'create':
+                url = 'http://localhost:8080/recipients/new_record'
+                break;
+            case 'edit':
+                url = 'http://localhost:8080/recipients/update_record'
+                break;
+        }
+
         let finalForm = new FormData();
 
         for (const key in recipient) {
             const value = recipient[key];
 
-            // if (value) {
+            /* We need to check type of value and for each arr. or obj. put each element separately, 
+            because append to the form automatically convert data to a string   */
 
-            // }
-            finalForm.append(key, value)
-            console.log(`${key}: ${value}`);
+            if (typeof(value) == 'object' ) {
+                value.forEach(element => {
+                    finalForm.append(key, element)
+                });
+            } else {
+                finalForm.append(key, value)
+            }
         }
 
         const options = {
             method: 'POST',
-            headers,
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem('authToken')}`
+            },
             body: finalForm
         }
 
         fetch(url, options)
-    //   .then(data => data.json().then(output => setContacts([...contacts, output])));
+            .then(data => data.json().then(output => {
+                if (output.status === 'success') {
+                    dispatch(getAllContacts());
+                }
+            }));
     }
 
+    console.log(recipient);
     return (
 
         <div id="contacts-wizzard">
@@ -91,22 +131,9 @@ export default function Wizzard({ unmPopUp }) {
                 >
                     Close
                 </button>
-                <button type="button" className="btn btn-primary m-3" onClick={sendRecip} >Save changes</button>
+                {confirm}
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     );

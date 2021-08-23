@@ -1,23 +1,30 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 
-import { editResipient } from '../../../actions/contatcInf';
+import { editContact } from '../../../actions/contatcInf';
+import { getAllContacts, deleteContact } from '../../../actions/contactsCRUD';
 
 export default function CTRow({ contact, number, setSwitchCase }) {
-    
+
     const dispatch = useDispatch()
 
     const { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
-    const fullName = lastName + ' ' + firstName
-
-    console.log('from ROW:',firstName,  lastName);
+    const fullName = lastName + ' ' + firstName;
 
     const initials = firstName.substr(0, 1).toUpperCase() + lastName.substr(0, 1).toUpperCase()
-    
-    const relatList = relationships.map((category) => <div key={category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>)
-    const eventsList = events.map((event) => <div key={event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>)
 
-    
+    const relatList = relationships.map((category) => {
+        if (category) {
+            return <div key={category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>
+        }
+    })
+
+    const eventsList = events.map((event) => {
+        if (event) {
+            return <div key={event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>
+        }
+    })
+
 
     return (
         <tr key={number} data-row={number} className="datatable-row" style={{ left: 0 }}>
@@ -116,8 +123,8 @@ export default function CTRow({ contact, number, setSwitchCase }) {
                         // onClick={dispatch(updateContact(contact))}
                         onClick={() => {
                             setSwitchCase('edit_contact');
-                            dispatch(editResipient(contact))
-                    }}        
+                            dispatch(editContact(contact))
+                        }}
                     >
 
                         <span className="svg-icon svg-icon-md">
@@ -153,7 +160,12 @@ export default function CTRow({ contact, number, setSwitchCase }) {
                     <button
                         className="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon"
                         title="Delete"
-                    // onClick={deleteContact}
+                        onClick={async () => {
+                            const result = await dispatch(deleteContact(contact))
+                            if (result.status == 'success') {
+                                dispatch(getAllContacts())
+                            }
+                    }}
                     >
 
                         <span className="svg-icon svg-icon-md">

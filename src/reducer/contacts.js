@@ -2,9 +2,9 @@ const contacts = (state = [], action) => {
     switch (action.type) {
         case "GET_ALL_CONTACTS":
             //  state =[...state, action.contacts]
-            state = state.concat(action.contacts);
-            console.log('contacts from storage:', state);
-            return state
+            // state = state.concat(action.contacts);
+            // console.log('contacts from storage:', state);
+            return action.contacts
         case "UPDATE_CONTACTS":
             return state
         case "DELETE_CONTACTS":

@@ -15,6 +15,7 @@ export default function Events({ form, setForm }) {
         const newForm = { ...form }
         const name = e.target.value
         const arr = newForm[field]
+
         if (e.target.checked) {
             arr.push(name)
         } else {
@@ -25,6 +26,7 @@ export default function Events({ form, setForm }) {
                 arr.splice(index, 1);
             }
         }
+        
         console.log('arr', arr);
         console.log('newForm', newForm);
         setForm(newForm)

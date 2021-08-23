@@ -24,16 +24,11 @@ import Wizzard from '../../components/Contacts/ContactsTable/Wizzard/Wizzard';
 export default function ContactList() {
 
     const [switchCase, setSwitchCase] = useState('contacts')
+    // console.log('contactList');
 
     return (
 
         <div id='contact-list' className="page">
-            <style
-                scoped
-                dangerouslySetInnerHTML={{
-                    __html: "@import '../../components/Contacts/assets/css/style.bundle.css'"
-                }}
-            />
             {(() => {
                 switch (switchCase) {
                     case 'contacts':
@@ -48,9 +43,9 @@ export default function ContactList() {
                                 <ContactsTable setSwitchCase = {setSwitchCase}/>
                             </div>)
                     case 'new_record':
-                        return <Wizzard unmPopUp={() => setSwitchCase('contacts') } />
+                        return <Wizzard purpose={'create'} unmPopUp={() => setSwitchCase('contacts') } />
                     case 'edit_contact':
-                        return <Wizzard unmPopUp={() => setSwitchCase('contacts') } />
+                        return <Wizzard purpose={'edit'} unmPopUp={() => setSwitchCase('contacts') } />
                     default:
                         return <h1>No project match</h1>;
                 }
