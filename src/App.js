@@ -50,9 +50,9 @@ function App() {
   const [privateData, setPrivateData] = useState();//now it is just the first name
 
   useEffect(() => {
-      if (isAuth) {
-        dispatch(getAllContacts())    
-      }
+    if (isAuth) {
+      dispatch(getAllContacts())
+    }
   }, [isAuth]);
 
   const fetchPrivateData = () => {
@@ -67,54 +67,44 @@ function App() {
       }
     }
     fetch(url, options)
-    .then(result=>result.json()
-    .then(output=>{
-      //console.log(output);
-      if (output.success === true) {
-        setPrivateData(output.data);
-        setIsAuth(true);
-      }else{
-        localStorage.removeItem('authToken');
-        setPrivateData('');
-        setIsAuth(false);
-        /* alert(output.error); */
-      }
-    }
-    ));
+      .then(result => result.json()
+        .then(output => {
+          if (output.success === true) {
+            setPrivateData(output.data);
+            setIsAuth(true);
+          } else {
+            localStorage.removeItem('authToken');
+            setPrivateData('');
+            setIsAuth(false);
+            /* alert(output.error); */
+          }
+        }
+        ));
 
   }
 
   fetchPrivateData();
 
-  /* useEffect(()=>{
-    console.log('token check');
-    if(!localStorage.getItem('authToken')){
-      setIsAuth(false);
-    }else{
-      fetchPrivateData();
-    }
-  },[]); */
-
   return (
     <div className="App">
       <Grid container direction="column">
         <Grid container>
-        <Grid item sm={false} md={3}/>
-            <Grid className="bg" item sm={12} md={6}>
-              <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
-                <Switch>
-                  {/* Nav */}
-                  <Route exact path="/">
-                    <Home />
-                  </Route>
-                  <Route exact path="/media-catalog">
+          <Grid item sm={false} md={3} />
+          <Grid className="bg" item sm={12} md={6}>
+            <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth} />
+            <Switch>
+              {/* Nav */}
+              <Route exact path="/">
+                <Home />
+              </Route>
+              <Route exact path="/media-catalog">
                 <Catalog />
               </Route>
               <Route path="/intro">
                 <Intro />
               </Route>
               <Route path="/roulette">
-                <CardRoulette isAuth={isAuth}/>
+                <CardRoulette isAuth={isAuth} />
               </Route>
               <Route path="/card-editor">
                 <CardEditor />
@@ -168,8 +158,8 @@ function App() {
               </Switch>
             </Switch>
             {isAccepted ? <Cookies /> : null}
-              <Footer />
-            </Grid>
+            <Footer />
+          </Grid>
           <Grid item sm={false} md={3} />
         </Grid>
       </Grid>

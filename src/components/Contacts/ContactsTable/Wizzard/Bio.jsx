@@ -8,8 +8,7 @@ export default function Bio({ form, setForm }) {
         setForm(newForm)
     }
 
-
-    /* COnditional rendering when for editing contact */
+    /* Conditional rendering for contact editing */
     const genderList = ['male', 'female']
     const genders = genderList.map(gender => {
         if (gender === form.gender) {
@@ -138,9 +137,7 @@ export default function Bio({ form, setForm }) {
                                             >
                                                 <option value="">Select Gender...</option>
                                                 {genders}
-
                                             </select>
-
                                             {/*                                             <span className="form-text text-muted">
                                                 Enter valid US phone number(e.g: 5678967456).
                                             </span>
@@ -157,5 +154,3 @@ export default function Bio({ form, setForm }) {
         </div>
     )
 }
-
-

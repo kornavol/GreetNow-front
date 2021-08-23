@@ -10,7 +10,7 @@ const BackPage = () => {
 
     const dispatch = useDispatch();
     const selectedText = useSelector((state) => state.currText);
-    console.log(selectedText);
+    // console.log(selectedText);
 
     const editToggle = () => {
         setIsEditable(true);

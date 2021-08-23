@@ -3,7 +3,6 @@ const contacts = (state = [], action) => {
         case "GET_ALL_CONTACTS":
             //  state =[...state, action.contacts]
             // state = state.concat(action.contacts);
-            // console.log('contacts from storage:', state);
             return action.contacts
         case "UPDATE_CONTACTS":
             return state
@@ -13,5 +12,4 @@ const contacts = (state = [], action) => {
             return state
     }
 }
-// return {...state, selectedGlobalTriviaTab : action.payload};
 export default contacts;

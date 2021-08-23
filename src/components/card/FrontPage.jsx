@@ -13,15 +13,15 @@ const FrontPage = (props) => {
     const [text, setText] = useState()
     const selectedImage = useSelector((state) => state.currPict);
     const isClicked = props.isClicked;
-    console.log(selectedImage);
+    // console.log(selectedImage);
 
     useEffect(() => {
         if(selectedImage === 'null'){
             setText(firstView);
-            console.log(1);
+            // console.log(1);
         }else{
             setText();
-            console.log(2);
+            // console.log(2);
         }
     }, [selectedImage]);
 

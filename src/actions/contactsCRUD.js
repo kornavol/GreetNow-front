@@ -20,16 +20,11 @@ export const getAllContacts = () => {
         const response = await fetch(url, options);
         const result = await response.json()
         const contacts = result.data
-        console.log(contacts)
         dispatch({ type: "GET_ALL_CONTACTS", contacts })
     }
 }
 
-
 export const deleteContact = (contact) => {
-
-    console.log('from CRUD',contact);
-
     const url = 'http://localhost:8080/recipients/delete_record'
     const options = {
         method: 'DELETE',
@@ -44,8 +39,6 @@ export const deleteContact = (contact) => {
     return async dispatch => {
         const response = await fetch(url, options);
         const result = await response.json()
-
-        console.log('delete', result);
         // dispatch({ type: "DELETE_CONTACTS", result })
         return result
     }
