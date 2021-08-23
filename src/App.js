@@ -41,7 +41,6 @@ import { getAllContacts } from "./actions/contactsCRUD";
 
 import Modal from 'react-bootstrap/Modal';
 
-
 function App() {
 
   const dispatch = useDispatch()
@@ -157,6 +156,12 @@ function App() {
                   setModalShow={setModalShow}
                 />
               </Route>
+
+              {/* To display card which based on id 
+              ! Important. This route have to be right after the root pass (/)
+              */}
+              <Route path="/cards/:id" children={<Card />} />
+
               <Route exact path="/media-catalog">
                 <Catalog setModalShow={setModalShow} />
               </Route>
@@ -198,10 +203,6 @@ function App() {
               <Route path="/404">
                 <NotFoundPage />
               </Route>
-
-              <Route path="/contacts1">
-                <ContactList />
-              </Route>
               {isAuth ?
                 (<div>
                   <Route path="/catalog">
@@ -219,10 +220,7 @@ function App() {
                 </div>) : null
 
               }
-              {/* To create cards base on id */}
-              <Switch>
-                <Route path="/cards/:id" children={<Card />} />
-              </Switch>
+              
             </Switch>
             {isAccepted ? <Cookies /> : null}
             <Footer />
