@@ -97,7 +97,6 @@ const CardRoulette = (props) => {
             { once: true }
             );
         }
-        // console.log(pool);
 
         function selectImg(img){
             const picture = picturesArr.find(obj => obj.name === `${img}`);
@@ -119,7 +118,6 @@ const CardRoulette = (props) => {
             door.clientHeight * (pool.length - 1)
         }px)`;
         door.replaceChild(boxesClone, boxes);
-        // console.log(door);
         }
     }
 
