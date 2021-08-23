@@ -81,24 +81,6 @@ const Appbar = (props) => {
         setOpen(false);
     };
 
-
-    // useEffect(() => {
-    //     console.log('login');
-    //     console.log(history);
-    // })
-
-    // useEffect(() => {
-    //     console.log('toggleRegister');
-    // }, [toggleRegister])
-
-    // useEffect(() => {
-    //     console.log('modalShow');
-    // }, [modalShow])
-
-    // useEffect(() => {
-    //     console.log('mounted');
-    // },[]) 
-    /* Navbar Items */
     const menuItems = [
         {
             menuTitle: "Home",

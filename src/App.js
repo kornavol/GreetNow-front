@@ -41,16 +41,7 @@ function App() {
 
 
 
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-      if (isAuth) {
-        dispatch(getAllContacts())    
-      }
-  }, [dispatch]);
-
-  
-    
+  const dispatch = useDispatch();
 
   const history = useHistory();
   /*  for show Component Coockies  (component) */
@@ -59,6 +50,12 @@ function App() {
   /* Checking if user is authorized*/
   const [isAuth, setIsAuth] = useState(false);
   const [privateData, setPrivateData] = useState();//now it is just the first name
+
+  useEffect(() => {
+    if(isAuth){
+      dispatch(getAllContacts());
+    }
+  }, [isAuth]);
 
   const fetchPrivateData = () => {
 
@@ -86,19 +83,10 @@ function App() {
       }
     }
     ));
-
   }
 
   fetchPrivateData();
-
-  /* useEffect(()=>{
-    console.log('token check');
-    if(!localStorage.getItem('authToken')){
-      setIsAuth(false);
-    }else{
-      fetchPrivateData();
-    }
-  },[]); */
+  
 
   return (
     <div className="App">
