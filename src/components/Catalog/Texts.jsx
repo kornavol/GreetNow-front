@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { sendText } from "../../actions";
 import './css/ImgCatalog.css';
-import { Link } from 'react-router-dom';
 
 const Texts = (props) => {
     const dispatch = useDispatch();
