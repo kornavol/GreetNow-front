@@ -38,8 +38,7 @@ import { useDispatch } from "react-redux";
 import { getAllContacts } from "./actions/contactsCRUD";
 
 function App() {
-
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const history = useHistory();
   /*  for show Component Coockies  (component) */
@@ -50,8 +49,8 @@ function App() {
   const [privateData, setPrivateData] = useState();//now it is just the first name
 
   useEffect(() => {
-    if (isAuth) {
-      dispatch(getAllContacts())
+    if(isAuth){
+      dispatch(getAllContacts());
     }
   }, [isAuth]);
 
@@ -67,20 +66,18 @@ function App() {
       }
     }
     fetch(url, options)
-      .then(result => result.json()
-        .then(output => {
-          if (output.success === true) {
-            setPrivateData(output.data);
-            setIsAuth(true);
-          } else {
-            localStorage.removeItem('authToken');
-            setPrivateData('');
-            setIsAuth(false);
-            /* alert(output.error); */
-          }
-        }
-        ));
-
+    .then(result=>result.json()
+    .then(output=>{
+      if (output.success === true) {
+        setPrivateData(output.data);
+        setIsAuth(true);
+      }else{
+        localStorage.removeItem('authToken');
+        setPrivateData('');
+        setIsAuth(false);
+      }
+    }
+    ));
   }
 
   fetchPrivateData();

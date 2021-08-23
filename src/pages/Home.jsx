@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Intro from '../components/Intro';
-import CardRouletteHome from '../components/CardRouletteHome';
 import CatalogHome from '../components/CatalogHome';
 import Benefits from '../components/Benefits.jsx';
 import UsersReviews from '../components/UsersReviews.jsx';
@@ -22,7 +21,6 @@ const Home = () => {
 
     const SliderData = [
     <Intro/>,
-    <CardRouletteHome/>,
     <CatalogHome/>,
     <Benefits/>,
     <UsersReviews/>
