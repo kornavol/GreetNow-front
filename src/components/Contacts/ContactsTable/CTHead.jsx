@@ -51,9 +51,5 @@ export default function CTHead() {
                 </th>
             </tr>
         </thead>
-
-
     );
 }
-
-

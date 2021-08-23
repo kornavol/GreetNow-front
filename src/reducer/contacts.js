@@ -2,8 +2,8 @@ const contacts = (state = [], action) => {
     switch (action.type) {
         case "GET_ALL_CONTACTS":
             //  state =[...state, action.contacts]
-            state = state.concat(action.contacts);
-            return state
+            // state = state.concat(action.contacts);
+            return action.contacts
         case "UPDATE_CONTACTS":
             return state
         case "DELETE_CONTACTS":
@@ -12,5 +12,4 @@ const contacts = (state = [], action) => {
             return state
     }
 }
-// return {...state, selectedGlobalTriviaTab : action.payload};
 export default contacts;

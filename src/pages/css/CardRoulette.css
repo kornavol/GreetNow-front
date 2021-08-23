@@ -39,7 +39,6 @@
     overflow: hidden;
     position: relative;
 }
-
 .star-container {
     width: 85%;
     height: 60%;
@@ -47,7 +46,6 @@
     position: relative;
     margin-top: 2%;
 }
-
 .star {
     position: absolute;
     top: 0;
@@ -60,7 +58,6 @@
     background-position: center;
     animation: stars 8s ease-in-out infinite;
 }
-
 .star1 {
     animation-delay: 0s;
     background: url('../../assets/star1.png');
@@ -73,37 +70,31 @@
     background: url('../../assets/star2.png');
     background-size: contain;
 }
-
 .star3 {
     animation-delay: -2s;
     background: url('../../assets/star3.png');
     background-size: contain;
 }
-
 .star4 {
     animation-delay: -3s;
     background: url('../../assets/star4.png');
     background-size: contain;
 }
-
 .star5 {
     animation-delay: -4s;
     background: url('../../assets/star5.png');
     background-size: contain;
 }
-
 .star6 {
     animation-delay: -5s;
     background: url('../../assets/star6.png');
     background-size: contain;
 }
-
 .star7 {
     animation-delay: -6s;
     background: url('../../assets/star7.png');
     background-size: contain;
 }
-
 .star8 {
     animation-delay: -7s;
     background: url('../../assets/star8.png');
@@ -120,7 +111,6 @@
     100% {
         opacity: 0;
     }
-
     10%,
     30%,
     50%,
@@ -129,7 +119,6 @@
         opacity: 1;
     }
 }
-
 .card-roulette-banner {
     width: 80%;
     height: 30%;
@@ -145,7 +134,6 @@
     height: 100%;
     margin-top: 5%;
 }
-
 .card-roulette-text h2,
 .card-roulette-text p {
     font-family: 'IM Fell English', serif;
@@ -170,19 +158,16 @@
     background-repeat: no-repeat;
     margin: 1%;
 }
-
 .balloon1,
 .balloon2 {
     width: 10%;
     position: absolute;
 }
-
 .balloon1 {
     top: 50%;
     left: 83%;
     z-index: 7;
 }
-
 .balloon2 {
     top: 62%;
     left: 88%;

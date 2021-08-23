@@ -47,25 +47,27 @@ function App() {
   const dispatch = useDispatch()
 
   useEffect(() => {
-      if (isAuth) {
-        dispatch(getAllContacts())    
-      }
+    if (isAuth) {
+      dispatch(getAllContacts())
+    }
   }, [dispatch]);
 
-  
-    
-
-  const history = useHistory();
   /*  for show Component Coockies  (component) */
   const [isAccepted, setAccepted] = useState(false);
-
   /* Checking if user is authorized*/
   const [isAuth, setIsAuth] = useState(false);
+  /* username */
   const [privateData, setPrivateData] = useState();//now it is just the first name
-   /* Toggles between Login and Register Buttons */
-    const [toggleRegister, setToggleRegister] = useState(true);
-    /* Shows Modal */
-    const [modalShow, setModalShow] = useState(false);
+  /* Toggles between Login and Register Buttons */
+  const [toggleRegister, setToggleRegister] = useState(true);
+  /* Shows Modal */
+  const [modalShow, setModalShow] = useState(false);
+
+  useEffect(() => {
+    if (isAuth) {
+      dispatch(getAllContacts());
+    }
+  }, [isAuth]);
 
   const fetchPrivateData = () => {
 
@@ -79,100 +81,88 @@ function App() {
       }
     }
     fetch(url, options)
-    .then(result=>result.json()
-    .then(output=>{
-      //console.log(output);
-      if (output.success === true) {
-        setPrivateData(output.data);
-        setIsAuth(true);
-      }else{
-        localStorage.removeItem('authToken');
-        setPrivateData('');
-        setIsAuth(false);
-        /* alert(output.error); */
-      }
-    }
-    ));
-
+      .then(result => result.json()
+        .then(output => {
+          if (output.success === true) {
+            setPrivateData(output.data);
+            setIsAuth(true);
+          } else {
+            localStorage.removeItem('authToken');
+            setPrivateData('');
+            setIsAuth(false);
+          }
+        }
+        ));
   }
 
   fetchPrivateData();
 
-  /* useEffect(()=>{
-    console.log('token check');
-    if(!localStorage.getItem('authToken')){
-      setIsAuth(false);
-    }else{
-      fetchPrivateData();
-    }
-  },[]); */
-
-   /* Modal Body */
-    function VerticalModal(verticalModal) {
-        return (
-            <Modal {...verticalModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
-                <Modal.Body>
-                    {toggleRegister ? (
-                        <Login
-                            isAuth={isAuth}
-                            setIsAuth={setIsAuth}
-                            toggleRegister={toggleRegister} 
-                            setToggleRegister={setToggleRegister} 
-                            modalShow={modalShow} 
-                            setModalShow={setModalShow}
-                            />
-                    ) : (
-                        <Register
-                            isAuth={isAuth}
-                            toggleRegister={toggleRegister} 
-                            setToggleRegister={setToggleRegister} 
-                            modalShow={modalShow} 
-                            setModalShow={setModalShow}
-                        />
-                    )}
-                </Modal.Body>
-                <Modal.Footer>
-                    <Button onClick={verticalModal.onHide}>Close</Button>
-                </Modal.Footer>
-            </Modal>
-        );
-    }
+  /* Modal Body */
+  function VerticalModal(verticalModal) {
+    return (
+      <Modal {...verticalModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+        <Modal.Body>
+          {toggleRegister ? (
+            <Login
+              isAuth={isAuth}
+              setIsAuth={setIsAuth}
+              toggleRegister={toggleRegister}
+              setToggleRegister={setToggleRegister}
+              modalShow={modalShow}
+              setModalShow={setModalShow}
+            />
+          ) : (
+            <Register
+              isAuth={isAuth}
+              toggleRegister={toggleRegister}
+              setToggleRegister={setToggleRegister}
+              modalShow={modalShow}
+              setModalShow={setModalShow}
+            />
+          )}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button onClick={verticalModal.onHide}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+    );
+  }
 
   return (
     <div className="App">
       <Grid container direction="column">
         <Grid container>
-        <Grid item sm={false} md={3}/>
-            <Grid className="bg" item sm={12} md={6}>
-              <Appbar 
-                user={privateData}
-                setUser={setPrivateData} 
-                isAuth={isAuth} 
-                setIsAuth={setIsAuth} 
-                toggleRegister={toggleRegister} 
-                setToggleRegister={setToggleRegister} 
-                modalShow={modalShow} 
-                setModalShow={setModalShow}
+          <Grid item sm={false} md={3} />
+          <Grid className="bg" item sm={12} md={6}>
+            <Appbar
+              user={privateData}
+              setUser={setPrivateData}
+              isAuth={isAuth}
+              setIsAuth={setIsAuth}
+              toggleRegister={toggleRegister}
+              setToggleRegister={setToggleRegister}
+              modalShow={modalShow}
+              setModalShow={setModalShow}
+            />
+            <Switch>
+              {/* Nav */}
+              <Route exact path="/">
+                <Home
+                  user={privateData}
+                  isAuth={isAuth}
+                  setIsAuth={setIsAuth}
+                  toggleRegister={toggleRegister}
+                  setToggleRegister={setToggleRegister}
+                  modalShow={modalShow}
+                  setModalShow={setModalShow}
                 />
-                <Switch>
-                  {/* Nav */}
-                  <Route exact path="/">
-                    <Home
-                      user={privateData}
-                      isAuth={isAuth} 
-                      setIsAuth={setIsAuth} 
-                      toggleRegister={toggleRegister} 
-                      setToggleRegister={setToggleRegister} 
-                      modalShow={modalShow} 
-                      setModalShow={setModalShow}
-                    />
-                  </Route>
-                  <Route exact path="/media-catalog">
-                <Catalog setModalShow={setModalShow}/>
+              </Route>
+              <Route exact path="/media-catalog">
+                <Catalog setModalShow={setModalShow} />
               </Route>
 
               <Route path="/roulette">
-                <CardRoulette isAuth={isAuth}/>
+                <CardRoulette isAuth={isAuth} />
               </Route>
               <Route path="/card-editor">
                 <CardEditor />
@@ -181,13 +171,13 @@ function App() {
                 path="/card">
                 <Card
                   user={privateData}
-                  isAuth={isAuth} 
-                  setIsAuth={setIsAuth} 
-                  toggleRegister={toggleRegister} 
-                  setToggleRegister={setToggleRegister} 
-                  modalShow={modalShow} 
+                  isAuth={isAuth}
+                  setIsAuth={setIsAuth}
+                  toggleRegister={toggleRegister}
+                  setToggleRegister={setToggleRegister}
+                  modalShow={modalShow}
                   setModalShow={setModalShow}
-                  />
+                />
               </Route>
               {/* Footer */}
               <Route path="/qa">
@@ -215,7 +205,7 @@ function App() {
               {isAuth ?
                 (<div>
                   <Route path="/catalog">
-                    <Catalog setModalShow={setModalShow}/>
+                    <Catalog setModalShow={setModalShow} />
                   </Route>
                   <Route path="/calendar">
                     <Calendar />
@@ -235,12 +225,12 @@ function App() {
               </Switch>
             </Switch>
             {isAccepted ? <Cookies /> : null}
-              <Footer />
-            </Grid>
+            <Footer />
+          </Grid>
           <Grid item sm={false} md={3} />
         </Grid>
       </Grid>
-      <VerticalModal show={modalShow} onHide={() => setModalShow(false)}/>
+      <VerticalModal show={modalShow} onHide={() => setModalShow(false)} />
     </div>
   );
 }

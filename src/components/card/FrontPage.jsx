@@ -13,15 +13,12 @@ const FrontPage = (props) => {
     const [text, setText] = useState()
     const selectedImage = useSelector((state) => state.currPict);
     const isClicked = props.isClicked;
-    //console.log(selectedImage);
 
     useEffect(() => {
         if(selectedImage === 'null'){
             setText(firstView);
-            //console.log(1);
         }else{
             setText();
-            //console.log(2);
         }
     }, [selectedImage]);
 
@@ -43,5 +40,4 @@ const FrontPage = (props) => {
     );
 }
 
-//<div id="card-front" style={{backgroundImage: `url('http://localhost:8080/greeting-pictures/${selectedImage.name}')`}}></div>
 export default FrontPage;

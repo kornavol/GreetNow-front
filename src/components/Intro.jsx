@@ -65,6 +65,8 @@ const Intro = (props) => {
         }
     }, []);
 
+    // `${}`
+
     return (
         <section id="intro-container">
             <header className="intro-banner">
