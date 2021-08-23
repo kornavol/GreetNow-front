@@ -21,12 +21,11 @@ export default function Events({form, setForm}) {
             
             const index = arr.indexOf(name);
             if (index > -1) {
-                console.log('if');
+
                 arr.splice(index, 1);
             }
         }
-        console.log('arr', arr);
-        console.log('newForm', newForm);
+
         setForm(newForm)
     }
 
@@ -110,5 +109,3 @@ export default function Events({form, setForm}) {
 
     );
 }
-
-

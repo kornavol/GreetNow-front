@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import Intro from '../components/Intro';
-import CardRouletteHome from '../components/CardRouletteHome';
 import CatalogHome from '../components/CatalogHome';
 import Benefits from '../components/Benefits.jsx';
 import UsersReviews from '../components/UsersReviews.jsx';
@@ -18,12 +17,25 @@ import 'aos/dist/aos.css';
 AOS.init();
 
 /* Home Page */
-const Home = () => {
+const Home = (props) => {
+    const user = props.user;
+    const isAuth = props.isAuth;
+    const setIsAuth = props.setIsAuth;
+    const toggleRegister = props.toggleRegister;
+    const setToggleRegister = props.setToggleRegister;
+    const modalShow = props.modalShow;
+    const setModalShow = props.setModalShow;
 
     const SliderData = [
-    <Intro/>,
-    <CardRouletteHome/>,
-    <CatalogHome/>,
+    <Intro
+        user={user}
+        isAuth={isAuth} 
+        setIsAuth={setIsAuth} 
+        toggleRegister={toggleRegister} 
+        setToggleRegister={setToggleRegister} 
+        modalShow={modalShow} 
+        setModalShow={setModalShow}
+    />,
     <Benefits/>,
     <UsersReviews/>
     ]
@@ -49,8 +61,12 @@ const Home = () => {
         <Grid container direction="column">
             <Grid container>
                 <Grid item xs={12} className="home-slider">
-                    <NavigateBeforeOutlinedIcon className="left-arrow" onClick={prevSlide} style={{fontSize:'5vmin'}}/>
-                    <NavigateNextOutlinedIcon className="right-arrow" onClick={nextSlide} style={{fontSize:'5vmin'}}/>
+                    <div className="left-arrow">
+                        <NavigateBeforeOutlinedIcon onClick={prevSlide} style={{fontSize:'5vmin'}}/>
+                    </div>
+                    <div className="right-arrow">
+                        <NavigateNextOutlinedIcon onClick={nextSlide} style={{fontSize:'5vmin'}}/>
+                    </div>
                     <Grid container>
                     {SliderData.map((slide, index) => {
                         return (
@@ -64,7 +80,7 @@ const Home = () => {
                     })}
                     </Grid>
                     <div className="container-dots">
-                        {Array.from({length: 5}).map((item, index) => (
+                        {Array.from({length: 3}).map((item, index) => (
                             <div key={index} onClick={() => moveDot(index)} className={current === index ? "dot active" : "dot" }></div>
                         )) }
                     </div>

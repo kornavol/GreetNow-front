@@ -31,26 +31,18 @@ export default function ContactsTable() {
 
     useEffect(() => {
         setContacts(contacts1)
-        console.log(3,contacts1);
 
-
-
-        console.log(2, Rows);
 
     }, [contacts1]);
 
     Rows = contacts.map((row) => {
         number++;
-        console.log(9, row)      
+    
         return  <TRow key={number} number={number} contact={row} />
         
 
     }) 
 
-    console.log('rows', Rows)
-
-
-    console.log('contacts from Table', contacts);
 
     let number = 0;
 

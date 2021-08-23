@@ -53,15 +53,22 @@
     font-weight: lighter;    
 }
 
+.intro-banner p {
+    font-size: 1.3rem;
+    font-family: 'Sacramento', cursive;
+    color: #000;
+}
+
 /* Card and Envelope Container */
 
 .intro-card-container {
     width: 400px;
     height: 460px;
-    margin-top: 5vmin;
+    position: absolute;
+    top: 20%;
+    margin: auto;
     transition: 1s;
     z-index: 3;
-
 }
 
 .intro-card-container img {
@@ -260,7 +267,8 @@
     transition: 2s;
 }
 
-.intro-flip-card .imgBox img {
+.intro-flip-card .imgBox img,
+.intro-flip-card .imgBox .img-presentation-container img {
     width: 100%;
     height: 100%;
     position: absolute;
@@ -271,7 +279,7 @@
     backface-visibility: hidden;
 }
 
-.intro-flip-card .imgBox img:nth-child(2) {
+.intro-flip-card .imgBox .img-presentation-container img {
     right: 1px;
     height: 100.1%;
     transform: rotateY(180deg);
@@ -290,41 +298,6 @@
     background: #ffffff;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-}
-
-.intro-flip-card .details .content {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.intro-flip-card .intro-flip-card-text h2 {
-    font-family: 'Norican', cursive;
-    font-size: 1.6rem;
-    color: #dc004e;
-    line-height: 1em;
-    margin: 10% 0;
-}
-
-.intro-flip-card .intro-flip-card-text h3 {
-    font-family: 'IM Fell English', cursive;
-    font-size: 1.2rem;
-    line-height: 1.3em;
-    margin-top: 12%;
-}
-
-.intro-flip-card .intro-flip-card-text h4 {
-    font-family: 'Norican', cursive;
-    font-size: 1.5rem;
-    line-height: 1em;
-    margin-top: 20%;
-}
-
-.intro-flip-card .details .content {
-    position: relative;
-    display: flex;
-    margin-top: 10px;
 }
 
 .translate {
@@ -372,28 +345,20 @@
     border-color: #eee #ffffff;
 }
 
-/* Scroll Icon */
-
-.intro-scroll-down {
-    margin: 0;
-    padding: 0;
+.fold p {
+    font-family: 'Sacramento', cursive;
+    font-size: 1.3rem;
+    color: #E1C16E;
     position: absolute;
-    z-index: 10;
-    top: 93%;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #ffffff;
-    font-family: 'Nunito', sans-serif;
+    bottom: -16px;
+    right: 0;
+    transform: rotate(-47deg);
     opacity: 0;
-    animation: show-up 1s 9s forwards;
+    transition: 1s;
 }
 
-.intro-scroll-down:hover {
-    text-decoration: none;
-    color: #dc004e;
+.fold:hover p {
+    opacity: 1;
 }
 
 /* Visibility Controls */

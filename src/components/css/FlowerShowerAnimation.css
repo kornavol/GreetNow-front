@@ -1,0 +1,273 @@
+/* Flower Set 1 */
+
+.flower-set1 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    left: 0;
+    z-index: 2;
+}
+
+.flower-set1 img {
+    width: 100%;
+}
+
+.flower-set1 div {
+    width: 5vw;
+    position: absolute;
+    display: block;
+}
+
+.flower-set1 div:nth-child(1) {
+    left: 5%;
+    opacity: 0;
+    animation: flower-shower1 15s 1.8s linear forwards;
+}
+
+.flower-set1 div:nth-child(2) {
+    left: 16%;
+    opacity: 0;
+    animation: flower-shower1 20s 1.8s linear forwards;
+}
+
+.flower-set1 div:nth-child(3) {
+    left: 33%;
+    opacity: 0;
+    animation: flower-shower1 25s 1.8s linear forwards;
+}
+
+.flower-set1 div:nth-child(4) {
+    left: 50%;
+    opacity: 0;
+    animation: flower-shower1 15s 1.8s linear forwards;
+}
+
+.flower-set1 div:nth-child(5) {
+    left: 66%;
+    opacity: 0;
+    animation: flower-shower1 18s 1.8s linear forwards;
+}
+
+.flower-set1 div:nth-child(6) {
+    left: 83%;
+    opacity: 0;
+    animation: flower-shower1 15s 1.8s linear forwards;
+}
+
+@keyframes flower-shower1 {
+    0% {
+        opacity: 0;
+        top: 0%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: rotate(45deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    60% {
+        transform: rotate(120deg);
+    }
+
+    80% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        top: 120%;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+}
+
+/* Flower Set 2 */
+
+.flower-set2 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    left: 0;
+    z-index: 2;
+}
+
+.flower-set2 img {
+    width: 100%;
+}
+
+.flower-set2 div {
+    width: 5vw;
+    position: absolute;
+    display: block;
+}
+
+.flower-set2 div:nth-child(1) {
+    left: 5%;
+    opacity: 0;
+    animation: flower-shower2 15s 5s linear forwards;
+}
+
+.flower-set2 div:nth-child(2) {
+    left: 16%;
+    opacity: 0;
+    animation: flower-shower2 20s 5s linear forwards;
+}
+
+.flower-set2 div:nth-child(3) {
+    left: 33%;
+    opacity: 0;
+    animation: flower-shower2 25s 5s linear forwards;
+}
+
+.flower-set2 div:nth-child(4) {
+    left: 50%;
+    opacity: 0;
+    animation: flower-shower2 15s 5s linear forwards;
+}
+
+.flower-set2 div:nth-child(5) {
+    left: 66%;
+    opacity: 0;
+    animation: flower-shower2 18s 5s linear forwards;
+}
+
+.flower-set2 div:nth-child(6) {
+    left: 83%;
+    opacity: 0;
+    animation: flower-shower2 15s 5s linear forwards;
+}
+
+@keyframes flower-shower2 {
+    0% {
+        opacity: 0;
+        top: 0%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: rotate(45deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    60% {
+        transform: rotate(120deg);
+    }
+
+    80% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        top: 120%;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+}
+
+/* Flower Set 3 */
+
+.flower-set3 {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: -10%;
+    left: 0;
+    z-index: 2;
+}
+
+.flower-set3 img {
+    width: 100%;
+}
+
+.flower-set3 div {
+    width: 5vw;
+    position: absolute;
+    display: block;
+}
+
+.flower-set3 div:nth-child(1) {
+    left: 5%;
+    opacity: 0;
+    animation: flower-shower3 15s 30s linear forwards;
+}
+
+.flower-set3 div:nth-child(2) {
+    left: 22%;
+    opacity: 0;
+    animation: flower-shower3 20s 46s linear infinite;
+}
+
+.flower-set3 div:nth-child(3) {
+    left: 33%;
+    opacity: 0;
+    animation: flower-shower3 25s 67s linear infinite;
+}
+
+.flower-set3 div:nth-child(4) {
+    left: 50%;
+    opacity: 0;
+    animation: flower-shower3 15s 92s linear infinite;
+}
+
+.flower-set3 div:nth-child(5) {
+    left: 67%;
+    opacity: 0;
+    animation: flower-shower3 18s 107s linear infinite;
+}
+
+.flower-set3 div:nth-child(6) {
+    left: 83%;
+    z-index: 5;
+    opacity: 0;
+    animation: flower-shower3 15s 125s linear forwards;
+}
+
+@keyframes flower-shower3 {
+    0% {
+        opacity: 0;
+        top: 0%;
+        transform: rotate(0deg);
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    20% {
+        transform: rotate(45deg);
+    }
+
+    40% {
+        transform: rotate(90deg);
+    }
+
+    60% {
+        transform: rotate(120deg);
+    }
+
+    80% {
+        transform: rotate(180deg);
+    }
+
+    100% {
+        top: 120%;
+        opacity: 1;
+        transform: rotate(225deg);
+    }
+}

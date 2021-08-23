@@ -7,6 +7,7 @@
   position: relative;
   overflow: hidden;
   border-radius: 25px;
+  box-sizing: border-box;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
 rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
@@ -22,4 +23,38 @@ rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 
 .media-catalog-subcontainer p {
   font-family: 'Nunito';
+}
+
+.catalog-tab {
+  box-sizing: border-box;
+}
+
+.nav-tabs {
+  border-bottom: none;
+  box-sizing: border-box;
+}
+
+.nav-tabs .nav-link {
+  color: #000;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.nav-tabs .nav-item.show .nav-link,
+.nav-tabs .nav-link.active {
+  border-left: 1px solid #E1C16E;
+  border-top: 1px solid #E1C16E;
+  border-right: 1px solid #E1C16E;
+  border-bottom: none;
+  box-sizing: border-box;
+  color: #000;
+}
+
+.nav-tabs .nav-link:hover {
+  border-top: 1px solid #E1C16E;
+  border-left: 1px solid #E1C16E;
+  border-right: 1px solid #E1C16E;
+  border-bottom: none;
+  box-sizing: border-box;
+  color: #dc004e;
 }

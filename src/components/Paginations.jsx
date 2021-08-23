@@ -1,5 +1,7 @@
 import React, { memo, useRef } from "react";
-import { Pagination } from "react-bootstrap";
+//import { Pagination } from "react-bootstrap";
+import Pagination from '@material-ui/lab/Pagination';
+import { Box } from '@material-ui/core'
 
 const Paginations = ({ active, setActive, totalPages }) => {
     /* if for this goal using useState, will be a loop */
@@ -31,7 +33,7 @@ const Paginations = ({ active, setActive, totalPages }) => {
     }
 
     for (let i = 1; i <= totalPages; i++) {
-        let el = null;
+        let el = null; 
         /* not === becose dispatch string (innertext) */
         if (i == active) {
             el = (
@@ -50,7 +52,7 @@ const Paginations = ({ active, setActive, totalPages }) => {
             );
         }
         pagination.push(el);
-    }
+    } 
 
     /* limitation of pagination */
     if (pagination.length > 3) {
@@ -66,17 +68,14 @@ const Paginations = ({ active, setActive, totalPages }) => {
     }
 
     return (
-        <Pagination className="ms-auto me-auto">
-            {isLPage.current ? (
-                <Pagination.Prev onClick={() => setActive((prev) => prev - 1)} />
-            ) : null}
-
-            {pagination}
-
-            {isFPage.current ? (
-                <Pagination.Next onClick={() => setActive((prev) => prev + 1)} />
-            ) : null}
-        </Pagination>
+        <Box>
+            { isLPage.current ? (
+                <Pagination count={3} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev - 1)} />
+            ) : null ||
+            isFPage.current ? (
+                <Pagination count={3} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev + 1)} />
+            ) : null }
+        </Box> 
     );
 };
 

@@ -9,22 +9,22 @@ import Pictures from "../components/Catalog/ImgCatalog.jsx";
 import Texts from "../components/Catalog/TextsCatalog.jsx";
 
 /* Media catalog page */
-export default function Catalog() {
+export default function Catalog(props) {
 
     const [key, setKey] = useState("pictures");
-    const isCatalog = 'isCatalog';
-    const [modalShow, setModalShow] = useState(false);
+    const setModalShow = props.setModalShow;
+
     return (
         <div id="media-catalog">
             <div className="media-catalog-subcontainer">
                 <h1>Media Catalog</h1>
                 <p>Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.</p>
-                <Tabs id="tabs" activeKey={key} onSelect={(k) => setKey(k)}>
-                    <Tab xs={10} eventKey="pictures" title="Pictures">
-                        <Pictures isCatalog={isCatalog} setModalShow={setModalShow}  />
+                <Tabs id="tabs" activeKey={key} onSelect={(k) => setKey(k)} className="catalog-tab">
+                    <Tab xs={10} eventKey="pictures" title="Pictures" >
+                        <Pictures setModalShow={setModalShow} />
                     </Tab>
-                    <Tab eventKey="texts" title="Texts">
-                        <Texts />
+                    <Tab eventKey="texts" title="Texts" >
+                        <Texts setModalShow={setModalShow} />
                     </Tab>
                 </Tabs>
             </div>

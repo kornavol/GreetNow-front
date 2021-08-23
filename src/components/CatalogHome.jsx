@@ -6,7 +6,7 @@ import { Tabs, Tab } from "react-bootstrap";
 import { useState } from "react";
 
 import Pictures from "../components/Catalog/ImgCatalog.jsx";
-import Texts from "../components/Catalog/TextsCatalog.jsx";
+import Texts from "../components/Catalog/TextsCatalog";
 
 /* Media catalog page */
 export default function CatalogHome() {
