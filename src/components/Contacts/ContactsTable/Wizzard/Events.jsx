@@ -1,46 +1,52 @@
-import React, {useState} from 'react';
-import Accordion from 'react-bootstrap/Accordion'
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-export default function Events({form, setForm}) {
+export default function Events({ form, setForm }) {
 
     const [eventsList, setEventsList] = useState([]);
     const [categoriesList, setCategoriesList] = useState([]);
-    
+
     useSelector((state) => state.events.then(result => setEventsList(result)))
     useSelector((state) => state.categories.then(result => setCategoriesList(result)))
-
 
     function fillForm(e, field) {
         const newForm = { ...form }
         const name = e.target.value
         const arr = newForm[field]
+
         if (e.target.checked) {
             arr.push(name)
         } else {
-            
+
             const index = arr.indexOf(name);
             if (index > -1) {
-                console.log('if');
                 arr.splice(index, 1);
             }
         }
-        console.log('arr', arr);
-        console.log('newForm', newForm);
         setForm(newForm)
     }
 
     const events = eventsList.map((event) => {
         const value = event.toLowerCase()
+        const checked = form.events.find(formEvent => formEvent === value)
+
+        /* Q. Can I somehow use ternary inside tag? */
         return (
             <label key={event} className="checkbox">
-                <input
-                    name={event}
-                    value={value}
-                    type="checkbox"
-                    // onChange={(e)=>console.log(e.target.checked)} 
-                    onChange={(e) => fillForm(e,'events')}
-                />
+                {checked ?
+                    <input
+                        name={event}
+                        value={value}
+                        type="checkbox"
+                        checked
+                        onChange={(e) => fillForm(e, 'events')}
+                    /> :
+                    <input
+                        name={event}
+                        value={value}
+                        type="checkbox"
+                        onChange={(e) => fillForm(e, 'events')}
+                    />}
                 <span />
                 {event}
             </label>
@@ -49,15 +55,23 @@ export default function Events({form, setForm}) {
 
     const relationships = categoriesList.map((category) => {
         const value = category.toLowerCase()
+        const checked = form.relationships.find(formEvent => formEvent === value)
         return (
             <label key={category} className="checkbox">
-                <input
-                    name={category}
-                    value={value}
-                    type="checkbox"
-                    // onChange={(e)=>console.log(e.target.checked)} 
-                    onChange={(e) => fillForm(e,'relationships')}
-                />
+                {checked ?
+                    <input
+                        name={category}
+                        value={value}
+                        type="checkbox"
+                        checked
+                        onChange={(e) => fillForm(e, 'relationships')}
+                    /> :
+                    <input
+                        name={category}
+                        value={value}
+                        type="checkbox"
+                        onChange={(e) => fillForm(e, 'relationships')}
+                    />}
                 <span />
                 {category}
             </label>
@@ -107,7 +121,6 @@ export default function Events({form, setForm}) {
                 </div>
             </div>
         </div>
-
     );
 }
 

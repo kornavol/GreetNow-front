@@ -83193,9 +83193,9 @@ canvas {
     display: none !important;
   }
 }
-body {
+/* body {
   background: #EEF0F8;
-}
+} */
 
 @media (min-width: 992px) {
   .header-fixed .wrapper {
