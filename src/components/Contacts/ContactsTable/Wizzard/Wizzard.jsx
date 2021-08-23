@@ -1,69 +1,135 @@
-import '../../assets/css/wizzard.css'
+import "../../assets/css/wizzard.css";
 import { Tabs, Tab } from "react-bootstrap";
-import Accordion from 'react-bootstrap/Accordion'
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
-import Bio from './Bio';
-import Events from './Events';
+import Bio from "./Bio";
+import Events from "./Events";
+import { editContact } from "../../../../actions/contatcInf";
+import { getAllContacts } from "../../../../actions/contactsCRUD";
 
+export default function Wizzard({ unmPopUp, purpose }) {
+    const dispatch = useDispatch();
 
-export default function Wizzard({ unmPopUp }) {
+    const initRecip = {
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        gender: "",
+        relationships: [],
+        events: [],
+    };
 
     const [key, setKey] = useState("bio");
-    const [recipient, setRecipient] = useState({
-        firstName: '',
-        lastName: '',
-        dateOfBbirth: '',
-        gender: '',
-        relationships: [],
-        events: []
-    });
+    const [recipient, setRecipient] = useState(initRecip);
 
-    // console.log(recipient);
+    /* Confirm button logic */
 
-    const headers = {
-        'Content-Type': 'application/json',
-        'x-auth-token': localStorage.getItem('authToken')
+    let confirm = (
+        <button
+            type="button"
+            className="btn btn-primary m-3"
+            onClick={() => setKey("events")}
+        >
+            Next
+        </button>
+    );
+
+    if (key === "events") {
+        confirm = (
+            <button 
+            type="submit" 
+            className="btn btn-primary m-3" 
+            // onClick={{sendRecip}}
+            onClick={()=> {
+                sendRecip()
+                unmPopUp()
+            }}
+            >
+                <span className="indicator-label">Save</span>
+                {/* <span class="indicator-progress">Please wait...
+                <span class="spinner-border spinner-border-sm align-middle ms-2"></span>
+            </span> */}
+            </button>
+        );
     }
 
+    const recipForEdit = useSelector((state) => state.contact);
+
+    useEffect(() => {
+        if (recipient !== initRecip) {
+            dispatch(editContact({}));
+        }
+    }, [recipient]);
+
+    useEffect(() => {
+        /* Checking if object is empty */
+        if (Object.entries(recipForEdit).length !== 0) {
+            setRecipient(recipForEdit);
+        }
+    }, []);
+
     function sendRecip() {
-        const url = 'http://localhost:8080/recipients/new_record';
+        let url = "";
+
+        switch (purpose) {
+            case "create":
+                url = "http://localhost:8080/recipients/new_record";
+                break;
+            case "edit":
+                url = "http://localhost:8080/recipients/update_record";
+                break;
+        }
+
         let finalForm = new FormData();
 
         for (const key in recipient) {
             const value = recipient[key];
 
-            // if (value) {
+            /* We need additional to check type of value and for each arr. or obj. put each element separately, 
+                  because append to the form automatically convert data to a string   */
 
-            // }
-            finalForm.append(key, value)
-            console.log(`${key}: ${value}`);
+            if (typeof value == "object") {
+                value.forEach((element) => {
+                    finalForm.append(key, element);
+                });
+            } else {
+                finalForm.append(key, value);
+            }
         }
 
         const options = {
-            method: 'POST',
-            headers,
-            body: finalForm
-        }
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+            },
+            body: finalForm,
+        };
 
-        fetch(url, options)
-    //   .then(data => data.json().then(output => setContacts([...contacts, output])));
+        fetch(url, options).then((data) =>
+            data.json().then((output) => {
+                if (output.status === "success") {
+                    dispatch(getAllContacts());
+                }
+            })
+        );
     }
 
     return (
-
         <div id="contacts-wizzard">
             <Tabs id="wizzard-tabs" activeKey={key} onSelect={(k) => setKey(k)}>
                 <Tab eventKey="bio" title="bio">
                     <Bio form={recipient} setForm={setRecipient} />
                 </Tab>
                 <Tab eventKey="events" title="events">
-                    <div><Events form={recipient} setForm={setRecipient} /></div>
+                    <div>
+                        <Events form={recipient} setForm={setRecipient} />
+                    </div>
                 </Tab>
             </Tabs>
 
-            <div className='d-flex justify-content-center '>
+            <div className="d-flex justify-content-center ">
                 <button
                     type="button"
                     className="btn btn-secondary m-3"
@@ -71,24 +137,8 @@ export default function Wizzard({ unmPopUp }) {
                 >
                     Close
                 </button>
-                <button type="button" className="btn btn-primary m-3" onClick={sendRecip} >Save changes</button>
+                {confirm}
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     );
 }
-

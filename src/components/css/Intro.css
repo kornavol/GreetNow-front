@@ -58,7 +58,11 @@
 .intro-card-container {
     width: 400px;
     height: 460px;
-    margin-top: 5vmin;
+    margin: auto; 
+    position:absolute;
+    top:30%;
+    /* left:50%; */
+    /* transform: translateX(-50%); */
     transition: 1s;
     z-index: 3;
 

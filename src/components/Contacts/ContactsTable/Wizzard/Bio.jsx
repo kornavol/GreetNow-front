@@ -1,12 +1,21 @@
 import React from 'react';
 
-export default function Bio({form, setForm}) {
+export default function Bio({ form, setForm }) {
 
     function fillForm(e, field) {
         const newForm = { ...form }
         newForm[field] = e.target.value
         setForm(newForm)
     }
+
+    /* Conditional rendering for contact editing */
+    const genderList = ['male', 'female']
+    const genders = genderList.map(gender => {
+        if (gender === form.gender) {
+            return <option key={gender} value={gender} selected>{gender}</option>
+        }
+        return <option key={gender} value={gender}>{gender}</option>
+    })
 
     return (
         <div id="wizzard-bio" className='card=body p-0'>
@@ -104,9 +113,10 @@ export default function Bio({form, setForm}) {
                                         <div className="col-lg-9 col-xl-9">
                                             <input
                                                 className="form-control form-control-solid form-control-lg"
-                                                name="dateOfBbirth"
+                                                name="dateOfBirth"
                                                 type="date"
-                                                onChange={(e) => fillForm(e, 'dateOfBbirth')}
+                                                defaultValue={form.dateOfBirth}
+                                                onChange={(e) => fillForm(e, 'dateOfBirth')}
                                             />
                                             {/* <span className="form-text text-muted">
                                                 If you want your invoices addressed to a company. Leave blank to use
@@ -125,12 +135,9 @@ export default function Bio({form, setForm}) {
                                                 name="language"
                                                 onChange={(e) => fillForm(e, 'gender')}
                                             >
-                                                <option value="">Select Language...</option>
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                             
+                                                <option value="">Select Gender...</option>
+                                                {genders}
                                             </select>
-
                                             {/*                                             <span className="form-text text-muted">
                                                 Enter valid US phone number(e.g: 5678967456).
                                             </span>
@@ -147,5 +154,3 @@ export default function Bio({form, setForm}) {
         </div>
     )
 }
-
-

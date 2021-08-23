@@ -57,6 +57,8 @@ const Intro = () => {
         }
     }, []);
 
+    // `${}`
+
     return (
         <section id="intro-container">
             <div className="intro-banner">

@@ -1,23 +1,30 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
 
-import { updateContact } from "../../../actions/contactsCRUD";
+import { editContact } from '../../../actions/contatcInf';
+import { getAllContacts, deleteContact } from '../../../actions/contactsCRUD';
 
-export default function CTRow({ contact, number }) {
+export default function CTRow({ contact, number, setSwitchCase }) {
+
     const dispatch = useDispatch()
 
-
-    const { firstName, lastName, dateOfBbirth, gender, relationships, events } = contact
-    const fullName = lastName + ' ' + firstName
-
-    console.log('from ROW:',firstName,  lastName);
+    const { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
+    const fullName = lastName + ' ' + firstName;
 
     const initials = firstName.substr(0, 1).toUpperCase() + lastName.substr(0, 1).toUpperCase()
-    
-    const relatList = relationships.map((category) => <div key={category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>)
-    const eventsList = events.map((event) => <div key={event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>)
 
-    
+    const relatList = relationships.map((category) => {
+        if (category) {
+            return <div key={category} className="label label-lg font-weight-bold  label-light-info label-inline m-1">{category}</div>
+        }
+    })
+
+    const eventsList = events.map((event) => {
+        if (event) {
+            return <div key={event} className="label label-lg font-weight-bold  label-light-danger label-inline m-1">{event}</div>
+        }
+    })
+
 
     return (
         <tr key={number} data-row={number} className="datatable-row" style={{ left: 0 }}>
@@ -75,9 +82,9 @@ export default function CTRow({ contact, number }) {
                 </span>
             </td>
 
-            <td data-field="Birthday" aria-label={dateOfBbirth} className="datatable-cell">
+            <td data-field="Birthday" aria-label={dateOfBirth} className="datatable-cell">
                 <span style={{ width: 108 }}>
-                    <div className="font-weight-bolder text-primary mb-0">{dateOfBbirth}</div>
+                    <div className="font-weight-bolder text-primary mb-0">{dateOfBirth}</div>
                     {/* <div className="text-muted">Rejected</div> */}
                 </span>
             </td>
@@ -113,7 +120,11 @@ export default function CTRow({ contact, number }) {
                     <button
                         className="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon mr-2"
                         title="Edit details"
-                    // onClick={dispatch(updateContact(contact))}
+                        // onClick={dispatch(updateContact(contact))}
+                        onClick={() => {
+                            setSwitchCase('edit_contact');
+                            dispatch(editContact(contact))
+                        }}
                     >
 
                         <span className="svg-icon svg-icon-md">
@@ -149,7 +160,12 @@ export default function CTRow({ contact, number }) {
                     <button
                         className="btn btn-sm btn-default btn-text-primary btn-hover-primary btn-icon"
                         title="Delete"
-                    // onClick={deleteContact}
+                        onClick={async () => {
+                            const result = await dispatch(deleteContact(contact))
+                            if (result.status == 'success') {
+                                dispatch(getAllContacts())
+                            }
+                    }}
                     >
 
                         <span className="svg-icon svg-icon-md">
