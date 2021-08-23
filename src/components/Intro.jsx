@@ -6,14 +6,22 @@ import envelopeLeft from '../assets/envelope-left-gold.png';
 import envelopeRight from '../assets/envelope-right-gold.png';
 import envelopeRightOpen from '../assets/envelope-right-open-gold.png';
 import Handwriting from './Handwriting';
-import FlowerAnimation from './FlowerAnimation';
+import StampAnimation from './StampAnimation';
+import TextPresentation from './TextPresentation';
+import ImgPresentation from './ImgPresentation';
 import './css/Intro.css';
 
 
-
-const Intro = () => {
+const Intro = (props) => {
 
     const [isClicked, setIsClicked] = useState (false);
+    const user = props.user;
+    const isAuth = props.isAuth;
+    const setIsAuth = props.setIsAuth;
+    const toggleRegister = props.toggleRegister;
+    const setToggleRegister = props.setToggleRegister;
+    const modalShow = props.modalShow;
+    const setModalShow = props.setModalShow;
 
     const introCardRef = useRef(0);
     const introFlipCardRef = useRef(0);
@@ -59,12 +67,13 @@ const Intro = () => {
 
     return (
         <section id="intro-container">
-            <div className="intro-banner">
+            <header className="intro-banner">
                 <h2>Celebrate life with the perfect card or invitation</h2>
                 <h3>― Lorem ipsum dolor sit amet consectetur.</h3>
-            </div>
-            <FlowerAnimation/>
-            <div className="intro-card-container" data-aos="fade-up" data-aos-duration="1700">
+                <p>Click the Card to Open</p>
+            </header>
+            <StampAnimation/>
+            <main className="intro-card-container" data-aos="fade-up" data-aos-duration="1700">
                 <div className="intro-envelope">
                     <div className="envelope-back">
                         <img src={envelopeBack} alt="envelope"/>
@@ -88,24 +97,28 @@ const Intro = () => {
                     <div ref={introFlipCardRef} id="intro-flip-card" className={`intro-flip-card ${isClicked ? "translate" : "reverse-translate"}`}>
                         <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> setIsClicked(state =>!state)}>
                             <Handwriting/>
-                            <img src={image1} alt="birthday"/>
                             <img src={introCardCover} alt="flower"/>
-                            <div className="fold"></div>
+                            <ImgPresentation isClicked={isClicked}/>
+                            {/* <img src={image1} alt="birthday"/> */}
+                            <div className="fold">
+                                <p>Open</p>
+                            </div>
                         </div>
                         <div className="intro-flip-card-text" onClick={()=> setIsClicked(state =>!state)}>
-                            <h2>Greetings!</h2>
-                            <h3>Greet friends and family and celebrate special moments.
-                                <br/>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing.
-                                <br/>
-                                Ipsum dolor sit amet.
-                            </h3>
-                            <h4>Greet Now</h4>
+                            <TextPresentation
+                                isClicked={isClicked}
+                                user={user}
+                                isAuth={isAuth} 
+                                setIsAuth={setIsAuth} 
+                                toggleRegister={toggleRegister} 
+                                setToggleRegister={setToggleRegister} 
+                                modalShow={modalShow} 
+                                setModalShow={setModalShow}
+                            />
                         </div>
                     </div>
                 </div>     
-            </div>
-            
+            </main>
         </section>
     )
 }

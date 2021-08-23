@@ -22,7 +22,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
-            GreetNow
+            Greet Now
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -32,7 +32,7 @@ function Copyright() {
 
 const useStyles = makeStyles((theme) => ({
     paper: {
-        marginTop: theme.spacing(8),
+        marginTop: theme.spacing(1),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -47,7 +47,22 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: 'black',
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.dark
+        }
     },
+    logo: {
+        fontFamily: 'Norican',
+        margin: theme.spacing(1)
+    },
+    link: {
+        color: 'black',
+        "&:hover": {
+            textDecoration: "none",
+            color: theme.palette.secondary.dark
+        }
+    }
 }));
 
 export default function Register(props) {
@@ -111,7 +126,7 @@ export default function Register(props) {
                         setError("");
                     }, 5000);
                 }
-                console.log(output);
+                //console.log(output);
             }
         ))
     }
@@ -125,6 +140,9 @@ export default function Register(props) {
             </Avatar>
             <Typography component="h1" variant="h5">
             Register
+            </Typography>
+            <Typography className={classes.logo} component="h1" variant="h5">
+            Greet Now
             </Typography>
             {error && <span className="error-message">{error}</span>}
             <form className={classes.form} noValidate onSubmit={registerHandler}>
@@ -204,7 +222,7 @@ export default function Register(props) {
             </Button>
             <Grid container justifyContent="flex-end">
                 <Grid item>
-                <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(true)}} variant="body2">
+                <Link className={classes.link} onClick={() => {props.setModalShow(true); props.setToggleRegister(true)}} variant="body2">
                     {"Already have an account? Sign in"}
                 </Link>
                 </Grid>

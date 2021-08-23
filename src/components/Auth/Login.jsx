@@ -26,7 +26,7 @@ function Copyright() {
         <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
         <Link color="inherit" href="https://material-ui.com/">
-            Greetnow
+            Greet Now
         </Link>{' '}
         {new Date().getFullYear()}
         {'.'}
@@ -52,7 +52,23 @@ const useStyles = makeStyles((theme) => ({
     },
     submit: {
         margin: theme.spacing(3, 0, 2),
+        backgroundColor: 'black',
+        color: 'white',
+        "&:hover": {
+            backgroundColor: theme.palette.secondary.dark
+        }
     },
+    logo: {
+        fontFamily: 'Norican',
+        margin: theme.spacing(1)
+    },
+    link: {
+        color: 'black',
+        "&:hover": {
+            textDecoration: "none",
+            color: theme.palette.secondary.dark
+        }
+    }
 }));
 
 export default function Login(props) {
@@ -83,7 +99,7 @@ export default function Login(props) {
         }
 
         function handleErrors(response) {
-            console.log(response);
+            //console.log(response);
             if (!response.ok) {
                 alert(response.statusText);
             }
@@ -119,6 +135,9 @@ export default function Login(props) {
             <Typography component="h1" variant="h5">
             Log In
             </Typography>
+            <Typography className={classes.logo} component="h1" variant="h5">
+            Greet Now
+            </Typography>
             <form className={classes.form} noValidate onSubmit={loginHandler}>
                 {error && <span className="error-message">{error}</span>}
                 <TextField
@@ -153,19 +172,19 @@ export default function Login(props) {
                     type="submit"
                     fullWidth
                     variant="contained"
-                    color="primary"
+                    
                     className={classes.submit}
                 >
                     Login
                 </Button>
                 <Grid container>
                     <Grid item xs>
-                    <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}} variant="body2">
+                    <Link className={classes.link} onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}} variant="body2">
                         Forgot password?
                     </Link>
                     </Grid>
                     <Grid item>
-                    <Link onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}}>
+                    <Link className={classes.link} onClick={() => {props.setModalShow(true); props.setToggleRegister(false)}}>
                         {"Don't have an account? Register"}
                     </Link>
                     </Grid>

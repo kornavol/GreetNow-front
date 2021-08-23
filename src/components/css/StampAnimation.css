@@ -1,0 +1,360 @@
+/* Stamp Set */
+.stamp-set {
+    width: 20%;
+    height: 30%;
+    position: absolute;
+    top: 25%;
+    left: 5%;
+    z-index: 1;
+    transition: 3s;
+    opacity: 0;
+    animation: show-up 1s 9s forwards;
+}
+
+.stamp-set img {
+    width: 50%;
+}
+
+.stamp-set img:nth-of-type(1) {
+    position: absolute;
+    left: 0;
+}
+
+.stamp-set img:nth-of-type(2) {
+    position: absolute;
+    top: 20%;
+}
+
+
+/* Butterfly Left */
+
+.butterfly-frame {
+    width: 19%;
+    position: absolute;
+    top: 30%;
+    left: 75%;
+    transition: 1s;
+    opacity: 0;
+    animation: show-up 1.5s 9s forwards;
+}
+
+.butterfly-frame img {
+    width: 100%;
+}
+
+.butterfly-frame > img:nth-child(2) {
+    position: absolute;
+    top: 35%;
+    left: 0;
+}
+
+.butterfly {
+    width: 70%;
+    height: 60%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 20%;
+    left: 15%;
+    transition: 1s;
+}
+
+.butterfly div:nth-child(odd) {
+    width: 48%;
+    top: 17%;
+    position: absolute;
+    animation: butterfly 10s linear infinite;
+}
+
+.butterfly div:nth-child(1) {
+    transform-origin: right;
+    left: 0;
+}
+
+.butterfly div:nth-child(3) {
+    transform-origin: left;
+    right: 0;
+}
+
+.butterfly div:nth-child(2) {
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+@keyframes butterfly {
+    0% {
+        transform: rotateY(0);
+    }
+    10% {
+        transform: rotateY(0);
+    }
+    20% {
+        transform: rotateY(90deg);
+    }
+    30% {
+        transform: rotateY(0);
+    }
+    70% {
+        transform: rotateY(0);
+    }
+    80% {
+        transform: rotateY(90deg);
+    }
+    90% {
+        transform: rotateY(0);
+    }
+    100% {
+        transform: rotateY(0);
+    }
+}
+
+/* Butterfly Right */
+
+.butterfly-frame2 {
+    width: 8vw;
+    position: absolute;
+    top: 65%;
+    left: 7%;
+    opacity: 0;
+    transition: 1s;
+    animation: show-up 1s 9s forwards;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.butterfly-frame2 img {
+    width: 100%;
+}
+
+.butterfly2 {
+    width: 6.5vw;
+    height: 7vw;
+    position: absolute;
+    top: 10.5%;
+    left: 9.5%;
+    transition: 1s;
+}
+
+.butterfly2 > div img {
+    width: 100%;
+}
+
+.butterfly2 div:nth-child(odd) {
+    position: absolute;    
+}
+
+.butterfly2 div:nth-child(1) {
+    width: 50%;
+    transform-origin: right;
+    top: 7%;
+    left: 1px;
+    animation: butterfly2-right 7s linear infinite;
+}
+
+.butterfly2 div:nth-child(3) {
+    width: 69%;
+    transform-origin: left;
+    top: 45.5%;
+    right: 1px;
+    animation: butterfly2-left 7s linear infinite;
+}
+
+.butterfly2 div:nth-child(2) {
+    width: 45%;
+    position: absolute;
+    top: 23%;
+    left: 33%;
+}
+
+@keyframes butterfly2-right {
+    0% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    5% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+    6% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    7% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+    8% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    9% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+
+    10% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    11% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+
+    12% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    30% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    31% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+
+    32% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    33% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+    34% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    35% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+
+    36% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    37% {
+        transform: rotate(-1deg) rotateX(35deg) rotateY(-50deg);
+    }
+
+    38% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    100% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+}
+
+@keyframes butterfly2-left {
+    0% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    5% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+    6% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    7% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+    8% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    9% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+    10% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    11% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+    12% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    30% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    31% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+
+    32% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    33% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+
+    34% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    35% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+
+    36% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+
+    37% {
+        transform: rotate(2deg) rotateX(-5deg) rotateY(60deg);
+    }
+
+    38% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+    100% {
+        transform: rotateY(0) rotateX(0) rotateY(0);
+    }
+}
+
+/* Pen */
+
+.pen {
+    width: 17%;
+    position: absolute;
+    z-index: 4;
+    top: 52%;
+    left: 72%;
+    transform: rotate(15deg);
+    opacity: 0;
+    transition: 3s;
+    animation: show-up 2s 9s forwards; 
+}
+
+.pen img {
+    width: 100%;
+}
+
+/* Ribbon */
+
+.ribbon {
+    width: 30%;
+    position: absolute;
+    z-index: 1;
+    top: 70%;
+    left: 82%;
+    transform: rotate(140deg);
+    opacity: 0;
+    transition: 1s;
+    animation: show-up 1.5s 9s forwards;
+    ;
+}
+
+.ribbon img {
+    width: 100%;
+}
+
+/* Show Up Elements */
+
+@keyframes show-up {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

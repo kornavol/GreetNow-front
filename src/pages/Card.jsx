@@ -3,23 +3,24 @@ import './css/Card.css';
 import React, {useState, useEffect, useRef} from "react";
 import  { useSelector } from 'react-redux';
 import { useParams} from "react-router-dom";
-import previewEnvelopeBack from '../assets/white-card-back.png';
+import previewEnvelopeBack from '../assets/envelope-back-gold.png';
 import previewEnvelopeLeft from '../assets/white-envelope-left.png';
 import previewEnvelopeRight from '../assets/white-envelope-right.png';
-import previewEnvelopeRightOpen from '../assets/white-envelope-right-open.png';
+import previewEnvelopeRightOpen from '../assets/white-envelope-right-open-gold.png';
 import previewCoverImage from '../assets/cover-card-editor.png';
 import previewBackImage from '../assets/cover-back-card-editor.png';
 import { FiChevronLeft } from "react-icons/fi";
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
-import PetalsAnimation from '../components/PetalsAnimation';
+import FlowerShowerAnimation from '../components/FlowerShowerAnimation';
 import { Link } from 'react-router-dom';
 
 /* All unique data has to come from back.
     All cards are public. 
 */
-export default function Card() {
+export default function Card(props) {
 
     const [isClicked, setIsClicked] = useState(false);
+    const username = props.user;
 
     const previewCardRef = useRef(0);
     const previewFlipCardRef = useRef(0);
@@ -28,9 +29,6 @@ export default function Card() {
 
     const selectedImage = useSelector((state) => state.currPict);
     const selectedText = useSelector((state) => state.currText);
-    console.log('====================================');
-    console.log(selectedImage);
-    console.log('====================================');
 
     useEffect(() => {
         const zIndex1 = setTimeout(() => {
@@ -95,13 +93,19 @@ export default function Card() {
 
     }, []);
  */
+console.log('====================================');
+console.log(selectedText);
+console.log('====================================');
+
+
     return (
         <div id="preview-container">
-            <PetalsAnimation/>
+            <FlowerShowerAnimation/>
             <header>
                 <h1>Preview</h1>
+                <p>Click the Card to Open</p>
             </header>
-            <div className="preview-card-container" data-aos="fade-up" data-aos-duration="1700">
+            <div className="preview-card-container" data-aos="fade-up" data-aos-duration="2000">
                 <div className="preview-envelope">
                     <div className="preview-envelope-back">
                         <img src={previewEnvelopeBack} alt="envelope"/>
@@ -127,7 +131,7 @@ export default function Card() {
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={()=> setIsClicked(state =>!state)}>
-                            {selectedImage.name != null  ? (
+                            {selectedImage ? (
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card"/>
                                 ) : (
                                     <img src={previewCoverImage} alt="card"/>
@@ -135,25 +139,27 @@ export default function Card() {
                             <img src={previewBackImage} alt="image"/>
                         </div>
                         <div className="preview-flip-card-text" onClick={()=> setIsClicked(state =>!state)}>
-                            <h2>Card information:</h2>
-                            <h4></h4>
-                            <h3>{selectedText}</h3>
-                            <h4>Greet Now</h4>
+                            {selectedText ? (
+                                <div>
+                                    <h3>{selectedText}</h3>
+                                    <h4>Greet Now</h4>
+                                </div>
+                            ) : (
+                                <div className="preview-text-empty">
+                                    <h2>Hello {username},</h2>
+                                    <h3>Please compose a message <br/> or choose a text template from <br/> the Text Catalog.</h3>
+                                    <h4>Greet Now</h4>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>     
             </div>
             <div className="preview-footer">
-                <Link><h4><FiChevronLeft/> Back</h4></Link>
-                <Link className="preview-custom-btn save-btn" href="/card"><SaveOutlinedIcon/> Save</Link>
-                <Link className="preview-custom-btn send-btn" href="/card">Send</Link>
-                
+                <Link to="/card-editor"><h4><FiChevronLeft/> Back</h4></Link>
+                <Link className="preview-custom-btn save-btn"><SaveOutlinedIcon/> Save</Link>
+                <Link className="preview-custom-btn send-btn">Send</Link>
             </div>
         </div>
     )
 }
-
-
-/* <h4>ID: {id}</h4>
-<h3>text:{card.text}</h3>
- */

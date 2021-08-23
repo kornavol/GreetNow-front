@@ -1,8 +1,8 @@
-const currText = (state = 'null', action) => {
+const currText = (state = '', action) => {
     switch (action.type) {
         case "SEND_TEXT":
             state = action.text
-            console.log('state-text', state);
+
             return state
         default:
             return state

@@ -8,40 +8,81 @@
     text-align: center;
     box-sizing: border-box;
     border-radius: 25px;
-    position: relative;
     overflow: hidden;
     background-color: #ffffff;
 }
 
-.reviews-container h1, .reviews-container p {
-    font-family: 'IM Fell English',
-    cursive;
+.reviews-container h1 {
+    font-family: 'Sacramento', cursive;
+    margin-bottom: 0;
 }
 
-.reviews-container > div:first-of-type > h1 {
-    margin-top: 5vmin;
+.reviews-logo {
+    width: 100%;
+}
+
+.reviews-logo h2 {
+    font-family: 'Norican', cursive;
+}
+
+.flower-frame1 {
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    top: -5%;
+    left: -10%;
+    background-image: url('../../assets/flower-frame1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(15deg);
+}
+
+.flower-frame2 {
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    top: -5%;
+    right: -10%;
+    background-image: url('../../assets/flower-frame2.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(-15deg);
+}
+
+.reviews-container p {
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+    cursive;
+    font-size: .9rem;
 }
 
 .reviews-card-container {
-    width: 90%;
+    width: 85%;
     height: 70%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    justify-content: center;
-}
-
-.reviews-card-container > div {
-    width: 100%;
-    display: flex;
-    align-items: center;
     justify-content: space-evenly;
-    flex-direction: row;
+    flex-wrap: wrap;
+    /* background-image: url('../../assets/horizontal-frame.png'); */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    padding: 3%;
+    border: 1px solid #E1C16E;
+    border-radius: 25px;
 }
 
 .MuiCard-root {
-    width: 20vmin;
-    height: 32vmin;
+    width: 23%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    flex-wrap: wrap;
+    text-align: left;
+    padding: 2%;
 }
 
 .MuiCard-root img {
@@ -52,29 +93,10 @@
 .MuiCard-root p {
     font-family: 'IM Fell English',
     cursive;
-    font-size: 1.7vmin;
-    padding: 2vmin;
-    text-align: left;
+    font-size: .7rem;
 }
 
-/* Scroll Icon */
-
-.reviews-scroll-up {
-    margin: 0;
-    padding: 0;
-    position: absolute;
-    z-index: 6;
-    top: 0;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #000000;
-    font-family: 'Nunito', sans-serif;
-}
-
-.reviews-scroll-up:hover {
-    text-decoration: none;
-    color: #dc004e;
+.MuiCard-root h4 {
+    font-weight: 700;
+    margin-top: 5%;
 }

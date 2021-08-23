@@ -3,7 +3,6 @@ const contacts = (state = [], action) => {
         case "GET_ALL_CONTACTS":
             //  state =[...state, action.contacts]
             state = state.concat(action.contacts);
-            console.log('contacts from storage:', state);
             return state
         case "UPDATE_CONTACTS":
             return state

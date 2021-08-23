@@ -5,12 +5,10 @@ import flower3 from '../assets/test_pictures/flower3.jpg';
 import flower4 from '../assets/test_pictures/flower4.jpg';
 import flower5 from '../assets/test_pictures/flower5.jpg';
 import flower6 from '../assets/test_pictures/flower6.jpg';
-import frame1 from '../assets/frame1.png';
-import frame2 from '../assets/frame2.png';
-import frame3 from '../assets/frame3.png';
 import './css/CardRouletteAnimation.css';
 import { useDispatch } from "react-redux";
 import { sendPict } from '../actions';
+import {Link} from 'react-router-dom';
 
 
 const CardRoulette = (props) => {
@@ -27,8 +25,6 @@ const CardRoulette = (props) => {
 ];
 
 const doors = document.querySelectorAll(".door");
-
-
 
 async function spin() {
     init(false, 1, 2);
@@ -118,7 +114,6 @@ function shuffle([...arr]) {
     return arr
 }
 
-
 const animate = () => {
     init();
     spin();
@@ -130,9 +125,8 @@ useEffect(()=>{
 
 init();
 
-
     return (
-        <section id="card-roulette-container">
+        <section id="roulette-animation-container">
             <div className="doors">
                 <div className="frame1">
                     <div className="door">
@@ -151,16 +145,9 @@ init();
                 </div>
             </div>
 
-
-            <h3>Select an image or spin it again!</h3>
-            
-            {props.spinBtn?
-            <div className="buttons">
-                <button id="spinner" onClick={animate}>Spin</button>
+            <div id="card-roulette-btn" className="card-roulette-button glow-on-hover">
+                <Link id="spinner" className="roulette-btn" onClick={animate}>SPIN</Link>
             </div>
-            : null}
-        
-        
         </section>
     );
 }

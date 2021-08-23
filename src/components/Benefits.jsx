@@ -14,13 +14,14 @@ const Benefits = () => {
                     <p>{header.subtitle}</p>
                 </div>
             ))}
-            
-            <div className="block-container">
-            <div className="block">
+            <div className="benefits-logo">
+                <h2>Greet Now</h2>
+            </div>
+            <div className="benefits-block-container">
+            <div className="benefits-block" data-aos="fade-right" data-aos-duration="1700">
                 <div className="benefits-img"><img src={image01} alt="envelope"/></div>
             </div>
-                <div className="block">
-                    <div className="text-container">
+                <div className="benefits-block" data-aos="fade-left" data-aos-duration="1700">
                         <ul>
                             {data.Benefits.map((text, i) => (
                                 <div key={i}>
@@ -33,9 +34,9 @@ const Benefits = () => {
                             </div>
                             ))}
                         </ul>
-                    </div>
                 </div>
             </div>
+            <div className="benefits-flower" data-aos="fade-up" data-aos-duration="1700"></div>
         </div> 
     );
 }

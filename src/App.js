@@ -8,11 +8,13 @@ import Appbar from './components/NavBar/Appbar';
 
 import Home from './pages/Home';
 /* for all users */
-import Intro from './components/Intro';
+
 import CardRoulette from './pages/CardRoulette';
 import CardEditor from './pages/CardEditor';
 import Catalog from './pages/Catalog';
 import Card from './pages/Card';
+import Login from './components/Auth/Login';
+import Register from './components/Auth/Register';
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
@@ -32,14 +34,15 @@ import NotFoundPage from './pages/NotFoundPage';
 import Cookies from './components/Cookies.jsx';
 
 /* Material UI Grid and Components*/
-import { Grid } from '@material-ui/core';
+import { Grid, Button } from '@material-ui/core';
 
 import { useDispatch } from "react-redux";
 import { getAllContacts } from "./actions/contactsCRUD";
 
+import Modal from 'react-bootstrap/Modal';
+
+
 function App() {
-
-
 
   const dispatch = useDispatch()
 
@@ -59,6 +62,10 @@ function App() {
   /* Checking if user is authorized*/
   const [isAuth, setIsAuth] = useState(false);
   const [privateData, setPrivateData] = useState();//now it is just the first name
+   /* Toggles between Login and Register Buttons */
+    const [toggleRegister, setToggleRegister] = useState(true);
+    /* Shows Modal */
+    const [modalShow, setModalShow] = useState(false);
 
   const fetchPrivateData = () => {
 
@@ -100,32 +107,87 @@ function App() {
     }
   },[]); */
 
+   /* Modal Body */
+    function VerticalModal(verticalModal) {
+        return (
+            <Modal {...verticalModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+                <Modal.Body>
+                    {toggleRegister ? (
+                        <Login
+                            isAuth={isAuth}
+                            setIsAuth={setIsAuth}
+                            toggleRegister={toggleRegister} 
+                            setToggleRegister={setToggleRegister} 
+                            modalShow={modalShow} 
+                            setModalShow={setModalShow}
+                            />
+                    ) : (
+                        <Register
+                            isAuth={isAuth}
+                            toggleRegister={toggleRegister} 
+                            setToggleRegister={setToggleRegister} 
+                            modalShow={modalShow} 
+                            setModalShow={setModalShow}
+                        />
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button onClick={verticalModal.onHide}>Close</Button>
+                </Modal.Footer>
+            </Modal>
+        );
+    }
+
   return (
     <div className="App">
       <Grid container direction="column">
         <Grid container>
         <Grid item sm={false} md={3}/>
             <Grid className="bg" item sm={12} md={6}>
-              <Appbar user={privateData} setUser={setPrivateData} isAuth={isAuth} setIsAuth={setIsAuth}/>
+              <Appbar 
+                user={privateData}
+                setUser={setPrivateData} 
+                isAuth={isAuth} 
+                setIsAuth={setIsAuth} 
+                toggleRegister={toggleRegister} 
+                setToggleRegister={setToggleRegister} 
+                modalShow={modalShow} 
+                setModalShow={setModalShow}
+                />
                 <Switch>
                   {/* Nav */}
                   <Route exact path="/">
-                    <Home />
+                    <Home
+                      user={privateData}
+                      isAuth={isAuth} 
+                      setIsAuth={setIsAuth} 
+                      toggleRegister={toggleRegister} 
+                      setToggleRegister={setToggleRegister} 
+                      modalShow={modalShow} 
+                      setModalShow={setModalShow}
+                    />
                   </Route>
                   <Route exact path="/media-catalog">
-                <Catalog />
+                <Catalog setModalShow={setModalShow}/>
               </Route>
-              <Route path="/intro">
-                <Intro />
-              </Route>
+
               <Route path="/roulette">
                 <CardRoulette isAuth={isAuth}/>
               </Route>
               <Route path="/card-editor">
                 <CardEditor />
               </Route>
-              <Route path="/card">
-                <Card />
+              <Route
+                path="/card">
+                <Card
+                  user={privateData}
+                  isAuth={isAuth} 
+                  setIsAuth={setIsAuth} 
+                  toggleRegister={toggleRegister} 
+                  setToggleRegister={setToggleRegister} 
+                  modalShow={modalShow} 
+                  setModalShow={setModalShow}
+                  />
               </Route>
               {/* Footer */}
               <Route path="/qa">
@@ -153,7 +215,7 @@ function App() {
               {isAuth ?
                 (<div>
                   <Route path="/catalog">
-                    <Catalog />
+                    <Catalog setModalShow={setModalShow}/>
                   </Route>
                   <Route path="/calendar">
                     <Calendar />
@@ -178,6 +240,7 @@ function App() {
           <Grid item sm={false} md={3} />
         </Grid>
       </Grid>
+      <VerticalModal show={modalShow} onHide={() => setModalShow(false)}/>
     </div>
   );
 }

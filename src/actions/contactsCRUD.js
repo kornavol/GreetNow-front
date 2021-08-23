@@ -16,7 +16,7 @@ export const getAllContacts = () => {
         const response = await fetch(url, options);
         const result = await response.json()
         const contacts = result.data
-        console.log('contacts from CRUD', contacts);
+        //console.log('contacts from CRUD', contacts);
         dispatch({type: "GET_ALL_CONTACTS", contacts})
     }
 }
@@ -33,7 +33,7 @@ export const updateContact = (contact) => {
         const response = await fetch(url, options);
         const result = await response.json()
         const status = result.status
-        console.log(status);
+        //console.log(status);
         dispatch({type: "GET_ALL_CONTACTS", paylod:{status, contact}})
     }
 }

@@ -111,7 +111,7 @@ const AppbarMobile = (props) => {
                     <MenuIcon/>
                 </IconButton>
                 <Typography variant="h6" noWrap>
-                    GreetNow
+                    Greet Now
                 </Typography>
             </Toolbar>
             </AppBar>
@@ -153,13 +153,13 @@ const AppbarMobile = (props) => {
                 <Divider/>
                 {props.isAuth ? (
                 <List>
-                    {props.menuItems.map((menu, i) => (
+                    {props.menuItems.slice(0, -1).map((menu, i) => (
                         <ListItem button key={i} onClick={() => {props.handleButtonClick(menu.pageURL); props.handleDrawerClose()}}>
                             <ListItemIcon>{menu.icon}</ListItemIcon>
                             <ListItemText primary={menu.menuTitle} />
                         </ListItem>
                     ))}
-                    {props.dashItems.splice(-1).map((dash, i) => (
+                    {props.dashItems.map((dash, i) => (
                         <ListItem button key={i} onClick={() => {props.handleButtonClick(dash.pageURL); props.handleDrawerClose()}}>
                             <ListItemIcon>{dash.icon}</ListItemIcon>
                             <ListItemText primary={dash.dashTitle} />

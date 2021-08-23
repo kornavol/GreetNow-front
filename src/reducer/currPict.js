@@ -1,4 +1,4 @@
-const currPict = (state = 'null', action) => {
+const currPict = (state = '', action) => {
     switch (action.type) {
         case "SEND_PICT":
             state = action.picture

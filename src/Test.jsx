@@ -8,7 +8,6 @@ const Test = () => {
         if (picture) {
             name = picture[0].name
         }
-            console.log(name);
 
     useEffect(() => {
         const url = 'http://localhost:8080/media-catalog/getPictures';
@@ -23,11 +22,10 @@ const Test = () => {
         fetch(url, options).then(data => data.json().then(output => {
             if (output.status == 'success') {
                 // setContacts(output.data);
-                console.log(output.data);
-                // console.log(output.data[0].name);
+
                 setPicture(output.data)
             } else {
-                console.log(output.message);
+                //console.log(output.message);
             }
 
         }));

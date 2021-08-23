@@ -171,7 +171,7 @@ const AppbarDesktop = (props) => {
                                     <Button className={classes.button} key={i} component={NavLink} exact={true} to={menu.pageURL}>{menu.menuTitle}</Button>
                                 ))}
                                 <Typography variant="h6" className={classes.title}>
-                                    GreetNow
+                                    Greet Now
                                 </Typography>
                     </div>         
                 </Toolbar>

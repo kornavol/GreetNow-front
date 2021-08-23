@@ -28,23 +28,47 @@
         "Reviews": [
                 {
                         "title": "Customers' Review",
-                        "subtitle": "Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.", 
+                        "subtitle": "Ipsum dolor sit amet consectetur voluptatem aut nihil.", 
                         "body": [
                                 {
-                                "title": "Lorem Ipsum 1",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                "title": "Lovely App",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+                                "stars" : "5"
                                 },
                                 {
-                                "title": "Lorem Ipsum 2",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                "title": "Beautiful Cards",
+                                "bodyText": "Dolor sit amet consectetur adipisicing elit lorem ipsum.",
+                                "stars": "5"
                                 },
                                 {
-                                "title": "Lorem Ipsum 3",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                "title": "Enjoyable",
+                                "bodyText": "Sit amet consectetur adipisicing elit. Lorem ipsum.",
+                                "stars": "5"
                                 },
                                 {
-                                "title": "Lorem Ipsum 4",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+                                "title": "My Favorite App",
+                                "bodyText": "Amet consectetur lorem ipsum, dolor sit adipisicing elit.",
+                                "stars": "5"
+                                },
+                                {
+                                "title": "Enjoyable",
+                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+                                "stars" : "5"
+                                },
+                                {
+                                "title": "My Favorite App",
+                                "bodyText": "Dolor sit amet consectetur adipisicing elit lorem ipsum.",
+                                "stars": "5"
+                                },
+                                {
+                                "title": "Lovely App",
+                                "bodyText": "Sit amet consectetur adipisicing elit. Lorem ipsum.",
+                                "stars": "5"
+                                },
+                                {
+                                "title": "Beautiful Cards",
+                                "bodyText": "Amet consectetur lorem ipsum, dolor sit adipisicing elit.",
+                                "stars": "5"
                                 }
                         ]
                 }

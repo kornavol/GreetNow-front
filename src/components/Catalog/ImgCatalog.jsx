@@ -6,6 +6,9 @@ import Filter from "./EvFilter";
 import Pictures from "./Pictures";
 import Pagination from '../Paginations';
 
+
+
+
 const ImgCatalog = (props) => {
 
     const [pictures, setPictures] = useState([]);
@@ -58,7 +61,7 @@ const ImgCatalog = (props) => {
                 active={activePage}
                 setActive={setActivePage}
                 totalPages={totalPages}
-            />
+            /> 
         </div>
     );
 };

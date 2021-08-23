@@ -46,15 +46,16 @@ const Appbar = (props) => {
     const setIsAuth = props.setIsAuth;
     const user = props.user;
     const isAuth = props.isAuth;
-
+    const setToggleRegister = props.setToggleRegister;
+    const setModalShow = props.setModalShow;
     /* Material UI Theme */
     const theme = useTheme();
     /* Material UI Media Query */ 
     const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
     /* Toggles between Login and Register Buttons */
-    const [toggleRegister, setToggleRegister] = useState(true);
+   /*  const [toggleRegister, setToggleRegister] = useState(true); */
     /* Shows Modal */
-    const [modalShow, setModalShow] = useState(false);
+  /*   const [modalShow, setModalShow] = useState(false); */
     /* Access History */
     const { history } = props;
     /* Navigates to URL */
@@ -146,9 +147,10 @@ const Appbar = (props) => {
     ];
 
     /* Modal Body */
-    function MyVerticallyCenteredModal(modalVertical) {
+    /* 
+    function VerticalModal(verticalModal) {
         return (
-            <Modal {...modalVertical} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal {...verticalModal} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
                 <Modal.Body>
                     {toggleRegister ? (
                         <Login
@@ -171,12 +173,12 @@ const Appbar = (props) => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button onClick={modalVertical.onHide}>Close</Button>
+                    <Button onClick={verticalModal.onHide}>Close</Button>
                 </Modal.Footer>
             </Modal>
         );
     }
-
+ */
     return (
         <Box>
             {isMobile ? ( 
@@ -223,7 +225,7 @@ const Appbar = (props) => {
                 StyledMenuItem={StyledMenuItem}
                 />     
             )}
-            <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)}/>
+            {/* <VerticalModal show={modalShow} onHide={() => setModalShow(false)}/> */}
         </Box>
     );
 };
