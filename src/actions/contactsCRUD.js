@@ -1,10 +1,15 @@
 /* CRUD for Contacnt */
 
+// const headers = {
+//     "Content-Type": "application/json",
+//     Authorization: `Bearer ${localStorage.getItem('authToken')}`
+// }
+
 export const getAllContacts = () => {
     const url = 'http://localhost:8080/recipients/getAll'
     const options = {
         method: 'GET',
-        headers : {
+        headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${localStorage.getItem('authToken')}`
         }
@@ -16,7 +21,7 @@ export const getAllContacts = () => {
         const result = await response.json()
         const contacts = result.data
         dispatch({ type: "GET_ALL_CONTACTS", contacts })
-
+    }
 }
 
 export const deleteContact = (contact) => {
@@ -37,3 +42,4 @@ export const deleteContact = (contact) => {
         // dispatch({ type: "DELETE_CONTACTS", result })
         return result
     }
+}

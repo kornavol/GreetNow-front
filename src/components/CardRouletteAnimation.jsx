@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import rouletteCard from '../assets/test_pictures/roulette-card.png';
 import './css/CardRouletteAnimation.css';
+import { Link } from 'react-router-dom';
+
 import { useDispatch } from "react-redux";
 import { sendPict } from '../actions';
 import { useHistory } from 'react-router-dom';
