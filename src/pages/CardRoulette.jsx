@@ -44,9 +44,6 @@ const CardRoulette = (props) => {
                 <div className="balloon2">
                     <img src={balloonWhite} alt="balloon"/>
                 </div>
-                <div id="card-roulette-btn" className="card-roulette-button glow-on-hover">
-                    <Link className="roulette-btn">SPIN</Link>
-                </div>
                 </div>
             </section>
     );
