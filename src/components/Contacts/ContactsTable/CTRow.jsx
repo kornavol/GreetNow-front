@@ -68,7 +68,7 @@ export default function CTRow({ contact, number, setSwitchCase }) {
                             </span>
                         </div>
                         <div className="ml-4">
-                            <div className="text-dark-75 font-weight-bolder font-size-lg mb-0">
+                            <div className="text-dark-75 font-weight-light font-size-sm mb-0">
                                 {fullName}
                             </div>
                             {/* <a

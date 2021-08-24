@@ -3,7 +3,7 @@ import React from "react";
 const EvFilter = ({ selector, setSelector }) => {
 
     /* The values will comes though fetch */
-    const events = ['all', "Birthday", "Wedding", "Christmas"];
+    const events = ['All', "Birthday", "Wedding", "Christmas"];
 
     const eventList = events.map(el => <option key={el} value={el}>{el}</option>)
 
@@ -14,7 +14,7 @@ const EvFilter = ({ selector, setSelector }) => {
                 className="form-control-sm"
                 value={selector.events}
                 onChange={(e) => {
-                    /* Why I can't change in current obj (prev) a value and return it */
+                    
                     setSelector((prev) => {
                         let curr = Object.assign({}, prev);
                         curr.events = e.target.value;

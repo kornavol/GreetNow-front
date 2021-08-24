@@ -4,12 +4,13 @@ import React, { useState } from "react";
 
 import ContactsTable from "../../components/Contacts/ContactsTable/ContactsTable";
 import Wizzard from "../../components/Contacts/ContactsTable/Wizzard/Wizzard";
+import './css/ContactList.css';
 
 export default function ContactList() {
     const [switchCase, setSwitchCase] = useState("contacts");
 
     return (
-        <div id="contact-list" className="page">
+        <div id="contact-list">
             {(() => {
                 switch (switchCase) {
                     case "contacts":

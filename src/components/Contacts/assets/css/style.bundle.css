@@ -4908,7 +4908,7 @@ input[type=button].btn-block {
 }
 
 .nav-tabs {
-  border-bottom: 1px solid #E4E6EF;
+  border-bottom: 1px solid #E1C16E;
 }
 .nav-tabs .nav-link {
   margin-bottom: -1px;
@@ -4917,18 +4917,18 @@ input[type=button].btn-block {
   border-top-right-radius: 0.42rem;
 }
 .nav-tabs .nav-link:hover, .nav-tabs .nav-link:focus {
-  border-color: #EBEDF3 #EBEDF3 #E4E6EF;
+  border-color: #E1C16E;
 }
 .nav-tabs .nav-link.disabled {
-  color: #7E8299;
+  color: #000;
   background-color: transparent;
   border-color: transparent;
 }
 .nav-tabs .nav-link.active,
 .nav-tabs .nav-item.show .nav-link {
-  color: #5E6278;
+  color: #000;
   background-color: #ffffff;
-  border-color: #E4E6EF #E4E6EF #ffffff;
+  border-color: #E1C16E;
 }
 .nav-tabs .dropdown-menu {
   margin-top: -1px;
@@ -5797,7 +5797,7 @@ input[type=button].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #3699FF;
+  color: #000;
   background-color: #ffffff;
   border: 1px solid #E4E6EF;
 }
@@ -7656,7 +7656,7 @@ button.bg-white:focus {
 }
 
 .border-secondary {
-  border-color: #E4E6EF !important;
+  border-color: #E1C16E !important;
 }
 
 .border-success {
@@ -27337,7 +27337,7 @@ button.bg-white:focus {
 }
 
 .text-primary {
-  color: #3699FF !important;
+  color: #000 !important;
 }
 
 a.text-primary:hover, a.text-primary:focus {
@@ -40193,23 +40193,23 @@ h3 {
 }
 
 .border-secondary {
-  border-color: #E4E6EF !important;
+  border-color: #E1C16E !important;
 }
 
 .border-top-secondary {
-  border-top-color: #E4E6EF !important;
+  border-top-color: #E1C16E !important;
 }
 
 .border-right-secondary {
-  border-right-color: #E4E6EF !important;
+  border-right-color: #E1C16E !important;
 }
 
 .border-bottom-secondary {
-  border-bottom-color: #E4E6EF !important;
+  border-bottom-color: #E1C16E !important;
 }
 
 .border-left-secondary {
-  border-left-color: #E4E6EF !important;
+  border-left-color: #E1C16E !important;
 }
 
 .border-success {
@@ -50968,7 +50968,7 @@ a.text-hover-white:hover .svg-icon svg:hover g [fill],
 }
 
 .text-primary {
-  color: #3699FF !important;
+  color: #000 !important;
 }
 
 .text-inverse-primary {
@@ -50992,11 +50992,11 @@ a.text-hover-primary:hover,
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, -webkit-box-shadow 0.15s ease;
-  color: #3699FF !important;
+  color: #000 !important;
 }
 a.text-hover-primary:hover i,
 .text-hover-primary:hover i {
-  color: #3699FF !important;
+  color: #000 !important;
 }
 a.text-hover-primary:hover .svg-icon svg g [fill],
 .text-hover-primary:hover .svg-icon svg g [fill] {
@@ -53278,7 +53278,7 @@ button {
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, -webkit-box-shadow 0.15s ease;
-  color: #3699FF;
+  color: #000;
 }
 .nav .show > .nav-link .nav-text,
 .nav .nav-link:hover:not(.disabled) .nav-text,
@@ -53287,7 +53287,7 @@ button {
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, -webkit-box-shadow 0.15s ease;
-  color: #3699FF;
+  color: #000;
 }
 .nav .show > .nav-link .nav-icon i,
 .nav .nav-link:hover:not(.disabled) .nav-icon i,
@@ -53296,14 +53296,14 @@ button {
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, -webkit-box-shadow 0.15s ease;
-  color: #3699FF;
+  color: #000;
 }
 .nav .show > .nav-link .nav-icon .svg-icon svg g [fill],
 .nav .nav-link:hover:not(.disabled) .nav-icon .svg-icon svg g [fill],
 .nav .nav-link.active .nav-icon .svg-icon svg g [fill] {
   -webkit-transition: fill 0.3s ease;
   transition: fill 0.3s ease;
-  fill: #3699FF;
+  fill: #000;
 }
 .nav .show > .nav-link .nav-icon .svg-icon svg:hover g [fill],
 .nav .nav-link:hover:not(.disabled) .nav-icon .svg-icon svg:hover g [fill],
@@ -53318,7 +53318,7 @@ button {
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, -webkit-box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
   transition: color 0.15s ease, background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, -webkit-box-shadow 0.15s ease;
-  color: #3699FF;
+  color: #000;
 }
 
 .nav.nav-bold .nav-item .nav-link {
@@ -53521,18 +53521,18 @@ button {
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link:hover:not(.disabled),
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link.active,
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .show > .nav-link {
-  border-bottom-color: #E4E6EF;
-  color: #E4E6EF;
+  border-bottom-color: #E1C16E;
+  color: #000;
 }
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link:hover:not(.disabled) .nav-text,
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link.active .nav-text,
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .show > .nav-link .nav-text {
-  color: #E4E6EF;
+  color: #000;
 }
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link:hover:not(.disabled) .nav-icon i,
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link.active .nav-icon i,
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .show > .nav-link .nav-icon i {
-  color: #E4E6EF;
+  color: #000;
 }
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link:hover:not(.disabled) .nav-icon .svg-icon svg g [fill],
 .nav.nav-tabs.nav-tabs-line.nav-tabs-line-secondary .nav-link.active .nav-icon .svg-icon svg g [fill],
@@ -83101,7 +83101,8 @@ body.swal2-height-auto {
 }
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-html {
+
+/* html {
   font-family: sans-serif;
   -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
@@ -83145,7 +83146,7 @@ body {
   flex-direction: column;
   color: #3F4254;
 }
-
+ */
 router-outlet {
   display: none;
 }
