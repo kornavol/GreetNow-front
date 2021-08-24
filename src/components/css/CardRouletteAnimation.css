@@ -36,10 +36,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    box-sizing: border-box;
 }
 
 .frame1 {
     background-image: url('../../assets/frame1.png');
+}
+
+.frame1:hover {
+    border: 2px solid #fafafa;
 }
 
 .frame2 {
@@ -47,8 +52,16 @@
     margin: 0 3%;
 }
 
+.frame2:hover {
+    border: 2px solid #fafafa;
+}
+
 .frame3 {
     background-image: url('../../assets/frame3.png');
+}
+
+.frame3:hover {
+    border: 2px solid #fafafa;
 }
 
 .door {
@@ -61,6 +74,7 @@
 .boxes {
     /* transform: translateY(0); */
     transition: transform 1s ease-in-out;
+    box-sizing: border-box;
 }
 
 .box {
@@ -69,6 +83,11 @@
     justify-content: center;
     align-items: center;
     font-size: 3rem;
+    transition: 1s;
+}
+
+.box:hover {
+    opacity: 0.7;
 }
 
 .card-roulette-button {

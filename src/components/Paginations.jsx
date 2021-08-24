@@ -1,6 +1,7 @@
 import React, { memo, useRef } from "react";
 //import { Pagination } from "react-bootstrap";
 import Pagination from '@material-ui/lab/Pagination';
+import PaginationItem from '@material-ui/lab/PaginationItem';
 import { Box } from '@material-ui/core'
 
 const Paginations = ({ active, setActive, totalPages }) => {
@@ -34,21 +35,21 @@ const Paginations = ({ active, setActive, totalPages }) => {
 
     for (let i = 1; i <= totalPages; i++) {
         let el = null; 
-        /* not === becose dispatch string (innertext) */
+
         if (i == active) {
             el = (
-                <Pagination.Item key={i} active>
+                <PaginationItem key={i} active>
                     {i}
-                </Pagination.Item>
+                </PaginationItem>
             );
         } else {
             el = (
-                <Pagination.Item
+                <PaginationItem
                     key={i}
                     onClick={(e) => setActive(parseInt(e.target.innerText))}
                 >
                     {i}
-                </Pagination.Item>
+                </PaginationItem>
             );
         }
         pagination.push(el);

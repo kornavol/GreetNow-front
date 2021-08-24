@@ -19,8 +19,8 @@ const EventFilter = (props) => {
         return <option key={index} value={contact.firstName}>{contact.firstName}</option>
     });
     const contacts = (
-    <div >
-        <label htmlFor='contactlist'>Select a name</label>
+    <div className="roulette-event-filter">
+        <label htmlFor='contactlist'>Select a Card from </label><Filter setSelector={setCategory} selector={category} /><label>to send to </label>
         <select name='contactlist' id='contactlist'>
             {contact}
         </select>
@@ -28,9 +28,10 @@ const EventFilter = (props) => {
     );
 
     return (
-        <div className="roulette-event-filter">
-            {isAuth? contacts : null}
-            <Filter setSelector={setCategory} selector={category} />
+        <div className="roulette-event-filter-container">
+            {isAuth? contacts :
+                <div className="roulette-event-filter"><label>Select a Card from </label> <Filter setSelector={setCategory} selector={category} /></div>
+            }
         </div>
     );
 }
