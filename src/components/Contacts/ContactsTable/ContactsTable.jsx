@@ -32,7 +32,7 @@ export default function ContactsTable(props) {
                 className="datatable datatable-bordered datatable-head-custom datatable-default datatable-primary datatable-loaded"
                 id="kt_datatable"
             >
-                <table className="datatable-table">
+                <table className="table-sm">
                     <THead />
                     <tbody style={{}} className="datatable-body">
                         {Rows}

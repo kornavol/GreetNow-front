@@ -18,6 +18,27 @@
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
+.roulette-event-filter {
+    width: 40%;
+    height: 30%;
+    position: absolute;
+    top: 15%;
+    margin: auto;
+    z-index: 40;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    border: 1px solid white;
+}
+
+/* .roulette-selector {
+    position: absolute;
+    top: 20%;
+    left: 30%;
+    z-index: 40;
+} */
+
 .star-container h1 {
     font-family: 'Norican', cursive;
     color: #ffffff;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import rouletteCard from '../assets/test_pictures/roulette-card.png';
+import rouletteCard from '../assets/roulette-card.png';
 import './css/CardRouletteAnimation.css';
 import { Link } from 'react-router-dom';
 
@@ -162,7 +162,7 @@ const CardRoulette = (props) => {
             </div>
 
             <div id="card-roulette-btn" className="card-roulette-button glow-on-hover">
-                <Link id="spinner" className="roulette-btn" onClick={animate}>SPIN</Link>
+                <Link to="#" id="spinner" className="roulette-btn" onClick={animate}>SPIN</Link>
             </div>
         </section>
     );

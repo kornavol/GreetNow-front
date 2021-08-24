@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import  { useSelector } from 'react-redux';
 import Filter from "./Catalog/EvFilter";
+import './css/CardRouletteAnimation.css';
 
 /* This filter is using for Roulette component */
 
@@ -18,7 +19,7 @@ const EventFilter = (props) => {
         return <option key={index} value={contact.firstName}>{contact.firstName}</option>
     });
     const contacts = (
-    <div>
+    <div >
         <label htmlFor='contactlist'>Select a name</label>
         <select name='contactlist' id='contactlist'>
             {contact}
@@ -27,7 +28,7 @@ const EventFilter = (props) => {
     );
 
     return (
-        <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+        <div className="roulette-event-filter">
             {isAuth? contacts : null}
             <Filter setSelector={setCategory} selector={category} />
         </div>

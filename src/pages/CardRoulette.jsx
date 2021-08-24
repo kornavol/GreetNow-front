@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import EventFilter from "../components/EventFilter";
 import CardRouletteAnimation from "../components/CardRouletteAnimation";
-import cardRoulette from './css/CardRoulette.css';
+import './css/CardRoulette.css';
 import balloonGold from '../assets/balloon-gold.png';
 import balloonWhite from '../assets/balloon-white.png';
 
@@ -11,10 +11,10 @@ const CardRoulette = (props) => {
 
     return (
         <section id="card-roulette-container">
+            <EventFilter isAuth={props.isAuth} setEvent={setEvent}/>
             <div className="big-frame">
                 <div className="star-container">
                     <h1>Card Roulette</h1>
-                    <EventFilter isAuth={props.isAuth} setEvent={setEvent}/>
                     <div className="star star1"></div>
                     <div className="star star2"></div>
                     <div className="star star3"></div>

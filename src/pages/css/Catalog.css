@@ -58,3 +58,24 @@ rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   box-sizing: border-box;
   color: #dc004e;
 }
+
+.nav-tabs .nav-link.active,
+.nav-tabs .nav-item.show .nav-link {
+  border-left: 1px solid #E1C16E;
+  border-top: 1px solid #E1C16E;
+  border-right: 1px solid #E1C16E;
+  border-bottom: none;
+  box-sizing: border-box;
+  color: #000;
+}
+
+.nav .show .nav-link,
+.nav .nav-link:hover:not(.disabled),
+.nav .nav-link.active {
+  border-left: 1px solid #E1C16E;
+  border-top: 1px solid #E1C16E;
+  border-right: 1px solid #E1C16E;
+  border-bottom: none;
+  box-sizing: border-box;
+  color: #000;
+}
