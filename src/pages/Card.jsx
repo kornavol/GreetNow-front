@@ -113,15 +113,17 @@ export default function Card(props) {
         Becouse we will use them also in User card catalog 
     */
     async function SaveCard() {
-        console.log(selectedImage);
-        console.log('name', selectedImage.name);
+        // console.log(selectedImage);
+        // console.log('name', selectedImage.name);
         // console.log(selectedText);
 
         const card = {
             picture: selectedImage.name,
             text: selectedText,
+            created:'user',
             /* not neccery */
-            event: 'Birthday',
+            event: '',
+            recipient: ''
         }
 
         const url = 'http://localhost:8080/cards/new_record';
@@ -140,6 +142,10 @@ export default function Card(props) {
 
         if (result.status === 'success') {
             setIsSaved(true)
+            /* clear text storage */
+            dispatch(sendText(''))
+            dispatch(sendPict({name: 'cover-card-editor.png'}))
+            /* To-DO: Needing to create a same dispatch for picture */
         }
     }
 
@@ -151,8 +157,8 @@ export default function Card(props) {
     - Add mockup with name of recipient (f.e. Dear {Andreas} ) (optional)
     */
 
-    console.log('isPublicCard', isPublicCard);
-    console.log('isSaved', isSaved);
+    // console.log('isPublicCard', isPublicCard);
+    // console.log('isSaved', isSaved);
 
     return (
         <div id="preview-container">
@@ -187,7 +193,7 @@ export default function Card(props) {
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
-                            {selectedImage ? (
+                            {selectedImage._id ? (
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
                                 <img src={previewCoverImage} alt="card" />
