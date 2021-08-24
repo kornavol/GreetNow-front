@@ -56,9 +56,10 @@ export default function Wizzard({ unmPopUp, purpose }) {
     }
 
     const recipForEdit = useSelector((state) => state.contact);
+    console.log('recipForEdit:', recipForEdit);
 
     useEffect(() => {
-        if (recipient !== initRecip) {
+        if (recipient == initRecip) {
             dispatch(editContact({}));
         }
     }, [recipient]);
@@ -67,6 +68,7 @@ export default function Wizzard({ unmPopUp, purpose }) {
         /* Checking if object is empty */
         if (Object.entries(recipForEdit).length !== 0) {
             setRecipient(recipForEdit);
+            console.log('recipForEdit -USE:', recipForEdit);
         }
     }, []);
 
@@ -115,6 +117,8 @@ export default function Wizzard({ unmPopUp, purpose }) {
             })
         );
     }
+
+    console.log('recipient', recipient);
 
     return (
         <div id="contacts-wizzard">

@@ -7,6 +7,7 @@ import { useState } from "react";
 
 import Pictures from "../components/Catalog/ImgCatalog.jsx";
 import Texts from "../components/Catalog/TextsCatalog.jsx";
+import CardsList from '../components/CardsList/CardsList';
 
 /* Media catalog page */
 export default function Catalog(props) {
@@ -25,6 +26,10 @@ export default function Catalog(props) {
                     </Tab>
                     <Tab eventKey="texts" title="Texts" >
                         <Texts setModalShow={setModalShow} />
+                    </Tab>
+                    {/* new component - CardList */}
+                    <Tab eventKey="usersCards" title="Your Cards" >
+                        <CardsList/>
                     </Tab>
                 </Tabs>
             </div>
