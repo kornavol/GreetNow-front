@@ -1,8 +1,4 @@
 import './css/Card.css';
-
-import React, {useState, useEffect, useRef} from "react";
-import  { useSelector } from 'react-redux';
-import { useParams} from "react-router-dom";
 import previewEnvelopeBack from '../assets/envelope-back-gold.png';
 import previewEnvelopeLeft from '../assets/white-envelope-left.png';
 import previewEnvelopeRight from '../assets/white-envelope-right.png';
@@ -12,15 +8,25 @@ import previewBackImage from '../assets/cover-back-card-editor.png';
 import { FiChevronLeft } from "react-icons/fi";
 import SaveOutlinedIcon from '@material-ui/icons/SaveOutlined';
 import FlowerShowerAnimation from '../components/FlowerShowerAnimation';
+
+
+import React, { useState, useEffect, useRef } from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
+import { sendText, sendPict } from '../actions';
 
 /* All unique data has to come from back.
     All cards are public. 
 */
 export default function Card(props) {
-
     const [isClicked, setIsClicked] = useState(false);
     const username = props.user;
+    /* to change a button or for another operation */
+    const [isSaved, setIsSaved] = useState(false);
+    /* to use card as cardpafe or previe for creation */
+    const [isPublicCard, setIsPublicCard] = useState(false);
+
 
     const previewCardRef = useRef(0);
     const previewFlipCardRef = useRef(0);
@@ -66,41 +72,91 @@ export default function Card(props) {
         }
     }, []);
 
-    /* TO-DO. We need to det access only if user is owner of this card */
-/*     
-    const [card, setCard] = useState({
-        picture:'',
-        text:''
-    });
-
+    /* Public card page logic */
+    const dispatch = useDispatch()
     const { id } = useParams();
-    const imgPass = `http://localhost:8080/greeting-pictures/${card.picture}`
+
+    console.log('URL params', id);
 
     useEffect(() => {
-        async function  getCard() {
+        async function getCard() {
             const url = 'http://localhost:8080/cards/getCard?' + `id=${id}`;
-            const response = await fetch(url) 
+            const option = {
+                method: 'GET',
+            }
+
+            const response = await fetch(url, option)
             const result = await response.json()
 
-            // console.log(result);
-            setCard({
-                picture:result.data.picture,
-                text:result.data.text
-            });
+            if (result.status === 'success') {
+                const picName = result.data.picture
+                const text = result.data.text
+                /* add pop-up with message */
+
+                dispatch(sendText(text))
+                dispatch(sendPict({ name: picName }))
+            }
         }
-        
-        getCard()
+
+        if (id) {
+            getCard()
+            setIsPublicCard(true)
+        }
 
     }, []);
- */
-console.log('====================================');
-console.log(selectedText);
-console.log('====================================');
 
+    /* TO-Do: 
+     - add to option:
+        - recipient ID
+        -event
+     - Replace all CRUD operation to redux. 
+        Becouse we will use them also in User card catalog 
+    */
+    async function SaveCard() {
+        console.log(selectedImage);
+        console.log('name', selectedImage.name);
+        // console.log(selectedText);
+
+        const card = {
+            picture: selectedImage.name,
+            text: selectedText,
+            /* not neccery */
+            event: 'Birthday',
+        }
+
+        const url = 'http://localhost:8080/cards/new_record';
+        const options = {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${localStorage.getItem('authToken')}`
+            },
+            body: JSON.stringify(card)
+        }
+
+        const respond = await fetch(url, options)
+        const result = await respond.json()
+
+
+        if (result.status === 'success') {
+            setIsSaved(true)
+        }
+    }
+
+    /* To-do:
+    - Add  ternary operator  
+    which willl be check card owner and add CRUD buttons 
+    (Need to thinking about logic.)
+    - align text ot center
+    - Add mockup with name of recipient (f.e. Dear {Andreas} ) (optional)
+    */
+
+    console.log('isPublicCard', isPublicCard);
+    console.log('isSaved', isSaved);
 
     return (
         <div id="preview-container">
-            <FlowerShowerAnimation/>
+            <FlowerShowerAnimation />
             <header>
                 <h1>Preview</h1>
                 <p>Click the Card to Open</p>
@@ -108,37 +164,37 @@ console.log('====================================');
             <div className="preview-card-container" data-aos="fade-up" data-aos-duration="2000">
                 <div className="preview-envelope">
                     <div className="preview-envelope-back">
-                        <img src={previewEnvelopeBack} alt="envelope"/>
+                        <img src={previewEnvelopeBack} alt="envelope" />
                     </div>
 
                     <div ref={previewCardRef} id="preview-card" className="preview-card">
-                        { selectedImage.name != null ? (
-                            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card"/>
+                        {selectedImage.name ? (
+                            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                         ) : (
-                            <img src={previewCoverImage} alt="card"/>
+                            <img src={previewCoverImage} alt="card" />
                         )}
-                    </div> 
-                
+                    </div>
+
                     <div ref={previewEnvelopeLeftRef} id="preview-envelope-left" className="preview-envelope-left">
-                        <img src={previewEnvelopeLeft} alt="envelope"/>
+                        <img src={previewEnvelopeLeft} alt="envelope" />
                     </div>
                     <div ref={previewEnvelopeRightRef} id="preview-envelope-right" className="preview-envelope-right ">
                         <div className="preview-envelope-right-box">
-                            <img src={previewEnvelopeRight} alt="envelope"/>
-                            <img src={previewEnvelopeRightOpen} alt="envelope"/>
+                            <img src={previewEnvelopeRight} alt="envelope" />
+                            <img src={previewEnvelopeRightOpen} alt="envelope" />
                         </div>
                     </div>
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
-                        <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={()=> setIsClicked(state =>!state)}>
+                        <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
                             {selectedImage ? (
-                                <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card"/>
-                                ) : (
-                                    <img src={previewCoverImage} alt="card"/>
-                                )}
-                            <img src={previewBackImage} alt="image"/>
+                                <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                            ) : (
+                                <img src={previewCoverImage} alt="card" />
+                            )}
+                            <img src={previewBackImage} alt="image" />
                         </div>
-                        <div className="preview-flip-card-text" onClick={()=> setIsClicked(state =>!state)}>
+                        <div className="preview-flip-card-text" onClick={() => setIsClicked(state => !state)}>
                             {selectedText ? (
                                 <div>
                                     <h3>{selectedText}</h3>
@@ -147,19 +203,38 @@ console.log('====================================');
                             ) : (
                                 <div className="preview-text-empty">
                                     <h2>Hello {username},</h2>
-                                    <h3>Please compose a message <br/> or choose a text template from <br/> the Text Catalog.</h3>
+                                    <h3>Please compose a message <br /> or choose a text template from <br /> the Text Catalog.</h3>
                                     <h4>Greet Now</h4>
                                 </div>
                             )}
                         </div>
                     </div>
-                </div>     
+                </div>
             </div>
-            <div className="preview-footer">
-                <Link to="/card-editor"><h4><FiChevronLeft/> Back</h4></Link>
-                <Link className="preview-custom-btn save-btn"><SaveOutlinedIcon/> Save</Link>
-                <Link className="preview-custom-btn send-btn">Send</Link>
-            </div>
+
+            {isPublicCard ? null :
+                <div /* className="preview-footer" */>
+
+                    {isSaved ?
+                        <div className="preview-footer">
+                            <button className="btn btn-bg-success">Edit</button>
+                            <button className="btn btn-bg-danger">Delete</button>
+                            <Link className="preview-custom-btn send-btn">Send</Link>
+                        </div>
+                        :
+                        <div className="preview-footer">
+                            <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
+                            <Link
+                                className="preview-custom-btn save-btn"
+                                onClick={() => SaveCard()}
+                            >
+                                <SaveOutlinedIcon />
+                                Save
+                            </Link>
+                        </div>
+                    }
+                </div>
+            }
         </div>
     )
 }
