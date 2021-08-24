@@ -144,6 +144,7 @@ export default function Card(props) {
             setIsSaved(true)
             /* clear text storage */
             dispatch(sendText(''))
+            dispatch(sendPict({name: 'cover-card-editor.png'}))
             /* To-DO: Needing to create a same dispatch for picture */
         }
     }
@@ -192,7 +193,7 @@ export default function Card(props) {
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
-                            {selectedImage ? (
+                            {selectedImage._id ? (
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
                                 <img src={previewCoverImage} alt="card" />

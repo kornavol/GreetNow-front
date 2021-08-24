@@ -4,6 +4,7 @@ import "./css/Catalog.css";
 import { Tabs, Tab } from "react-bootstrap";
 
 import { useState } from "react";
+import { useHistory } from 'react-router';
 
 import Pictures from "../components/Catalog/ImgCatalog.jsx";
 import Texts from "../components/Catalog/TextsCatalog.jsx";
@@ -14,6 +15,8 @@ export default function Catalog(props) {
 
     const [key, setKey] = useState("pictures");
     const setModalShow = props.setModalShow;
+    const history = useHistory()
+    console.log('history', history.goBack);
 
     return (
         <div id="media-catalog">
