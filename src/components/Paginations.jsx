@@ -11,8 +11,8 @@ const Paginations = ({ active, setActive, totalPages }) => {
 
   let pagination = [];
 
-  /* Rules to show navigation arrows. 
-    Add or remove navigation arrows. Depends of page number. 
+  /* Rules to show navigation arrows.
+    Add or remove navigation arrows. Depends of page number.
     */
   if (active === 1) {
     isFPage.current = true;
