@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 /* To-Do: 
 - Don't allow the user to go to the preview if a text wasn't added
 - put and fetch initial card from back-end
+- clear a text field if user click on a text 
 - add logic if user edis SAVED card (based of id checking)   */
 const CardEditor = () => {
     // const [auth, setAuth] = useState(false);

@@ -20,8 +20,6 @@ import { sendText, sendPict } from '../actions';
     All cards are public. 
 */
 export default function Card(props) {
-    /* To-do we need to check if card is saved when user goes back to editor */
-
     const [isClicked, setIsClicked] = useState(false);
     const username = props.user;
     /* to change a button or for another operation */
@@ -74,7 +72,7 @@ export default function Card(props) {
         }
     }, []);
 
-    /* Card page logic */
+    /* Public card page logic */
     const dispatch = useDispatch()
     const { id } = useParams();
 
@@ -115,14 +113,15 @@ export default function Card(props) {
         Becouse we will use them also in User card catalog 
     */
     async function SaveCard() {
-        // console.log(selectedImage);
+        console.log(selectedImage);
+        console.log('name', selectedImage.name);
         // console.log(selectedText);
 
         const card = {
-            picture: selectedImage,
+            picture: selectedImage.name,
             text: selectedText,
+            /* not neccery */
             event: 'Birthday',
-            recipient: 'optional'
         }
 
         const url = 'http://localhost:8080/cards/new_record';

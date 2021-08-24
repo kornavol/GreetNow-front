@@ -93,7 +93,7 @@ function App() {
         }
         ));
   }
-
+  /* this func. also validate a tocken  */
   fetchPrivateData();
 
   /* Modal Body */
