@@ -34,7 +34,7 @@ const Paginations = ({ active, setActive, totalPages }) => {
     }
 
     for (let i = 1; i <= totalPages; i++) {
-        let el = null; 
+        let el = null;
 
         if (i == active) {
             el = (
@@ -53,7 +53,7 @@ const Paginations = ({ active, setActive, totalPages }) => {
             );
         }
         pagination.push(el);
-    } 
+    }
 
     /* limitation of pagination */
     if (pagination.length > 3) {
@@ -68,16 +68,35 @@ const Paginations = ({ active, setActive, totalPages }) => {
         pagination = pagination.slice(startIndex, lastIndex);
     }
 
-    /* Bug. Changing active page not working */
+    /* Bug. Changing active page not working.
+        Reason pagination of Material UI works copmplitly different
+        Solution: Take back bootsrap variant
+       */
+    // return (
+    //     <Box>
+    //         { isLPage.current ? (
+    //             <Pagination count={totalPages} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev - 1)} />
+    //         ) : null ||
+    //         isFPage.current ? (
+    //             <Pagination count={totalPages} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev + 1)} />
+    //         ) : null }
+    //     </Box> 
+    // );
+
+
     return (
         <Box>
-            { isLPage.current ? (
-                <Pagination count={totalPages} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev - 1)} />
-            ) : null ||
-            isFPage.current ? (
-                <Pagination count={totalPages} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev + 1)} />
-            ) : null }
-        </Box> 
+            <Pagination
+                variant="outlined"
+                color="secondary"
+                count={totalPages}
+                page={active}
+                onChange={(e, value) => {
+                    setActive(value)
+                }}
+            />
+
+        </Box>
     );
 };
 

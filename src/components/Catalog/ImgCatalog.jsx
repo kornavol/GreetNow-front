@@ -16,7 +16,7 @@ const ImgCatalog = (props) => {
     const [activePage, setActivePage] = useState(1);
     const [totalPages, setTotalPages] = useState(3);
     
-    const PostPerPage = 3;
+    const PostPerPage = 1;
     let currEvent = '&';
 
     if (category.events !== 'all') {
@@ -46,8 +46,6 @@ const ImgCatalog = (props) => {
 
         }));
     }, [activePage, category]);
-
-    console.log('active page', activePage);
 
     return (
         <div className="component">
