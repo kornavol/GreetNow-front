@@ -99,6 +99,8 @@ export default function Card(props) {
             }
         }
 
+        console.log('SELECTED - IMAGE', selectedImage);
+
         if (id) {
             getCard()
             /* setIsPublicCard(true) */
@@ -176,10 +178,13 @@ export default function Card(props) {
                     </div>
 
                     <div ref={previewCardRef} id="preview-card" className="preview-card">
+                        {/* 1 */}
                         {selectedImage.name ? (
                             <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                         ) : (
-                            <img src={previewCoverImage} alt="card" />
+                            
+                            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                            // <img src={previewCoverImage} alt="card" />
                         )}
                     </div>
 
@@ -195,10 +200,12 @@ export default function Card(props) {
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
+                            {/* 2 */}
                             {selectedImage._id ? (
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
-                                <img src={previewCoverImage} alt="card" />
+                                <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                                // <img src={previewCoverImage} alt="card" />
                             )}
                             <img src={previewBackImage} alt="image" />
                         </div>
