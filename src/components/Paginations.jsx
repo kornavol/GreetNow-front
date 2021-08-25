@@ -68,13 +68,14 @@ const Paginations = ({ active, setActive, totalPages }) => {
         pagination = pagination.slice(startIndex, lastIndex);
     }
 
+    /* Bug. Changing active page not working */
     return (
         <Box>
             { isLPage.current ? (
-                <Pagination count={3} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev - 1)} />
+                <Pagination count={totalPages} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev - 1)} />
             ) : null ||
             isFPage.current ? (
-                <Pagination count={3} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev + 1)} />
+                <Pagination count={totalPages} variant="outlined" color="secondary" onClick={() => setActive((prev) => prev + 1)} />
             ) : null }
         </Box> 
     );

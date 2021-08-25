@@ -28,7 +28,7 @@ const ImgCatalog = (props) => {
         const limit = `limit=${PostPerPage}`
         
 
-        const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + currEvent + '&'
+        const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + '&' + currEvent
 
         fetch(url).then(respond => respond.json().then(result => {
             if (result.status == 'success') {
@@ -46,6 +46,8 @@ const ImgCatalog = (props) => {
 
         }));
     }, [activePage, category]);
+
+    console.log('active page', activePage);
 
     return (
         <div className="component">
