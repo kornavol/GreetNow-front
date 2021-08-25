@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 
 import { useDispatch } from "react-redux";
 import { sendPict } from '../actions';
+import { sendText } from '../actions';
 import { useHistory } from 'react-router-dom';
 
 
@@ -14,9 +15,11 @@ const CardRoulette = (props) => {
     const history = useHistory();
     const [picturesArr, setPicturesArr] = useState([]);
     const event = props.event;
+    const relationship = props.relationship;
     const [currEvent, setCurrEvent] = useState('&')
-
     const [items, setItems] = useState([]);
+
+    console.log(relationship);
 
     useEffect(() => {
         if(event.events !== 'all'){
@@ -100,7 +103,23 @@ const CardRoulette = (props) => {
             );
         }
 
+        function fetchText(){
+            let urlTexts = "http://localhost:8080/media-catalog/getTexts?" + "&" + currEvent + '&';
+            fetch(urlTexts).then(respond => respond.json().then(result => {
+                if (result.status == 'success') {
+                    const texts = result.data.texts;
+                    const itemArr = [];
+                    texts.map(text=>itemArr.push(text.text));
+                    const text = itemArr[Math.floor(Math.random() * itemArr.length)];
+                    dispatch(sendText(text));
+                } else {
+                    console.log(result.message);
+                }
+            }));
+        }
+
         function selectImg(img){
+            fetchText();
             const picture = picturesArr.find(obj => obj.name === `${img}`);
             dispatch(sendPict(picture));
             history.push('/card-editor');

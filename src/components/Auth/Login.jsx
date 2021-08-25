@@ -19,9 +19,6 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 /* Material UI Styles */
 import { makeStyles } from '@material-ui/core/styles';
 
-import { useDispatch } from "react-redux";
-import { getAllContacts } from "../../actions/contactsCRUD";
-
 /* import ForgotPass from '../Auth/ForgotPass'; */
 
 function Copyright() {
@@ -75,9 +72,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function Login(props) {
-    const dispatch = useDispatch();
     const classes = useStyles();
-    const history = useHistory();
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");

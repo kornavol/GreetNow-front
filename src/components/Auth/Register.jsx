@@ -77,12 +77,6 @@ export default function Register(props) {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [error, setError] = useState("");
 
-    /* useEffect(() => {
-        if(localStorage.getItem('authToken')){
-            history.push("/");
-        }
-    }, [history]); */
-
     const registerHandler = (e) => {
         e.preventDefault();
 
@@ -98,7 +92,6 @@ export default function Register(props) {
             method:'POST', 
             headers: {
                 'Content-Type': 'application/json'
-                // 'Content-Type': 'application/x-www-form-urlencoded',
             },
             body:JSON.stringify(data)
         }
