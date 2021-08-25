@@ -77,7 +77,7 @@ export default function Card(props) {
     const dispatch = useDispatch()
     const { id } = useParams();
 
-    console.log('URL params', id);
+    // console.log('URL params', id);
 
     useEffect(() => {
         async function getCard() {
@@ -89,7 +89,7 @@ export default function Card(props) {
             const response = await fetch(url, option)
             const result = await response.json()
 
-            console.log('for URL card:',  result);
+            // console.log('for URL card:',  result);
 
             if (result.status === 'success') {
                 const picName = result.data.picture
@@ -101,11 +101,11 @@ export default function Card(props) {
             }
         }
 
-        console.log('SELECTED - IMAGE', selectedImage);
+        // console.log('SELECTED - IMAGE', selectedImage);
 
         if (id) {
             getCard()
-            setIsPublicCard(true)
+            // setIsPublicCard(true)
         }
 
     }, []);
@@ -163,7 +163,7 @@ export default function Card(props) {
     // console.log('isPublicCard', isPublicCard);
     // console.log('isSaved', isSaved);
 
-    /* Clen-up the redux storage (CurrPict) when component unmontening */
+    /* Clen-up the redux storage (CurrPict and CurrText) when component unmontening */
     useEffect(() => {
         return () => {
             dispatch(sendText(''))
