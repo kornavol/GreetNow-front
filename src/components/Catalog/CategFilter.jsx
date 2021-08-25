@@ -11,7 +11,6 @@ const CategFilter = ({ selector, setSelector }) => {
         <div>
             <select
                 id="portfolio-filter"
-                className="form-control-sm"
                 value={selector.category}
                 onChange={(e) => {
                     setSelector((prev) => {

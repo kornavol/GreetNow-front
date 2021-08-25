@@ -12,7 +12,6 @@ const TextsCatalog = (props) => {
     const [activePage, setActivePage] = useState(1);
     const [category, setCategory] = useState({ events: "all", category: "all" });
     const [totalPages, setTotalPages] = useState(3);
-    const setModalShow = props.setModalShow;
 
     const PostPerPage = 3;
     let currEvent = "";
@@ -57,7 +56,7 @@ const TextsCatalog = (props) => {
             <Container>
                 <Row onClick={props.onClick}>
                     <Col className="d-block m-auto">
-                        <Texts texts={texts} setModalShow={setModalShow} />
+                        <Texts texts={texts} setModalShow={props.setModalShow} />
                     </Col>
                 </Row>
             </Container>

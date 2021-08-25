@@ -18,7 +18,7 @@ import Register from './components/Auth/Register';
 /* only for authorized users */
 import Calendar from './pages/dashboard/Calendar';
 import ContactList from './pages/dashboard/ContactList';
-
+import MyCards from './pages/dashboard/MyCards';
 import Settings from './pages/dashboard/Settings';
 
 /* Footer */
@@ -170,7 +170,9 @@ function App() {
                 <CardRoulette isAuth={isAuth} />
               </Route>
               <Route path="/card-editor">
-                <CardEditor />
+                <CardEditor
+                  setModalShow={setModalShow}
+                />
               </Route>
               <Route
                 path="/card">
@@ -206,7 +208,7 @@ function App() {
               {isAuth ?
                 (<div>
                   <Route path="/catalog">
-                    <Catalog setModalShow={setModalShow} />
+                    <MyCards setModalShow={setModalShow} />
                   </Route>
                   <Route path="/calendar">
                     <Calendar />
