@@ -12,7 +12,8 @@ export default function CardsList() {
     const [cardsList, setCardsList] = useState([]);
 
     /* request to gett all cards */
-    useEffect(() => {
+
+    function getAllCards() {
         const url = 'http://localhost:8080/cards/getAllCards';
         const options = {
             method: "GET",
@@ -30,6 +31,10 @@ export default function CardsList() {
                 }
             })
         );
+    }
+
+    useEffect(() => {
+        getAllCards()
     }, []);
 
     const Cards = ({ cards }) => {
@@ -38,7 +43,7 @@ export default function CardsList() {
             const cardID = card._id
 
             return (
-                <div className="cards-list-wrapper2"  key={i}>
+                <div className="cards-list-wrapper2" key={i}>
                     <Link key={cardID} to={`/cards/${cardID}`} >
                         <img
                             alt='card catalog pic'
@@ -56,11 +61,14 @@ export default function CardsList() {
                                 if (result.status == 'success') {
                                     console.log(result);
                                     console.log('delte operation. Implement useState to up-date a page ');
+                                    getAllCards()
                                 }
                             }}
-                        ><p><DeleteForeverOutlinedIcon/></p></Link>
+                        >
+                            <p><DeleteForeverOutlinedIcon /></p>
+                        </Link>
                         {/* Has to redirect to card editor with a card */}
-                        <Link to="#" ><p><EditOutlinedIcon/></p></Link>
+                        <Link to="#" ><p><EditOutlinedIcon /></p></Link>
                     </div>
                 </div>
             )
