@@ -3,9 +3,12 @@
     height: 60vh;
     padding: 2%;
     text-align: center;
+
     border-bottom-left-radius: 25px;
     border-bottom-right-radius: 25px;
     border: 1px solid #E1C16E;
+    border-top: hidden;
+    
     display: flex;
     align-items: center;
     justify-content: center;

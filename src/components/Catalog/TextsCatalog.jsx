@@ -55,7 +55,7 @@ const TextsCatalog = (props) => {
             <Categories setSelector={setCategory} selector={category} />
             <Container>
                 <Row onClick={props.onClick}>
-                    <Col className="d-block m-auto">
+                    <Col className="d-block mb-7 mt-5">
                         <Texts texts={texts} setModalShow={props.setModalShow} />
                     </Col>
                 </Row>
