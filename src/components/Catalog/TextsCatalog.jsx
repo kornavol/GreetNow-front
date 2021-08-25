@@ -13,7 +13,7 @@ const TextsCatalog = (props) => {
     const [category, setCategory] = useState({ events: "all", category: "all" });
     const [totalPages, setTotalPages] = useState(3);
 
-    const PostPerPage = 3;
+    const PostPerPage = 10;
     let currEvent = "";
     let currCateg = "";
 
