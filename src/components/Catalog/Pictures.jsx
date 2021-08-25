@@ -24,7 +24,7 @@ const Pictures = (props) => {
                     alt='front page img'
                     key={picture._id}
                     id={picture._id}
-                    className="picture"
+                    className="picture mt-5 mb-5"
                     src={pass}
                     onClick={() => {dispatch(sendPict(picture)); closeModal()}}
                     style={{ cursor: 'pointer' }}

@@ -6,9 +6,6 @@ import Filter from "./EvFilter";
 import Pictures from "./Pictures";
 import Pagination from '../Paginations';
 
-
-
-
 const ImgCatalog = (props) => {
 
     const [pictures, setPictures] = useState([]);
@@ -16,7 +13,7 @@ const ImgCatalog = (props) => {
     const [activePage, setActivePage] = useState(1);
     const [totalPages, setTotalPages] = useState(3);
     
-    const PostPerPage = 1;
+    const PostPerPage = 6;
     let currEvent = '&';
 
     if (category.events !== 'all') {
@@ -28,7 +25,7 @@ const ImgCatalog = (props) => {
         const limit = `limit=${PostPerPage}`
         
 
-        const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + '&' + currEvent
+        const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + currEvent
 
         fetch(url).then(respond => respond.json().then(result => {
             if (result.status == 'success') {
@@ -53,7 +50,7 @@ const ImgCatalog = (props) => {
             <Container>
                 <Row onClick={props.onClick}>
                     <Col className="d-block m-auto">
-                        <Pictures pictures={pictures} setModalShow={props.setModalShow}/>
+                        <Pictures  pictures={pictures} setModalShow={props.setModalShow}/>
                     </Col>
                 </Row>
             </Container>
