@@ -108,7 +108,7 @@ const Appbar = (props) => {
     const dashItems = [
         {
             dashTitle: "My Cards",
-            pageURL: "/catalog",
+            pageURL: "/my-cards",
             icon: <PhotoAlbumIcon/>
         },
         {

@@ -207,7 +207,7 @@ function App() {
               </Route>
               {isAuth ?
                 (<div>
-                  <Route path="/catalog">
+                  <Route path="/my-cards">
                     <MyCards setModalShow={setModalShow} />
                   </Route>
                   <Route path="/calendar">
