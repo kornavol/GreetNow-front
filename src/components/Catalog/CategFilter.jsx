@@ -3,7 +3,7 @@ import React from "react";
 const CategFilter = ({ selector, setSelector }) => {
 
     /* The values will comes though fetch */
-    const categories = ['all', "mom", "general", "son"];
+    const categories = ['all', "general", "friend",  "colleague"];
 
     const categList = categories.map(el => <option key={el} value={el}>{el}</option>)
 

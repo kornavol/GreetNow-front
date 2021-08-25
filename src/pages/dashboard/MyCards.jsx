@@ -13,7 +13,7 @@ import CardsList from "../../components/CardsList/CardsList";
 /* Media catalog page */
 export default function Catalog(props) {
 
-    const [key, setKey] = useState("pictures");
+    const [key, setKey] = useState("MyCards");
     const setModalShow = props.setModalShow;
     const history = useHistory()
     console.log('history', history.goBack);
@@ -24,7 +24,7 @@ export default function Catalog(props) {
                 <h1>My Cards</h1>
                 <p>Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.</p>
                 <Tabs id="tabs" activeKey={key} onSelect={(k) => setKey(k)} className="catalog-tab">
-                    <Tab eventKey="usersCards" title="Your Cards" >
+                    <Tab eventKey="MyCards" title="My Cards" >
                         <CardsList/>
                     </Tab>
                     <Tab xs={10} eventKey="pictures" title="Pictures" >

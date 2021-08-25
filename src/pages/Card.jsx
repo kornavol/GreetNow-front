@@ -121,7 +121,7 @@ export default function Card(props) {
         const card = {
             picture: selectedImage.name,
             text: selectedText,
-            created:'user',
+            created: 'user',
             /* not neccery */
             event: '',
             recipient: ''
@@ -143,9 +143,10 @@ export default function Card(props) {
 
         if (result.status === 'success') {
             setIsSaved(true)
-            /* clear text storage */
-            dispatch(sendText(''))
-            dispatch(sendPict({name: 'cover-card-editor.png'}))
+            /* clear text storage 
+            TO-DO! Need to comment out back*/
+            // dispatch(sendText(''))
+            // dispatch(sendPict({name: 'cover-card-editor.png'}))
             /* To-DO: Needing to create a same dispatch for picture */
         }
     }
@@ -244,12 +245,18 @@ export default function Card(props) {
                             <Link to="#" className="preview-custom-btn send-btn">Send</Link>
                         </div>
                     )}
-                    </div>
-                
-                ) : (
+                </div>
+
+            ) : (
                 <div className="preview-footer">
                     <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                    <Link to="#" className="preview-custom-btn send-btn">Send</Link>
+                    <Link to="#"
+                        className="preview-custom-btn send-btn"
+                        onClick={() => {
+                            dispatch(sendText(''))
+                            dispatch(sendPict({ name: 'cover-card-editor.png' }))
+                        }}
+                    >Send</Link>
                 </div>
             )}
         </div>
