@@ -4,6 +4,7 @@ import React, { useState } from "react";
 
 import ContactsTable from "../../components/Contacts/ContactsTable/ContactsTable";
 import Wizzard from "../../components/Contacts/ContactsTable/Wizzard/Wizzard";
+import { Link } from 'react-router-dom';
 import './css/ContactList.css';
 
 export default function ContactList() {
@@ -15,13 +16,16 @@ export default function ContactList() {
                 switch (switchCase) {
                     case "contacts":
                         return (
-                            <div>
-                                <button
-                                    className="btn btn-primary"
+                            <div className="contacts-frame">
+                                <header className="contacts-header">
+                                <h2>Contacts</h2>
+                                <Link to="#"
+                                    className="contacts-custom-btn contacts-btn"
                                     onClick={() => setSwitchCase("new_record")}
                                 >
-                                    New Record
-                                </button>
+                                    New Contact
+                                </Link>
+                                </header>
                                 <ContactsTable setSwitchCase={setSwitchCase} />
                             </div>
                         );

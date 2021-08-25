@@ -25,6 +25,7 @@
 
 .picture:hover {
     border: 2px solid #dc004e;
+    opacity: 0.8;
 }
 
 .link-text-catalog {

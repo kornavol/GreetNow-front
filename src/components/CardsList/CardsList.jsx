@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { updateCard, deleteCard } from '../../actions/cardsCRUD';
+import DeleteForeverOutlinedIcon from '@material-ui/icons/DeleteForeverOutlined';
+import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
+import './css/CardsList.css';
 
 export default function CardsList() {
     const dispatch = useDispatch()
@@ -30,12 +33,12 @@ export default function CardsList() {
     }, []);
 
     const Cards = ({ cards }) => {
-        const cardSet = cards.map((card) => {
+        const cardSet = cards.map((card, i) => {
             const pass = `http://localhost:8080/greeting-pictures/${card.picture}`
             const cardID = card._id
 
             return (
-                <div>
+                <div className="cards-list-wrapper2"  key={i}>
                     <Link key={cardID} to={`/cards/${cardID}`} >
                         <img
                             alt='card catalog pic'
@@ -45,24 +48,26 @@ export default function CardsList() {
                             style={{ cursor: 'pointer' }}
                         />
                     </Link>
-                    <button
-                        className='btn btn-bg-danger'
-                        onClick={async () => {
-                            const result = await dispatch(deleteCard(card))
-                            if (result.status == 'success') {
-                                console.log(result);
-                                console.log('delte operation. Implement useState to up-date a page ');
-                            }
-                        }}
-                    >delete</button>
-                    {/* Has to redirect to card editor with a card */}
-                    <button className='btn btn-bg-success'>update</button>
+                    <div className="cards-list-btn-container">
+                        <Link
+                            to="#"
+                            onClick={async () => {
+                                const result = await dispatch(deleteCard(card))
+                                if (result.status == 'success') {
+                                    console.log(result);
+                                    console.log('delte operation. Implement useState to up-date a page ');
+                                }
+                            }}
+                        ><p><DeleteForeverOutlinedIcon/></p></Link>
+                        {/* Has to redirect to card editor with a card */}
+                        <Link to="#" ><p><EditOutlinedIcon/></p></Link>
+                    </div>
                 </div>
             )
         });
 
         return (
-            <div>
+            <div className="cards-list-wrapper">
                 {cardSet}
             </div>
         );
@@ -71,7 +76,7 @@ export default function CardsList() {
     console.log(1, cardsList.length);
 
     return (
-        <div>
+        <div className="component-cards-list">
             {cardsList.length > 0 ?
                 <Cards cards={cardsList} />
                 :
@@ -80,5 +85,3 @@ export default function CardsList() {
         </div>
     );
 }
-
-
