@@ -25,7 +25,8 @@ export default function Card(props) {
     /* to change a button or for another operation */
     const [isSaved, setIsSaved] = useState(false);
     /* to use card as cardpafe or previe for creation */
-    const [isPublicCard, setIsPublicCard] = useState(false);
+    const [isPublicCard, setPublicCard] = useState(false);
+    const isAuth = props.isAuth;
 
 
     const previewCardRef = useRef(0);
@@ -100,7 +101,7 @@ export default function Card(props) {
 
         if (id) {
             getCard()
-            setIsPublicCard(true)
+            /* setIsPublicCard(true) */
         }
 
     }, []);
@@ -113,15 +114,17 @@ export default function Card(props) {
         Becouse we will use them also in User card catalog 
     */
     async function SaveCard() {
-        console.log(selectedImage);
-        console.log('name', selectedImage.name);
+        // console.log(selectedImage);
+        // console.log('name', selectedImage.name);
         // console.log(selectedText);
 
         const card = {
             picture: selectedImage.name,
             text: selectedText,
+            created:'user',
             /* not neccery */
-            event: 'Birthday',
+            event: '',
+            recipient: ''
         }
 
         const url = 'http://localhost:8080/cards/new_record';
@@ -140,6 +143,10 @@ export default function Card(props) {
 
         if (result.status === 'success') {
             setIsSaved(true)
+            /* clear text storage */
+            dispatch(sendText(''))
+            dispatch(sendPict({name: 'cover-card-editor.png'}))
+            /* To-DO: Needing to create a same dispatch for picture */
         }
     }
 
@@ -151,8 +158,8 @@ export default function Card(props) {
     - Add mockup with name of recipient (f.e. Dear {Andreas} ) (optional)
     */
 
-    console.log('isPublicCard', isPublicCard);
-    console.log('isSaved', isSaved);
+    // console.log('isPublicCard', isPublicCard);
+    // console.log('isSaved', isSaved);
 
     return (
         <div id="preview-container">
@@ -187,7 +194,7 @@ export default function Card(props) {
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
-                            {selectedImage ? (
+                            {selectedImage._id ? (
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
                                 <img src={previewCoverImage} alt="card" />
@@ -196,12 +203,12 @@ export default function Card(props) {
                         </div>
                         <div className="preview-flip-card-text" onClick={() => setIsClicked(state => !state)}>
                             {selectedText ? (
-                                <div>
+                                <div className="preview-selected-text">
                                     <h3>{selectedText}</h3>
                                     <h4>Greet Now</h4>
                                 </div>
                             ) : (
-                                <div className="preview-text-empty">
+                                <div className="preview-empty-text">
                                     <h2>Hello {username},</h2>
                                     <h3>Please compose a message <br /> or choose a text template from <br /> the Text Catalog.</h3>
                                     <h4>Greet Now</h4>
@@ -212,29 +219,39 @@ export default function Card(props) {
                 </div>
             </div>
 
-            {isPublicCard ? null :
+            {isAuth ? (
                 <div /* className="preview-footer" */>
 
-                    {isSaved ?
+                    {isSaved ? (
                         <div className="preview-footer">
-                            <button className="btn btn-bg-success">Edit</button>
-                            <button className="btn btn-bg-danger">Delete</button>
-                            <Link className="preview-custom-btn send-btn">Send</Link>
+                            {/* <button className="btn btn-bg-success">Edit</button>
+                            <button className="btn btn-bg-danger">Delete</button> */}
+                            <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
+                            <h4>Your Card has been saved to <Link to="/catalog"><u>My Cards</u></Link></h4>
+                            <Link to="#" className="preview-custom-btn send-btn">Send</Link>
                         </div>
-                        :
+                    ) : (
                         <div className="preview-footer">
                             <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
                             <Link
+                                to="#"
                                 className="preview-custom-btn save-btn"
                                 onClick={() => SaveCard()}
                             >
                                 <SaveOutlinedIcon />
                                 Save
                             </Link>
+                            <Link to="#" className="preview-custom-btn send-btn">Send</Link>
                         </div>
-                    }
+                    )}
+                    </div>
+                
+                ) : (
+                <div className="preview-footer">
+                    <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
+                    <Link to="#" className="preview-custom-btn send-btn">Send</Link>
                 </div>
-            }
+            )}
         </div>
     )
 }

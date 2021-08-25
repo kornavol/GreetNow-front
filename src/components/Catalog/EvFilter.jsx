@@ -3,7 +3,7 @@ import React from "react";
 const EvFilter = ({ selector, setSelector }) => {
 
     /* The values will comes though fetch */
-    const events = ['All', "Birthday", "Wedding", "Christmas"];
+    const events = ['all', "Birthday", "Wedding", "Christmas"];
 
     const eventList = events.map(el => <option key={el} value={el}>{el}</option>)
 
@@ -11,7 +11,6 @@ const EvFilter = ({ selector, setSelector }) => {
         <div>
             <select
                 id="portfolio-filter"
-                className="form-control-sm"
                 value={selector.events}
                 onChange={(e) => {
                     

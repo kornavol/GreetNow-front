@@ -1,4 +1,6 @@
-const currPict = (state = '', action) => {
+/* To-do. Change logic of initial picture  */
+
+const currPict = (state = {name: 'cover-card-editor.png'}, action) => {
     switch (action.type) {
         case "SEND_PICT":
             state = action.picture

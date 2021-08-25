@@ -8,10 +8,13 @@
 }
 
 #card-back h3 {
+    width: 100%;
+    height: 100%;
     font-family: 'IM Fell English', cursive;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     line-height: 1.3em;
     text-align: center;
+    resize: none;
 }
 
 #card-back button {

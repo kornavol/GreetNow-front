@@ -165,7 +165,7 @@ export default function CTRow({ contact, number, setSwitchCase }) {
                             if (result.status == 'success') {
                                 dispatch(getAllContacts())
                             }
-                    }}
+                        }}
                     >
 
                         <span className="svg-icon svg-icon-md">

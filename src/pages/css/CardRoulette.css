@@ -18,31 +18,46 @@
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
-.roulette-event-filter {
-    width: 40%;
-    height: 30%;
+.roulette-event-filter-container {
+    width: 70%;
+    height: 10%;
     position: absolute;
-    top: 15%;
+    top: 19%;
     margin: auto;
     z-index: 40;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    border: 1px solid white;
+    flex-direction: row;
 }
 
-/* .roulette-selector {
-    position: absolute;
-    top: 20%;
-    left: 30%;
-    z-index: 40;
-} */
+.roulette-event-filter {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+
+.roulette-event-filter div select:focus {
+    border-color: gray;
+    outline:none;
+}
+
+.roulette-event-filter label {
+    font-family: 'Sacramento', cursive;
+    font-size: 1.5rem;
+    color: white;
+    margin: 0 2%;
+}
 
 .star-container h1 {
     font-family: 'Norican', cursive;
     color: #ffffff;
-    margin-top: 10%;
+    margin-top: 5%;
 }
 
 .big-frame {
@@ -147,7 +162,7 @@
     display: flex;
     align-items: flex-start;
     justify-content: center;
-    background-color: #ffffff;
+
 }
 
 .card-roulette-text {
@@ -155,19 +170,18 @@
     height: 100%;
     margin-top: 5%;
 }
-.card-roulette-text h2,
-.card-roulette-text p {
-    font-family: 'IM Fell English', serif;
-    margin: 0;
-    padding: 0;
-}
 
 .card-roulette-text h2 {
-    font-size: 1.5rem;
+    font-family: 'IM Fell English',
+    serif;
+    font-size: 1.2rem;
+
 }
 
 .card-roulette-text p {
-    font-size: .9rem;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: .8rem;
+    margin: 0;
 }
 
 .card-roulette-logo {
@@ -178,7 +192,28 @@
     background-size: contain;
     background-repeat: no-repeat;
     margin: 1%;
+    opacity: 0;
+    transition: 1s;
 }
+
+.card-roulette-logo:hover {
+    opacity: 1;
+    animation: roulette-pulse 1s ease infinite;
+}
+
+@keyframes roulette-pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100%{
+        transform: scale(1);
+    }
+}
+
+
 .balloon1,
 .balloon2 {
     width: 10%;
