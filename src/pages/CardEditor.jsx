@@ -25,12 +25,12 @@ const CardEditor = () => {
     }
 
         /* Clen-up the redux storage (CurrPict and CurrText) when component unmontening */
-        useEffect(() => {
-            return () => {
-                dispatch(sendText(''))
-                dispatch(sendPict({name: 'cover-card-editor.png'}))
-            };
-        }, []);
+        // useEffect(() => {
+        //     return () => {
+        //         dispatch(sendText(''))
+        //         dispatch(sendPict({name: 'cover-card-editor.png'}))
+        //     };
+        // }, []);
 
 
 
