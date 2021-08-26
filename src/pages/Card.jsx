@@ -25,7 +25,7 @@ export default function Card(props) {
     /* to change a button or for another operation */
     const [isSaved, setIsSaved] = useState(false);
     /* to use card as cardpafe or previe for creation */
-    const [isPublicCard, setPublicCard] = useState(false);
+    const [isPublicCard, setIsPublicCard] = useState(false);
     const isAuth = props.isAuth;
 
 
@@ -77,7 +77,7 @@ export default function Card(props) {
     const dispatch = useDispatch()
     const { id } = useParams();
 
-    console.log('URL params', id);
+    // console.log('URL params', id);
 
     useEffect(() => {
         async function getCard() {
@@ -89,6 +89,8 @@ export default function Card(props) {
             const response = await fetch(url, option)
             const result = await response.json()
 
+            // console.log('for URL card:',  result);
+
             if (result.status === 'success') {
                 const picName = result.data.picture
                 const text = result.data.text
@@ -99,11 +101,11 @@ export default function Card(props) {
             }
         }
 
-        console.log('SELECTED - IMAGE', selectedImage);
+        // console.log('SELECTED - IMAGE', selectedImage);
 
         if (id) {
             getCard()
-            /* setIsPublicCard(true) */
+            // setIsPublicCard(true)
         }
 
     }, []);
@@ -146,9 +148,6 @@ export default function Card(props) {
         if (result.status === 'success') {
             setIsSaved(true)
             /* clear text storage 
-            TO-DO! Need to comment out back*/
-            // dispatch(sendText(''))
-            // dispatch(sendPict({name: 'cover-card-editor.png'}))
             /* To-DO: Needing to create a same dispatch for picture */
         }
     }
@@ -164,6 +163,14 @@ export default function Card(props) {
     // console.log('isPublicCard', isPublicCard);
     // console.log('isSaved', isSaved);
 
+    /* Clen-up the redux storage (CurrPict and CurrText) when component unmontening */
+    useEffect(() => {
+        return () => {
+            dispatch(sendText(''))
+            dispatch(sendPict({name: 'cover-card-editor.png'}))
+        };
+    }, []);
+
     return (
         <div id="preview-container">
             <FlowerShowerAnimation />
@@ -178,8 +185,8 @@ export default function Card(props) {
                     </div>
 
                     <div ref={previewCardRef} id="preview-card" className="preview-card">
-                        {/* 1 */}
-                        {selectedImage.name ? (
+                        {/* 1. Looks like we don't need more make a conditional rendering */}
+                        {selectedImage._id ? (
                             <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                         ) : (
                             
@@ -200,7 +207,7 @@ export default function Card(props) {
 
                     <div ref={previewFlipCardRef} id="preview-flip-card" className={`preview-flip-card ${isClicked ? "preview-translate" : "preview-reverse-translate"}`}>
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
-                            {/* 2 */}
+                            {/* 2. Looks like we don't need more make a conditional rendering */}
                             {selectedImage._id ? (
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
