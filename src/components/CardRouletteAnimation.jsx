@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { sendPict } from '../actions';
 import { sendText } from '../actions';
 import { useHistory } from 'react-router-dom';
+import EventFilter from './EventFilter';
+import EvFilter from './Catalog/EvFilter';
 
 
 const CardRoulette = (props) => {
@@ -18,8 +20,8 @@ const CardRoulette = (props) => {
     const relationship = props.relationship;
     const [currEvent, setCurrEvent] = useState('&')
     const [items, setItems] = useState([]);
-
-    console.log(relationship);
+    console.log('relationship: '+relationship);
+    console.log('event: '+event.events);
 
     useEffect(() => {
         if(event.events !== 'all'){
@@ -57,6 +59,38 @@ const CardRoulette = (props) => {
         }
     }
 
+    function fetchText(picEvent){
+        function textHandler(eventPass){
+            let urlTexts = "http://localhost:8080/media-catalog/getTexts?" + "&" + `${eventPass}` + '&';
+            fetch(urlTexts).then(respond => respond.json().then(result => {
+                if (result.status == 'success') {
+                    const textArr = [];
+                    const texts = result.data.texts;
+                    console.log('texts: ' +texts);
+                    console.log('relationship: '+relationship);
+                    texts.map(item=>{
+                        item.categories.filter(cat => {
+                        if(relationship.includes(cat)){
+                            textArr.push(item.text);
+                        }
+                    })});
+                    const text = textArr[Math.floor(Math.random() * textArr.length)];
+                    console.log(text);
+                    dispatch(sendText(text));
+                    history.push('/card-editor');
+                } else {
+                    console.log(result.message);
+                }
+            }));
+        }
+
+        if(event.events !== 'all'){
+            textHandler(currEvent);
+        }else{
+            textHandler(picEvent);
+        }
+    }
+
     function init(firstInit = true, groups = 1, duration = 1) {
         for (const door of doors) {
         if (firstInit) {
@@ -75,7 +109,6 @@ const CardRoulette = (props) => {
             for (let n = 0; n < (groups > 0 ? groups : 1); n++) {
 
             arr.push(...items);
-            console.log('arr: '+arr+ ', items: '+items);
             }
 
             pool.push(...shuffle(arr));
@@ -103,26 +136,10 @@ const CardRoulette = (props) => {
             );
         }
 
-        function fetchText(){
-            let urlTexts = "http://localhost:8080/media-catalog/getTexts?" + "&" + currEvent + '&';
-            fetch(urlTexts).then(respond => respond.json().then(result => {
-                if (result.status == 'success') {
-                    const texts = result.data.texts;
-                    const itemArr = [];
-                    texts.map(text=>itemArr.push(text.text));
-                    const text = itemArr[Math.floor(Math.random() * itemArr.length)];
-                    dispatch(sendText(text));
-                } else {
-                    console.log(result.message);
-                }
-            }));
-        }
-
         function selectImg(img){
-            fetchText();
             const picture = picturesArr.find(obj => obj.name === `${img}`);
             dispatch(sendPict(picture));
-            history.push('/card-editor');
+            fetchText(`&event=${picture.events}`);
         }
 
         for (let i = pool.length - 1; i >= 0; i--) {

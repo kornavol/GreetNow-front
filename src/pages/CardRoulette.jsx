@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import  { useSelector } from 'react-redux';
 import EventFilter from "../components/EventFilter";
 import CardRouletteAnimation from "../components/CardRouletteAnimation";
 import './css/CardRoulette.css';
@@ -7,9 +8,11 @@ import balloonWhite from '../assets/balloon-white.png';
 
 const CardRoulette = (props) => {
 
+    const contactList = useSelector((state) => state.contacts);
     const [event, setEvent] = useState({events:'all'});
     const [relationship, setRelationship] = useState();
-    
+    console.log('relationship: '+relationship);
+
     return (
         <section id="card-roulette-container">
             <EventFilter isAuth={props.isAuth} setEvent={setEvent} setRelationship={setRelationship}/>

@@ -10,16 +10,25 @@ const EventFilter = (props) => {
     const isAuth = props.isAuth;
     const contactList = useSelector((state) => state.contacts);
     const [category, setCategory] = useState({ events: "all"});
+    console.log('contactList: '+contactList.length);
     
     useEffect(() => {
         if(contactList.length > 0){
+            console.log('useEffect');
             props.setRelationship(contactList[0].relationships);
         }
-    }, [contactList]);    
+    }, [contactList]);  
 
     useEffect(() => {
         props.setEvent(category);
     }, [category]);
+
+    function relationshipHandler(rel){
+        const relArr = [];
+        const categories = rel.split(',');
+        categories.map(item => relArr.push(item));
+        props.setRelationship(relArr);
+    }
 
     const contact = contactList.map((contact, index)=>{
         return <option key={index} value={contact.relationships} >{contact.firstName}</option>
@@ -28,8 +37,7 @@ const EventFilter = (props) => {
 
     <div className="roulette-event-filter">
         <label htmlFor='contactlist'>Select a Card from </label><Filter setSelector={setCategory} selector={category} /><label>to send to </label>
-        <select name='contactlist' id='contactlist' value={this.value} onChange={(e)=>props.setRelationship(e.target.value)}>
-
+        <select name='contactlist' id='contactlist' value={this.value} onChange={(e)=>relationshipHandler(e.target.value)}>
             {contact}
         </select>
     </div>
