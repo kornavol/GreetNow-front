@@ -11,6 +11,14 @@ export default function CTRow({ contact, number, setSwitchCase }) {
     let { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
     const fullName = lastName + ' ' + firstName;
 
+    /* Conevert date  */
+    const day = dateOfBirth.substr(8, 2);
+    const month = dateOfBirth.substr(5, 2);
+    const year = dateOfBirth.substr(0, 4);
+
+    /* saving date in DD-MM-YYYY format */
+    dateOfBirth = day + "-" + month + "-" + year;
+
     const initials = firstName.substr(0, 1).toUpperCase() + lastName.substr(0, 1).toUpperCase()
 
     const relatList = relationships.map((category) => {
