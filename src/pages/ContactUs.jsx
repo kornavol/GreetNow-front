@@ -3,7 +3,7 @@ import './css/ContactUs.css';
 
 export default function ContactUs() {
     return (
-        <div className="page">
+        <div id="contact-us">
             <h2>Contact form</h2>
         </div>
     )

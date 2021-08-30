@@ -196,7 +196,7 @@
     transition: 1s;
 }
 
-.card-roulette-logo:hover {
+/* .card-roulette-logo:hover {
     opacity: 1;
     animation: roulette-pulse 1s ease infinite;
 }
@@ -212,7 +212,7 @@
         transform: scale(1);
     }
 }
-
+ */
 
 .balloon1,
 .balloon2 {
