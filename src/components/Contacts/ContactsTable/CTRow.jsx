@@ -7,8 +7,8 @@ import { getAllContacts, deleteContact } from '../../../actions/contactsCRUD';
 export default function CTRow({ contact, number, setSwitchCase }) {
 
     const dispatch = useDispatch()
-
-    const { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
+    /* Why I can't devine over let */
+    let { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
     const fullName = lastName + ' ' + firstName;
 
     const initials = firstName.substr(0, 1).toUpperCase() + lastName.substr(0, 1).toUpperCase()

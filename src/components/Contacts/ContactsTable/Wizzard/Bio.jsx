@@ -3,8 +3,12 @@ import React from 'react';
 export default function Bio({ form, setForm }) {
 
     function fillForm(e, field) {
+        // console.log(typeof(e.target.valueAsDate));
         const newForm = { ...form }
         newForm[field] = e.target.value
+        // if (field == 'dateOfBirth') {
+        //     newForm.dateOfBirth = e.target.valueAsDate
+        // }
         setForm(newForm)
     }
 
