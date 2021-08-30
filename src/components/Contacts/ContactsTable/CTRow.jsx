@@ -1,5 +1,7 @@
 import React from 'react';
 import { useDispatch } from "react-redux";
+import NotificationBtn from './components/notificationBtn';
+
 
 import { editContact } from '../../../actions/contatcInf';
 import { getAllContacts, deleteContact } from '../../../actions/contactsCRUD';
@@ -8,7 +10,7 @@ export default function CTRow({ contact, number, setSwitchCase }) {
 
     const dispatch = useDispatch()
     /* Why I can't devine over let */
-    let { firstName, lastName, dateOfBirth, gender, relationships, events } = contact
+    let { firstName, lastName, dateOfBirth, gender, relationships, events, newCards } = contact
     const fullName = lastName + ' ' + firstName;
 
     /* Conevert date  */
@@ -116,6 +118,16 @@ export default function CTRow({ contact, number, setSwitchCase }) {
                 </span>
             </td>
 
+            <td data-field="notification" aria-label="" className="datatable-cell">
+                <span style={{ width: 70 }}>
+                    <NotificationBtn
+                        content={newCards}
+                        link={'my-cards'}
+                        contact={contact}
+                    />
+                </span>
+            </td>
+
             <td
                 data-field="Actions"
                 data-autohide-disabled="false"
@@ -207,7 +219,5 @@ export default function CTRow({ contact, number, setSwitchCase }) {
                 </span>
             </td>
         </tr>
-
-
     );
 }

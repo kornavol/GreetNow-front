@@ -16,7 +16,7 @@ export default function Catalog(props) {
     const [key, setKey] = useState("MyCards");
     const setModalShow = props.setModalShow;
     const history = useHistory()
-    console.log('history', history.goBack);
+    // console.log('history', history.goBack);
 
     return (
         <div id="media-catalog">

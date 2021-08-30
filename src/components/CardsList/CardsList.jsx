@@ -25,7 +25,7 @@ export default function CardsList() {
         fetch(url, options).then((data) =>
             data.json().then((output) => {
                 if (output.status === "success") {
-                    console.log('CARDS', output);
+                    // console.log('CARDS', output);
                     const cards = output.data
                     setCardsList(cards)
                 }
@@ -59,7 +59,7 @@ export default function CardsList() {
                             onClick={async () => {
                                 const result = await dispatch(deleteCard(card))
                                 if (result.status == 'success') {
-                                    console.log(result);
+                                    // console.log(result);
                                     console.log('delte operation. Implement useState to up-date a page ');
                                     getAllCards()
                                 }
@@ -80,8 +80,6 @@ export default function CardsList() {
             </div>
         );
     };
-
-    console.log(1, cardsList.length);
 
     return (
         <div className="component-cards-list">

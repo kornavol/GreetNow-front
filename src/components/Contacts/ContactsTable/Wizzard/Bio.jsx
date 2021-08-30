@@ -21,6 +21,17 @@ export default function Bio({ form, setForm }) {
         return <option key={gender} value={gender}>{gender}</option>
     })
 
+    let dateOfBirth = form.dateOfBirth;
+        /* Conevert date  */
+        const day = dateOfBirth.substr(8, 2);
+        const month = dateOfBirth.substr(5, 2);
+        const year = dateOfBirth.substr(0, 4);
+
+        dateOfBirth = year + "-" + month + "-" + day;
+
+
+    console.log(dateOfBirth);
+
     return (
         <div id="wizzard-bio" className='card=body p-0'>
             <div className="row justify-content-center py-8 px-8 py-lg-15 px-lg-10">

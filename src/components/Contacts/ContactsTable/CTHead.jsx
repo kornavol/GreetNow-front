@@ -42,6 +42,9 @@ export default function CTHead() {
                 <th data-field="Events" className="datatable-cell datatable-cell-sort">
                     <span style={{ width: 108 }}>Events</span>
                 </th>
+                <th data-field="Events" className="datatable-cell datatable-cell-sort">
+                    <span style={{ width: 70 }}></span>
+                </th>
                 <th
                     data-field="Actions"
                     data-autohide-disabled="false"
