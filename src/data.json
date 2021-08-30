@@ -2,24 +2,24 @@
         "Benefits": [
                 {
                 "title": "Features & Benefits",
-                "subtitle": "Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.",
+                "subtitle": "Captivating card motifs and heartfelt messages for your greetings.",
 
                 "body": [
                                 {
-                                "title": "Lorem Ipsum 1",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                "title": "Media Catalog",
+                                "bodyText": "Pick an event and you will have many options of beautiful images and text to choose from and have them on your Greeting Card."
                                 },
                                 {
-                                "title": "Lorem Ipsum 2",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                "title": "Card Editor",
+                                "bodyText": "Create and Edit your Greeting Cards. Add text, change the cover picture. You can check the Preview of the card you have just created!"
                                 },
                                 {
-                                "title": "Lorem Ipsum 3",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                "title": "Card Roulette",
+                                "bodyText": "A Greeting Card on the go, try your luck at the Card Roulette! Now there is no excuse for a Greeting!."
                                 },
                                 {
-                                "title": "Lorem Ipsum 4",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit. At, voluptatem aut nihil consequatur excepturi distinctio recusandae."
+                                "title": "Contacts",
+                                "bodyText": "Save your contacts to benefit from the automatic sending of greetings! Never miss a birthday greeting again!"
                                 }
                         ]
                 }
@@ -28,46 +28,46 @@
         "Reviews": [
                 {
                         "title": "Customers' Review",
-                        "subtitle": "Ipsum dolor sit amet consectetur voluptatem aut nihil.", 
+                        "subtitle": "Check out our customers'feedback about Greet Now", 
                         "body": [
                                 {
                                 "title": "Lovely App",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+                                "bodyText": "An absolutely useful app. I'll never forget to greet a friend again.",
                                 "stars" : "5"
                                 },
                                 {
                                 "title": "Beautiful Cards",
-                                "bodyText": "Dolor sit amet consectetur adipisicing elit lorem ipsum.",
+                                "bodyText": "These cards are very charming and my friends loved to receive them",
                                 "stars": "5"
                                 },
                                 {
                                 "title": "Enjoyable",
-                                "bodyText": "Sit amet consectetur adipisicing elit. Lorem ipsum.",
+                                "bodyText": "Creating a greeting card with Greet Now is very cheerful.",
                                 "stars": "5"
                                 },
                                 {
                                 "title": "My Favorite App",
-                                "bodyText": "Amet consectetur lorem ipsum, dolor sit adipisicing elit.",
+                                "bodyText": "I keep on creating cards and saving them to send in special occasions.",
                                 "stars": "5"
                                 },
                                 {
-                                "title": "Enjoyable",
-                                "bodyText": "Lorem ipsum, dolor sit amet consectetur adipisicing elit.",
+                                "title": "Recommended",
+                                "bodyText": "Greet Now makes a lot of fun while creating and sending a compliment.",
                                 "stars" : "5"
                                 },
                                 {
-                                "title": "My Favorite App",
-                                "bodyText": "Dolor sit amet consectetur adipisicing elit lorem ipsum.",
+                                "title": "Nice and Fun",
+                                "bodyText": "I give a ten out of ten for this app. It is one of my favorite ones!",
                                 "stars": "5"
                                 },
                                 {
-                                "title": "Lovely App",
-                                "bodyText": "Sit amet consectetur adipisicing elit. Lorem ipsum.",
+                                "title": "Easy to use",
+                                "bodyText": "I've created a profile so I can save my favorite cards.",
                                 "stars": "5"
                                 },
                                 {
-                                "title": "Beautiful Cards",
-                                "bodyText": "Amet consectetur lorem ipsum, dolor sit adipisicing elit.",
+                                "title": "Amazing",
+                                "bodyText": "I can only recommend Greet Now. My mother loved her greeting card!",
                                 "stars": "5"
                                 }
                         ]

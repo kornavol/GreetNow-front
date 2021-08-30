@@ -31,7 +31,6 @@ const ImgCatalog = (props) => {
             if (result.status == 'success') {
                 const pictures = result.data.pictures
                 const tPages = result.data.pages.totalPages
-                
                 /* Merging a result of a request to one local DB.
                  Could be helpful for optimization */
                 // setPictures(prev => prev = [...prev, ...result.data])

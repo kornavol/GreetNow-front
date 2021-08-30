@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import image1 from '../assets/test_pictures/birthday1.jpg';
 import introCardCover from '../assets/cover-card.png';
 import envelopeBack from '../assets/envelope-back-gold.png';
 import envelopeLeft from '../assets/envelope-left-gold.png';
@@ -65,17 +64,15 @@ const Intro = (props) => {
         }
     }, []);
 
-    // `${}`
-
     return (
         <section id="intro-container">
             <header className="intro-banner">
                 <h2>Celebrate life with the perfect card or invitation</h2>
-                <h3>― Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3>― With a beautiful animated experience.</h3>
                 <p>Click the Card to Open</p>
             </header>
             <StampAnimation/>
-            <main className="intro-card-container" data-aos="fade-up" data-aos-duration="1700">
+            <main className="intro-card-container" data-aos="fade-up" data-aos-duration="2500">
                 <div className="intro-envelope">
                     <div className="envelope-back">
                         <img src={envelopeBack} alt="envelope"/>

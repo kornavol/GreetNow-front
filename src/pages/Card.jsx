@@ -246,7 +246,7 @@ export default function Card(props) {
                             {/* <button className="btn btn-bg-success">Edit</button>
                             <button className="btn btn-bg-danger">Delete</button> */}
                             <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                            <h4>Your Card has been saved to <Link to="/catalog"><u>My Cards</u></Link></h4>
+                            <h4>Your Card has been saved to <Link to="/my-cards"><u>My Cards</u></Link></h4>
                             <Link to="#" className="preview-custom-btn send-btn">Send</Link>
                         </div>
                     ) : (

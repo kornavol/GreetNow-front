@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import { useHistory } from 'react-router-dom';
 
 import { Switch, Route } from 'react-router-dom'
 
