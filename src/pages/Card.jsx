@@ -16,6 +16,9 @@ import { useParams } from "react-router-dom";
 import { Link } from 'react-router-dom';
 import { sendText, sendPict } from '../actions';
 
+//sharing
+import CardSharing from '../components/CardSharing';
+
 /* All unique data has to come from back.
     All cards are public. 
 */
@@ -36,6 +39,7 @@ export default function Card(props) {
 
     const selectedImage = useSelector((state) => state.currPict);
     const selectedText = useSelector((state) => state.currText);
+    const [sendButton, setSendButton] = useState(true);
 
     useEffect(() => {
         const zIndex1 = setTimeout(() => {
@@ -242,7 +246,13 @@ export default function Card(props) {
                                 <SaveOutlinedIcon />
                                 Save
                             </Link>
-                            <Link to="#" className="preview-custom-btn send-btn">Send</Link>
+                            {sendButton?
+                            <div className="preview-custom-btn send-btn" onClick={()=>setSendButton(false)}>Send</div>
+                            :
+                            <CardSharing url={'https://google.com'} title={'google'} setSendButton={()=>setSendButton(true)}/>
+                            }
+                            
+                            
                         </div>
                     )}
                 </div>
@@ -250,13 +260,14 @@ export default function Card(props) {
             ) : (
                 <div className="preview-footer">
                     <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                    <Link to="#"
+                    <div
                         className="preview-custom-btn send-btn"
                         onClick={() => {
-                            dispatch(sendText(''))
-                            dispatch(sendPict({ name: 'cover-card-editor.png' }))
+
+                            //dispatch(sendText(''));
+                            //dispatch(sendPict({ name: 'cover-card-editor.png' }));
                         }}
-                    >Send</Link>
+                    >Send</div>
                 </div>
             )}
         </div>
