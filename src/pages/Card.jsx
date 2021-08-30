@@ -123,12 +123,12 @@ export default function Card(props) {
         // console.log(selectedText);
 
         const card = {
-            picture: selectedImage.name,
             text: selectedText,
-            created: 'user',
+            picture: selectedImage.name,
+            createdBy: 'user',
             /* not neccery */
-            event: '',
-            recipient: ''
+            recipient: '',
+            event: ''            
         }
 
         const url = 'http://localhost:8080/cards/new_record';
