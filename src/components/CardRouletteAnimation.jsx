@@ -63,7 +63,10 @@ const CardRoulette = (props) => {
                     const texts = result.data.texts;
                     texts.map(item=>{
                         item.categories.filter(cat => {
-                        if(relationship.includes(cat)){
+                            console.log(relationship);
+                        if(props.isAuth && relationship.includes(cat)){
+                            textArr.push(item.text);
+                        }else{
                             textArr.push(item.text);
                         }
                     })});
@@ -78,8 +81,10 @@ const CardRoulette = (props) => {
 
         if(event.events !== 'all'){
             textHandler(currEvent);
+            console.log(currEvent);
         }else{
             textHandler(picEvent);
+            console.log(picEvent);
         }
     }
 

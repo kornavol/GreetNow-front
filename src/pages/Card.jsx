@@ -40,7 +40,6 @@ export default function Card(props) {
     const selectedImage = useSelector((state) => state.currPict);
     const selectedText = useSelector((state) => state.currText);
     //const contactName = useSelector((state) => state.contact);
-    console.log(contactName);
     const [sendButton, setSendButton] = useState(true);
     const [cardLink, setCardLink] = useState();
 
@@ -152,7 +151,7 @@ export default function Card(props) {
         const result = await respond.json().then(data=>{return data});
 
         if (result.status === 'success') {
-            console.log(result.data._id);
+            console.log(result.data);
             setIsSaved(true);
             setCardLink(`http://localhost:3000/cards/${result.data._id}`);
             /* clear text storage 
@@ -185,7 +184,7 @@ export default function Card(props) {
         sendButton?
         <div className="preview-custom-btn send-btn" onClick={()=>setSendButton(false)}>Send</div>
         :
-        <CardSharing username={username} contactName={contactName} url={cardLink} title={'A special Card for you!'} setSendButton={()=>setSendButton(true)}/>
+        <CardSharing username={username} /* contactName={contactName} */ url={cardLink} title={'A special Card for you!'} setSendButton={()=>setSendButton(true)}/>
     );
 
     return (
@@ -231,7 +230,7 @@ export default function Card(props) {
                                 <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                                 // <img src={previewCoverImage} alt="card" />
                             )}
-                            <img src={previewBackImage} alt="image" />
+                            <img src={previewBackImage} alt="preview back" />
                         </div>
                         <div className="preview-flip-card-text" onClick={() => setIsClicked(state => !state)}>
                             {selectedText ? (
