@@ -17,7 +17,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 /* Material UI Styles */
 import { makeStyles } from '@material-ui/core/styles';
 
-function Copyright() {
+function Copyright(props) {
     return (
         <Typography variant="body2" color="textSecondary" align="center">
         {'Copyright © '}
@@ -111,7 +111,9 @@ export default function Register(props) {
             {
                 if(output.success) {
                     alert('Congrats, you registered as well! Please login.');
-                    history.push("/login");
+                    //history.push("/");
+                    props.setModalShow(true); 
+                    props.setToggleRegister(true);
                 } else {
                     alert('This user already exists'); //check this and other kind of possible errors
                     setError(output.error);
