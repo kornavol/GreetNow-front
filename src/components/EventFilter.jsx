@@ -1,5 +1,7 @@
+import { createCoverageMap } from 'istanbul-lib-coverage';
 import React, { useState, useEffect } from 'react';
-import  { useSelector } from 'react-redux';
+import  { useDispatch, useSelector } from 'react-redux';
+import { editContact } from '../actions/contatcInf';
 import Filter from "./Catalog/EvFilter";
 import './css/CardRouletteAnimation.css';
 
@@ -10,28 +12,29 @@ const EventFilter = (props) => {
     const isAuth = props.isAuth;
     const contactList = useSelector((state) => state.contacts);
     const [category, setCategory] = useState({ events: "all"});
-    console.log('contactList: '+contactList.length);
+
+    const dispatch = useDispatch();
     
     useEffect(() => {
         if(contactList.length > 0){
-            console.log('useEffect');
             props.setRelationship(contactList[0].relationships);
         }
-    }, [contactList]);  
+    }, [contactList]);
 
     useEffect(() => {
         props.setEvent(category);
     }, [category]);
 
-    function relationshipHandler(rel){
+    function relationshipHandler(relationship){
         const relArr = [];
-        const categories = rel.split(',');
+        const categories = relationship.split(',');
         categories.map(item => relArr.push(item));
         props.setRelationship(relArr);
+        //dispatch(editContact(recipient));
     }
 
     const contact = contactList.map((contact, index)=>{
-        return <option key={index} value={contact.relationships} >{contact.firstName}</option>
+        return <option key={index} value={contact.relationships}>{contact.firstName}</option>
     });
     const contacts = (
 

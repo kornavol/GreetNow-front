@@ -7,9 +7,6 @@ import { useDispatch } from "react-redux";
 import { sendPict } from '../actions';
 import { sendText } from '../actions';
 import { useHistory } from 'react-router-dom';
-import EventFilter from './EventFilter';
-import EvFilter from './Catalog/EvFilter';
-
 
 const CardRoulette = (props) => {
 
@@ -20,8 +17,6 @@ const CardRoulette = (props) => {
     const relationship = props.relationship;
     const [currEvent, setCurrEvent] = useState('&')
     const [items, setItems] = useState([]);
-    console.log('relationship: '+relationship);
-    console.log('event: '+event.events);
 
     useEffect(() => {
         if(event.events !== 'all'){
@@ -66,8 +61,6 @@ const CardRoulette = (props) => {
                 if (result.status == 'success') {
                     const textArr = [];
                     const texts = result.data.texts;
-                    console.log('texts: ' +texts);
-                    console.log('relationship: '+relationship);
                     texts.map(item=>{
                         item.categories.filter(cat => {
                         if(relationship.includes(cat)){
@@ -75,7 +68,6 @@ const CardRoulette = (props) => {
                         }
                     })});
                     const text = textArr[Math.floor(Math.random() * textArr.length)];
-                    console.log(text);
                     dispatch(sendText(text));
                     history.push('/card-editor');
                 } else {
@@ -172,6 +164,10 @@ const CardRoulette = (props) => {
         init();
         spin();
     }
+
+    useEffect(() => {
+        init();
+    }, [relationship]);
 
     useEffect(()=>{
         spin();

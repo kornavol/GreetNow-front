@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -44,12 +43,14 @@ import {
     WeiboIcon,
     WhatsappIcon,
     WorkplaceIcon
-  } from "react-share";
+} from "react-share";
 
 
 function cardSharing(props) {
     const title = props.title;
     const url = props.url;
+    const username = props.username;
+    const recipient = props.contactName;
     return (
         <div>
             <FacebookShareButton quote={title} url={url} onClick={props.setSendButton}>
@@ -69,7 +70,7 @@ function cardSharing(props) {
             </LinkedinShareButton>
             <EmailShareButton
             subject={title}
-            body={'Hi -contact.firstName-,\n\n -username- sent you a special message with Greet Now - Personal card editor, follow the link:'}
+            body={`Hi ${recipient},\n\n ${username} sent you a special message with Greet Now - Personal card editor, follow the link:`}
             url={url}
             >
             <EmailIcon size={32} round/>
