@@ -19,7 +19,7 @@ export default function Wizzard({ unmPopUp, purpose }) {
         gender: "",
         relationships: [],
         events: [],
-        newCards:0
+        newCards: 0
     };
 
     const [key, setKey] = useState("bio");
@@ -39,14 +39,14 @@ export default function Wizzard({ unmPopUp, purpose }) {
 
     if (key === "events") {
         confirm = (
-            <button 
-            type="submit" 
-            className="btn btn-primary m-3" 
-            // onClick={{sendRecip}}
-            onClick={()=> {
-                sendRecip()
-                unmPopUp()
-            }}
+            <button
+                type="submit"
+                className="btn btn-primary m-3"
+                // onClick={{sendRecip}}
+                onClick={() => {
+                    sendRecip()
+                    unmPopUp()
+                }}
             >
                 <span className="indicator-label">Save</span>
                 {/* <span class="indicator-progress">Please wait...
@@ -91,8 +91,10 @@ export default function Wizzard({ unmPopUp, purpose }) {
             const value = recipient[key];
 
             /* We need additional to check type of value and for each arr. or obj. put each element separately, 
-                  because append to the form automatically convert data to a string   */
+            because append to the form automatically convert data to a string   */
+            
 
+            /* Don't caunt an object */
             if (Array.isArray(value)) {
                 value.forEach((element) => {
                     finalForm.append(key, element);

@@ -1,0 +1,11 @@
+.test-test {
+    /* transform:rotate(46deg) */
+    animation: test-test 1s ease infinite;
+    /* color: red !important; */
+}
+
+@keyframes test-test {
+    0% {transform:rotate(-46deg)}
+    50% {transform:rotate(0deg)}
+    100% {transform:rotate(46deg)}
+}
