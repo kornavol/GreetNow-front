@@ -39,7 +39,10 @@ export default function Card(props) {
 
     const selectedImage = useSelector((state) => state.currPict);
     const selectedText = useSelector((state) => state.currText);
+    //const contactName = useSelector((state) => state.contact);
+    console.log(contactName);
     const [sendButton, setSendButton] = useState(true);
+    const [cardLink, setCardLink] = useState();
 
     useEffect(() => {
         const zIndex1 = setTimeout(() => {
@@ -81,7 +84,7 @@ export default function Card(props) {
     const dispatch = useDispatch()
     const { id } = useParams();
 
-    // console.log('URL params', id);
+    console.log('URL params', id);
 
     useEffect(() => {
         async function getCard() {
@@ -96,12 +99,12 @@ export default function Card(props) {
             // console.log('for URL card:',  result);
 
             if (result.status === 'success') {
-                const picName = result.data.picture
-                const text = result.data.text
+                const picName = result.data.picture;
+                const text = result.data.text;
                 /* add pop-up with message */
 
-                dispatch(sendText(text))
-                dispatch(sendPict({ name: picName }))
+                dispatch(sendText(text));
+                dispatch(sendPict({ name: picName }));
             }
         }
 
@@ -145,15 +148,18 @@ export default function Card(props) {
             body: JSON.stringify(card)
         }
 
-        const respond = await fetch(url, options)
-        const result = await respond.json()
-
+        const respond = await fetch(url, options);
+        const result = await respond.json().then(data=>{return data});
 
         if (result.status === 'success') {
-            setIsSaved(true)
+            console.log(result.data._id);
+            setIsSaved(true);
+            setCardLink(`http://localhost:3000/cards/${result.data._id}`);
             /* clear text storage 
             /* To-DO: Needing to create a same dispatch for picture */
         }
+
+        
     }
 
     /* To-do:
@@ -174,6 +180,13 @@ export default function Card(props) {
             dispatch(sendPict({name: 'cover-card-editor.png'}))
         };
     }, []);
+
+    const sendShareBtn = (
+        sendButton?
+        <div className="preview-custom-btn send-btn" onClick={()=>setSendButton(false)}>Send</div>
+        :
+        <CardSharing username={username} contactName={contactName} url={cardLink} title={'A special Card for you!'} setSendButton={()=>setSendButton(true)}/>
+    );
 
     return (
         <div id="preview-container">
@@ -247,26 +260,18 @@ export default function Card(props) {
                             <button className="btn btn-bg-danger">Delete</button> */}
                             <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
                             <h4>Your Card has been saved to <Link to="/my-cards"><u>My Cards</u></Link></h4>
-                            <Link to="#" className="preview-custom-btn send-btn">Send</Link>
+                            {sendShareBtn}
                         </div>
                     ) : (
                         <div className="preview-footer">
                             <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                            <Link
-                                to="#"
+                            <div
                                 className="preview-custom-btn save-btn"
                                 onClick={() => SaveCard()}
                             >
                                 <SaveOutlinedIcon />
                                 Save
-                            </Link>
-                            {sendButton?
-                            <div className="preview-custom-btn send-btn" onClick={()=>setSendButton(false)}>Send</div>
-                            :
-                            <CardSharing url={'https://google.com'} title={'google'} setSendButton={()=>setSendButton(true)}/>
-                            }
-                            
-                            
+                            </div>                            
                         </div>
                     )}
                 </div>
@@ -274,14 +279,20 @@ export default function Card(props) {
             ) : (
                 <div className="preview-footer">
                     <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                    <div
+                    <div>
+                        <a>Please </a>
+                        <a style={{cursor: 'pointer', fontWeight: 'bold', color:'tomato'}} onClick={()=>{props.setModalShow(true); props.setToggleRegister(true)}}>Login</a>
+                        <a> if you want to save the card.</a>
+                    </div>
+                    {sendShareBtn}
+                    {/* <div
                         className="preview-custom-btn send-btn"
                         onClick={() => {
 
-                            //dispatch(sendText(''));
-                            //dispatch(sendPict({ name: 'cover-card-editor.png' }));
+                            dispatch(sendText(''));
+                            dispatch(sendPict({ name: 'cover-card-editor.png' }));
                         }}
-                    >Send</div>
+                    >Send</div> */}
                 </div>
             )}
         </div>

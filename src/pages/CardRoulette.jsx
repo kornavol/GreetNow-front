@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import  { useSelector } from 'react-redux';
+import React, { useState } from 'react';
 import EventFilter from "../components/EventFilter";
 import CardRouletteAnimation from "../components/CardRouletteAnimation";
 import './css/CardRoulette.css';
@@ -7,11 +6,9 @@ import balloonGold from '../assets/balloon-gold.png';
 import balloonWhite from '../assets/balloon-white.png';
 
 const CardRoulette = (props) => {
-
-    const contactList = useSelector((state) => state.contacts);
+    
     const [event, setEvent] = useState({events:'all'});
     const [relationship, setRelationship] = useState();
-    console.log('relationship: '+relationship);
 
     return (
         <section id="card-roulette-container">
@@ -31,13 +28,10 @@ const CardRoulette = (props) => {
                 <CardRouletteAnimation event={event} relationship={relationship}/>
                 <div className="card-roulette-banner">
                     <div className="card-roulette-text">
-                        <h2>Try your luck at the Card Roulette!</h2>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-                            Ipsum dolor sit amet, consectetur adipisicing.
-                        </p>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. <br/>
-                            Ipsum dolor sit amet, consectetur adipisicing.
-                        </p>
+                        <h2><b>Try your luck at the Card Roulette!</b></h2>
+                        <h2>Choose an image to create a card. <br/>
+                            Or if you prefer spin it again.
+                        </h2>
                     </div>
                     <div className="card-roulette-logo">
                     </div>

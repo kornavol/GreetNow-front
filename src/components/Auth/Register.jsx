@@ -119,7 +119,6 @@ export default function Register(props) {
                         setError("");
                     }, 5000);
                 }
-                //console.log(output);
             }
         ))
     }
