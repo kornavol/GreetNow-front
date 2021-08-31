@@ -90,7 +90,7 @@ export default function Wizzard({ unmPopUp, purpose }) {
     for (const key in recipient) {
       const value = recipient[key];
 
-      /* We need additional to check type of value and for each arr. or obj. put each element separately, 
+      /* We need additional to check type of value and for each arr. or obj. put each element separately,
             because append to the form automatically convert data to a string   */
 
       /* Don't caunt an object */

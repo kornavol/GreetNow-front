@@ -29,7 +29,7 @@ export default function NotificationBtn({ content, link, contact }) {
     editContact(contact);
   }
 
-  /* To-DO: We are using this action also in wizzard. 
+  /* To-DO: We are using this action also in wizzard.
     Change all structure, this actions needs to be in redux */
   function editContact(contact) {
     let url = "http://localhost:8080/recipients/update_record";
