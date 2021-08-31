@@ -1,10 +1,8 @@
-
-import React from 'react';
 import "../css/Catalog.css";
 import { Tabs, Tab } from "react-bootstrap";
 
-import { useState } from "react";
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from "react";
+import { useLocation } from 'react-router';
 
 import Pictures from "../../components/Catalog/ImgCatalog.jsx";
 import Texts from "../../components/Catalog/TextsCatalog.jsx";
@@ -15,8 +13,16 @@ export default function Catalog(props) {
 
     const [key, setKey] = useState("MyCards");
     const setModalShow = props.setModalShow;
-    const history = useHistory()
-    // console.log('history', history.goBack);
+    const location = useLocation()
+    console.log('location', location.state);
+
+
+
+    useEffect(() => {
+        if (location.state == "/contacts") {
+            setKey("Card")
+        }
+    }, []);
 
     return (
         <div id="media-catalog">
@@ -25,15 +31,11 @@ export default function Catalog(props) {
                 <p>Lorem ipsum dolor sit amet consectetur voluptatem aut nihil.</p>
                 <Tabs id="tabs" activeKey={key} onSelect={(k) => setKey(k)} className="catalog-tab">
                     <Tab eventKey="MyCards" title="My Cards" >
-                        <CardsList/>
+                        <CardsList createdBy={'user'} />
                     </Tab>
-                    <Tab xs={10} eventKey="pictures" title="Pictures" >
-                        <Pictures setModalShow={setModalShow} />
+                    <Tab xs={10} eventKey="Card" title="Card" >
+                        <CardsList createdBy={'app'} />
                     </Tab>
-                    <Tab eventKey="texts" title="Texts" >
-                        <Texts setModalShow={setModalShow} />
-                    </Tab>
-                    {/* new component - CardList */}
                 </Tabs>
             </div>
         </div>
