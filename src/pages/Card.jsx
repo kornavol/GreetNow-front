@@ -19,7 +19,7 @@ import { sendText, sendPict } from "../actions";
 import CardSharing from "../components/CardSharing";
 
 /* All unique data has to come from back.
-    All cards are public. 
+    All cards are public.
 */
 export default function Card(props) {
   const [isClicked, setIsClicked] = useState(false);
@@ -113,12 +113,12 @@ export default function Card(props) {
     }
   }, []);
 
-  /* TO-Do: 
+  /* TO-Do:
      - add to option:
         - recipient ID
         -event
-     - Replace all CRUD operation to redux. 
-        Becouse we will use them also in User card catalog 
+     - Replace all CRUD operation to redux.
+        Becouse we will use them also in User card catalog
     */
   async function SaveCard() {
     // console.log(selectedImage);
@@ -153,14 +153,14 @@ export default function Card(props) {
       console.log(result.data);
       setIsSaved(true);
       setCardLink(`http://localhost:3000/cards/${result.data._id}`);
-      /* clear text storage 
+      /* clear text storage
             /* To-DO: Needing to create a same dispatch for picture */
     }
   }
 
   /* To-do:
-    - Add  ternary operator  
-    which willl be check card owner and add CRUD buttons 
+    - Add  ternary operator
+    which willl be check card owner and add CRUD buttons
     (Need to thinking about logic.)
     - align text ot center
     - Add mockup with name of recipient (f.e. Dear {Andreas} ) (optional)
