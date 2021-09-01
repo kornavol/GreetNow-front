@@ -83,7 +83,7 @@ export default function Card(props) {
     const dispatch = useDispatch()
     const { id } = useParams();
 
-    console.log('URL params', id);
+    //console.log('URL params', id);
 
     useEffect(() => {
         async function getCard() {
@@ -95,12 +95,13 @@ export default function Card(props) {
             const response = await fetch(url, option)
             const result = await response.json()
 
-            // console.log('for URL card:',  result);
+            console.log('for URL card:',  result);
 
             if (result.status === 'success') {
                 const picName = result.data.picture;
                 const text = result.data.text;
                 /* add pop-up with message */
+                setCardLink(`http://localhost:3000/cards/${result.data._id}`);
 
                 dispatch(sendText(text));
                 dispatch(sendPict({ name: picName }));
@@ -182,10 +183,20 @@ export default function Card(props) {
 
     const sendShareBtn = (
         sendButton?
-        <div className="preview-custom-btn send-btn" onClick={()=>setSendButton(false)}>Send</div>
+        <div className="preview-custom-btn send-btn" onClick={()=>{setSendButton(false), SaveCard()}}>Send</div>
         :
         <CardSharing username={username} /* contactName={contactName} */ url={cardLink} title={'A special Card for you!'} setSendButton={()=>setSendButton(true)}/>
     );
+
+    const loginAd =
+        isAuth? 
+        null
+        :
+        (<div>
+            <a>Please </a>
+            <a style={{cursor: 'pointer', fontWeight: 'bold', color:'tomato'}} onClick={()=>{props.setModalShow(true); props.setToggleRegister(true)}}>Login</a>
+            <a> if you want to save the card.</a>
+        </div>);
 
     return (
         <div id="preview-container">
@@ -278,11 +289,7 @@ export default function Card(props) {
             ) : (
                 <div className="preview-footer">
                     <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                    <div>
-                        <a>Please </a>
-                        <a style={{cursor: 'pointer', fontWeight: 'bold', color:'tomato'}} onClick={()=>{props.setModalShow(true); props.setToggleRegister(true)}}>Login</a>
-                        <a> if you want to save the card.</a>
-                    </div>
+                    {loginAd}           
                     {sendShareBtn}
                     {/* <div
                         className="preview-custom-btn send-btn"

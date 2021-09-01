@@ -48,3 +48,9 @@
 .cards-list-wrapper2 p:hover {
     color: #dc004e;
 }
+
+.cards-list-btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

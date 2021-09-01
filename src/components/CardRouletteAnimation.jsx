@@ -63,7 +63,6 @@ const CardRoulette = (props) => {
                     const texts = result.data.texts;
                     texts.map(item=>{
                         item.categories.filter(cat => {
-                            console.log(relationship);
                         if(props.isAuth && relationship.includes(cat)){
                             textArr.push(item.text);
                         }else{
