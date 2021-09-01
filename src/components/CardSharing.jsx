@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
+import Popup from "./Popup";
+import { FiShare } from "react-icons/fi";
 import {
     EmailShareButton,
     FacebookShareButton,
@@ -51,6 +53,19 @@ function cardSharing(props) {
     const url = props.url;
     const username = props.username;
     const recipient = props.contactName;
+
+    console.log(url);
+
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    }
+
+    function shareHandler(){
+
+    }
+
     return (
         <div>
             <FacebookShareButton quote={title} url={url} onClick={props.setSendButton}>
@@ -75,6 +90,11 @@ function cardSharing(props) {
             >
             <EmailIcon size={32} round/>
             </EmailShareButton>
+            <FiShare size={32} onClick={togglePopup}/>
+            {isOpen && <Popup
+            content={<p>{url}</p>}
+            handleClose={togglePopup}
+    />}
         </div>
     )
 }

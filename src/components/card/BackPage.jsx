@@ -26,11 +26,19 @@ const BackPage = () => {
         setIsEditable(false);
     }
 
+    function keydown(e) {
+        /* const enter = '/n';
+        if (e.key === 13) {
+            return enter;
+        } 
+        console.log(enter); */
+    }
+
     const updateText = <button onClick={updateTextHandler}>✔️</button>;
 
     return (
         <div id="card-back" >
-            <h3 onBlur = {editTextHandler} onClick={editToggle} contentEditable = {isEditable}>{selectedText ? selectedText : text}</h3>
+            <h3 onBlur = {editTextHandler} onKeyDown={keydown} onClick={editToggle} contentEditable = {isEditable}>{selectedText ? selectedText : text}</h3>
             {isEditable? updateText : null}
         </div>
     );

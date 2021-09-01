@@ -56,8 +56,7 @@ export default function CardsList({ createdBy }) {
                             />
                         </Link>
                         <div className="cards-list-btn-container">
-                            <Link
-                                to="#"
+                            <div
                                 onClick={async () => {
 
                                     const result = await dispatch(deleteCard(card))
@@ -69,9 +68,9 @@ export default function CardsList({ createdBy }) {
                                 }}
                             >
                                 <p><DeleteForeverOutlinedIcon /></p>
-                            </Link>
+                            </div>
                             {/* Has to redirect to card editor with a card */}
-                            <Link to="#" ><p><EditOutlinedIcon /></p></Link>
+                            <div><p><EditOutlinedIcon /></p></div>
                         </div>
                     </div>
                 )
@@ -93,7 +92,7 @@ export default function CardsList({ createdBy }) {
                     createdBy={createdBy}
                 />
                 :
-                <h1>There aren't any cars</h1>
+                <h1>There aren't any cards</h1>
             }
         </div>
     );
