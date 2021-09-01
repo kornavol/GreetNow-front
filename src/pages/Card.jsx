@@ -31,6 +31,19 @@ export default function Card(props) {
     const [isPublicCard, setIsPublicCard] = useState(false);
     const isAuth = props.isAuth;
 
+    /* Public card page logic */
+    const dispatch = useDispatch()
+    const { id } = useParams();
+
+    console.log('isAuth', isAuth);
+
+    useEffect(() => {
+        if (id) {
+            setIsPublicCard(true)
+        }
+
+    }, [id]);
+
 
     const previewCardRef = useRef(0);
     const previewFlipCardRef = useRef(0);
@@ -79,9 +92,7 @@ export default function Card(props) {
         }
     }, []);
 
-    /* Public card page logic */
-    const dispatch = useDispatch()
-    const { id } = useParams();
+
 
     //console.log('URL params', id);
 
@@ -95,7 +106,7 @@ export default function Card(props) {
             const response = await fetch(url, option)
             const result = await response.json()
 
-            console.log('for URL card:',  result);
+            console.log('for URL card:', result);
 
             if (result.status === 'success') {
                 const picName = result.data.picture;
@@ -135,7 +146,7 @@ export default function Card(props) {
             createdBy: 'user',
             /* not neccery */
             recipient: '',
-            event: ''            
+            event: ''
         }
 
         const url = 'http://localhost:8080/cards/new_record';
@@ -149,7 +160,7 @@ export default function Card(props) {
         }
 
         const respond = await fetch(url, options);
-        const result = await respond.json().then(data=>{return data});
+        const result = await respond.json().then(data => { return data });
 
         if (result.status === 'success') {
             console.log(result.data);
@@ -159,7 +170,7 @@ export default function Card(props) {
             /* To-DO: Needing to create a same dispatch for picture */
         }
 
-        
+
     }
 
     /* To-do:
@@ -177,34 +188,39 @@ export default function Card(props) {
     useEffect(() => {
         return () => {
             dispatch(sendText(''))
-            dispatch(sendPict({name: 'cover-card-editor.png'}))
+            dispatch(sendPict({ name: 'cover-card-editor.png' }))
         };
     }, []);
 
     const sendShareBtn = (
-        sendButton?
-        <div className="preview-custom-btn send-btn" onClick={()=>{setSendButton(false), SaveCard()}}>Send</div>
-        :
-        <CardSharing username={username} /* contactName={contactName} */ url={cardLink} title={'A special Card for you!'} setSendButton={()=>setSendButton(true)}/>
+        sendButton ?
+            <div className="preview-custom-btn send-btn" onClick={() => { setSendButton(false), SaveCard() }}>Send</div>
+            :
+            <CardSharing username={username} /* contactName={contactName} */ url={cardLink} title={'A special Card for you!'} setSendButton={() => setSendButton(true)} />
     );
 
     const loginAd =
-        isAuth? 
-        null
-        :
-        (<div>
-            <a>Please </a>
-            <a style={{cursor: 'pointer', fontWeight: 'bold', color:'tomato'}} onClick={()=>{props.setModalShow(true); props.setToggleRegister(true)}}>Login</a>
-            <a> if you want to save the card.</a>
-        </div>);
+        isAuth ?
+            null
+            :
+            (<div>
+                <a>Please </a>
+                <a style={{ cursor: 'pointer', fontWeight: 'bold', color: 'tomato' }} onClick={() => { props.setModalShow(true); props.setToggleRegister(true) }}>Login</a>
+                <a> if you want to save the card.</a>
+            </div>);
 
     return (
         <div id="preview-container">
             <FlowerShowerAnimation />
-            <header>
-                <h1>Preview</h1>
-                <p>Click the Card to Open</p>
-            </header>
+
+            {
+                isPublicCard ? null :
+                    <header>
+                        <h1>Preview</h1>
+                        <p>Click the Card to Open</p>
+                    </header>
+            }
+
             <div className="preview-card-container" data-aos="fade-up" data-aos-duration="2000">
                 <div className="preview-envelope">
                     <div className="preview-envelope-back">
@@ -216,7 +232,7 @@ export default function Card(props) {
                         {selectedImage._id ? (
                             <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                         ) : (
-                            
+
                             <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
                             // <img src={previewCoverImage} alt="card" />
                         )}
@@ -261,46 +277,54 @@ export default function Card(props) {
                 </div>
             </div>
 
-            {isAuth ? (
-                <div /* className="preview-footer" */>
+            {isPublicCard ? null
 
-                    {isSaved ? (
-                        <div className="preview-footer">
-                            {/* <button className="btn btn-bg-success">Edit</button>
-                            <button className="btn btn-bg-danger">Delete</button> */}
-                            <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                            <h4>Your Card has been saved to <Link to="/my-cards"><u>My Cards</u></Link></h4>
-                            {sendShareBtn}
+
+                :
+
+                <div>
+                    {isAuth ? (
+                        <div /* className="preview-footer" */>
+                            {isSaved ? (
+                                <div className="preview-footer">
+                                    {/* <button className="btn btn-bg-success">Edit</button>
+                                            <button className="btn btn-bg-danger">Delete</button> */}
+                                    <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
+                                    <h4>Your Card has been saved to <Link to="/my-cards"><u>My Cards</u></Link></h4>
+                                    {sendShareBtn}
+                                </div>
+                            ) : (
+                                <div className="preview-footer">
+                                    <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
+                                    <div
+                                        className="preview-custom-btn save-btn"
+                                        onClick={() => SaveCard()}
+                                    >
+                                        <SaveOutlinedIcon />
+                                        Save
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     ) : (
                         <div className="preview-footer">
                             <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                            <div
-                                className="preview-custom-btn save-btn"
-                                onClick={() => SaveCard()}
-                            >
-                                <SaveOutlinedIcon />
-                                Save
-                            </div>                            
+                            {loginAd}
+                            {sendShareBtn}
+                            {/* <div
+                                        className="preview-custom-btn send-btn"
+                                        onClick={() => {
+                                            dispatch(sendText(''));
+                                            dispatch(sendPict({ name: 'cover-card-editor.png' }));
+                                        }}
+                                    >Send</div> */}
                         </div>
                     )}
                 </div>
 
-            ) : (
-                <div className="preview-footer">
-                    <Link to="/card-editor"><h4><FiChevronLeft /> Back</h4></Link>
-                    {loginAd}           
-                    {sendShareBtn}
-                    {/* <div
-                        className="preview-custom-btn send-btn"
-                        onClick={() => {
+            }
 
-                            dispatch(sendText(''));
-                            dispatch(sendPict({ name: 'cover-card-editor.png' }));
-                        }}
-                    >Send</div> */}
-                </div>
-            )}
+
         </div>
     )
 }

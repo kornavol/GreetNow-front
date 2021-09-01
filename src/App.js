@@ -94,6 +94,7 @@ function App() {
   }
   /* this func. also validate a tocken  */
   fetchPrivateData();
+  console.log('app:',  isAuth);
 
   /* Modal Body */
   function VerticalModal(verticalModal) {
@@ -125,6 +126,7 @@ function App() {
       </Modal>
     );
   }
+
 
   return (
     <div className="App">
@@ -159,7 +161,7 @@ function App() {
               {/* To display card which based on id 
               ! Important. This route have to be right after the root pass (/)
               */}
-              <Route path="/cards/:id" children={<Card />} />
+              <Route path="/cards/:id" children={<Card isAuth={isAuth} />} />
 
               <Route exact path="/media-catalog">
                 <Catalog setModalShow={setModalShow} />
