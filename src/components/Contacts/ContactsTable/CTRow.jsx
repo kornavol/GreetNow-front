@@ -13,6 +13,9 @@ export default function CTRow({ contact, number, setSwitchCase }) {
     let { firstName, lastName, dateOfBirth, gender, relationships, events, newCards } = contact
     const fullName = lastName + ' ' + firstName;
 
+    if (!dateOfBirth) {
+        dateOfBirth = ""
+    }
     /* Conevert date  */
     if (dateOfBirth) {
         const day = dateOfBirth.substr(8, 2);

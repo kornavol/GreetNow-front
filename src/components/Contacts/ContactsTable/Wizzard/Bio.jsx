@@ -22,12 +22,19 @@ export default function Bio({ form, setForm }) {
     })
 
     let dateOfBirth = form.dateOfBirth;
-        /* Conevert date  */
-        const day = dateOfBirth.substr(8, 2);
-        const month = dateOfBirth.substr(5, 2);
-        const year = dateOfBirth.substr(0, 4);
 
-        dateOfBirth = year + "-" + month + "-" + day;
+        if (!dateOfBirth) {
+            dateOfBirth = ""
+        }
+        /* Conevert date  */
+        if (dateOfBirth) {
+            const day = dateOfBirth.substr(8, 2);
+            const month = dateOfBirth.substr(5, 2);
+            const year = dateOfBirth.substr(0, 4);
+    
+            dateOfBirth = year + "-" + month + "-" + day;
+        }
+
 
 
     console.log(dateOfBirth);
