@@ -88,11 +88,14 @@ export default function Wizzard({ unmPopUp, purpose }) {
         let finalForm = new FormData();
 
         for (const key in recipient) {
-            const value = recipient[key];
+            let value = recipient[key];
 
             /* We need additional to check type of value and for each arr. or obj. put each element separately, 
             because append to the form automatically convert data to a string   */
-            
+            if (value === null) {
+                value = ""
+                
+            }
 
             /* Don't caunt an object */
             if (Array.isArray(value)) {
