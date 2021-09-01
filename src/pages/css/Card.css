@@ -1,6 +1,7 @@
 #preview-container {
     width: 100%;
     height: 90vh;
+    max-height: 692px;
     display: flex;
     align-items: center;
     justify-content: center;

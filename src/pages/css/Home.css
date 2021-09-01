@@ -1,6 +1,7 @@
 .home-slider {
     width: 100%;
     height: 90vh;
+    max-height: 690px;
     position: relative;
     display: flex;
     align-items: center;
