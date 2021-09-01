@@ -3,7 +3,7 @@ import React from "react";
 const EvFilter = ({ selector, setSelector }) => {
 
     /* The values will comes though fetch */
-    const events = ['all', "Birthday", "New Year", "Christmas"];
+    const events = ['all', "Dailys", "Birthday", "New Year", "Christmas"];
 
     const eventList = events.map(el => <option key={el} value={el}>{el}</option>)
 
