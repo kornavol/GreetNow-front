@@ -1,6 +1,7 @@
 #card-roulette-container {
     width: 100%;
     height: 90vh;
+    max-height: 692px;
     background-image: url('../../assets/card-roulette-bg.jpg');
     background-position: center;
     background-repeat: no-repeat;
