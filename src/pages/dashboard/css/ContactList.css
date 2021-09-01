@@ -24,7 +24,7 @@ body {
 
 .contacts-header {
   display: flex;
-  align-items: center; 
+  align-items: center;
   justify-content: space-evenly;
   flex-wrap: wrap;
   margin-top: 5%;
@@ -61,7 +61,7 @@ body {
     0px 1px 3px rgba(0, 0, 0, 0.3);
   outline: none;
   transition: 3s;
-  
+
 }
 
 .contacts-btn {
@@ -87,7 +87,7 @@ body {
 .contacts-frame {
   height: 100%;
   width: 100%;
-  
+
   border-radius: 25px;
   overflow: auto;
 }
@@ -1697,7 +1697,7 @@ body {
     display: block;
     padding-left: 1.25rem;
   }
-  
+
   .form-check-input {
     position: absolute;
     margin-top: 0.3rem;
@@ -1706,11 +1706,11 @@ body {
   .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
     color: #B5B5C3;
   }
-  
+
   .form-check-label {
     margin-bottom: 0;
   }
-  
+
   .form-check-inline {
     display: -webkit-inline-box;
     display: -ms-inline-flexbox;
