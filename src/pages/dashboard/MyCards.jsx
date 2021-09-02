@@ -33,7 +33,7 @@ export default function Catalog(props) {
                     <Tab eventKey="MyCards" title="My Cards" >
                         <CardsList createdBy={'user'} />
                     </Tab>
-                    <Tab xs={10} eventKey="Card" title="Card" >
+                    <Tab xs={10} eventKey="Card" title="Upcoming Cards" >
                         <CardsList createdBy={'app'} />
                     </Tab>
                 </Tabs>

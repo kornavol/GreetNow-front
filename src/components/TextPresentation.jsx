@@ -78,7 +78,7 @@ const TextPresentation = (props) => {
                     <div ref={text5} id="text5" className={`presentation-text5 ${props.isClicked? "text-animation5" : null}`}>
                     <p>Hey {username},<br/>now let's create a<br/> Greeting Card.</p>
                     <p>You can start by choosing one of your contacts, managing events or start creating on the <br/> Card Editor!</p>
-                    <Link to="/card-editor" className="presentation-custom-btn presentation-btn">Create a Card</Link>
+                    <Link to="#" className="presentation-custom-btn presentation-btn">Create a Card</Link>
                     </div>
                 ) : (
                 <div ref={text5} id="text5" className={`presentation-text5 ${props.isClicked? "text-animation5" : null}`}>

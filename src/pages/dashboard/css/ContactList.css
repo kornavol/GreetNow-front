@@ -1,10 +1,5 @@
-body {
-  font-family: 'Nunito', sans-serif;
-  font-size: .9rem;
-}
-
 #contact-list {
-  width: 100%;
+  width: 70vw;
   min-height: 90vh;
   /* height: 90vh; */
   display: flex;
@@ -12,22 +7,38 @@ body {
   align-items: center;
   justify-content: flex-start;
   /* text-align: center; */
-  position: relative;
+  position: absolute;
+  margin: auto;
   border: 1px solid #E1C16E;
   border-radius: 25px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
   rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-
+  font-family: 'Nunito',
+  sans-serif;
+  font-size: .9rem;
   /* overflow: auto; */
 
 }
+.white-space {
+    width: 100%;
+    min-height: 130vh;
+    /* height: 90vh; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+   /* overflow: auto; */
+}
 
 .contacts-header {
+  width: 100%;
   display: flex;
   align-items: center; 
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-wrap: wrap;
   margin-top: 5%;
+  padding: 0 5%;
 }
 
 .contacts-header h2 {
@@ -87,9 +98,12 @@ body {
 .contacts-frame {
   height: 100%;
   width: 100%;
-  
   border-radius: 25px;
   overflow: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .label.label-light-info {
