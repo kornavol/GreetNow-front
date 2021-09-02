@@ -92,7 +92,7 @@ function cardSharing(props) {
             </EmailShareButton>
             <FiShare size={32} onClick={togglePopup}/>
             {isOpen && <Popup
-            content={<p>{url}</p>}
+            content={url}
             handleClose={togglePopup}
     />}
         </div>

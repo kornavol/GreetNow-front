@@ -11,7 +11,10 @@ export default function ContactList() {
     const [switchCase, setSwitchCase] = useState("contacts");
 
     return (
+        
+        <div className="white-space">
         <div id="contact-list">
+            
             {(() => {
                 switch (switchCase) {
                     case "contacts":
@@ -47,6 +50,7 @@ export default function ContactList() {
                         return <h1>No project match</h1>;
                 }
             })()}
+        </div>
         </div>
     );
 }

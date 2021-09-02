@@ -112,7 +112,7 @@ export default function Card(props) {
                 const picName = result.data.picture;
                 const text = result.data.text;
                 /* add pop-up with message */
-                setCardLink(`http://localhost:3000/cards/${result.data._id}`);
+                setCardLink(`/cards/${result.data._id}`);
 
                 dispatch(sendText(text));
                 dispatch(sendPict({ name: picName }));
@@ -165,7 +165,7 @@ export default function Card(props) {
         if (result.status === 'success') {
             console.log(result.data);
             setIsSaved(true);
-            setCardLink(`http://localhost:3000/cards/${result.data._id}`);
+            setCardLink(`/cards/${result.data._id}`);
             /* clear text storage 
             /* To-DO: Needing to create a same dispatch for picture */
         }
@@ -213,13 +213,13 @@ export default function Card(props) {
         <div id="preview-container">
             <FlowerShowerAnimation />
 
-            {
-                isPublicCard ? null :
-                    <header>
+            
+                
+                    <header className={isPublicCard ? "hidden-header": null}>
                         <h1>Preview</h1>
                         <p>Click the Card to Open</p>
                     </header>
-            }
+            
 
             <div className="preview-card-container" data-aos="fade-up" data-aos-duration="2000">
                 <div className="preview-envelope">
