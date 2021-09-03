@@ -14,12 +14,12 @@ Features:
 
 ### Built With
 
-*[React](https://reactjs.org)
-*[Redux](https://redux.js.org)
-*[Node](https://nodejs.org/)
-*[Express](https://expressjs.com)
-*[Mongo](https://www.mongodb.com)
-*[Mongoose](https://mongoosejs.com)
-*[Material UI](https://material-ui.com)
-*[JWT](https://jwt.io)
-*[Bcrypt](https://www.npmjs.com/package/bcrypt)
+- [React](https://reactjs.org)
+- [Redux](https://redux.js.org)
+- [Node](https://nodejs.org/)
+- [Express](https://expressjs.com)
+- [Mongo](https://www.mongodb.com)
+- [Mongoose](https://mongoosejs.com)
+- [Material UI](https://material-ui.com)
+- [JWT](https://jwt.io)
+- [Bcrypt](https://www.npmjs.com/package/bcrypt)
