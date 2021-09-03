@@ -14,8 +14,8 @@ Features:
 
 ### Built With
 
--[React](https://reactjs.org)
--[Redux](https://redux.js.org)
+-[React](https://reactjs.org);
+-[Redux](https://redux.js.org);s
 -[Node](https://nodejs.org/)
 -[Express](https://expressjs.com)
 -[Mongo](https://www.mongodb.com)
