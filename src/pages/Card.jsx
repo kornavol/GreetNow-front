@@ -112,7 +112,7 @@ export default function Card(props) {
                 const picName = result.data.picture;
                 const text = result.data.text;
                 /* add pop-up with message */
-                setCardLink(`/cards/${result.data._id}`);
+                setCardLink(`${process.env.REACT_APP_ROUTE}/cards/${result.data._id}`);
 
                 dispatch(sendText(text));
                 dispatch(sendPict({ name: picName }));
