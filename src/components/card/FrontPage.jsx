@@ -14,7 +14,7 @@ const FrontPage = (props) => {
     const [text, setText] = useState()
     const selectedImage = useSelector((state) => state.currPict);
     const isClicked = props.isClicked;
-    const cardCoverPic = 'http://localhost:8080/greeting-pictures/cover-card-editor.png'
+    const cardCoverPic = `${process.env.REACT_APP_ROUTE}/greeting-pictures/cover-card-editor.png`
 
     const [loading, setLoading] = useState(false);
 
@@ -39,7 +39,7 @@ const FrontPage = (props) => {
 
                     {selectedImage.name ? (
                         <img
-                            src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`}
+                            src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`}
                             alt="card"
                             data-aos="fade-center" data-aos-duration="1700"
                         />

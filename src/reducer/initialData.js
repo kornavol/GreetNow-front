@@ -9,7 +9,7 @@ export async function eventsList (state)  {
     /* TO-Do. Andreas. Fix below dependency   */
     if (!state) {
         isFetching = true
-        const url = 'http://localhost:8080/data/events'
+        const url = `${process.env.REACT_APP_ROUTE}/data/events`
         const response = await fetch(url)
         const result = await response.json()
         state = result.data
@@ -22,7 +22,7 @@ export async function categoriesList (state)  {
 
     if (!state) {
         isFetching = true
-        const url = 'http://localhost:8080/data/categories'
+        const url = `${process.env.REACT_APP_ROUTE}/data/categories`
         const response = await fetch(url)
         const result = await response.json()
         state = result.data    

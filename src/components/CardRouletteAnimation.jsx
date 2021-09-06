@@ -27,12 +27,12 @@ const CardRoulette = (props) => {
     }, [event]);
 
     useEffect(() => {
-        let urlPictures = 'http://localhost:8080/media-catalog/getPictures?' + "&" + currEvent + '&';
+        let urlPictures = `${process.env.REACT_APP_ROUTE}/media-catalog/getPictures?` + "&" + currEvent + '&';
         fetch(urlPictures).then(respond => respond.json().then(result => {
             if (result.status == 'success') {
                 const pictures = result.data.pictures;
                 const itemArr = [];
-                pictures.map(pic=>itemArr.push(`http://localhost:8080/greeting-pictures/${pic.name}`));
+                pictures.map(pic=>itemArr.push(`${process.env.REACT_APP_ROUTE}/greeting-pictures/${pic.name}`));
                 setItems(itemArr);
                 setPicturesArr(pictures);
                 init();
@@ -56,7 +56,7 @@ const CardRoulette = (props) => {
 
     function fetchText(picEvent){
         function textHandler(eventPass){
-            let urlTexts = "http://localhost:8080/media-catalog/getTexts?" + "&" + `${eventPass}` + '&';
+            let urlTexts = `${process.env.REACT_APP_ROUTE}/media-catalog/getTexts?` + "&" + `${eventPass}` + '&';
             fetch(urlTexts).then(respond => respond.json().then(result => {
                 if (result.status == 'success') {
                     const textArr = [];

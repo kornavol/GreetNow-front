@@ -78,10 +78,10 @@ export default function Wizzard({ unmPopUp, purpose }) {
 
         switch (purpose) {
             case "create":
-                url = "http://localhost:8080/recipients/new_record";
+                url = `${process.env.REACT_APP_ROUTE}/recipients/new_record`;
                 break;
             case "edit":
-                url = "http://localhost:8080/recipients/update_record";
+                url = `${process.env.REACT_APP_ROUTE}/recipients/update_record`;
                 break;
         }
 

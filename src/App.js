@@ -69,8 +69,8 @@ function App() {
 
   const fetchPrivateData = () => {
 
-    const url = "http://localhost:8080/private";
-
+    const url = `${process.env.REACT_APP_ROUTE}/private`;
+    
     let options = {
       method: 'GET',
       headers: {

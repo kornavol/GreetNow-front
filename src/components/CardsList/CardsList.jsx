@@ -14,7 +14,7 @@ export default function CardsList({ createdBy }) {
     /* request to gett all cards */
 
     function getAllCards() {
-        const url = 'http://localhost:8080/cards/getAllCards';
+        const url = `${process.env.REACT_APP_ROUTE}/cards/getAllCards`;
         const options = {
             method: "GET",
             headers: {
@@ -41,7 +41,7 @@ export default function CardsList({ createdBy }) {
         const cardSet = cards.map((card, i) => {
 
             if (card.createdBy == createdBy) {
-                const pass = `http://localhost:8080/greeting-pictures/${card.picture}`
+                const pass = `${process.env.REACT_APP_ROUTE}/greeting-pictures/${card.picture}`
                 const cardID = card._id
 
                 return (

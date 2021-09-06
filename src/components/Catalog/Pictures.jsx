@@ -15,7 +15,7 @@ const Pictures = (props) => {
     const dispatch = useDispatch();
 
     const picSet = props.pictures.map((picture, i) => {
-    const pass = `http://localhost:8080/greeting-pictures/${picture.name}`
+    const pass = `${process.env.REACT_APP_ROUTE}/greeting-pictures/${picture.name}`
 
         return (
             <Link to='/card-editor' key={i}>

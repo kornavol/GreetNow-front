@@ -98,7 +98,7 @@ export default function Card(props) {
 
     useEffect(() => {
         async function getCard() {
-            const url = 'http://localhost:8080/cards/getCard?' + `id=${id}`;
+            const url = `${process.env.REACT_APP_ROUTE}/cards/getCard?` + `id=${id}`;
             const option = {
                 method: 'GET',
             }
@@ -149,7 +149,7 @@ export default function Card(props) {
             event: ''
         }
 
-        const url = 'http://localhost:8080/cards/new_record';
+        const url = `${process.env.REACT_APP_ROUTE}/cards/new_record`;
         const options = {
             method: 'POST',
             headers: {
@@ -230,10 +230,10 @@ export default function Card(props) {
                     <div ref={previewCardRef} id="preview-card" className="preview-card">
                         {/* 1. Looks like we don't need more make a conditional rendering */}
                         {selectedImage._id ? (
-                            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                            <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                         ) : (
 
-                            <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                            <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                             // <img src={previewCoverImage} alt="card" />
                         )}
                     </div>
@@ -252,9 +252,9 @@ export default function Card(props) {
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
                             {/* 2. Looks like we don't need more make a conditional rendering */}
                             {selectedImage._id ? (
-                                <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                                <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
-                                <img src={`http://localhost:8080/greeting-pictures/${selectedImage.name}`} alt="card" />
+                                <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                                 // <img src={previewCoverImage} alt="card" />
                             )}
                             <img src={previewBackImage} alt="preview back" />

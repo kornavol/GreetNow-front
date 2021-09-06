@@ -1,7 +1,7 @@
 /* CRUD for User Cards List */
 
 export const updateCard = (contact) => {
-    const url = 'http://localhost:8080/cards/update_record'
+    const url = `${process.env.REACT_APP_ROUTE}/cards/update_record`
     const options = {
         method: 'POST',
         headers: {
@@ -22,7 +22,7 @@ export const updateCard = (contact) => {
 
 
 export const deleteCard = (contact) => {
-    const url = 'http://localhost:8080/cards/delete_record'
+    const url = `${process.env.REACT_APP_ROUTE}/cards/delete_record`
     const options = {
         method: 'DELETE',
         headers: {

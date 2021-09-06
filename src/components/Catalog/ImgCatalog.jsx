@@ -25,7 +25,7 @@ const ImgCatalog = (props) => {
         const limit = `limit=${PostPerPage}`
         
 
-        const url = 'http://localhost:8080/media-catalog/getPictures?' + page + "&" + limit + currEvent
+        const url = `${process.env.REACT_APP_ROUTE}/media-catalog/getPictures?` + page + "&" + limit + currEvent
 
         fetch(url).then(respond => respond.json().then(result => {
             if (result.status == 'success') {

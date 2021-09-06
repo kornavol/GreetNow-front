@@ -87,7 +87,7 @@ export default function Register(props) {
         data.email = email;
         data.password = password;
 
-        let url = 'http://localhost:8080/auth/register';
+        let url = `${process.env.REACT_APP_ROUTE}/auth/register`;
         let options = {
             method:'POST', 
             headers: {
