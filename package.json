@@ -1,4 +1,5 @@
 {
+  "homepage": ".",
   "name": "final-prj-front",
   "version": "0.1.0",
   "private": true,
@@ -45,7 +46,6 @@
   "browserslist": {
     "production": [
       ">0.2%",
-      "not dead",
       "not op_mini all"
     ],
     "development": [
