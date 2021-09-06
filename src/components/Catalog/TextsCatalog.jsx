@@ -31,7 +31,7 @@ const TextsCatalog = (props) => {
 
         async function getTexts() {
             const url =
-                `${process.env.REACT_APP_ROUTE}/media-catalog/getTexts?` +
+                `${process.env.REACT_APP_BACK_ROUTE}/media-catalog/getTexts?` +
                 page +
                 "&" +
                 limit +

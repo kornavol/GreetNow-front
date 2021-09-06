@@ -6,7 +6,7 @@
 // }
 
 export const getAllContacts = () => {
-    const url = `${process.env.REACT_APP_ROUTE}/recipients/getAll`
+    const url = `${process.env.REACT_APP_BACK_ROUTE}/recipients/getAll`
     const options = {
         method: 'GET',
         headers: {
@@ -25,7 +25,7 @@ export const getAllContacts = () => {
 }
 
 export const deleteContact = (contact) => {
-    const url = `${process.env.REACT_APP_ROUTE}/recipients/delete_record`
+    const url = `${process.env.REACT_APP_BACK_ROUTE}/recipients/delete_record`
     const options = {
         method: 'DELETE',
         headers: {

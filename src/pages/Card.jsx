@@ -35,8 +35,6 @@ export default function Card(props) {
     const dispatch = useDispatch()
     const { id } = useParams();
 
-    console.log('isAuth', isAuth);
-
     useEffect(() => {
         if (id) {
             setIsPublicCard(true)
@@ -98,7 +96,7 @@ export default function Card(props) {
 
     useEffect(() => {
         async function getCard() {
-            const url = `${process.env.REACT_APP_ROUTE}/cards/getCard?` + `id=${id}`;
+            const url = `${process.env.REACT_APP_BACK_ROUTE}/cards/getCard?` + `id=${id}`;
             const option = {
                 method: 'GET',
             }
@@ -112,7 +110,7 @@ export default function Card(props) {
                 const picName = result.data.picture;
                 const text = result.data.text;
                 /* add pop-up with message */
-                setCardLink(`${process.env.REACT_APP_ROUTE}/cards/${result.data._id}`);
+                setCardLink(`${process.env.REACT_APP_FRONT_ROUTE}/cards/${result.data._id}`);
 
                 dispatch(sendText(text));
                 dispatch(sendPict({ name: picName }));
@@ -149,7 +147,7 @@ export default function Card(props) {
             event: ''
         }
 
-        const url = `${process.env.REACT_APP_ROUTE}/cards/new_record`;
+        const url = `${process.env.REACT_APP_BACK_ROUTE}/cards/new_record`;
         const options = {
             method: 'POST',
             headers: {
@@ -165,7 +163,7 @@ export default function Card(props) {
         if (result.status === 'success') {
             console.log(result.data);
             setIsSaved(true);
-            setCardLink(`/cards/${result.data._id}`);
+            setCardLink(`${process.env.REACT_APP_FRONT_ROUTE}/cards/${result.data._id}`);
             /* clear text storage 
             /* To-DO: Needing to create a same dispatch for picture */
         }
@@ -194,7 +192,7 @@ export default function Card(props) {
 
     const sendShareBtn = (
         sendButton ?
-            <div className="preview-custom-btn send-btn" onClick={() => { setSendButton(false), SaveCard() }}>Send</div>
+            <div className="preview-custom-btn send-btn" onClick={() => { setSendButton(false)}}>Send</div>
             :
             <CardSharing username={username} /* contactName={contactName} */ url={cardLink} title={'A special Card for you!'} setSendButton={() => setSendButton(true)} />
     );
@@ -230,10 +228,10 @@ export default function Card(props) {
                     <div ref={previewCardRef} id="preview-card" className="preview-card">
                         {/* 1. Looks like we don't need more make a conditional rendering */}
                         {selectedImage._id ? (
-                            <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
+                            <img src={`${process.env.REACT_APP_BACK_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                         ) : (
 
-                            <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
+                            <img src={`${process.env.REACT_APP_BACK_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                             // <img src={previewCoverImage} alt="card" />
                         )}
                     </div>
@@ -252,9 +250,9 @@ export default function Card(props) {
                         <div className={`preview-imgBox ${isClicked ? "preview-open-card" : "preview-close-card"}`} onClick={() => setIsClicked(state => !state)}>
                             {/* 2. Looks like we don't need more make a conditional rendering */}
                             {selectedImage._id ? (
-                                <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
+                                <img src={`${process.env.REACT_APP_BACK_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                             ) : (
-                                <img src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
+                                <img src={`${process.env.REACT_APP_BACK_ROUTE}/greeting-pictures/${selectedImage.name}`} alt="card" />
                                 // <img src={previewCoverImage} alt="card" />
                             )}
                             <img src={previewBackImage} alt="preview back" />

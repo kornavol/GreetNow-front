@@ -69,7 +69,7 @@ function App() {
 
   const fetchPrivateData = () => {
 
-    const url = `${process.env.REACT_APP_ROUTE}/private`;
+    const url = `${process.env.REACT_APP_BACK_ROUTE}/private`;
     
     let options = {
       method: 'GET',
@@ -94,7 +94,6 @@ function App() {
   }
   /* this func. also validate a tocken  */
   fetchPrivateData();
-  console.log('app:',  isAuth);
 
   /* Modal Body */
   function VerticalModal(verticalModal) {

@@ -14,7 +14,7 @@ const FrontPage = (props) => {
     const [text, setText] = useState()
     const selectedImage = useSelector((state) => state.currPict);
     const isClicked = props.isClicked;
-    const cardCoverPic = `${process.env.REACT_APP_ROUTE}/greeting-pictures/cover-card-editor.png`
+    const cardCoverPic = `${process.env.REACT_APP_BACK_ROUTE}/greeting-pictures/cover-card-editor.png`
 
     const [loading, setLoading] = useState(false);
 
@@ -31,15 +31,13 @@ const FrontPage = (props) => {
         setLoading(true)
     }, []);
 
-    console.log(loading);
-
     return (
         <div className={`editor-imgBox ${isClicked ? "rotate" : "rotate-close"}`}>
             {/* {loading ? <CircularProgress color="secondary" /> : */}
 
                     {selectedImage.name ? (
                         <img
-                            src={`${process.env.REACT_APP_ROUTE}/greeting-pictures/${selectedImage.name}`}
+                            src={`${process.env.REACT_APP_BACK_ROUTE}/greeting-pictures/${selectedImage.name}`}
                             alt="card"
                             data-aos="fade-center" data-aos-duration="1700"
                         />

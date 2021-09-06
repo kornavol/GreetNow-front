@@ -87,7 +87,7 @@ export default function Login(props) {
         data.email = email;
         data.password = password;
 
-        let urlLogin = `${process.env.REACT_APP_ROUTE}/auth/login`;
+        let urlLogin = `${process.env.REACT_APP_BACK_ROUTE}/auth/login`;
         let options = {
             method:'POST', 
             headers: {

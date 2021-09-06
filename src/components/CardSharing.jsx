@@ -54,7 +54,7 @@ function cardSharing(props) {
     const username = props.username;
     const recipient = props.contactName;
 
-    console.log(url);
+    console.log('url: ', url);
 
     const [isOpen, setIsOpen] = useState(false);
 

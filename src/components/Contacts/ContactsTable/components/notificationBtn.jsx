@@ -37,7 +37,7 @@ export default function NotificationBtn({ content, link, contact }) {
     /* To-DO: We are using this action also in wizzard. 
     Change all structure, this actions needs to be in redux */
     function editContact(contact) {
-        let url = `${process.env.REACT_APP_ROUTE}/recipients/update_recor`
+        let url = `${process.env.REACT_APP_BACK_ROUTE}/recipients/update_recor`
 
         let finalForm = new FormData();
 
