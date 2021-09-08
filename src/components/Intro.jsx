@@ -22,6 +22,7 @@ const Intro = (props) => {
     const modalShow = props.modalShow;
     const setModalShow = props.setModalShow;
 
+    const introCardRef = useRef(0);
     const introFlipCardRef = useRef(0);
     const envelopeRightRef = useRef(0);
     const envelopeLeftRef = useRef(0);
@@ -33,7 +34,7 @@ const Intro = (props) => {
         }, 2700);
 
         const zIndex2 = setTimeout(() => {
-            introFlipCardRef.current.style.zIndex = "7";
+            introCardRef.current.style.zIndex = "7";
         }, 2900);
 
         const zIndex3 = setTimeout(() => {
@@ -52,12 +53,6 @@ const Intro = (props) => {
             introFlipCardRef.current.style.transition = "1s"
         }, 6600);
 
-        introFlipCardRef.current.classList.add("card-comes-out");
-
-        const removeClass = setTimeout(() => {
-            introFlipCardRef.current.classList.remove("card-comes-out");
-        }, 5600);
-
         /*return clearTimeout prevents infinite loop of setTimeout */
         return () => {
             clearTimeout(zIndex1)
@@ -66,7 +61,6 @@ const Intro = (props) => {
             clearTimeout(zIndex4)
             clearTimeout(zIndex5)
             clearTimeout(addTransition)
-            clearTimeout(removeClass)
         }
     }, []);
 
@@ -84,12 +78,27 @@ const Intro = (props) => {
                         <img src={envelopeBack} alt="envelope"/>
                     </div>
 
+                    <div ref={introCardRef} id="intro-card" className="intro-card">
+                        <img src={introCardCover} alt="card"/>
+                        <Handwriting/>
+                    </div>
+                
+                    <div ref={envelopeLeftRef} id="envelope-left" className="envelope-left">
+                        <img src={envelopeLeft} alt="envelope"/>
+                    </div>
+                    <div ref={envelopeRightRef} id="envelope-right" className="envelope-right ">
+                        <div className="envelope-right-box">
+                            <img src={envelopeRight} alt="envelope"/>
+                            <img src={envelopeRightOpen} alt="envelope"/>
+                        </div>
+                    </div>
+
                     <div ref={introFlipCardRef} id="intro-flip-card" className={`intro-flip-card ${isClicked ? "translate" : "reverse-translate"}`}>
                         <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> setIsClicked(state =>!state)}>
                             <Handwriting/>
                             <img src={introCardCover} alt="flower"/>
                             <ImgPresentation isClicked={isClicked}/>
-                            
+                            {/* <img src={image1} alt="birthday"/> */}
                             <div className="fold">
                                 <p>Open</p>
                             </div>
@@ -107,17 +116,6 @@ const Intro = (props) => {
                             />
                         </div>
                     </div>
-                
-                    <div ref={envelopeLeftRef} id="envelope-left" className="envelope-left">
-                        <img src={envelopeLeft} alt="envelope"/>
-                    </div>
-                    <div ref={envelopeRightRef} id="envelope-right" className="envelope-right ">
-                        <div className="envelope-right-box">
-                            <img src={envelopeRight} alt="envelope"/>
-                            <img src={envelopeRightOpen} alt="envelope"/>
-                        </div>
-                    </div>
-
                 </div>     
             </main>
         </section>
