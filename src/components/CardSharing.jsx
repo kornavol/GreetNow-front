@@ -62,39 +62,39 @@ function cardSharing(props) {
         setIsOpen(!isOpen);
     }
 
-    function shareHandler(){
+    function shareHandler() {
 
     }
 
     return (
         <div>
             <FacebookShareButton quote={title} url={url} onClick={props.setSendButton}>
-                <FacebookIcon size={32} round/>
+                <FacebookIcon size={32} round />
             </FacebookShareButton>
             <WhatsappShareButton title={title} url={url} separator=":: " onClick={props.setSendButton}>
                 <WhatsappIcon size={32} round />
             </WhatsappShareButton>
             <LinkedinShareButton
-            title={title}
-            url={url}
-            windowWidth={750}
-            windowHeight={600}
-            onClick={props.setSendButton}
+                title={title}
+                url={url}
+                windowWidth={750}
+                windowHeight={600}
+                onClick={props.setSendButton}
             >
                 <LinkedinIcon size={32} round />
             </LinkedinShareButton>
             <EmailShareButton
-            subject={title}
-            body={`Hi ${recipient},\n\n ${username} sent you a special message with Greet Now - Personal card editor, follow the link:`}
-            url={url}
+                subject={title}
+                body={`Hi ${recipient},\n\n ${username} sent you a special message with Greet Now - Personal card editor, follow the link:`}
+                url={url}
             >
-            <EmailIcon size={32} round/>
+                <EmailIcon size={32} round />
             </EmailShareButton>
-            <FiShare size={32} onClick={togglePopup}/>
+            <FiShare size={32} onClick={togglePopup} />
             {isOpen && <Popup
-            content={url}
-            handleClose={togglePopup}
-    />}
+                content={url}
+                handleClose={togglePopup}
+            />}
         </div>
     )
 }

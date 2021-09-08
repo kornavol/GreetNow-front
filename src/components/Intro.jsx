@@ -11,9 +11,9 @@ import ImgPresentation from './ImgPresentation';
 import './css/Intro.css';
 
 
-const Intro = (props) => {
+export default function Intro(props) {
 
-    const [isClicked, setIsClicked] = useState (false);
+    const [isClicked, setIsClicked] = useState(false);
     const user = props.user;
     const isAuth = props.isAuth;
     const setIsAuth = props.setIsAuth;
@@ -22,11 +22,10 @@ const Intro = (props) => {
     const modalShow = props.modalShow;
     const setModalShow = props.setModalShow;
 
-    const introCardRef = useRef(0);
     const introFlipCardRef = useRef(0);
     const envelopeRightRef = useRef(0);
     const envelopeLeftRef = useRef(0);
-    
+
 
     useEffect(() => {
         const zIndex1 = setTimeout(() => {
@@ -34,7 +33,7 @@ const Intro = (props) => {
         }, 2700);
 
         const zIndex2 = setTimeout(() => {
-            introCardRef.current.style.zIndex = "7";
+            introFlipCardRef.current.style.zIndex = "7";
         }, 2900);
 
         const zIndex3 = setTimeout(() => {
@@ -53,6 +52,12 @@ const Intro = (props) => {
             introFlipCardRef.current.style.transition = "1s"
         }, 6600);
 
+        introFlipCardRef.current.classList.add("card-comes-out");
+
+        const removeClass = setTimeout(() => {
+            introFlipCardRef.current.classList.remove("card-comes-out");
+        }, 5600);
+
         /*return clearTimeout prevents infinite loop of setTimeout */
         return () => {
             clearTimeout(zIndex1)
@@ -61,6 +66,7 @@ const Intro = (props) => {
             clearTimeout(zIndex4)
             clearTimeout(zIndex5)
             clearTimeout(addTransition)
+            clearTimeout(removeClass)
         }
     }, []);
 
@@ -71,55 +77,50 @@ const Intro = (props) => {
                 <h3>― With a beautiful animated experience.</h3>
                 <p>Click the Card to Open</p>
             </header>
-            <StampAnimation/>
+            <StampAnimation />
             <main className="intro-card-container" data-aos="fade-up" data-aos-duration="2500">
                 <div className="intro-envelope">
                     <div className="envelope-back">
-                        <img src={envelopeBack} alt="envelope"/>
-                    </div>
-
-                    <div ref={introCardRef} id="intro-card" className="intro-card">
-                        <img src={introCardCover} alt="card"/>
-                        <Handwriting/>
-                    </div>
-                
-                    <div ref={envelopeLeftRef} id="envelope-left" className="envelope-left">
-                        <img src={envelopeLeft} alt="envelope"/>
-                    </div>
-                    <div ref={envelopeRightRef} id="envelope-right" className="envelope-right ">
-                        <div className="envelope-right-box">
-                            <img src={envelopeRight} alt="envelope"/>
-                            <img src={envelopeRightOpen} alt="envelope"/>
-                        </div>
+                        <img src={envelopeBack} alt="envelope" />
                     </div>
 
                     <div ref={introFlipCardRef} id="intro-flip-card" className={`intro-flip-card ${isClicked ? "translate" : "reverse-translate"}`}>
-                        <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={()=> setIsClicked(state =>!state)}>
-                            <Handwriting/>
-                            <img src={introCardCover} alt="flower"/>
-                            <ImgPresentation isClicked={isClicked}/>
-                            {/* <img src={image1} alt="birthday"/> */}
+                        <div className={`imgBox ${isClicked ? "open-card" : "close-card"} `} onClick={() => setIsClicked(state => !state)}>
+                            <Handwriting />
+                            <img src={introCardCover} alt="flower" />
+                            <ImgPresentation isClicked={isClicked} />
+
                             <div className="fold">
                                 <p>Open</p>
                             </div>
                         </div>
-                        <div className="intro-flip-card-text" onClick={()=> setIsClicked(state =>!state)}>
+                        <div className="intro-flip-card-text" onClick={() => setIsClicked(state => !state)}>
                             <TextPresentation
                                 isClicked={isClicked}
                                 user={user}
-                                isAuth={isAuth} 
-                                setIsAuth={setIsAuth} 
-                                toggleRegister={toggleRegister} 
-                                setToggleRegister={setToggleRegister} 
-                                modalShow={modalShow} 
+                                isAuth={isAuth}
+                                setIsAuth={setIsAuth}
+                                toggleRegister={toggleRegister}
+                                setToggleRegister={setToggleRegister}
+                                modalShow={modalShow}
                                 setModalShow={setModalShow}
                             />
                         </div>
                     </div>
-                </div>     
+
+                    <div ref={envelopeLeftRef} id="envelope-left" className="envelope-left">
+                        <img src={envelopeLeft} alt="envelope" />
+                    </div>
+                    <div ref={envelopeRightRef} id="envelope-right" className="envelope-right ">
+                        <div className="envelope-right-box">
+                            <img src={envelopeRight} alt="envelope" />
+                            <img src={envelopeRightOpen} alt="envelope" />
+                        </div>
+                    </div>
+
+                </div>
             </main>
         </section>
     )
 }
 
-export default Intro;
