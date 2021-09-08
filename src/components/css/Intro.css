@@ -211,6 +211,11 @@
     invisible 1s 6.7s forwards;
 }
 
+.card-comes-out {
+    transform-origin: left;
+    animation: card-comes-out 2.5s 3.1s ease-in-out forwards;
+}
+
 @keyframes card-comes-out {
     0% {
         transform: translateX(0);
@@ -234,13 +239,16 @@
     left: 5px;
     transform-style: preserve-3d;
     transform: perspective(1000px);
-    opacity: 0;
+    
     position: absolute;
     transform-origin: left;
-    z-index: 15;
+    z-index: 1;
     background-color: #ffffff;
-    animation: visible 1s 6.3s forwards;
+    
     box-shadow: 10px 20 px 40 px rgba (0, 0, 0, 0, 0.25);
+    
+
+    
 }
 
 .intro-flip-card .imgBox {
@@ -403,6 +411,7 @@
         width: 92%;
         top: 5%;
     }
+
 }
 
 @media screen and (min-width: 375px) and (max-width: 424px) {
@@ -421,4 +430,5 @@
         top: 1%;
         left: 7px;
     }
+
 }
